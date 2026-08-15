@@ -1,8 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   X,
@@ -11,16 +10,14 @@ import {
   Trash2,
   MessageCircle,
   Mail,
-  Send,
   Sparkles,
   ClipboardCheck,
-  Building2,
   CheckCircle2,
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { useCart } from '@/context/CartContext';
 import { useCurrency } from '@/context/CurrencyContext';
-import { STORE_CONFIG, getWhatsAppUrl, getMailtoUrl } from '@/data/sportsConfig';
+import { getWhatsAppUrl, getMailtoUrl } from '@/data/sportsConfig';
 
 export function CartDrawer() {
   const { isCartOpen, closeCart, cart, updateQuantity, removeFromCart, clearCart, totalItems } = useCart();
@@ -76,7 +73,7 @@ export function CartDrawer() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={closeCart}
-            className="absolute inset-0 bg-black/60 backdrop-blur-xs transition-opacity"
+            className="absolute inset-0 bg-[#12100E]/45 backdrop-blur-xs transition-opacity"
           />
 
           {/* Drawer Content */}
@@ -86,61 +83,59 @@ export function CartDrawer() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="w-screen max-w-md bg-white shadow-2xl flex flex-col h-full"
+              className="w-screen max-w-md bg-[#F5F1E8] shadow-2xl flex flex-col h-full"
             >
               {/* Header */}
-              <div className="px-4 sm:px-6 py-4 sm:py-5 border-b border-[#E8E4DF] flex items-center justify-between bg-[#F6F4F1] shrink-0">
+              <div className="px-5 sm:px-6 py-5 flex items-center gap-4 bg-[#12100E] text-[#F5F1E8] shrink-0">
                 <div>
-                  <h2 className="text-sm sm:text-base font-extrabold text-[#12100E] flex items-center gap-2">
-                    <span>Enquiry &amp; Order List</span>
-                    <span className="bg-[#12100E] text-white text-[10px] sm:text-[11px] font-bold px-2 py-0.5 rounded-full">
-                      {totalItems}
-                    </span>
+                  <h2 className="text-base sm:text-[17px] font-black tracking-tight font-display">
+                    Your enquiry
                   </h2>
-                  <p className="text-[11px] sm:text-xs text-[#757575] mt-0.5">
-                    Direct quote on WhatsApp — same day reply.
+                  <p className="text-[12.5px] text-[#8E857A] mt-1">
+                    {totalItems} item(s) · no payment taken
                   </p>
                 </div>
+                <div className="flex-1" />
                 <button
                   onClick={closeCart}
-                  className="p-2 rounded-full hover:bg-white text-[#757575] hover:text-[#12100E] transition-colors"
+                  className="w-9 h-9 rounded-full border border-[#3A342D] hover:border-[#F5F1E8] text-[#F5F1E8] flex items-center justify-center transition-colors"
                   aria-label="Close drawer"
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-4.5 h-4.5" />
                 </button>
               </div>
 
               {/* Items List */}
-              <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4">
+              <div className="flex-1 overflow-y-auto px-5 sm:px-6 py-4">
                 {cart.length === 0 ? (
                   <div className="py-16 sm:py-20 text-center space-y-4">
-                    <div className="w-14 h-14 sm:w-16 sm:h-16 bg-[#F6F4F1] text-[#757575] rounded-full flex items-center justify-center mx-auto">
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 bg-[#EFE9DC] text-[#6B6459] rounded-full flex items-center justify-center mx-auto">
                       <Sparkles className="w-7 h-7 sm:w-8 sm:h-8" />
                     </div>
                     <h3 className="text-sm sm:text-base font-bold text-[#12100E]">
-                      Your enquiry list is empty
+                      Nothing here yet
                     </h3>
-                    <p className="text-xs text-[#757575] max-w-xs mx-auto">
-                      Pick what your club, school or shop needs from our match and training stock.
+                    <p className="text-xs text-[#6B6459] max-w-xs mx-auto leading-relaxed">
+                      Add balls from the catalogue and send them all in one message.
                     </p>
                     <button
                       onClick={closeCart}
-                      className="px-6 py-2.5 bg-[#12100E] text-white text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-black transition-colors"
+                      className="px-6 py-2.5 bg-[#12100E] hover:bg-black text-white text-xs font-bold uppercase tracking-wider rounded-full transition-colors"
                     >
                       Browse Catalogue
                     </button>
                   </div>
                 ) : (
                   <>
-                    <div className="flex items-center justify-between pb-2 border-b border-[#E8E4DF]">
-                      <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-[#757575]">
+                    <div className="flex items-center justify-between pb-3 border-b border-[#DED7C9]">
+                      <span className="text-[11px] font-bold uppercase tracking-wider text-[#6B6459]">
                         Selected Balls ({totalItems})
                       </span>
                       <button
                         onClick={clearCart}
-                        className="text-[10px] sm:text-[11px] font-bold text-[#757575] hover:text-rose-600 flex items-center gap-1"
+                        className="text-[11px] font-bold text-[#6B6459] hover:text-[#C8482B] flex items-center gap-1"
                       >
-                        <Trash2 className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                        <Trash2 className="w-3.5 h-3.5" />
                         <span>Clear All</span>
                       </button>
                     </div>
@@ -148,58 +143,52 @@ export function CartDrawer() {
                     {cart.map((item) => (
                       <div
                         key={item.id}
-                        className="flex gap-3 sm:gap-4 p-3 sm:p-3.5 bg-[#F6F4F1] rounded-2xl border border-[#E8E4DF]"
+                        className="flex gap-3.5 py-4 border-b border-[#E4DED1] items-center"
                       >
                         {/* Ball thumbnail */}
-                        <div className="relative w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-xl overflow-hidden shrink-0 border border-[#E8E4DF] p-1">
+                        <div className="relative w-[62px] h-[62px] bg-white rounded border border-[#E4DED1] shrink-0 p-1.5">
                           <Image
                             src={item.product.images[0]}
                             alt={item.product.name}
                             fill
-                            className="object-contain"
+                            className="object-contain p-1"
                           />
                         </div>
 
                         {/* Info */}
-                        <div className="flex-1 flex flex-col justify-between min-w-0">
-                          <div>
-                            <div className="flex items-start justify-between gap-1">
-                              <span className="text-[9px] sm:text-[10px] font-extrabold uppercase tracking-wider text-[#8E857A]">
-                                {item.product.brand}
-                              </span>
-                              <button
-                                onClick={() => removeFromCart(item.id)}
-                                className="text-[#9E9E9E] hover:text-rose-600 p-0.5"
-                                title="Remove"
-                              >
-                                <X className="w-3.5 h-3.5" />
-                              </button>
-                            </div>
-                            <h4 className="text-xs font-bold text-[#12100E] truncate">
-                              {item.product.name}
-                            </h4>
-                            <p className="text-[10px] sm:text-[11px] text-[#757575] truncate">
-                              {item.product.spec}
-                            </p>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-start justify-between gap-1">
+                            <span className="text-[10px] font-bold uppercase tracking-wider text-[#8E857A]">
+                              {item.product.brand}
+                            </span>
+                            <button
+                              onClick={() => removeFromCart(item.id)}
+                              className="text-[#9C9284] hover:text-[#C8482B] p-0.5"
+                              title="Remove"
+                            >
+                              <X className="w-3.5 h-3.5" />
+                            </button>
                           </div>
-
-                          <div className="flex items-center justify-between pt-2 mt-1 border-t border-[#E8E4DF]/60">
+                          <h4 className="text-[14.5px] font-bold text-[#12100E] leading-tight truncate">
+                            {item.product.name}
+                          </h4>
+                          <div className="flex items-center justify-between mt-2">
                             {/* Quantity Stepper */}
-                            <div className="flex items-center bg-white border border-[#E8E4DF] rounded-lg p-0.5">
+                            <div className="flex items-center border border-[#DED7C9] bg-white rounded-full">
                               <button
                                 onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                                className="p-1 text-[#757575] hover:text-[#12100E]"
+                                className="w-8 h-[34px] flex items-center justify-center text-[#12100E]"
                               >
-                                <Minus className="w-3 h-3" />
+                                <Minus className="w-3.5 h-3.5" />
                               </button>
-                              <span className="px-1.5 sm:px-2 text-xs font-bold text-[#12100E]">
+                              <span className="min-w-[22px] text-center text-sm font-bold text-[#12100E]">
                                 {item.quantity}
                               </span>
                               <button
                                 onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                                className="p-1 text-[#757575] hover:text-[#12100E]"
+                                className="w-8 h-[34px] flex items-center justify-center text-[#12100E]"
                               >
-                                <Plus className="w-3 h-3" />
+                                <Plus className="w-3.5 h-3.5" />
                               </button>
                             </div>
 
@@ -212,16 +201,15 @@ export function CartDrawer() {
                     ))}
 
                     {/* Order Note Field */}
-                    <div className="pt-2 space-y-1">
-                      <label className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-[#757575] block">
-                        Delivery Town or Special Note (Optional):
+                    <div className="pt-4 space-y-1.5">
+                      <label className="text-[11.5px] font-bold uppercase tracking-wider text-[#6B6459] block">
+                        A note for us (optional)
                       </label>
-                      <textarea
-                        rows={2}
+                      <input
                         value={note}
                         onChange={(e) => setNote(e.target.value)}
-                        placeholder="e.g. Delivering to Lusaka / Kitwe, school name, or need pro-forma invoice"
-                        className="w-full p-2.5 bg-[#F6F4F1] border border-[#E8E4DF] rounded-xl text-xs text-[#12100E] outline-none focus:border-[#12100E] resize-none"
+                        placeholder="Delivery town, deadline, school name…"
+                        className="w-full h-11 px-4 bg-white border border-[#DED7C9] rounded-full text-sm text-[#12100E] outline-none focus:border-[#12100E]"
                       />
                     </div>
                   </>
@@ -230,9 +218,9 @@ export function CartDrawer() {
 
               {/* Drawer Footer Actions */}
               {cart.length > 0 && (
-                <div className="p-4 sm:p-6 border-t border-[#E8E4DF] bg-[#F6F4F1] space-y-2.5 sm:space-y-3 shrink-0">
+                <div className="px-5 sm:px-6 py-5 border-t border-[#DED7C9] bg-white space-y-2.5 shrink-0">
                   <div className="flex items-baseline justify-between text-xs">
-                    <span className="text-[#757575]">Guide Quote Value:</span>
+                    <span className="text-[#6B6459]">Guide Quote Value:</span>
                     <span className="text-sm sm:text-base font-extrabold text-[#12100E]">
                       {format(estimatedTotal)}
                     </span>
@@ -241,28 +229,28 @@ export function CartDrawer() {
                   {/* Primary WhatsApp Order Button */}
                   <button
                     onClick={handleSendWhatsApp}
-                    className="w-full py-3.5 px-4 bg-emerald-600 hover:bg-emerald-700 active:scale-[0.99] text-white text-xs sm:text-sm font-bold uppercase tracking-wider rounded-xl shadow-md transition-all flex items-center justify-center gap-2"
+                    className="w-full h-[52px] bg-[#C8482B] hover:bg-[#12100E] active:scale-[0.99] text-white text-sm font-bold rounded-full shadow-md transition-all flex items-center justify-center gap-2"
                   >
                     <MessageCircle className="w-4 h-4 fill-white" />
-                    <span>Send Order on WhatsApp</span>
+                    <span>Send list on WhatsApp</span>
                   </button>
 
                   {/* Secondary Actions: Email & Copy */}
                   <div className="grid grid-cols-2 gap-2">
                     <button
                       onClick={handleSendEmail}
-                      className="py-2.5 px-2 bg-white hover:bg-[#ECE9E7] active:bg-[#ECE9E7] border border-[#E8E4DF] text-[#12100E] text-[11px] sm:text-xs font-bold rounded-xl transition-colors flex items-center justify-center gap-1.5"
+                      className="h-11 border border-[#12100E] text-[#12100E] hover:bg-[#12100E] hover:text-white text-xs font-bold rounded-full transition-colors flex items-center justify-center gap-1.5"
                     >
                       <Mail className="w-3.5 h-3.5" />
-                      <span>Send as Email</span>
+                      <span>Send by email</span>
                     </button>
                     <button
                       onClick={handleCopyText}
-                      className="py-2.5 px-2 bg-white hover:bg-[#ECE9E7] active:bg-[#ECE9E7] border border-[#E8E4DF] text-[#12100E] text-[11px] sm:text-xs font-bold rounded-xl transition-colors flex items-center justify-center gap-1.5"
+                      className="h-11 border border-[#DED7C9] text-[#12100E] hover:bg-[#EFE9DC] text-xs font-bold rounded-full transition-colors flex items-center justify-center gap-1.5"
                     >
                       {copied ? (
                         <>
-                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#C8482B]" />
                           <span>Copied!</span>
                         </>
                       ) : (
@@ -274,8 +262,8 @@ export function CartDrawer() {
                     </button>
                   </div>
 
-                  <p className="text-[10px] text-center text-[#757575]">
-                    No card required. We confirm stock and dispatch details directly in chat.
+                  <p className="text-[11px] text-center text-[#8E857A] pt-1">
+                    Nothing sends until you tap — buttons open WhatsApp or your mail app with the message written.
                   </p>
                 </div>
               )}

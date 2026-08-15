@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Archivo+Black&display=swap" rel="stylesheet">
+<script type="module" src="ball3d.js"></script>
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;background:#F5F1E8;font-family:Archivo,system-ui,sans-serif;color:#12100E;-webkit-font-smoothing:antialiased}
+  a{color:#C8482B;text-decoration:none}
+  a:hover{color:#12100E}
+  ::selection{background:#C8482B;color:#fff}
+  input,button,textarea{font-family:inherit}
+  @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  [data-rail]{scrollbar-width:none;-ms-overflow-style:none}
+  [data-rail]::-webkit-scrollbar{display:none}
+  ball-3d{min-width:0;min-height:0}
+  @media (max-width:1040px){
+    [data-c="two"]{grid-template-columns:1fr !important;gap:40px !important}
+    [data-c="three"]{grid-template-columns:1fr !important}
+    [data-c="four"]{grid-template-columns:1fr 1fr !important}
+    [data-r="nav"]{display:none !important}
+    [data-r="arrows"]{display:none !important}
+  }
+  @media (max-width:760px){
+    [data-r="pad"]{padding-left:18px !important;padding-right:18px !important}
+    [data-c="four"]{grid-template-columns:1fr !important}
+    [data-h="tag"],[data-h="walong"]{display:none !important}
+    [data-h="washort"]{display:inline !important}
+    [data-hero]{padding-top:44px !important;padding-bottom:44px !important}
+  }
+</style>
+</helmet>
+
+<div style="background:#F5F1E8;overflow-x:hidden">
+
+  <div style="background:#C8482B;color:#fff;overflow:hidden;height:38px;display:flex;align-items:center">
+    <div style="display:flex;gap:44px;white-space:nowrap;animation:slide 26s linear infinite;padding-right:44px;font-size:11.5px;font-weight:700;letter-spacing:.22em">
+      <span>ENQUIRE, DON'T CHECKOUT</span><span>·</span><span>GENUINE MOLTEN &amp; MIKASA</span><span>·</span><span>SAME-DAY QUOTES ON WHATSAPP</span><span>·</span><span>BULK PRICING FOR SCHOOLS</span><span>·</span>
+      <span>ENQUIRE, DON'T CHECKOUT</span><span>·</span><span>GENUINE MOLTEN &amp; MIKASA</span><span>·</span><span>SAME-DAY QUOTES ON WHATSAPP</span><span>·</span><span>BULK PRICING FOR SCHOOLS</span><span>·</span>
+    </div>
+  </div>
+
+  <header style="position:sticky;top:0;z-index:60;background:#F5F1E8;border-bottom:1px solid #DED7C9">
+    <div data-r="pad" style="max-width:1400px;margin:0 auto;padding:0 32px;height:72px;display:flex;align-items:center;gap:36px">
+      <a href="#top" style="display:flex;align-items:baseline;gap:9px;color:#12100E">
+        <span style="font-family:'Archivo Black',sans-serif;font-size:21px;letter-spacing:-.02em">POZOZO</span>
+        <span data-h="tag" style="font-size:10.5px;font-weight:700;letter-spacing:.24em;color:#9C9284">SPORTS</span>
+      </a>
+      <nav data-r="nav" style="display:flex;gap:26px;font-size:12px;font-weight:700;letter-spacing:.14em;white-space:nowrap;flex-shrink:0">
+        <a href="#shop" style="color:#3E382F" style-hover="color:#C8482B">SHOP</a>
+        <a href="#bulk" style="color:#3E382F" style-hover="color:#C8482B">BULK</a>
+        <a href="#about" style="color:#3E382F" style-hover="color:#C8482B">ABOUT</a>
+        <a href="#contact" style="color:#3E382F" style-hover="color:#C8482B">CONTACT</a>
+      </nav>
+      <div style="flex:1"></div>
+      <button onClick="{{ openList }}" style="display:flex;align-items:center;gap:9px;background:none;border:1px solid #CFC5B4;color:#12100E;height:40px;padding:0 14px;border-radius:100px;font-size:12.5px;font-weight:600;cursor:pointer;white-space:nowrap;flex-shrink:0" style-hover="border-color:#12100E">
+        Enquiry
+        <span style="min-width:21px;height:21px;display:grid;place-items:center;background:{{ badgeBg }};color:{{ badgeFg }};border-radius:11px;font-size:11px;font-weight:700;padding:0 6px">{{ count }}</span>
+      </button>
+      <a href="{{ waGeneral }}" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:9px;background:#12100E;color:#fff;height:40px;padding:0 20px;border-radius:100px;font-size:12.5px;font-weight:700;white-space:nowrap;flex-shrink:0" style-hover="background:#C8482B;color:#fff">
+        <span style="width:7px;height:7px;border-radius:4px;background:#7BE38B"></span>
+        <span data-h="walong">WhatsApp us</span>
+        <span data-h="washort" style="display:none">Chat</span>
+      </a>
+    </div>
+  </header>
+
+  <section id="top" data-r="pad" style="max-width:1400px;margin:0 auto;padding:0 32px">
+    <div data-hero="1" style="background:#12100E;color:#F5F1E8;border-radius:4px;margin-top:20px;padding:84px 64px;display:grid;grid-template-columns:1.02fr .98fr;gap:48px;align-items:center;position:relative;overflow:hidden" data-c="two">
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:.24em;color:#9C9284;margin-bottom:26px">MOLTEN &amp; MIKASA · ZAMBIA</div>
+        <h1 style="font-family:'Archivo Black',sans-serif;font-size:clamp(46px,5.6vw,86px);line-height:.92;letter-spacing:-.035em;margin:0 0 24px">Balls built<br>for the<br><span style="color:#C8482B">whistle.</span></h1>
+        <p style="font-size:18px;line-height:1.55;color:#B8AE9F;max-width:42ch;margin:0 0 34px;text-wrap:pretty">Match and training balls for schools, clubs and shops. Pick what you need, send the list on WhatsApp, and get price and stock back the same day.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a href="#shop" style="display:flex;align-items:center;height:54px;padding:0 30px;background:#F5F1E8;color:#12100E;font-size:14.5px;font-weight:700;border-radius:100px" style-hover="background:#C8482B;color:#fff">Shop the range</a>
+          <a href="{{ waGeneral }}" target="_blank" rel="noopener" style="display:flex;align-items:center;height:54px;padding:0 30px;border:1px solid #3A342D;color:#F5F1E8;font-size:14.5px;font-weight:600;border-radius:100px" style-hover="border-color:#F5F1E8;color:#fff">Ask a question</a>
+        </div>
+      </div>
+      <div data-ball="1" style="height:400px;display:grid;place-items:center;position:relative;perspective:1000px">
+        <ball-3d src="balls/bg5000-a.webp" alt="Molten BG5000 FIBA official game ball" style="width:100%;height:100%"></ball-3d>
+        <span style="position:absolute;right:0;bottom:6px;font-size:11px;font-weight:700;letter-spacing:.16em;color:#8E857A">MOLTEN BG5000 · FIBA</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="shop" data-r="pad" style="max-width:1400px;margin:0 auto;padding:78px 32px 0">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:28px;margin-bottom:28px;flex-wrap:wrap">
+      <h2 style="font-family:'Archivo Black',sans-serif;font-size:clamp(30px,3.4vw,46px);line-height:.98;letter-spacing:-.03em;margin:0">New in stock</h2>
+      <div data-r="arrows" style="display:flex;gap:10px">
+        <button onClick="{{ railPrev }}" aria-label="Previous" style="width:46px;height:46px;border-radius:50%;border:1px solid #CFC5B4;background:none;font-size:17px;cursor:pointer;color:#12100E" style-hover="background:#12100E;color:#F5F1E8">←</button>
+        <button onClick="{{ railNext }}" aria-label="Next" style="width:46px;height:46px;border-radius:50%;border:1px solid #CFC5B4;background:none;font-size:17px;cursor:pointer;color:#12100E" style-hover="background:#12100E;color:#F5F1E8">→</button>
+      </div>
+    </div>
+    <div data-rail="1" ref="{{ railRef }}" style="display:flex;gap:18px;overflow-x:auto;scroll-behavior:smooth;padding-bottom:8px">
+      <sc-for list="{{ fresh }}" as="p" hint-placeholder-count="5">
+        <article style="flex:0 0 282px;background:#fff;border:1px solid #E4DED1;border-radius:4px;overflow:hidden;display:flex;flex-direction:column" style-hover="border-color:#12100E">
+          <div data-ball="1" style="height:250px;display:grid;place-items:center;padding:26px;position:relative;perspective:900px;overflow:hidden">
+            <ball-3d src="{{ p.img }}" alt="{{ p.name }}" flat="{{ p.flat }}" style="width:100%;height:100%"></ball-3d>
+            <span style="position:absolute;top:14px;left:14px;background:#C8482B;color:#fff;font-size:9.5px;font-weight:700;letter-spacing:.16em;padding:5px 9px;border-radius:100px">NEW</span>
+          </div>
+          <div style="padding:16px 18px 18px;border-top:1px solid #E4DED1;display:flex;flex-direction:column;gap:7px;flex:1">
+            <div style="font-size:10px;font-weight:700;letter-spacing:.18em;color:#9C9284">{{ p.brand }}</div>
+            <h3 style="font-size:16px;font-weight:700;line-height:1.25;margin:0">{{ p.name }}</h3>
+            <div style="font-size:12.5px;color:#6B6459">{{ p.spec }}</div>
+            <div style="flex:1"></div>
+            <button onClick="{{ p.add }}" style="margin-top:12px;height:42px;border-radius:100px;border:1px solid {{ p.addBorder }};background:{{ p.addBg }};color:{{ p.addFg }};font-size:13px;font-weight:700;cursor:pointer">{{ p.addLabel }}</button>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </section>
+
+  <div style="background:#12100E;color:#F5F1E8;overflow:hidden;height:74px;display:flex;align-items:center;margin-top:78px">
+    <div style="display:flex;gap:52px;white-space:nowrap;animation:slide 34s linear infinite;padding-right:52px;font-family:'Archivo Black',sans-serif;font-size:26px;letter-spacing:-.02em">
+      <span>MADE FOR MATCH DAY</span><span style="color:#C8482B">◆</span><span>PRICED FOR THE CLUB</span><span style="color:#C8482B">◆</span>
+      <span>MADE FOR MATCH DAY</span><span style="color:#C8482B">◆</span><span>PRICED FOR THE CLUB</span><span style="color:#C8482B">◆</span>
+      <span>MADE FOR MATCH DAY</span><span style="color:#C8482B">◆</span><span>PRICED FOR THE CLUB</span><span style="color:#C8482B">◆</span>
+    </div>
+  </div>
+
+  <section data-r="pad" style="max-width:1400px;margin:0 auto;padding:78px 32px 0">
+    <h2 style="font-family:'Archivo Black',sans-serif;font-size:clamp(30px,3.4vw,46px);line-height:.98;letter-spacing:-.03em;margin:0 0 28px">Shop by sport</h2>
+    <div data-c="three" style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px">
+      <sc-for list="{{ sports }}" as="s" hint-placeholder-count="3">
+        <div style="background:{{ s.bg }};border-radius:4px;padding:34px;min-height:400px;display:flex;flex-direction:column;position:relative;overflow:hidden">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.22em;color:{{ s.dim }};margin-bottom:12px">{{ s.kicker }}</div>
+          <h3 style="font-family:'Archivo Black',sans-serif;font-size:27px;line-height:1;letter-spacing:-.025em;margin:0 0 16px;color:{{ s.fg }};max-width:14ch">{{ s.title }}</h3>
+          <button onClick="{{ s.pick }}" style="align-self:flex-start;height:42px;padding:0 22px;border-radius:100px;border:1px solid {{ s.line }};background:none;color:{{ s.fg }};font-size:13px;font-weight:700;cursor:pointer" style-hover="background:#C8482B;color:#fff;border-color:#C8482B">{{ s.cta }}</button>
+          <div data-ball="1" style="flex:1;margin-top:18px;display:grid;place-items:center;position:relative;perspective:900px;min-height:0">
+            <ball-3d src="{{ s.img }}" alt="{{ s.title }}" style="width:100%;height:100%"></ball-3d>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="catalogue" data-r="pad" style="max-width:1400px;margin:0 auto;padding:78px 32px 0">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:28px;flex-wrap:wrap;margin-bottom:26px">
+      <h2 style="font-family:'Archivo Black',sans-serif;font-size:clamp(30px,3.4vw,46px);line-height:.98;letter-spacing:-.03em;margin:0">The full catalogue</h2>
+      <p style="font-size:14.5px;line-height:1.6;color:#5E574E;max-width:36ch;margin:0">Tap <strong style="color:#12100E">Add</strong> on anything you want quoted. Your list stays here until you send it.</p>
+    </div>
+    <div style="display:flex;gap:9px;flex-wrap:wrap;align-items:center;padding-bottom:22px;border-bottom:1px solid #DED7C9;margin-bottom:26px">
+      <sc-for list="{{ cats }}" as="c" hint-placeholder-count="5">
+        <button onClick="{{ c.pick }}" style="height:40px;padding:0 20px;border-radius:100px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid {{ c.border }};background:{{ c.bg }};color:{{ c.fg }}">{{ c.label }}</button>
+      </sc-for>
+      <div style="flex:1"></div>
+      <input value="{{ query }}" onInput="{{ onQuery }}" placeholder="Search BG5000, netball, size 5…" style="height:40px;width:260px;padding:0 16px;border:1px solid #DED7C9;background:#fff;border-radius:100px;font-size:13px;outline:none">
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:18px">
+      <sc-for list="{{ shown }}" as="p" hint-placeholder-count="8">
+        <article style="background:#fff;border:1px solid #E4DED1;border-radius:4px;display:flex;flex-direction:column;overflow:hidden" style-hover="border-color:#12100E">
+          <div data-ball="1" style="height:244px;display:grid;place-items:center;padding:26px;position:relative;perspective:900px;overflow:hidden">
+            <ball-3d src="{{ p.img }}" alt="{{ p.name }}" flat="{{ p.flat }}" style="width:100%;height:100%"></ball-3d>
+            <sc-if value="{{ p.tag }}" hint-placeholder-val="{{ false }}">
+              <span style="position:absolute;top:14px;left:14px;background:#12100E;color:#F5F1E8;font-size:9.5px;font-weight:700;letter-spacing:.16em;padding:5px 9px;border-radius:100px">{{ p.tag }}</span>
+            </sc-if>
+          </div>
+          <div style="padding:16px 18px 18px;display:flex;flex-direction:column;gap:7px;flex:1;border-top:1px solid #E4DED1">
+            <div style="font-size:10px;font-weight:700;letter-spacing:.18em;color:#9C9284">{{ p.brand }}</div>
+            <h3 style="font-size:16px;font-weight:700;line-height:1.25;margin:0">{{ p.name }}</h3>
+            <div style="font-size:12.5px;color:#6B6459;line-height:1.45">{{ p.spec }}</div>
+            <div style="flex:1"></div>
+            <div style="display:flex;gap:8px;margin-top:12px">
+              <button onClick="{{ p.add }}" style="flex:1;height:42px;border-radius:100px;border:1px solid {{ p.addBorder }};background:{{ p.addBg }};color:{{ p.addFg }};font-size:13px;font-weight:700;cursor:pointer">{{ p.addLabel }}</button>
+              <a href="{{ p.wa }}" target="_blank" rel="noopener" title="Ask about this on WhatsApp" style="width:42px;height:42px;display:grid;place-items:center;border:1px solid #E4DED1;border-radius:50%;color:#12100E;font-size:10.5px;font-weight:700" style-hover="background:#12100E;color:#fff">WA</a>
+            </div>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+
+    <sc-if value="{{ hasMore }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;justify-content:center;padding:40px 0 0">
+        <button onClick="{{ showAll }}" style="height:52px;padding:0 34px;border:1px solid #12100E;background:transparent;color:#12100E;font-size:14px;font-weight:700;border-radius:100px;cursor:pointer" style-hover="background:#12100E;color:#F5F1E8">{{ moreLabel }}</button>
+      </div>
+    </sc-if>
+    <sc-if value="{{ empty }}" hint-placeholder-val="{{ false }}">
+      <div style="padding:64px 0;text-align:center;color:#6B6459;font-size:15.5px">Nothing matches that. <a href="{{ waGeneral }}" target="_blank" rel="noopener">Ask us on WhatsApp</a> — we source to order.</div>
+    </sc-if>
+  </section>
+
+  <section data-r="pad" style="max-width:1400px;margin:0 auto;padding:78px 32px 0">
+    <h2 style="font-family:'Archivo Black',sans-serif;font-size:clamp(30px,3.4vw,46px);line-height:.98;letter-spacing:-.03em;margin:0 0 28px">Order with confidence</h2>
+    <div data-c="four" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#DED7C9;border:1px solid #DED7C9;border-radius:4px;overflow:hidden">
+      <div style="background:#F5F1E8;padding:32px 28px">
+        <h3 style="font-size:18px;font-weight:700;margin:0 0 10px;letter-spacing:-.01em">Genuine stock only</h3>
+        <p style="font-size:14.5px;line-height:1.6;color:#5E574E;margin:0">Molten and Mikasa, sourced through proper channels. No lookalikes, no grey imports.</p>
+      </div>
+      <div style="background:#F5F1E8;padding:32px 28px">
+        <h3 style="font-size:18px;font-weight:700;margin:0 0 10px;letter-spacing:-.01em">Nationwide delivery</h3>
+        <p style="font-size:14.5px;line-height:1.6;color:#5E574E;margin:0">Delivered to your school, club or shop, or collect from us. Cost is confirmed in the quote.</p>
+      </div>
+      <div style="background:#F5F1E8;padding:32px 28px">
+        <h3 style="font-size:18px;font-weight:700;margin:0 0 10px;letter-spacing:-.01em">Pay how you like</h3>
+        <p style="font-size:14.5px;line-height:1.6;color:#5E574E;margin:0">On collection, on delivery, or by invoice for institutions. Nothing is charged on this site.</p>
+      </div>
+      <div style="background:#F5F1E8;padding:32px 28px">
+        <h3 style="font-size:18px;font-weight:700;margin:0 0 10px;letter-spacing:-.01em">A person, not a bot</h3>
+        <p style="font-size:14.5px;line-height:1.6;color:#5E574E;margin:0">Every enquiry is answered by someone who knows the stock. Mon–Sat, 08:00–18:00.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="bulk" data-r="pad" style="max-width:1400px;margin:0 auto;padding:78px 32px 0">
+    <div data-c="two" style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start">
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:.22em;color:#9C9284;margin-bottom:14px">BULK &amp; SCHOOLS</div>
+        <h2 style="font-family:'Archivo Black',sans-serif;font-size:clamp(30px,3.6vw,48px);line-height:.96;letter-spacing:-.03em;margin:0 0 20px">Kitting out a whole season?</h2>
+        <p style="font-size:16.5px;line-height:1.6;color:#5E574E;margin:0 0 24px;max-width:44ch;text-wrap:pretty">Tell us the sport, the sizes and how many. We'll come back with bulk pricing and hold stock while your order is approved.</p>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:11px">
+          <li style="display:flex;gap:12px;font-size:15px"><span style="color:#C8482B;font-weight:700">—</span> Ten balls or more gets bulk pricing</li>
+          <li style="display:flex;gap:12px;font-size:15px"><span style="color:#C8482B;font-weight:700">—</span> Quotations and invoices on request</li>
+          <li style="display:flex;gap:12px;font-size:15px"><span style="color:#C8482B;font-weight:700">—</span> Pumps, needles and gauges quoted alongside</li>
+        </ul>
+      </div>
+      <div style="background:#fff;border:1px solid #E4DED1;border-radius:4px;padding:32px">
+        <h3 style="font-size:18px;font-weight:700;margin:0 0 20px;letter-spacing:-.01em">Send a bulk enquiry</h3>
+        <div style="display:flex;flex-direction:column;gap:15px">
+          <label style="display:flex;flex-direction:column;gap:7px;font-size:11.5px;font-weight:700;color:#6B6459;letter-spacing:.1em">
+            NAME / ORGANISATION
+            <input value="{{ bulk.who }}" onInput="{{ onBulkWho }}" placeholder="e.g. Kabulonga Girls Secondary" style="height:46px;padding:0 15px;border:1px solid #DED7C9;border-radius:100px;font-size:14.5px;outline:none;font-weight:400">
+          </label>
+          <label style="display:flex;flex-direction:column;gap:7px;font-size:11.5px;font-weight:700;color:#6B6459;letter-spacing:.1em">
+            WHAT DO YOU NEED?
+            <textarea value="{{ bulk.what }}" onInput="{{ onBulkWhat }}" rows="4" placeholder="e.g. 24 size 5 netballs, 10 size 7 basketballs, 2 pumps" style="padding:13px 15px;border:1px solid #DED7C9;border-radius:14px;font-size:14.5px;outline:none;resize:vertical;font-weight:400;line-height:1.5"></textarea>
+          </label>
+          <label style="display:flex;flex-direction:column;gap:7px;font-size:11.5px;font-weight:700;color:#6B6459;letter-spacing:.1em">
+            DELIVERING TO
+            <input value="{{ bulk.where }}" onInput="{{ onBulkWhere }}" placeholder="Town or city" style="height:46px;padding:0 15px;border:1px solid #DED7C9;border-radius:100px;font-size:14.5px;outline:none;font-weight:400">
+          </label>
+          <div style="display:flex;gap:10px;margin-top:4px">
+            <a href="{{ bulkWa }}" target="_blank" rel="noopener" style="flex:1;height:50px;display:grid;place-items:center;background:#C8482B;color:#fff;font-size:14px;font-weight:700;border-radius:100px" style-hover="background:#12100E;color:#fff">Send on WhatsApp</a>
+            <a href="{{ bulkMail }}" style="flex:1;height:50px;display:grid;place-items:center;border:1px solid #12100E;color:#12100E;font-size:14px;font-weight:700;border-radius:100px" style-hover="background:#12100E;color:#fff">Send by email</a>
+          </div>
+          <p style="font-size:12px;color:#8E857A;margin:0;line-height:1.5">Nothing sends until you tap — the buttons open WhatsApp or your mail app with the message written.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-r="pad" style="max-width:1400px;margin:0 auto;padding:78px 32px 0">
+    <h2 style="font-family:'Archivo Black',sans-serif;font-size:clamp(30px,3.4vw,46px);line-height:.98;letter-spacing:-.03em;margin:0 0 28px;max-width:20ch">What clubs say</h2>
+    <div data-c="three" style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px">
+      <div style="background:#fff;border:1px solid #E4DED1;border-radius:4px;padding:30px">
+        <p style="font-size:17px;line-height:1.55;margin:0 0 22px;text-wrap:pretty">"Sent a list of twenty netballs on a Tuesday morning and had a quote before lunch. Delivered that week."</p>
+        <div style="font-size:13px;font-weight:700">Mwansa K.</div>
+        <div style="font-size:12.5px;color:#8E857A;margin-top:3px">Sports mistress, secondary school</div>
+      </div>
+      <div style="background:#12100E;color:#F5F1E8;border-radius:4px;padding:30px">
+        <p style="font-size:17px;line-height:1.55;margin:0 0 22px;text-wrap:pretty">"The BG5000s are the real thing. Our league finally has match balls that last a season."</p>
+        <div style="font-size:13px;font-weight:700">Chanda B.</div>
+        <div style="font-size:12.5px;color:#8E857A;margin-top:3px">Basketball club chairman</div>
+      </div>
+      <div style="background:#fff;border:1px solid #E4DED1;border-radius:4px;padding:30px">
+        <p style="font-size:17px;line-height:1.55;margin:0 0 22px;text-wrap:pretty">"I order for my shop on WhatsApp and get an invoice the same day. No portal, no card, no fuss."</p>
+        <div style="font-size:13px;font-weight:700">Joseph M.</div>
+        <div style="font-size:12.5px;color:#8E857A;margin-top:3px">Retailer</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" data-r="pad" style="max-width:1400px;margin:0 auto;padding:78px 32px 0">
+    <div data-c="two" style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center">
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:.22em;color:#9C9284;margin-bottom:14px">ABOUT POZOZO</div>
+        <h2 style="font-family:'Archivo Black',sans-serif;font-size:clamp(28px,3.2vw,42px);line-height:1;letter-spacing:-.03em;margin:0 0 20px">We only sell balls we'd play with</h2>
+        <p style="font-size:16.5px;line-height:1.65;color:#5E574E;margin:0 0 16px;text-wrap:pretty">Pozozo Sports supplies schools, clubs, academies and retailers with genuine Molten and Mikasa match and training balls — from rubber trainers that survive a hard court to FIBA and FIFA approved game balls.</p>
+        <p style="font-size:16.5px;line-height:1.65;color:#5E574E;margin:0;text-wrap:pretty">We keep the buying simple on purpose. Send a message, get a straight answer on price and stock, and deal with a person the whole way through.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <div data-ball="1" style="background:#fff;border:1px solid #E4DED1;border-radius:4px;height:240px;display:grid;place-items:center;padding:28px;position:relative;perspective:900px;overflow:hidden">
+          <ball-3d src="balls/b33t5000-b.webp" alt="Molten 3x3 official ball" style="width:100%;height:100%"></ball-3d>
+        </div>
+        <div data-ball="1" style="background:#fff;border:1px solid #E4DED1;border-radius:4px;height:240px;margin-top:32px;display:grid;place-items:center;padding:28px;position:relative;perspective:900px;overflow:hidden">
+          <ball-3d src="balls/fx5.webp" alt="Mikasa FX5 netball" style="width:100%;height:100%"></ball-3d>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" data-r="pad" style="max-width:1400px;margin:0 auto;padding:78px 32px 0">
+    <div style="background:#C8482B;color:#fff;border-radius:4px;padding:64px 48px;text-align:center">
+      <h2 style="font-family:'Archivo Black',sans-serif;font-size:clamp(30px,3.8vw,52px);line-height:.98;letter-spacing:-.03em;margin:0 0 16px">Ready when you are</h2>
+      <p style="font-size:17.5px;line-height:1.55;margin:0 auto 30px;max-width:48ch;color:#FFE6DF">Send your list, ask about stock, or just check a price. We answer Monday to Saturday, 08:00–18:00.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a href="{{ waGeneral }}" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;height:56px;padding:0 30px;background:#fff;color:#12100E;font-size:15px;font-weight:700;border-radius:100px" style-hover="background:#12100E;color:#fff">
+          <span style="width:8px;height:8px;border-radius:4px;background:#25D366"></span>WhatsApp {{ phoneDisplay }}
+        </a>
+        <a href="{{ mailSimple }}" style="display:flex;align-items:center;height:56px;padding:0 30px;border:1px solid rgba(255,255,255,.5);color:#fff;font-size:15px;font-weight:600;border-radius:100px" style-hover="background:#12100E;color:#fff">{{ email }}</a>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background:#12100E;color:#F5F1E8;margin-top:78px">
+    <div data-r="pad" style="max-width:1400px;margin:0 auto;padding:66px 32px 36px;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:44px" data-c="four">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:9px;margin-bottom:16px">
+          <span style="font-family:'Archivo Black',sans-serif;font-size:21px;letter-spacing:-.02em">POZOZO</span>
+          <span style="font-size:10.5px;font-weight:700;letter-spacing:.24em;color:#8E857A">SPORTS</span>
+        </div>
+        <p style="font-size:14.5px;line-height:1.6;color:#A79B8C;margin:0;max-width:34ch">Molten and Mikasa balls for basketball, football and netball. Enquire, don't checkout.</p>
+      </div>
+      <div>
+        <div style="font-size:10.5px;font-weight:700;letter-spacing:.2em;color:#8E857A;margin-bottom:16px">SHOP</div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:14.5px">
+          <a href="#catalogue" style="color:#F5F1E8" style-hover="color:#C8482B">Basketball</a>
+          <a href="#catalogue" style="color:#F5F1E8" style-hover="color:#C8482B">Football</a>
+          <a href="#catalogue" style="color:#F5F1E8" style-hover="color:#C8482B">Netball</a>
+          <a href="#catalogue" style="color:#F5F1E8" style-hover="color:#C8482B">Accessories</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:10.5px;font-weight:700;letter-spacing:.2em;color:#8E857A;margin-bottom:16px">COMPANY</div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:14.5px">
+          <a href="#about" style="color:#F5F1E8" style-hover="color:#C8482B">About</a>
+          <a href="#bulk" style="color:#F5F1E8" style-hover="color:#C8482B">Bulk &amp; schools</a>
+          <a href="#contact" style="color:#F5F1E8" style-hover="color:#C8482B">Contact</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:10.5px;font-weight:700;letter-spacing:.2em;color:#8E857A;margin-bottom:16px">TALK TO US</div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:14.5px">
+          <a href="{{ waGeneral }}" target="_blank" rel="noopener" style="color:#F5F1E8" style-hover="color:#C8482B">WhatsApp {{ phoneDisplay }}</a>
+          <a href="{{ mailSimple }}" style="color:#F5F1E8" style-hover="color:#C8482B">{{ email }}</a>
+          <span style="color:#A79B8C">Mon–Sat, 08:00–18:00</span>
+        </div>
+      </div>
+    </div>
+    <div data-r="pad" style="max-width:1400px;margin:0 auto;padding:20px 32px 90px;border-top:1px solid #2A2622;font-size:12px;color:#6E665C;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap">
+      <span>© 2026 Pozozo Sports</span>
+      <span>Prices quoted on enquiry · No online payment</span>
+    </div>
+  </footer>
+
+  <div style="{{ drawerStyle }}">
+    <div style="width:min(440px,100vw);background:#F5F1E8;height:100%;display:flex;flex-direction:column;box-shadow:-20px 0 60px rgba(18,16,14,.35)">
+      <div style="padding:22px 26px;border-bottom:1px solid #DED7C9;display:flex;align-items:center;gap:16px;background:#12100E;color:#F5F1E8">
+        <div>
+          <div style="font-family:'Archivo Black',sans-serif;font-size:17px;letter-spacing:-.01em">Your enquiry</div>
+          <div style="font-size:12.5px;color:#8E857A;margin-top:4px">{{ count }} item(s) · no payment taken</div>
+        </div>
+        <div style="flex:1"></div>
+        <button onClick="{{ closeList }}" style="width:36px;height:36px;border:1px solid #3A342D;background:none;color:#F5F1E8;font-size:17px;cursor:pointer;border-radius:50%" style-hover="border-color:#F5F1E8">×</button>
+      </div>
+      <div style="flex:1;overflow-y:auto;padding:18px 26px">
+        <sc-if value="{{ empty2 }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:54px 0;text-align:center;color:#6B6459;font-size:15px;line-height:1.6">Nothing here yet.<br>Add balls from the catalogue and send them all in one message.</div>
+        </sc-if>
+        <sc-for list="{{ lines }}" as="l" hint-placeholder-count="0">
+          <div style="display:flex;gap:14px;padding:15px 0;border-bottom:1px solid #E4DED1;align-items:center">
+            <div style="width:62px;height:62px;background:#fff;border:1px solid #E4DED1;border-radius:4px;display:flex;align-items:center;justify-content:center;padding:7px;flex-shrink:0">
+              <img src="{{ l.img }}" alt="{{ l.name }}" style="max-width:100%;max-height:100%;object-fit:contain">
+            </div>
+            <div style="flex:1;min-width:0">
+              <div style="font-size:14.5px;font-weight:700;line-height:1.3">{{ l.name }}</div>
+              <div style="font-size:12.5px;color:#8E857A;margin-top:3px">{{ l.brand }}</div>
+            </div>
+            <div style="display:flex;align-items:center;border:1px solid #DED7C9;background:#fff;border-radius:100px">
+              <button onClick="{{ l.dec }}" style="width:32px;height:34px;border:0;background:none;font-size:16px;cursor:pointer;color:#12100E">–</button>
+              <span style="min-width:24px;text-align:center;font-size:14px;font-weight:700">{{ l.qty }}</span>
+              <button onClick="{{ l.inc }}" style="width:32px;height:34px;border:0;background:none;font-size:16px;cursor:pointer;color:#12100E">+</button>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="padding:18px 26px 24px;border-top:1px solid #DED7C9;background:#fff;display:flex;flex-direction:column;gap:11px">
+        <label style="display:flex;flex-direction:column;gap:7px;font-size:11.5px;font-weight:700;color:#6B6459;letter-spacing:.1em">
+          A NOTE FOR US (OPTIONAL)
+          <input value="{{ note }}" onInput="{{ onNote }}" placeholder="Delivery town, deadline, school name…" style="height:44px;padding:0 15px;border:1px solid #DED7C9;border-radius:100px;font-size:14px;outline:none;font-weight:400">
+        </label>
+        <a href="{{ listWa }}" target="_blank" rel="noopener" style="height:52px;display:grid;place-items:center;background:#C8482B;color:#fff;font-size:14.5px;font-weight:700;border-radius:100px" style-hover="background:#12100E;color:#fff">Send list on WhatsApp</a>
+        <a href="{{ listMail }}" style="height:48px;display:grid;place-items:center;border:1px solid #12100E;color:#12100E;font-size:14px;font-weight:700;border-radius:100px" style-hover="background:#12100E;color:#fff">Send list by email</a>
+      </div>
+    </div>
+  </div>
+
+  <div style="{{ barStyle }}">
+    <button onClick="{{ openList }}" style="display:flex;align-items:center;gap:14px;background:#12100E;color:#F5F1E8;border:0;height:58px;padding:0 12px 0 24px;border-radius:100px;cursor:pointer;box-shadow:0 14px 34px rgba(18,16,14,.28)">
+      <span style="font-size:14px;font-weight:700">{{ count }} in your enquiry</span>
+      <span style="background:#C8482B;color:#fff;height:40px;display:grid;place-items:center;padding:0 18px;font-size:13px;font-weight:700;border-radius:100px">Review &amp; send</span>
+    </button>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;whatsapp&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;260977000000&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contact&quot;},&quot;email&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;sales@pozozosports.com&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contact&quot;}}">
+const P = [
+  ["bg5000","Molten","BG5000 Official Game Ball","Size 7 leather · FIBA approved","balls/bg5000-a.webp","basketball","FLAGSHIP"],
+  ["bg4550","Molten","BG4550 Indoor/Outdoor","Size 7 composite · FIBA approved","balls/bg4550.webp","basketball",""],
+  ["b7d3500","Molten","D3500 Outdoor","Size 7 rubber · hard-court durable","balls/b7d3500.webp","basketball",""],
+  ["gg7x","Molten","GG7X Composite","Size 7 · club and school training","balls/gg7x.webp","basketball",""],
+  ["bg3850","Molten","BG3850 Match","Size 7 composite · indoor match","balls/gg7x-3850.webp","basketball",""],
+  ["bc7r-red","Molten","BC7R Rubber — Red / Black","Size 7 rubber · outdoor","balls/bc7r-red.webp","basketball",""],
+  ["bc7r-blue","Molten","BC7R Rubber — Blue / Yellow","Size 7 rubber · outdoor","balls/bc7r-blue.webp","basketball",""],
+  ["bc7r-rwb","Molten","BC7R Rubber — Red / White / Blue","Size 7 rubber · outdoor","balls/bc7r-rwb.webp","basketball",""],
+  ["b33t5000","Molten","B33T5000 Libertria 3x3","Official size 6 · FIBA 3x3","balls/b33t5000-b.webp","basketball","3x3"],
+  ["b33t5000b","Molten","B33T5000 3x3 Game Ball","Size 6 composite · FIBA 3x3","balls/b33t5000-a.webp","basketball",""],
+  ["b33t2000","Molten","B33T2000 3x3 Training","Size 6 rubber · 3x3 practice","balls/b33t2000-b.webp","basketball",""],
+  ["b33t2000b","Molten","B33T2000 3x3 Outdoor","Size 6 rubber · 3x3 practice","balls/b33t2000-a.webp","basketball",""],
+  ["cf700","Mikasa","CF700 Leather","Size 7 leather · indoor match","balls/u04.webp","basketball",""],
+  ["cf600","Mikasa","CF600 Leather","Size 6 leather · women's match","balls/u05.webp","basketball",""],
+  ["street7","Mikasa","Street 7","Size 7 rubber · navy / red","balls/u06.webp","basketball",""],
+  ["street6","Mikasa","Street 6","Size 6 rubber · yellow / blue","balls/u07.webp","basketball",""],
+  ["street5","Mikasa","Street 5","Size 5 rubber · junior","balls/u08.webp","basketball",""],
+  ["mik-off","Mikasa","Official Rubber Basketball","Size 7 rubber · school training","balls/u02.webp","basketball",""],
+  ["train-bb","Mikasa","Practice Basketball","Size 7 rubber · budget training","balls/u03.webp","basketball",""],
+  ["ft550b","Mikasa","FT550B Alumndo","Size 5 · FIFA Quality Pro","balls/ft550b.webp","football","FIFA PRO"],
+  ["ft550-blue","Mikasa","FT550 Alumndo — Blue","Size 5 thermal bonded","balls/u17.webp","football","NEW"],
+  ["ft550-orange","Mikasa","FT550 Alumndo — Orange","Size 5 thermal bonded","balls/u18.webp","football","NEW"],
+  ["f5a5000-y","Molten","F5A5000 Vantaggio — Yellow","Size 5 · FIFA Quality Pro","balls/f5a5000-yellow.webp","football",""],
+  ["f5a5000-o","Molten","F5A5000 Vantaggio — Orange","Size 5 · winter high-visibility","balls/f5a5000-orange.webp","football",""],
+  ["f3n1000-r","Molten","F3N1000 — Red","Size 3 · junior training","balls/f3n1000-red.webp","football",""],
+  ["f3n1000-y","Molten","F3N1000 — Yellow","Size 3 · junior training","balls/f3n1000-yellow.webp","football",""],
+  ["f3n1000-w","Molten","F3N1000 — White / Blue","Size 3 · junior training","balls/f3n1000-white.webp","football",""],
+  ["skickoff-b","Mikasa","Super Kick Off — Black","Size 5 · FIFA Basic","balls/u11.webp","football",""],
+  ["skickoff-bl","Mikasa","Super Kick Off — Blue","Size 5 · FIFA Basic","balls/u12.webp","football",""],
+  ["kickoff-r","Mikasa","Kick Off — Red","Size 5 hand-stitched","balls/u13.webp","football",""],
+  ["kickoff-b","Mikasa","Kick Off — Blue","Size 5 hand-stitched","balls/u14.webp","football",""],
+  ["kickoff-p","Mikasa","Kick Off — Pink / Black","Size 5 hand-stitched","balls/u15.webp","football",""],
+  ["kickoff-g","Mikasa","Kick Off — Green","Size 5 hand-stitched","balls/u16.webp","football",""],
+  ["mik-match-n","Mikasa","Match Ball — Navy / Red","Size 5 thermal bonded","balls/u24.webp","football",""],
+  ["mik-match-w","Mikasa","Match Ball — White / Navy","Size 5 thermal bonded","balls/u25.webp","football",""],
+  ["mik-tr-g","Mikasa","Trainer — White / Green","Size 5 machine-stitched","balls/u26.webp","football",""],
+  ["mik-tr-r","Mikasa","Trainer — White / Red","Size 4 machine-stitched","balls/u27.webp","football",""],
+  ["mik-tr-gb","Mikasa","Trainer — Green / Black","Size 5 machine-stitched","balls/u28.webp","football",""],
+  ["mik-tr-rb","Mikasa","Trainer — Red / Black","Size 5 machine-stitched","balls/u29.webp","football",""],
+  ["mik-fb-a","Mikasa","Club Football — White / Yellow","Size 5 training","balls/u09.webp","football",""],
+  ["mik-fb-b","Mikasa","Club Football — White / Blue","Size 5 training","balls/u10.webp","football",""],
+  ["fx5","Mikasa","FX5 Netball","Size 5 · match","balls/fx5.webp","netball",""],
+  ["netball-3550","Mikasa","Netball 3550-P","Size 5 rubber · pink / white","balls/u01.webp","netball",""],
+  ["turbo-navy","Mikasa","Turbo SS-T — Navy","Size 5 · league play","balls/u19.webp","netball","NEW"],
+  ["turbo-red","Mikasa","Turbo SS-T — Red","Size 5 · league play","balls/u20.webp","netball",""],
+  ["turbo-yel","Mikasa","Turbo SS-T — Yellow / Blue","Size 5 · league play","balls/u21.webp","netball",""],
+  ["turbo-blk","Mikasa","Turbo SS-T — Yellow / Black","Size 5 · league play","balls/u22.webp","netball",""],
+  ["turbo-4","Mikasa","Turbo SS-T — Size 4","Junior netball","balls/u23.webp","netball",""],
+  ["n5y3500","Molten","N5Y3500 Netball","Size 5 · school and club","balls/n5y3500.webp","netball",""],
+  ["molten-pink","Molten","Netball — Pink","Size 5 rubber · training","balls/molten-pink.webp","netball",""],
+  ["ag500","Mikasa","AG500 Digital Pressure Gauge","Keeps every ball at match pressure","balls/ag500.webp","accessories",""]
+];
+
+const CATS = [["all","Everything"],["basketball","Basketball"],["football","Football"],["netball","Netball"],["accessories","Accessories"]];
+
+const SPORTS = [
+  ["basketball","FOR THE COURT","Match and street basketballs","balls/bg5000-a.webp","#12100E","#F5F1E8","#8E857A","#3A342D","Shop basketball"],
+  ["football","FOR THE PITCH","Footballs from junior to FIFA Pro","balls/ft550b.webp","#E8E2D4","#12100E","#8A8172","#C6BCA9","Shop football"],
+  ["netball","FOR THE RING","Netballs for school and league","balls/u19.webp","#C8482B","#fff","#FFD8CD","rgba(255,255,255,.5)","Shop netball"]
+];
+
+class Component extends DCLogic {
+  state = { cat: "all", q: "", items: {}, open: false, note: "", who: "", what: "", where: "", limit: 18 };
+
+  get phone() { return this.props.whatsapp ?? "260977000000"; }
+  get email() { return this.props.email ?? "sales@pozozosports.com"; }
+
+  wa(text) { return "https://wa.me/" + this.phone.replace(/[^0-9]/g, "") + "?text=" + encodeURIComponent(text); }
+  mail(subject, body) { return "mailto:" + this.email + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body); }
+
+  bump(id, d) {
+    this.setState(s => {
+      const items = { ...s.items };
+      const n = (items[id] || 0) + d;
+      if (n <= 0) delete items[id]; else items[id] = n;
+      return { items, open: d > 0 ? true : s.open };
+    });
+  }
+
+  listText() {
+    const lines = Object.keys(this.state.items).map(id => {
+      const p = P.find(x => x[0] === id);
+      return "• " + this.state.items[id] + " × " + p[1] + " " + p[2] + " (" + p[3] + ")";
+    });
+    let t = "Hello Pozozo Sports, I'd like a quote for:\n\n" + lines.join("\n");
+    if (this.state.note.trim()) t += "\n\nNote: " + this.state.note.trim();
+    return t + "\n\nPlease confirm price, stock and delivery. Thank you.";
+  }
+
+  bulkText() {
+    const s = this.state;
+    return "Hello Pozozo Sports, bulk enquiry.\n\nFrom: " + (s.who || "—") +
+      "\nNeeded: " + (s.what || "—") + "\nDelivery to: " + (s.where || "—") +
+      "\n\nPlease send a quote with bulk pricing.";
+  }
+
+  card(p) {
+    const inList = !!this.state.items[p[0]];
+    return {
+      img: p[4], name: p[2], brand: p[1], spec: p[3], tag: p[6] || false,
+      flat: p[5] === "accessories" ? "" : null,
+      add: () => this.bump(p[0], 1),
+      addLabel: inList ? "Added · " + this.state.items[p[0]] : "Add to enquiry",
+      addBg: inList ? "#12100E" : "#F5F1E8",
+      addFg: inList ? "#F5F1E8" : "#12100E",
+      addBorder: inList ? "#12100E" : "#DED7C9",
+      wa: this.wa("Hello Pozozo Sports, is the " + p[1] + " " + p[2] + " (" + p[3] + ") in stock, and what is the price?")
+    };
+  }
+
+  renderVals() {
+    const s = this.state;
+    const q = s.q.trim().toLowerCase();
+    const matched = P.filter(p => (s.cat === "all" || p[5] === s.cat) &&
+      (!q || (p[1] + " " + p[2] + " " + p[3] + " " + p[5]).toLowerCase().includes(q)));
+    const shown = matched.slice(0, s.limit);
+    const count = Object.values(s.items).reduce((a, b) => a + b, 0);
+
+    return {
+      phoneDisplay: "+" + this.phone.replace(/[^0-9]/g, "").replace(/^(\d{3})(\d{3})(\d{3})(\d+)$/, "$1 $2 $3 $4"),
+      email: this.email,
+      waGeneral: this.wa("Hello Pozozo Sports, I have a question about your balls."),
+      mailSimple: this.mail("Enquiry — Pozozo Sports", "Hello Pozozo Sports,"),
+      count,
+      badgeBg: count ? "#C8482B" : "#E4DED1",
+      badgeFg: count ? "#fff" : "#9C9284",
+      query: s.q,
+      onQuery: e => this.setState({ q: e.target.value }),
+      cats: CATS.map(([id, label]) => ({
+        label, pick: () => this.setState({ cat: id, limit: 18 }),
+        bg: s.cat === id ? "#12100E" : "transparent",
+        fg: s.cat === id ? "#F5F1E8" : "#3E382F",
+        border: s.cat === id ? "#12100E" : "#CFC5B4"
+      })),
+      sports: SPORTS.map(([id, kicker, title, img, bg, fg, dim, line, cta]) => ({
+        kicker, title, img, bg, fg, dim, line, cta,
+        pick: () => {
+          this.setState({ cat: id, q: "", limit: 18 });
+          const el = document.getElementById("catalogue");
+          if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: "smooth" });
+        }
+      })),
+      fresh: P.filter(p => p[6]).concat(P.filter(p => !p[6]).slice(0, 4)).slice(0, 8).map(p => this.card(p)),
+      railRef: el => { this._rail = el; },
+      railPrev: () => { if (this._rail) this._rail.scrollBy({ left: -600, behavior: "smooth" }); },
+      railNext: () => { if (this._rail) this._rail.scrollBy({ left: 600, behavior: "smooth" }); },
+      shown: shown.map(p => this.card(p)),
+      empty: matched.length === 0,
+      hasMore: matched.length > shown.length,
+      moreLabel: "Show all " + matched.length + " balls",
+      showAll: () => this.setState({ limit: 999 }),
+      empty2: count === 0,
+      lines: Object.keys(s.items).map(id => {
+        const p = P.find(x => x[0] === id);
+        return { img: p[4], name: p[2], brand: p[1], qty: s.items[id], inc: () => this.bump(id, 1), dec: () => this.bump(id, -1) };
+      }),
+      note: s.note,
+      onNote: e => this.setState({ note: e.target.value }),
+      listWa: this.wa(this.listText()),
+      listMail: this.mail("Ball enquiry — Pozozo Sports", this.listText()),
+      openList: () => this.setState({ open: true }),
+      closeList: () => this.setState({ open: false }),
+      drawerStyle: "position:fixed;inset:0;z-index:90;display:flex;justify-content:flex-end;background:rgba(18,16,14,.45);" +
+        (s.open ? "opacity:1;pointer-events:auto;" : "opacity:0;pointer-events:none;") + "transition:opacity .18s ease",
+      barStyle: "position:fixed;right:24px;bottom:24px;z-index:70;" +
+        (count && !s.open ? "opacity:1;pointer-events:auto;transform:translateY(0);" : "opacity:0;pointer-events:none;transform:translateY(14px);") +
+        "transition:opacity .2s ease,transform .2s ease",
+      bulk: { who: s.who, what: s.what, where: s.where },
+      onBulkWho: e => this.setState({ who: e.target.value }),
+      onBulkWhat: e => this.setState({ what: e.target.value }),
+      onBulkWhere: e => this.setState({ where: e.target.value }),
+      bulkWa: this.wa(this.bulkText()),
+      bulkMail: this.mail("Bulk enquiry — Pozozo Sports", this.bulkText())
+    };
+  }
+}
+
+</script>
+</body>
+</html>

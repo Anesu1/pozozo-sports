@@ -1,0 +1,2 @@
+[    2369ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3006/product/bg5000:0
+[    2439ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3006/favicon.ico:0

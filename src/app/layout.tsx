@@ -1,10 +1,25 @@
 import type { Metadata, Viewport } from 'next';
+import { Archivo, Archivo_Black } from 'next/font/google';
 import './globals.css';
 import { Providers } from './providers';
 import { AnnouncementBar } from '@/components/AnnouncementBar';
 import { HeaderWrapper } from '@/components/HeaderWrapper';
 import { CartDrawer } from '@/components/CartDrawer';
 import { Footer } from '@/components/Footer';
+
+const archivo = Archivo({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-archivo',
+  display: 'swap',
+});
+
+const archivoBlack = Archivo_Black({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-archivo-black',
+  display: 'swap',
+});
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -33,8 +48,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className="min-h-screen flex flex-col bg-white text-[#1A1A1A] antialiased">
+    <html lang="en" className={`scroll-smooth ${archivo.variable} ${archivoBlack.variable}`}>
+      <body className="min-h-screen flex flex-col bg-[#F5F1E8] text-[#12100E] antialiased font-sans">
         <Providers>
           <AnnouncementBar />
           <HeaderWrapper />

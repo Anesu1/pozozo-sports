@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Archivo+Black&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;background:#F5F1E8;font-family:Archivo,system-ui,sans-serif;color:#12100E;-webkit-font-smoothing:antialiased}
+  a{color:#A93A20}
+  a:hover{color:#12100E}
+  ::selection{background:#C8482B;color:#fff}
+  @media (max-width:900px){
+    [data-c="two"],[data-c="three"],[data-c="four"]{grid-template-columns:1fr !important}
+    [data-pad]{padding-left:20px !important;padding-right:20px !important}
+  }
+</style>
+</helmet>
+
+<div style="max-width:1180px;margin:0 auto;padding:0 40px 120px" data-pad="1">
+
+  <header style="padding:64px 0 48px;border-bottom:1px solid #DED7C9;margin-bottom:64px">
+    <div style="font-size:11px;font-weight:700;letter-spacing:.24em;color:#6B6459;margin-bottom:18px">POZOZO SPORTS · IDENTITY</div>
+    <h1 style="font-family:'Archivo Black',sans-serif;font-size:clamp(38px,5vw,64px);line-height:.95;letter-spacing:-.035em;margin:0 0 20px;max-width:16ch">The seam mark</h1>
+    <p style="font-size:18px;line-height:1.6;color:#4A443C;max-width:56ch;margin:0;text-wrap:pretty">One shape doing three jobs: the O of Pozozo, the seam of a ball, and the Z the name turns on. A single closed path — no gradients, no effects, no second colour.</p>
+  </header>
+
+  <section style="margin-bottom:96px">
+    <div style="background:#12100E;border-radius:6px;padding:96px 40px;display:grid;place-items:center">
+      <svg viewBox="0 0 100 100" width="260" height="260" role="img" aria-label="Pozozo Sports mark">
+        <path fill="#F5F1E8" fill-rule="evenodd" d="M50,4 A46,46 0 1,0 50,96 A46,46 0 1,0 50,4 M24,28 H76 L36,60 H76 V72 H24 L64,40 H24 Z"></path>
+      </svg>
+    </div>
+  </section>
+
+  <section style="margin-bottom:96px">
+    <h2 style="font-family:'Archivo Black',sans-serif;font-size:30px;letter-spacing:-.025em;margin:0 0 10px">How it is built</h2>
+    <p style="font-size:16px;line-height:1.6;color:#4A443C;max-width:58ch;margin:0 0 32px">A 46-unit disc on a 100-unit grid. The seam is knocked out, not drawn on top, so the mark stays one object in any colour and reverses without edits. Bars are 12 units — thick enough to survive a 16px favicon.</p>
+    <div data-c="two" style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+      <div style="background:#fff;border:1px solid #E4DED1;border-radius:6px;padding:40px;display:grid;place-items:center">
+        <svg viewBox="0 0 100 100" width="260" height="260">
+          <defs>
+            <pattern id="pzgrid" width="10" height="10" patternUnits="userSpaceOnUse">
+              <path d="M10,0 L0,0 0,10" fill="none" stroke="#E4DED1" stroke-width="0.6"></path>
+            </pattern>
+          </defs>
+          <rect width="100" height="100" fill="url(#pzgrid)"></rect>
+          <circle cx="50" cy="50" r="46" fill="none" stroke="#C8482B" stroke-width="0.8" stroke-dasharray="2 2"></circle>
+          <path fill="#12100E" fill-rule="evenodd" d="M50,4 A46,46 0 1,0 50,96 A46,46 0 1,0 50,4 M24,28 H76 L36,60 H76 V72 H24 L64,40 H24 Z"></path>
+        </svg>
+      </div>
+      <div style="background:#fff;border:1px solid #E4DED1;border-radius:6px;padding:40px;display:flex;flex-direction:column;justify-content:center;gap:22px">
+        <div style="display:flex;gap:16px;align-items:baseline">
+          <span style="font-family:'Archivo Black',sans-serif;font-size:15px;color:#C8482B;min-width:26px">01</span>
+          <div><div style="font-size:16px;font-weight:700;margin-bottom:5px">A ball, not a circle</div><div style="font-size:15px;line-height:1.55;color:#4A443C">The disc is the O and the ball at once. Nothing else in the mark exists to decorate it.</div></div>
+        </div>
+        <div style="display:flex;gap:16px;align-items:baseline">
+          <span style="font-family:'Archivo Black',sans-serif;font-size:15px;color:#C8482B;min-width:26px">02</span>
+          <div><div style="font-size:16px;font-weight:700;margin-bottom:5px">The seam is the Z</div><div style="font-size:15px;line-height:1.55;color:#4A443C">Read it as a panel seam or as the letter. Both are true, and neither has to be explained.</div></div>
+        </div>
+        <div style="display:flex;gap:16px;align-items:baseline">
+          <span style="font-family:'Archivo Black',sans-serif;font-size:15px;color:#C8482B;min-width:26px">03</span>
+          <div><div style="font-size:16px;font-weight:700;margin-bottom:5px">Cut, never added</div><div style="font-size:15px;line-height:1.55;color:#4A443C">Knocked out with an even-odd fill, so the background shows through and the mark never needs a second colour.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="margin-bottom:96px">
+    <h2 style="font-family:'Archivo Black',sans-serif;font-size:30px;letter-spacing:-.025em;margin:0 0 32px">Lockups</h2>
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <div style="background:#fff;border:1px solid #E4DED1;border-radius:6px;padding:56px 48px">
+        <div style="font-size:10.5px;font-weight:700;letter-spacing:.2em;color:#6B6459;margin-bottom:32px">PRIMARY · HORIZONTAL</div>
+        <div style="display:flex;align-items:center;gap:18px">
+          <svg viewBox="0 0 100 100" width="58" height="58"><path fill="#12100E" fill-rule="evenodd" d="M50,4 A46,46 0 1,0 50,96 A46,46 0 1,0 50,4 M24,28 H76 L36,60 H76 V72 H24 L64,40 H24 Z"></path></svg>
+          <div style="display:flex;align-items:baseline;gap:12px">
+            <span style="font-family:'Archivo Black',sans-serif;font-size:42px;letter-spacing:-.03em;line-height:1">POZOZO</span>
+            <span style="font-size:14px;font-weight:700;letter-spacing:.3em;color:#6B6459">SPORTS</span>
+          </div>
+        </div>
+      </div>
+      <div data-c="two" style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+        <div style="background:#fff;border:1px solid #E4DED1;border-radius:6px;padding:48px">
+          <div style="font-size:10.5px;font-weight:700;letter-spacing:.2em;color:#6B6459;margin-bottom:32px">STACKED</div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center">
+            <svg viewBox="0 0 100 100" width="72" height="72"><path fill="#12100E" fill-rule="evenodd" d="M50,4 A46,46 0 1,0 50,96 A46,46 0 1,0 50,4 M24,28 H76 L36,60 H76 V72 H24 L64,40 H24 Z"></path></svg>
+            <div>
+              <div style="font-family:'Archivo Black',sans-serif;font-size:32px;letter-spacing:-.03em;line-height:1">POZOZO</div>
+              <div style="font-size:11.5px;font-weight:700;letter-spacing:.34em;color:#6B6459;margin-top:7px">SPORTS</div>
+            </div>
+          </div>
+        </div>
+        <div style="background:#fff;border:1px solid #E4DED1;border-radius:6px;padding:48px">
+          <div style="font-size:10.5px;font-weight:700;letter-spacing:.2em;color:#6B6459;margin-bottom:32px">MONOGRAM · THE LAST O</div>
+          <div style="display:flex;align-items:center;justify-content:center;height:96px">
+            <span style="font-family:'Archivo Black',sans-serif;font-size:44px;letter-spacing:-.03em;line-height:1">POZOZ</span>
+            <svg viewBox="0 0 100 100" width="38" height="38" style="margin-left:2px"><path fill="#C8482B" fill-rule="evenodd" d="M50,4 A46,46 0 1,0 50,96 A46,46 0 1,0 50,4 M24,28 H76 L36,60 H76 V72 H24 L64,40 H24 Z"></path></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="margin-bottom:96px">
+    <h2 style="font-family:'Archivo Black',sans-serif;font-size:30px;letter-spacing:-.025em;margin:0 0 10px">Colourways</h2>
+    <p style="font-size:16px;line-height:1.6;color:#4A443C;max-width:58ch;margin:0 0 32px">Ink on cream is the default. Red is for moments that ask for attention — never for a wall of them.</p>
+    <div data-c="four" style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
+      <div style="background:#F5F1E8;border:1px solid #E4DED1;border-radius:6px;padding:44px;display:grid;place-items:center;aspect-ratio:1">
+        <svg viewBox="0 0 100 100" width="96" height="96"><path fill="#12100E" fill-rule="evenodd" d="M50,4 A46,46 0 1,0 50,96 A46,46 0 1,0 50,4 M24,28 H76 L36,60 H76 V72 H24 L64,40 H24 Z"></path></svg>
+      </div>
+      <div style="background:#12100E;border-radius:6px;padding:44px;display:grid;place-items:center;aspect-ratio:1">
+        <svg viewBox="0 0 100 100" width="96" height="96"><path fill="#F5F1E8" fill-rule="evenodd" d="M50,4 A46,46 0 1,0 50,96 A46,46 0 1,0 50,4 M24,28 H76 L36,60 H76 V72 H24 L64,40 H24 Z"></path></svg>
+      </div>
+      <div style="background:#C8482B;border-radius:6px;padding:44px;display:grid;place-items:center;aspect-ratio:1">
+        <svg viewBox="0 0 100 100" width="96" height="96"><path fill="#fff" fill-rule="evenodd" d="M50,4 A46,46 0 1,0 50,96 A46,46 0 1,0 50,4 M24,28 H76 L36,60 H76 V72 H24 L64,40 H24 Z"></path></svg>
+      </div>
+      <div style="background:#fff;border:1px solid #E4DED1;border-radius:6px;padding:44px;display:grid;place-items:center;aspect-ratio:1">
+        <svg viewBox="0 0 100 100" width="96" height="96"><path fill="#C8482B" fill-rule="evenodd" d="M50,4 A46,46 0 1,0 50,96 A46,46 0 1,0 50,4 M24,28 H76 L36,60 H76 V72 H24 L64,40 H24 Z"></path></svg>
+      </div>
+    </div>
+  </section>
+
+  <section style="margin-bottom:96px">
+    <h2 style="font-family:'Archivo Black',sans-serif;font-size:30px;letter-spacing:-.025em;margin:0 0 10px">Down to 16 pixels</h2>
+    <p style="font-size:16px;line-height:1.6;color:#4A443C;max-width:58ch;margin:0 0 32px">The seam holds at favicon size because the bars are a fixed twelfth of the width. No small-size variant is needed.</p>
+    <div style="background:#fff;border:1px solid #E4DED1;border-radius:6px;padding:52px 48px;display:flex;align-items:flex-end;gap:44px;flex-wrap:wrap">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:14px">
+        <svg viewBox="0 0 100 100" width="96" height="96"><path fill="#12100E" fill-rule="evenodd" d="M50,4 A46,46 0 1,0 50,96 A46,46 0 1,0 50,4 M24,28 H76 L36,60 H76 V72 H24 L64,40 H24 Z"></path></svg>
+        <span style="font-size:11.5px;font-weight:600;color:#6B6459">96</span>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:14px">
+        <svg viewBox="0 0 100 100" width="48" height="48"><path fill="#12100E" fill-rule="evenodd" d="M50,4 A46,46 0 1,0 50,96 A46,46 0 1,0 50,4 M24,28 H76 L36,60 H76 V72 H24 L64,40 H24 Z"></path></svg>
+        <span style="font-size:11.5px;font-weight:600;color:#6B6459">48</span>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:14px">
+        <svg viewBox="0 0 100 100" width="32" height="32"><path fill="#12100E" fill-rule="evenodd" d="M50,4 A46,46 0 1,0 50,96 A46,46 0 1,0 50,4 M24,28 H76 L36,60 H76 V72 H24 L64,40 H24 Z"></path></svg>
+        <span style="font-size:11.5px;font-weight:600;color:#6B6459">32</span>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:14px">
+        <svg viewBox="0 0 100 100" width="16" height="16"><path fill="#12100E" fill-rule="evenodd" d="M50,4 A46,46 0 1,0 50,96 A46,46 0 1,0 50,4 M24,28 H76 L36,60 H76 V72 H24 L64,40 H24 Z"></path></svg>
+        <span style="font-size:11.5px;font-weight:600;color:#6B6459">16</span>
+      </div>
+    </div>
+  </section>
+
+  <section style="margin-bottom:96px">
+    <h2 style="font-family:'Archivo Black',sans-serif;font-size:30px;letter-spacing:-.025em;margin:0 0 10px">Clear space</h2>
+    <p style="font-size:16px;line-height:1.6;color:#4A443C;max-width:58ch;margin:0 0 32px">Keep a margin of one seam-bar — a twelfth of the mark's width — clear on every side. Nothing sits inside it.</p>
+    <div style="background:#fff;border:1px solid #E4DED1;border-radius:6px;padding:56px;display:grid;place-items:center">
+      <div style="position:relative;padding:24px;border:1px dashed #C8482B">
+        <svg viewBox="0 0 100 100" width="180" height="180" style="display:block"><path fill="#12100E" fill-rule="evenodd" d="M50,4 A46,46 0 1,0 50,96 A46,46 0 1,0 50,4 M24,28 H76 L36,60 H76 V72 H24 L64,40 H24 Z"></path></svg>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 style="font-family:'Archivo Black',sans-serif;font-size:30px;letter-spacing:-.025em;margin:0 0 32px">Never</h2>
+    <div data-c="three" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+      <div style="background:#fff;border:1px solid #E4DED1;border-radius:6px;overflow:hidden">
+        <div style="height:170px;display:grid;place-items:center;background:#F5F1E8">
+          <svg viewBox="0 0 100 100" width="86" height="86" style="transform:rotate(-18deg)"><path fill="#12100E" fill-rule="evenodd" d="M50,4 A46,46 0 1,0 50,96 A46,46 0 1,0 50,4 M24,28 H76 L36,60 H76 V72 H24 L64,40 H24 Z"></path></svg>
+        </div>
+        <div style="padding:18px 20px;border-top:1px solid #E4DED1;font-size:14.5px;color:#4A443C">Rotate it. The seam is horizontal because the ball is at rest.</div>
+      </div>
+      <div style="background:#fff;border:1px solid #E4DED1;border-radius:6px;overflow:hidden">
+        <div style="height:170px;display:grid;place-items:center;background:#F5F1E8">
+          <svg viewBox="0 0 100 100" width="86" height="86"><path fill="#12100E" fill-rule="evenodd" d="M50,4 A46,46 0 1,0 50,96 A46,46 0 1,0 50,4 M24,28 H76 L36,60 H76 V72 H24 L64,40 H24 Z" transform="scale(1,0.74) translate(0,17)"></path></svg>
+        </div>
+        <div style="padding:18px 20px;border-top:1px solid #E4DED1;font-size:14.5px;color:#4A443C">Squash it. A ball that isn't round isn't the logo.</div>
+      </div>
+      <div style="background:#fff;border:1px solid #E4DED1;border-radius:6px;overflow:hidden">
+        <div style="height:170px;display:grid;place-items:center;background:#8E857A">
+          <svg viewBox="0 0 100 100" width="86" height="86"><path fill="#6B6459" fill-rule="evenodd" d="M50,4 A46,46 0 1,0 50,96 A46,46 0 1,0 50,4 M24,28 H76 L36,60 H76 V72 H24 L64,40 H24 Z"></path></svg>
+        </div>
+        <div style="padding:18px 20px;border-top:1px solid #E4DED1;font-size:14.5px;color:#4A443C">Sit it on a tone it can't beat. The seam has to read, always.</div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+</x-dc>
+</body>
+</html>

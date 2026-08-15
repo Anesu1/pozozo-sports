@@ -1,156 +1,91 @@
 'use client';
 
-import React from 'react';
 import Link from 'next/link';
-import { MessageCircle, Mail, Phone, MapPin, ShieldCheck, Clock, CheckCircle2 } from 'lucide-react';
-import { STORE_CONFIG, getWhatsAppUrl } from '@/data/sportsConfig';
+import { STORE_CONFIG, getWhatsAppUrl, getMailtoUrl } from '@/data/sportsConfig';
 
 export function Footer() {
   const waUrl = getWhatsAppUrl('Hello Pozozo Sports, I have an equipment enquiry.');
+  const mailUrl = getMailtoUrl('Enquiry — Pozozo Sports', 'Hello Pozozo Sports,');
 
   return (
-    <footer className="bg-[#12100E] text-[#F5F1E8] pt-16 pb-12 border-t border-[#2A2622]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-[#2A2622]">
-          {/* Brand Col */}
-          <div className="lg:col-span-2 space-y-4">
-            <div>
-              <h3 className="text-2xl font-black tracking-tight text-white font-display">
-                POZOZO SPORTS
-              </h3>
-              <p className="text-xs font-bold uppercase tracking-widest text-[#8E857A]">
-                AUTHORISED MOLTEN &amp; MIKASA STOCK
-              </p>
-            </div>
-            <p className="text-xs sm:text-sm text-white/70 max-w-sm leading-relaxed">
-              Match balls, ordered by message. No card, no checkout. Pick what your club, school or shop needs, send the list on WhatsApp, and we come back with price, stock and delivery the same day.
-            </p>
-            <div className="pt-2">
-              <a
-                href={waUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-bold transition-all shadow-sm"
-              >
-                <MessageCircle className="w-4 h-4 fill-white" />
-                <span>WhatsApp: {STORE_CONFIG.displayPhone}</span>
-              </a>
-            </div>
+    <footer className="bg-[#12100E] text-[#F5F1E8] mt-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-9 grid grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr] gap-8 lg:gap-11">
+        {/* Brand */}
+        <div className="col-span-2 lg:col-span-1">
+          <div className="flex items-baseline gap-2 mb-4">
+            <span className="text-xl font-black tracking-tight text-white font-display">POZOZO</span>
+            <span className="text-[10.5px] font-bold uppercase tracking-[0.24em] text-[#8E857A]">SPORTS</span>
           </div>
+          <p className="text-sm text-[#A79B8C] leading-relaxed max-w-[34ch]">
+            Molten and Mikasa balls for basketball, football and netball. Enquire, don&apos;t checkout.
+          </p>
+        </div>
 
-          {/* Categories */}
-          <div className="space-y-3">
-            <h4 className="text-xs font-extrabold uppercase tracking-widest text-white">
-              Categories
-            </h4>
-            <ul className="space-y-2 text-xs text-white/70">
-              <li>
-                <Link href="/shop/category/basketball" className="hover:text-white transition-colors">
-                  Basketball (19 Balls)
-                </Link>
-              </li>
-              <li>
-                <Link href="/shop/category/football" className="hover:text-white transition-colors">
-                  Football (22 Balls)
-                </Link>
-              </li>
-              <li>
-                <Link href="/shop/category/netball" className="hover:text-white transition-colors">
-                  Netball (9 Balls)
-                </Link>
-              </li>
-              <li>
-                <Link href="/shop/category/accessories" className="hover:text-white transition-colors">
-                  Accessories &amp; AG500 Gauges
-                </Link>
-              </li>
-              <li>
-                <Link href="/shop/collection/molten" className="hover:text-white transition-colors">
-                  Molten FIBA / 3x3 Series
-                </Link>
-              </li>
-              <li>
-                <Link href="/shop/collection/mikasa" className="hover:text-white transition-colors">
-                  Mikasa FIFA Pro Series
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Quick Links */}
-          <div className="space-y-3">
-            <h4 className="text-xs font-extrabold uppercase tracking-widest text-white">
-              Institutional &amp; Help
-            </h4>
-            <ul className="space-y-2 text-xs text-white/70">
-              <li>
-                <Link href="/#bulk" className="hover:text-white transition-colors">
-                  Bulk &amp; School Orders
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="hover:text-white transition-colors">
-                  Authenticity Guarantee
-                </Link>
-              </li>
-              <li>
-                <Link href="/journal" className="hover:text-white transition-colors">
-                  Ball Pressure &amp; Fit Guides
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="hover:text-white transition-colors">
-                  Contact &amp; Quotes
-                </Link>
-              </li>
-              <li>
-                <Link href="/shipping-policy" className="hover:text-white transition-colors">
-                  Delivery &amp; Collection Info
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact Details */}
-          <div className="space-y-3">
-            <h4 className="text-xs font-extrabold uppercase tracking-widest text-white">
-              Direct Contact
-            </h4>
-            <div className="space-y-2.5 text-xs text-white/70">
-              <div className="flex items-start gap-2">
-                <Phone className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                <span>{STORE_CONFIG.displayPhone}</span>
-              </div>
-              <div className="flex items-start gap-2">
-                <Mail className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                <span>{STORE_CONFIG.email}</span>
-              </div>
-              <div className="flex items-start gap-2">
-                <Clock className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                <span>{STORE_CONFIG.operatingHours}</span>
-              </div>
-              <div className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                <span>{STORE_CONFIG.location}</span>
-              </div>
-            </div>
+        {/* Shop */}
+        <div>
+          <div className="text-[10.5px] font-bold uppercase tracking-[0.2em] text-[#8E857A] mb-4">Shop</div>
+          <div className="flex flex-col gap-2.5 text-sm">
+            <Link href="/shop/category/basketball" className="text-[#F5F1E8] hover:text-[#C8482B] transition-colors">
+              Basketball
+            </Link>
+            <Link href="/shop/category/football" className="text-[#F5F1E8] hover:text-[#C8482B] transition-colors">
+              Football
+            </Link>
+            <Link href="/shop/category/netball" className="text-[#F5F1E8] hover:text-[#C8482B] transition-colors">
+              Netball
+            </Link>
+            <Link href="/shop/category/accessories" className="text-[#F5F1E8] hover:text-[#C8482B] transition-colors">
+              Accessories
+            </Link>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/50">
-          <p>© {new Date().getFullYear()} POZOZO SPORTS. All rights reserved. Authorised Stock.</p>
-          <div className="flex items-center gap-6">
-            <Link href="/terms-of-service" className="hover:text-white">
-              Terms
+        {/* Company */}
+        <div>
+          <div className="text-[10.5px] font-bold uppercase tracking-[0.2em] text-[#8E857A] mb-4">Company</div>
+          <div className="flex flex-col gap-2.5 text-sm">
+            <Link href="/about" className="text-[#F5F1E8] hover:text-[#C8482B] transition-colors">
+              About
             </Link>
-            <Link href="/privacy-policy" className="hover:text-white">
-              Privacy
+            <Link href="/#bulk" className="text-[#F5F1E8] hover:text-[#C8482B] transition-colors">
+              Bulk &amp; schools
             </Link>
-            <Link href="/return-and-refund-policy" className="hover:text-white">
-              Guarantee
+            <Link href="/journal" className="text-[#F5F1E8] hover:text-[#C8482B] transition-colors">
+              Guides
+            </Link>
+            <Link href="/contact" className="text-[#F5F1E8] hover:text-[#C8482B] transition-colors">
+              Contact
             </Link>
           </div>
+        </div>
+
+        {/* Talk to us */}
+        <div>
+          <div className="text-[10.5px] font-bold uppercase tracking-[0.2em] text-[#8E857A] mb-4">Talk to us</div>
+          <div className="flex flex-col gap-2.5 text-sm">
+            <a href={waUrl} target="_blank" rel="noopener noreferrer" className="text-[#F5F1E8] hover:text-[#C8482B] transition-colors">
+              WhatsApp {STORE_CONFIG.displayPhone}
+            </a>
+            <a href={mailUrl} className="text-[#F5F1E8] hover:text-[#C8482B] transition-colors">
+              {STORE_CONFIG.email}
+            </a>
+            <span className="text-[#A79B8C]">{STORE_CONFIG.operatingHours}</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 border-t border-[#2A2622] text-xs text-[#6E665C] flex flex-col sm:flex-row items-center justify-between gap-4">
+        <span>© {new Date().getFullYear()} Pozozo Sports · Prices quoted on enquiry · No online payment</span>
+        <div className="flex items-center gap-5">
+          <Link href="/terms-of-service" className="hover:text-[#F5F1E8] transition-colors">
+            Terms
+          </Link>
+          <Link href="/privacy-policy" className="hover:text-[#F5F1E8] transition-colors">
+            Privacy
+          </Link>
+          <Link href="/return-and-refund-policy" className="hover:text-[#F5F1E8] transition-colors">
+            Guarantee
+          </Link>
         </div>
       </div>
     </footer>
