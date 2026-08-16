@@ -2,8 +2,9 @@ import React from 'react';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Cookie Policy – Pozozo Sports',
-  description: 'Learn how cookies support shopping bag, currency preferences, and store functionality.',
+  title: 'Cookie Policy',
+  description: 'Learn how cookies support your enquiry list, wishlist, currency preferences, and site functionality.',
+  alternates: { canonical: '/cookie-policy' },
 };
 
 export default function CookiePolicyPage() {
@@ -24,14 +25,14 @@ export default function CookiePolicyPage() {
           <section className="space-y-3">
             <h2 className="text-base font-bold text-[#1A1A1A]">1. What Cookies Are</h2>
             <p>
-              Cookies and local storage help our store function properly by remembering your active shopping cart items, saved wishlist garments, region currency preferences, and session tokens.
+              Cookies and local storage help this site function properly by remembering your active enquiry list, saved wishlist balls, and preferred display currency between visits.
             </p>
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-base font-bold text-[#1A1A1A]">2. Essential Shopping Cookies</h2>
+            <h2 className="text-base font-bold text-[#1A1A1A]">2. Essential Site Cookies</h2>
             <p>
-              Essential cookies are required to preserve your cart items as you navigate across pages and finalize checkout securely. You can control cookie preferences in your browser settings.
+              These are required to keep your enquiry list and wishlist intact as you browse between pages, since there is no account login or checkout on this site. You can clear them at any time in your browser settings, which resets your saved list.
             </p>
           </section>
         </div>

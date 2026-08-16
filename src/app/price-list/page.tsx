@@ -1,9 +1,11 @@
+import { Metadata } from 'next';
 import { PRODUCTS } from '@/data/products';
 import { getWhatsAppUrl } from '@/data/sportsConfig';
 
-export const metadata = {
-  title: 'Stock List – Pozozo Sports',
+export const metadata: Metadata = {
+  title: 'Stock List',
   description: 'Everything we carry, by sport, ready for procurement.',
+  alternates: { canonical: '/price-list' },
 };
 
 export default function PriceListPage() {

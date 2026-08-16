@@ -4,8 +4,9 @@ import Link from 'next/link';
 import { Truck } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Shipping Policy – Pozozo Sports',
-  description: 'See how orders are processed, shipped, tracked, and handled for worldwide deliveries.',
+  title: 'Shipping Policy',
+  description: 'See how bulk and individual ball orders are processed, delivered nationwide, and handled for collection.',
+  alternates: { canonical: '/shipping-policy' },
 };
 
 export default function ShippingPolicyPage() {
@@ -26,35 +27,35 @@ export default function ShippingPolicyPage() {
           <section className="space-y-3">
             <h2 className="text-base font-bold text-[#1A1A1A]">1. Overview</h2>
             <p>
-              This Shipping Policy explains how orders are processed and delivered for purchases made through our fashion e-commerce website. We ship apparel, accessories, and wardrobe essentials with the goal of getting your order to you safely and reliably.
+              This Shipping Policy explains how ball orders are delivered once your enquiry is confirmed. We deliver genuine Molten and Mikasa balls and accessories nationwide, and also offer direct collection from our Lusaka distribution point.
             </p>
           </section>
 
           <section className="space-y-3">
             <h2 className="text-base font-bold text-[#1A1A1A]">2. Order Processing</h2>
             <p>
-              Orders are usually processed within 1-2 business days after payment is confirmed. Processing times may vary during collection launches, sale periods, or holiday drops. Orders placed on weekends or public holidays begin processing on the next business day.
+              Once you confirm a quotation sent on WhatsApp or by email, we begin preparing your order — usually within 1-2 business days. Processing can take a little longer at the start of school terms or around public holidays. Enquiries received over a weekend or public holiday are picked up the next business day.
             </p>
           </section>
 
           <section className="space-y-3">
             <h2 className="text-base font-bold text-[#1A1A1A]">3. Shipping Methods &amp; Times</h2>
             <p>
-              Standard domestic delivery arrives within 2-4 business days. Express international air freight arrives within 4-7 business days to over 100 supported countries.
+              Standard nationwide delivery by courier or bus arrives within 2-5 business days depending on destination. Lusaka orders can usually be delivered, or made ready for collection, the same or next business day. We currently deliver within Zambia only.
             </p>
           </section>
 
           <section className="space-y-3">
             <h2 className="text-base font-bold text-[#1A1A1A]">4. Shipping Costs</h2>
             <p>
-              We offer free standard worldwide shipping on all orders over $150 USD. Orders below this threshold incur calculated flat carrier rates shown clearly at checkout.
+              Delivery cost depends on order size, weight, and destination, and is confirmed in your quotation before you commit — there is no checkout on this site to add surprise fees. Bulk orders for schools and clubs often qualify for reduced or waived delivery.
             </p>
           </section>
 
           <section className="space-y-3">
             <h2 className="text-base font-bold text-[#1A1A1A]">5. Tracking Your Order</h2>
             <p>
-              Once your package departs our fulfilment centre, an automated dispatch email containing end-to-end tracking details and courier links will be sent to your email address.
+              Once your order is dispatched, we confirm the courier or bus details directly on WhatsApp or by email, along with an estimated arrival time. Institutional orders include a delivery note for your records.
             </p>
           </section>
         </div>

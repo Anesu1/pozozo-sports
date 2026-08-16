@@ -5,8 +5,9 @@ import { SPORTS } from '@/data/sports';
 import { Ball3D } from '@/components/ball3d/Ball3D';
 
 export const metadata: Metadata = {
-  title: 'Shop by Sport – Pozozo Sports',
+  title: 'Shop by Sport',
   description: 'Each sport has its own sizes, approvals and surfaces. Start where you play.',
+  alternates: { canonical: '/sports' },
 };
 
 export default function SportsIndexPage() {

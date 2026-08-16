@@ -1,11 +1,13 @@
 import Link from 'next/link';
+import { Metadata } from 'next';
 import { Ball3D } from '@/components/ball3d/Ball3D';
 import { CARE } from '@/data/care';
 
-export const metadata = {
-  title: 'Ball Care & Inflation – Pozozo Sports',
+export const metadata: Metadata = {
+  title: 'Ball Care & Inflation',
   description:
     'Most balls that "wear out" in a term were simply run at the wrong pressure. Five habits that get you a season more.',
+  alternates: { canonical: '/care' },
 };
 
 export default function CarePage() {

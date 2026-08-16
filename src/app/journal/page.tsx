@@ -6,8 +6,9 @@ import { ArrowRight, BookOpen, Clock } from 'lucide-react';
 import { JOURNALS } from '@/data/journals';
 
 export const metadata: Metadata = {
-  title: 'Ball Guides & Articles – Pozozo Sports',
+  title: 'Ball Guides & Articles',
   description: 'Practical guides on choosing, sizing and caring for match and training balls, from the Pozozo Sports team.',
+  alternates: { canonical: '/journal' },
 };
 
 export default function JournalIndexPage() {

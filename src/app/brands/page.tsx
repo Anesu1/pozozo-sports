@@ -5,9 +5,10 @@ import { BRANDS } from '@/data/brands';
 import { Ball3D } from '@/components/ball3d/Ball3D';
 
 export const metadata: Metadata = {
-  title: 'Molten & Mikasa – Pozozo Sports',
+  title: 'Molten & Mikasa',
   description:
     "We stock Molten and Mikasa because between them they cover every court and pitch we supply, and because both are easy to authenticate.",
+  alternates: { canonical: '/brands' },
 };
 
 export default function BrandsPage() {

@@ -3,8 +3,9 @@ import Link from 'next/link';
 import { JOURNALS } from '@/data/journals';
 
 export const metadata: Metadata = {
-  title: 'Guides – Pozozo Sports',
+  title: 'Guides & Articles',
   description: 'Everything worth knowing before you send a list, and after the balls arrive.',
+  alternates: { canonical: '/guides' },
 };
 
 const GUIDE_TILES = [

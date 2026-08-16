@@ -2,8 +2,9 @@ import React from 'react';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Return & Refund Policy – Pozozo Sports',
-  description: 'Understand return windows, item condition requirements, exchanges, and refunds.',
+  title: 'Return & Refund Policy',
+  description: 'Understand return windows, faulty-ball claims, exchanges, and refunds on Pozozo Sports orders.',
+  alternates: { canonical: '/return-and-refund-policy' },
 };
 
 export default function ReturnPolicyPage() {
@@ -22,30 +23,30 @@ export default function ReturnPolicyPage() {
 
         <div className="prose prose-sm max-w-none text-[#555555] space-y-6 text-sm leading-relaxed border-t border-[#E8E4DF] pt-8">
           <section className="space-y-3">
-            <h2 className="text-base font-bold text-[#1A1A1A]">1. 30-Day Return Window</h2>
+            <h2 className="text-base font-bold text-[#1A1A1A]">1. 30-Day Fault Window</h2>
             <p>
-              We want you to feel confident when shopping for wardrobe essentials. You may initiate a return or exchange for any eligible product within 30 calendar days of delivery.
+              Manufacturing faults are covered. If a ball splits, loses shape, or otherwise fails outside of normal play within 30 days of delivery or collection, send us a photo of the valve area and the fault and we&apos;ll arrange a replacement.
             </p>
           </section>
 
           <section className="space-y-3">
             <h2 className="text-base font-bold text-[#1A1A1A]">2. Return Conditions</h2>
             <p>
-              Returned items must be in their original unworn, unwashed condition with all garment tags and packaging intact. We suggest trying on footwear and bottoms on indoor clean surfaces.
+              To qualify, the ball must be returned with its original packaging and manufacturer hologram or serial stamp intact. Wear from play on the wrong surface — for example an indoor leather ball used outdoors — is not treated as a fault, which is why we set out surface guidance in our care guide.
             </p>
           </section>
 
           <section className="space-y-3">
             <h2 className="text-base font-bold text-[#1A1A1A]">3. Exchanges</h2>
             <p>
-              If you require a different size or alternative color, we provide free size exchanges with prioritized shipment of your replacement item as soon as the return is scanned by the courier.
+              If you ordered the wrong size or sport by mistake, tell us before the ball has been used and we&apos;ll arrange an exchange, subject to stock. Bulk and institutional orders can usually swap sizes within the same quotation before delivery is confirmed.
             </p>
           </section>
 
           <section className="space-y-3">
             <h2 className="text-base font-bold text-[#1A1A1A]">4. Refund Processing</h2>
             <p>
-              Refunds are processed to the original payment method within 3-5 business days of inspection at our facility.
+              Where a refund is agreed instead of a replacement, it is paid back the same way you paid us — mobile money, bank transfer, or cash on collection — usually within 3-5 business days of the ball being returned and inspected.
             </p>
           </section>
         </div>

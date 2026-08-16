@@ -3,8 +3,9 @@ import { SIZES } from '@/data/sizeGuide';
 import { getWhatsAppUrl } from '@/data/sportsConfig';
 
 export const metadata: Metadata = {
-  title: 'Ball Size Guide – Pozozo Sports',
+  title: 'Ball Size Guide',
   description: "The short answer for most school and club buyers, sport by sport.",
+  alternates: { canonical: '/size-guide' },
 };
 
 export default function SizeGuidePage() {

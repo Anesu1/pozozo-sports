@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { ShopCatalog } from '@/components/ShopCatalog';
 import { CATEGORIES } from '@/data/categories';
+import { JsonLd } from '@/components/JsonLd';
 
 interface PageProps {
   params: {
@@ -19,11 +20,12 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: PageProps): Metadata {
   const category = CATEGORIES.find((c) => c.slug === params.slug);
   if (!category) {
-    return { title: 'Category – Pozozo Sports' };
+    return { title: 'Category' };
   }
   return {
-    title: `${category.name} – Pozozo Sports`,
+    title: category.name,
     description: `Genuine Molten and Mikasa ${category.name.toLowerCase()}, ordered directly by WhatsApp message.`,
+    alternates: { canonical: `/shop/category/${category.slug}` },
   };
 }
 
@@ -34,11 +36,28 @@ export default function CategoryPage({ params }: PageProps) {
     notFound();
   }
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Shop', item: 'https://pozozosports.com/shop' },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: category.name,
+        item: `https://pozozosports.com/shop/category/${category.slug}`,
+      },
+    ],
+  };
+
   return (
-    <ShopCatalog
-      initialCategory={category.slug}
-      pageTitle={category.name}
-      pageDescription={`Genuine Molten and Mikasa ${category.name.toLowerCase()}. Ordered directly by WhatsApp message.`}
-    />
+    <>
+      <JsonLd data={breadcrumbJsonLd} />
+      <ShopCatalog
+        initialCategory={category.slug}
+        pageTitle={category.name}
+        pageDescription={`Genuine Molten and Mikasa ${category.name.toLowerCase()}. Ordered directly by WhatsApp message.`}
+      />
+    </>
   );
 }

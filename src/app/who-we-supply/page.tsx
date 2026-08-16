@@ -1,9 +1,11 @@
+import { Metadata } from 'next';
 import { SUPPLY } from '@/data/supply';
 import { getWhatsAppUrl } from '@/data/sportsConfig';
 
-export const metadata = {
-  title: 'Who We Supply – Pozozo Sports',
+export const metadata: Metadata = {
+  title: 'Who We Supply',
   description: 'Schools, clubs, academies, leagues and the shops that resell to them.',
+  alternates: { canonical: '/who-we-supply' },
 };
 
 export default function WhoWeSupplyPage() {

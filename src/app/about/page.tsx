@@ -6,8 +6,9 @@ import { STORE_CONFIG, getWhatsAppUrl } from '@/data/sportsConfig';
 import { Ball3D } from '@/components/ball3d/Ball3D';
 
 export const metadata: Metadata = {
-  title: 'About Pozozo Sports – Authorised Molten & Mikasa Stock',
+  title: 'About Us',
   description: 'Learn about our commitment to genuine match balls, direct WhatsApp ordering, and nationwide school/club supply.',
+  alternates: { canonical: '/about' },
 };
 
 const CAPABILITIES = [

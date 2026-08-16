@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, Clock, Calendar, Share2, ArrowRight } from 'lucide-react';
 import { JOURNALS } from '@/data/journals';
+import { JsonLd } from '@/components/JsonLd';
 
 interface PageProps {
   params: {
@@ -21,11 +22,12 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: PageProps): Metadata {
   const journal = JOURNALS.find((j) => j.slug === params.slug);
   if (!journal) {
-    return { title: 'Guide – Pozozo Sports' };
+    return { title: 'Guide' };
   }
   return {
-    title: `${journal.title} – Pozozo Sports`,
+    title: journal.title,
     description: journal.excerpt,
+    alternates: { canonical: `/journal/${journal.slug}` },
     openGraph: {
       title: journal.title,
       description: journal.excerpt,
@@ -43,8 +45,30 @@ export default function JournalDetailPage({ params }: PageProps) {
 
   const related = JOURNALS.filter((j) => j.id !== journal.id).slice(0, 3);
 
+  const articleJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: journal.title,
+    description: journal.excerpt,
+    image: [journal.coverImage],
+    datePublished: new Date(journal.date).toISOString(),
+    author: { '@type': 'Person', name: journal.author.name },
+    publisher: { '@type': 'Organization', name: 'Pozozo Sports' },
+  };
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Guides & Articles', item: 'https://pozozosports.com/journal' },
+      { '@type': 'ListItem', position: 2, name: journal.title, item: `https://pozozosports.com/journal/${journal.slug}` },
+    ],
+  };
+
   return (
     <article className="py-12 sm:py-20 bg-[#EEF1F5] min-h-screen">
+      <JsonLd data={articleJsonLd} />
+      <JsonLd data={breadcrumbJsonLd} />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Back Link */}
         <Link

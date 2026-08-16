@@ -2,8 +2,9 @@ import React from 'react';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy – Pozozo Sports',
-  description: 'Learn how customer information is collected, protected, and used.',
+  title: 'Privacy Policy',
+  description: 'Learn how customer information is collected, protected, and used when you enquire with Pozozo Sports.',
+  alternates: { canonical: '/privacy-policy' },
 };
 
 export default function PrivacyPolicyPage() {
@@ -24,21 +25,21 @@ export default function PrivacyPolicyPage() {
           <section className="space-y-3">
             <h2 className="text-base font-bold text-[#1A1A1A]">1. Introduction</h2>
             <p>
-              This Privacy Policy explains how Pozozo Sports collects, uses, and protects your information when you browse our catalogue, send an enquiry, or contact our support team.
+              This Privacy Policy explains how Pozozo Sports collects, uses, and protects your information when you browse our catalogue, send an enquiry on WhatsApp or email, or contact our support team.
             </p>
           </section>
 
           <section className="space-y-3">
             <h2 className="text-base font-bold text-[#1A1A1A]">2. Information We Collect</h2>
             <p>
-              We collect information provided directly when placing orders, including name, shipping address, contact email, phone number, and order preferences. We never store credit card numbers on our servers; transactions are processed through encrypted PCI-DSS compliant payment gateways.
+              We collect what you give us directly when you send an enquiry or request a quotation — typically your name, phone number or email, delivery location, and the school, club, or organisation you&apos;re ordering for. Enquiries sent via WhatsApp also pass through Meta&apos;s own platform and are subject to WhatsApp&apos;s privacy policy. We do not collect or store payment card details on this website, because no payment is processed here.
             </p>
           </section>
 
           <section className="space-y-3">
             <h2 className="text-base font-bold text-[#1A1A1A]">3. How We Use Data</h2>
             <p>
-              Your data is exclusively used to fulfill orders, issue tracking alerts, process returns, prevent fraud, and send optional newsletter style updates if opted in. We never sell your personal data to third-party data brokers.
+              Your information is used only to prepare quotations, confirm and deliver orders, arrange invoices for institutions, and answer your questions. We never sell your personal data to third parties.
             </p>
           </section>
         </div>
