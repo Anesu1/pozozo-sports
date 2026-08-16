@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Truck } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Shipping Policy – ECOM®',
+  title: 'Shipping Policy – Pozozo Sports',
   description: 'See how orders are processed, shipped, tracked, and handled for worldwide deliveries.',
 };
 

@@ -5,6 +5,7 @@ import { ToastProvider } from '@/context/ToastContext';
 import { CurrencyProvider } from '@/context/CurrencyContext';
 import { WishlistProvider } from '@/context/WishlistContext';
 import { CartProvider } from '@/context/CartContext';
+import { QuickViewProvider } from '@/context/QuickViewContext';
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
@@ -12,7 +13,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
       <CurrencyProvider>
         <WishlistProvider>
           <CartProvider>
-            {children}
+            <QuickViewProvider>{children}</QuickViewProvider>
           </CartProvider>
         </WishlistProvider>
       </CurrencyProvider>

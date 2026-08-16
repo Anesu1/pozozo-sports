@@ -73,7 +73,7 @@ export function CartDrawer() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={closeCart}
-            className="absolute inset-0 bg-[#12100E]/45 backdrop-blur-xs transition-opacity"
+            className="absolute inset-0 bg-[#0E1726]/45 backdrop-blur-xs transition-opacity"
           />
 
           {/* Drawer Content */}
@@ -83,22 +83,22 @@ export function CartDrawer() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="w-screen max-w-md bg-[#F5F1E8] shadow-2xl flex flex-col h-full"
+              className="w-screen max-w-md bg-[#EEF1F5] shadow-2xl flex flex-col h-full"
             >
               {/* Header */}
-              <div className="px-5 sm:px-6 py-5 flex items-center gap-4 bg-[#12100E] text-[#F5F1E8] shrink-0">
+              <div className="px-5 sm:px-6 py-5 flex items-center gap-4 bg-[#0E1726] text-[#EEF1F5] shrink-0">
                 <div>
-                  <h2 className="text-base sm:text-[17px] font-black tracking-tight font-display">
+                  <h2 className="text-base sm:text-[17px] font-display uppercase tracking-tight">
                     Your enquiry
                   </h2>
-                  <p className="text-[12.5px] text-[#8E857A] mt-1">
+                  <p className="text-[12.5px] text-[#8494AC] mt-1">
                     {totalItems} item(s) · no payment taken
                   </p>
                 </div>
                 <div className="flex-1" />
                 <button
                   onClick={closeCart}
-                  className="w-9 h-9 rounded-full border border-[#3A342D] hover:border-[#F5F1E8] text-[#F5F1E8] flex items-center justify-center transition-colors"
+                  className="w-9 h-9 rounded-sm border border-[#2C3A50] hover:border-[#EEF1F5] text-[#EEF1F5] flex items-center justify-center transition-colors"
                   aria-label="Close drawer"
                 >
                   <X className="w-4.5 h-4.5" />
@@ -109,31 +109,31 @@ export function CartDrawer() {
               <div className="flex-1 overflow-y-auto px-5 sm:px-6 py-4">
                 {cart.length === 0 ? (
                   <div className="py-16 sm:py-20 text-center space-y-4">
-                    <div className="w-14 h-14 sm:w-16 sm:h-16 bg-[#EFE9DC] text-[#6B6459] rounded-full flex items-center justify-center mx-auto">
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 bg-[#E3E8EF] text-[#3A4557] rounded-sm flex items-center justify-center mx-auto">
                       <Sparkles className="w-7 h-7 sm:w-8 sm:h-8" />
                     </div>
-                    <h3 className="text-sm sm:text-base font-bold text-[#12100E]">
+                    <h3 className="text-sm sm:text-base font-bold text-[#0E1726]">
                       Nothing here yet
                     </h3>
-                    <p className="text-xs text-[#6B6459] max-w-xs mx-auto leading-relaxed">
+                    <p className="text-xs text-[#3A4557] max-w-xs mx-auto leading-relaxed">
                       Add balls from the catalogue and send them all in one message.
                     </p>
                     <button
                       onClick={closeCart}
-                      className="px-6 py-2.5 bg-[#12100E] hover:bg-black text-white text-xs font-bold uppercase tracking-wider rounded-full transition-colors"
+                      className="px-6 py-2.5 bg-[#0E1726] hover:bg-black text-white text-xs font-bold uppercase tracking-wider rounded-sm transition-colors"
                     >
                       Browse Catalogue
                     </button>
                   </div>
                 ) : (
                   <>
-                    <div className="flex items-center justify-between pb-3 border-b border-[#DED7C9]">
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-[#6B6459]">
+                    <div className="flex items-center justify-between pb-3 border-b border-[#D3DAE4]">
+                      <span className="text-[11px] font-bold uppercase tracking-wider text-[#3A4557]">
                         Selected Balls ({totalItems})
                       </span>
                       <button
                         onClick={clearCart}
-                        className="text-[11px] font-bold text-[#6B6459] hover:text-[#C8482B] flex items-center gap-1"
+                        className="text-[11px] font-bold text-[#3A4557] hover:text-[#0E1726] flex items-center gap-1"
                       >
                         <Trash2 className="w-3.5 h-3.5" />
                         <span>Clear All</span>
@@ -143,10 +143,10 @@ export function CartDrawer() {
                     {cart.map((item) => (
                       <div
                         key={item.id}
-                        className="flex gap-3.5 py-4 border-b border-[#E4DED1] items-center"
+                        className="flex gap-3.5 py-4 border-b border-[#D3DAE4] items-center"
                       >
                         {/* Ball thumbnail */}
-                        <div className="relative w-[62px] h-[62px] bg-white rounded border border-[#E4DED1] shrink-0 p-1.5">
+                        <div className="relative w-[62px] h-[62px] bg-white rounded-sm border border-[#D3DAE4] shrink-0 p-1.5">
                           <Image
                             src={item.product.images[0]}
                             alt={item.product.name}
@@ -158,41 +158,41 @@ export function CartDrawer() {
                         {/* Info */}
                         <div className="flex-1 min-w-0">
                           <div className="flex items-start justify-between gap-1">
-                            <span className="text-[10px] font-bold uppercase tracking-wider text-[#8E857A]">
+                            <span className="text-[10px] font-bold uppercase tracking-wider text-[#55637A]">
                               {item.product.brand}
                             </span>
                             <button
                               onClick={() => removeFromCart(item.id)}
-                              className="text-[#9C9284] hover:text-[#C8482B] p-0.5"
+                              className="text-[#55637A] hover:text-[#0E1726] p-0.5"
                               title="Remove"
                             >
                               <X className="w-3.5 h-3.5" />
                             </button>
                           </div>
-                          <h4 className="text-[14.5px] font-bold text-[#12100E] leading-tight truncate">
+                          <h4 className="text-[14.5px] font-bold text-[#0E1726] leading-tight truncate">
                             {item.product.name}
                           </h4>
                           <div className="flex items-center justify-between mt-2">
                             {/* Quantity Stepper */}
-                            <div className="flex items-center border border-[#DED7C9] bg-white rounded-full">
+                            <div className="flex items-center border border-[#D3DAE4] bg-white rounded-sm">
                               <button
                                 onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                                className="w-8 h-[34px] flex items-center justify-center text-[#12100E]"
+                                className="w-8 h-[34px] flex items-center justify-center text-[#0E1726]"
                               >
                                 <Minus className="w-3.5 h-3.5" />
                               </button>
-                              <span className="min-w-[22px] text-center text-sm font-bold text-[#12100E]">
+                              <span className="min-w-[22px] text-center text-sm font-bold text-[#0E1726]">
                                 {item.quantity}
                               </span>
                               <button
                                 onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                                className="w-8 h-[34px] flex items-center justify-center text-[#12100E]"
+                                className="w-8 h-[34px] flex items-center justify-center text-[#0E1726]"
                               >
                                 <Plus className="w-3.5 h-3.5" />
                               </button>
                             </div>
 
-                            <span className="text-xs font-extrabold text-[#12100E]">
+                            <span className="text-xs font-extrabold text-[#0E1726]">
                               {format(item.product.price * item.quantity)}
                             </span>
                           </div>
@@ -202,14 +202,14 @@ export function CartDrawer() {
 
                     {/* Order Note Field */}
                     <div className="pt-4 space-y-1.5">
-                      <label className="text-[11.5px] font-bold uppercase tracking-wider text-[#6B6459] block">
+                      <label className="text-[11.5px] font-bold uppercase tracking-wider text-[#3A4557] block">
                         A note for us (optional)
                       </label>
                       <input
                         value={note}
                         onChange={(e) => setNote(e.target.value)}
                         placeholder="Delivery town, deadline, school name…"
-                        className="w-full h-11 px-4 bg-white border border-[#DED7C9] rounded-full text-sm text-[#12100E] outline-none focus:border-[#12100E]"
+                        className="w-full h-11 px-4 bg-white border border-[#D3DAE4] rounded-sm text-sm text-[#0E1726] outline-none focus:border-[#0E1726]"
                       />
                     </div>
                   </>
@@ -218,10 +218,10 @@ export function CartDrawer() {
 
               {/* Drawer Footer Actions */}
               {cart.length > 0 && (
-                <div className="px-5 sm:px-6 py-5 border-t border-[#DED7C9] bg-white space-y-2.5 shrink-0">
+                <div className="px-5 sm:px-6 py-5 border-t border-[#D3DAE4] bg-white space-y-2.5 shrink-0">
                   <div className="flex items-baseline justify-between text-xs">
-                    <span className="text-[#6B6459]">Guide Quote Value:</span>
-                    <span className="text-sm sm:text-base font-extrabold text-[#12100E]">
+                    <span className="text-[#3A4557]">Guide Quote Value:</span>
+                    <span className="text-sm sm:text-base font-extrabold text-[#0E1726]">
                       {format(estimatedTotal)}
                     </span>
                   </div>
@@ -229,9 +229,9 @@ export function CartDrawer() {
                   {/* Primary WhatsApp Order Button */}
                   <button
                     onClick={handleSendWhatsApp}
-                    className="w-full h-[52px] bg-[#C8482B] hover:bg-[#12100E] active:scale-[0.99] text-white text-sm font-bold rounded-full shadow-md transition-all flex items-center justify-center gap-2"
+                    className="w-full h-[52px] bg-[#F2C230] hover:bg-[#0E1726] active:scale-[0.99] text-[#0E1726] hover:text-white text-sm font-bold rounded-sm shadow-md transition-all flex items-center justify-center gap-2"
                   >
-                    <MessageCircle className="w-4 h-4 fill-white" />
+                    <MessageCircle className="w-4 h-4" />
                     <span>Send list on WhatsApp</span>
                   </button>
 
@@ -239,18 +239,18 @@ export function CartDrawer() {
                   <div className="grid grid-cols-2 gap-2">
                     <button
                       onClick={handleSendEmail}
-                      className="h-11 border border-[#12100E] text-[#12100E] hover:bg-[#12100E] hover:text-white text-xs font-bold rounded-full transition-colors flex items-center justify-center gap-1.5"
+                      className="h-11 border border-[#0E1726] text-[#0E1726] hover:bg-[#0E1726] hover:text-white text-xs font-bold rounded-sm transition-colors flex items-center justify-center gap-1.5"
                     >
                       <Mail className="w-3.5 h-3.5" />
                       <span>Send by email</span>
                     </button>
                     <button
                       onClick={handleCopyText}
-                      className="h-11 border border-[#DED7C9] text-[#12100E] hover:bg-[#EFE9DC] text-xs font-bold rounded-full transition-colors flex items-center justify-center gap-1.5"
+                      className="h-11 border border-[#D3DAE4] text-[#0E1726] hover:bg-[#E3E8EF] text-xs font-bold rounded-sm transition-colors flex items-center justify-center gap-1.5"
                     >
                       {copied ? (
                         <>
-                          <CheckCircle2 className="w-3.5 h-3.5 text-[#C8482B]" />
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#1E7A4E]" />
                           <span>Copied!</span>
                         </>
                       ) : (
@@ -262,7 +262,7 @@ export function CartDrawer() {
                     </button>
                   </div>
 
-                  <p className="text-[11px] text-center text-[#8E857A] pt-1">
+                  <p className="text-[11px] text-center text-[#55637A] pt-1">
                     Nothing sends until you tap — buttons open WhatsApp or your mail app with the message written.
                   </p>
                 </div>

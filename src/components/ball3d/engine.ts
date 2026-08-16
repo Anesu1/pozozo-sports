@@ -7,14 +7,26 @@ export interface BallInstance {
   ctx: CanvasRenderingContext2D;
   texture: THREE.Texture;
   yaw: number;
-  pitch: number;
   spin: number;
+  spinTarget: number;
   lift: number;
+  liftTarget: number;
   tx: number;
   ty: number;
   offX: number;
   offY: number;
   visible: boolean;
+}
+
+// Constant base tilt on the X axis, plus a fixed jaunty roll on Z — a ball at
+// rest still looks caught mid-motion rather than perfectly axis-aligned.
+const BASE_PITCH = 0.16;
+const BASE_ROLL = 0.13;
+
+interface TextureEntry {
+  texture: THREE.Texture;
+  ready: boolean;
+  waiters: Array<() => void>;
 }
 
 export interface Engine {
@@ -24,7 +36,7 @@ export interface Engine {
   mesh: THREE.Mesh;
   material: THREE.ShaderMaterial;
   registry: Set<BallInstance>;
-  textureCache: Map<string, THREE.Texture>;
+  textureCache: Map<string, TextureEntry>;
   ioTargets: WeakMap<Element, BallInstance>;
   io: IntersectionObserver | null;
   ok: boolean;
@@ -38,8 +50,6 @@ declare global {
   var __ball3dEngine: Engine | null | undefined;
 }
 
-// Orthographic projection of the object-space normal into the cut-out photo,
-// so the ball's own panels and print wrap the sphere and turn with it.
 const VERTEX_SHADER = `
   varying vec3 vN; varying vec3 vNv;
   void main() {
@@ -49,19 +59,44 @@ const VERTEX_SHADER = `
   }
 `;
 
+// Orthographic projection of the OBJECT-space normal into the cut-out photo,
+// so the ball's own panels and print physically wrap the sphere and turn with
+// it when the mesh really rotates — genuine XYZ rotation, not a lighting trick.
+// Lighting still reads the VIEW-space normal (vNv) so highlights stay correct
+// relative to the camera no matter how the mesh is oriented.
 const FRAGMENT_SHADER = `
-  uniform sampler2D map; uniform float uLift;
+  uniform sampler2D map; uniform float uLift; uniform vec3 uLight;
   varying vec3 vN; varying vec3 vNv;
+
+  // Cheap hash-based dither to break up banding in the shading gradient —
+  // shading a photographic texture with a smooth multiplier can otherwise
+  // produce visible steps on large, flat-color panels (e.g. a ball's leather).
+  float dither(vec2 co) {
+    return fract(sin(dot(co, vec2(12.9898, 78.233))) * 43758.5453);
+  }
+
   void main() {
     vec2 uv = vN.xy * 0.47 + 0.5;
     vec4 tex = texture2D(map, uv);
-    vec3 L = normalize(vec3(-0.42, 0.58, 0.86));
+    vec3 L = normalize(uLight);
     float d = max(dot(vNv, L), 0.0);
-    float lam = 0.5 + 0.62 * d;
     vec3 R = reflect(-L, vNv);
-    float spec = pow(max(R.z, 0.0), 26.0) * 0.30;
-    float rim = pow(1.0 - max(vNv.z, 0.0), 3.2) * 0.16;
-    vec3 col = tex.rgb * (lam + uLift) + spec + rim;
+    float edge = pow(1.0 - max(vNv.z, 0.0), 1.6);
+
+    // the photo already carries its own shading — modulate it, don't relight it,
+    // but with enough range to read as a rounded object, not a flat sticker
+    float lam = 0.76 + 0.38 * d;
+    // soft ambient occlusion toward the silhouette, so the ball reads as solid
+    float ao = mix(1.0, 0.85, edge);
+    // a tight specular hotspot plus a broader, softer sheen around it —
+    // one highlight alone looks plastic, two sizes read as a real curved surface
+    float specTight = pow(max(R.z, 0.0), 30.0) * 0.32;
+    float specSoft = pow(max(R.z, 0.0), 5.0) * 0.05;
+    // thin rim light at the grazing edge, as if a second light sits behind the ball
+    float rim = pow(edge, 2.1) * 0.16;
+
+    vec3 col = tex.rgb * ao * (lam + uLift) + specTight + specSoft + rim;
+    col += (dither(gl_FragCoord.xy) - 0.5) * 0.012;
     gl_FragColor = vec4(col, 1.0);
   }
 `;
@@ -81,7 +116,11 @@ function buildEngine(): Engine | null {
 
     const material = new THREE.ShaderMaterial({
       transparent: true,
-      uniforms: { map: { value: null }, uLift: { value: 0 } },
+      uniforms: {
+        map: { value: null },
+        uLift: { value: 0 },
+        uLight: { value: new THREE.Vector3(-0.42, 0.58, 0.86) },
+      },
       vertexShader: VERTEX_SHADER,
       fragmentShader: FRAGMENT_SHADER,
     });
@@ -147,16 +186,26 @@ export function isWebGLAvailable(): boolean {
   return getEngine() !== null;
 }
 
-export function getTexture(engine: Engine, src: string): THREE.Texture {
-  let texture = engine.textureCache.get(src);
-  if (!texture) {
-    texture = new THREE.TextureLoader().load(src);
+export function getTexture(engine: Engine, src: string, onReady?: () => void): THREE.Texture {
+  let entry = engine.textureCache.get(src);
+  if (!entry) {
+    const texture = new THREE.TextureLoader().load(src, () => {
+      entry!.ready = true;
+      const waiters = entry!.waiters;
+      entry!.waiters = [];
+      waiters.forEach((fn) => fn());
+    });
     texture.colorSpace = THREE.SRGBColorSpace;
     texture.minFilter = THREE.LinearFilter;
     texture.generateMipmaps = false;
-    engine.textureCache.set(src, texture);
+    entry = { texture, ready: false, waiters: [] };
+    engine.textureCache.set(src, entry);
   }
-  return texture;
+  if (onReady) {
+    if (entry.ready) onReady();
+    else entry.waiters.push(onReady);
+  }
+  return entry.texture;
 }
 
 export function createInstance(canvas: HTMLCanvasElement, texture: THREE.Texture): BallInstance {
@@ -167,15 +216,38 @@ export function createInstance(canvas: HTMLCanvasElement, texture: THREE.Texture
     ctx,
     texture,
     yaw: Math.random() * Math.PI * 2,
-    pitch: 0.16,
-    spin: 0.22,
+    spin: 0.16,
+    spinTarget: 0.16,
     lift: 0,
+    liftTarget: 0,
     tx: 0,
     ty: 0,
     offX: 0,
     offY: 0,
     visible: true,
   };
+}
+
+// Draws exactly one instance's current state into its own 2D canvas, using the
+// singleton renderer/scene/mesh/material shared by every instance. Safe to call
+// at any time (mount, texture-ready, next frame, or a shared tick) because it
+// fully reconfigures all shared state before rendering, and JS has no
+// preemption inside this synchronous body — the next call simply overwrites
+// it all again before its own render(). It never advances yaw/offX/offY, so
+// calling it standalone just (re)draws the instance's current state.
+export function paintInstance(engine: Engine, instance: BallInstance) {
+  if (!engine.ok) return;
+  // Real XYZ rotation: continuous spin around Y (yaw), pointer-driven tilt
+  // added on top of a fixed base pitch/roll so the ball never sits perfectly
+  // square-on. Since the fragment shader samples the OBJECT-space normal,
+  // this rotation is genuinely visible — the print turns with the ball.
+  engine.mesh.rotation.set(BASE_PITCH + instance.offX, instance.yaw + instance.offY, BASE_ROLL);
+  engine.mesh.scale.setScalar(1 + instance.lift);
+  engine.material.uniforms.map.value = instance.texture;
+  engine.material.uniforms.uLift.value = instance.lift;
+  engine.renderer.render(engine.scene, engine.camera);
+  instance.ctx.clearRect(0, 0, SIZE, SIZE);
+  instance.ctx.drawImage(engine.renderer.domElement, 0, 0);
 }
 
 function tick(engine: Engine, now: number) {
@@ -194,12 +266,11 @@ function tick(engine: Engine, now: number) {
     instance.yaw += step * instance.spin;
     instance.offY += (instance.tx - instance.offY) * 0.12;
     instance.offX += (instance.ty - instance.offX) * 0.12;
-    engine.mesh.rotation.set(instance.pitch + instance.offX, instance.yaw + instance.offY, 0.13);
-    engine.material.uniforms.map.value = instance.texture;
-    engine.material.uniforms.uLift.value = instance.lift;
-    engine.renderer.render(engine.scene, engine.camera);
-    instance.ctx.clearRect(0, 0, SIZE, SIZE);
-    instance.ctx.drawImage(engine.renderer.domElement, 0, 0);
+    // Ease spin/lift toward their targets instead of snapping — a ball
+    // speeding up or settling down reads as inertia, not a mode switch.
+    instance.spin += (instance.spinTarget - instance.spin) * 0.08;
+    instance.lift += (instance.liftTarget - instance.lift) * 0.1;
+    paintInstance(engine, instance);
   });
 }
 
@@ -232,13 +303,13 @@ export function unregisterInstance(engine: Engine, el: Element, instance: BallIn
 }
 
 export function onPointerEnter(instance: BallInstance) {
-  instance.spin = 0.85;
-  instance.lift = 0.1;
+  instance.spinTarget = 0.6;
+  instance.liftTarget = 0.08;
 }
 
 export function onPointerLeave(instance: BallInstance) {
-  instance.spin = 0.22;
-  instance.lift = 0;
+  instance.spinTarget = 0.16;
+  instance.liftTarget = 0;
   instance.tx = 0;
   instance.ty = 0;
 }

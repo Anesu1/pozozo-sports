@@ -13,8 +13,8 @@ const config: Config = {
         foreground: "var(--foreground)",
       },
       fontFamily: {
-        sans: ['var(--font-archivo)', 'system-ui', '-apple-system', 'sans-serif'],
-        display: ['var(--font-archivo-black)', 'sans-serif'],
+        sans: ['var(--font-karla)', 'system-ui', '-apple-system', 'sans-serif'],
+        display: ['var(--font-antonio)', 'sans-serif'],
       },
       animation: {
         'marquee': 'marquee 26s linear infinite',

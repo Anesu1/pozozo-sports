@@ -2,7 +2,7 @@ import React from 'react';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Return & Refund Policy – ECOM®',
+  title: 'Return & Refund Policy – Pozozo Sports',
   description: 'Understand return windows, item condition requirements, exchanges, and refunds.',
 };
 

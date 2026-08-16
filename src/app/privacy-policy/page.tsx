@@ -2,7 +2,7 @@ import React from 'react';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy – ECOM®',
+  title: 'Privacy Policy – Pozozo Sports',
   description: 'Learn how customer information is collected, protected, and used.',
 };
 
@@ -24,7 +24,7 @@ export default function PrivacyPolicyPage() {
           <section className="space-y-3">
             <h2 className="text-base font-bold text-[#1A1A1A]">1. Introduction</h2>
             <p>
-              This Privacy Policy explains how ECOM® collects, uses, and protects your information when you browse our catalog, make purchases, or contact our support team.
+              This Privacy Policy explains how Pozozo Sports collects, uses, and protects your information when you browse our catalogue, send an enquiry, or contact our support team.
             </p>
           </section>
 

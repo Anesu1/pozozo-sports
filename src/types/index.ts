@@ -56,7 +56,6 @@ export interface JournalPost {
   author: {
     name: string;
     role: string;
-    avatar: string;
   };
   content: Array<{
     heading?: string;

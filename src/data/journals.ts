@@ -13,7 +13,6 @@ export const JOURNALS: JournalPost[] = [
     author: {
       name: 'Coach Mwila',
       role: 'Equipment Specialist',
-      avatar: '/images/TJIVjPqjVNkyqIa35O8wibnE.png',
     },
     content: [
       {
@@ -48,7 +47,6 @@ export const JOURNALS: JournalPost[] = [
     author: {
       name: 'Referees Committee',
       role: 'Technical Operations',
-      avatar: '/images/TJIVjPqjVNkyqIa35O8wibnE.png',
     },
     content: [
       {
@@ -77,7 +75,6 @@ export const JOURNALS: JournalPost[] = [
     author: {
       name: 'Kelvin Silwamba',
       role: '3x3 Coordinator',
-      avatar: '/images/TJIVjPqjVNkyqIa35O8wibnE.png',
     },
     content: [
       {

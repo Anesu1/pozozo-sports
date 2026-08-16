@@ -11,6 +11,7 @@ import {
   onPointerEnter,
   onPointerLeave,
   onPointerMove,
+  paintInstance,
   registerInstance,
   unregisterInstance,
 } from './engine';
@@ -51,6 +52,15 @@ export function Ball3D({ src, alt, flat = false, className, sizes, priority }: B
     registerInstance(engine, root, instance);
     setMode('3d');
 
+    // Paint a real frame the moment the texture is ready (cache hit fires
+    // immediately, cache miss fires once the image decodes), plus once right
+    // now with whatever's available, plus once more next frame — avoids a
+    // blank-sphere flash before the shared ~40fps loop's next tick.
+    const paintNow = () => paintInstance(engine, instance);
+    getTexture(engine, src, paintNow);
+    paintNow();
+    const rafId = requestAnimationFrame(paintNow);
+
     const handleEnter = () => onPointerEnter(instance);
     const handleLeave = () => onPointerLeave(instance);
     const handleMove = (event: PointerEvent) => {
@@ -62,6 +72,7 @@ export function Ball3D({ src, alt, flat = false, className, sizes, priority }: B
     root.addEventListener('pointermove', handleMove, { passive: true });
 
     return () => {
+      cancelAnimationFrame(rafId);
       root.removeEventListener('pointerenter', handleEnter);
       root.removeEventListener('pointerleave', handleLeave);
       root.removeEventListener('pointermove', handleMove);
@@ -76,7 +87,7 @@ export function Ball3D({ src, alt, flat = false, className, sizes, priority }: B
     const engine = getEngine();
     const instance = instanceRef.current;
     if (!engine || !instance) return;
-    instance.texture = getTexture(engine, src);
+    instance.texture = getTexture(engine, src, () => paintInstance(engine, instance));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [src, flat]);
 

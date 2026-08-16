@@ -2,7 +2,7 @@ import React from 'react';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Cookie Policy – ECOM®',
+  title: 'Cookie Policy – Pozozo Sports',
   description: 'Learn how cookies support shopping bag, currency preferences, and store functionality.',
 };
 

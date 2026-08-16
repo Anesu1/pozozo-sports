@@ -19,11 +19,11 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: PageProps): Metadata {
   const category = CATEGORIES.find((c) => c.slug === params.slug);
   if (!category) {
-    return { title: 'Category – ECOM®' };
+    return { title: 'Category – Pozozo Sports' };
   }
   return {
-    title: `${category.name} – ECOM® Modern Apparel`,
-    description: `Shop our premium collection of ${category.name.toLowerCase()} pieces designed for everyday comfort and modern style.`,
+    title: `${category.name} – Pozozo Sports`,
+    description: `Genuine Molten and Mikasa ${category.name.toLowerCase()}, ordered directly by WhatsApp message.`,
   };
 }
 
@@ -38,7 +38,7 @@ export default function CategoryPage({ params }: PageProps) {
     <ShopCatalog
       initialCategory={category.slug}
       pageTitle={category.name}
-      pageDescription={`Shop our curated selection of ${category.name.toLowerCase()} styles built with premium organic fabrics.`}
+      pageDescription={`Genuine Molten and Mikasa ${category.name.toLowerCase()}. Ordered directly by WhatsApp message.`}
     />
   );
 }

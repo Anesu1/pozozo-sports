@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import { ShopCatalog } from '@/components/ShopCatalog';
 
 export const metadata: Metadata = {
-  title: 'Shop All Products – ECOM® Modern Apparel',
+  title: 'Shop All Balls – Pozozo Sports',
   description: 'Explore the full catalog of jackets, hoodies, denim jeans, tees, and knitwear.',
 };
 

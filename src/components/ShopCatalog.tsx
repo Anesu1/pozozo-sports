@@ -70,16 +70,16 @@ export function ShopCatalog({
   const activeCollectionMeta = COLLECTIONS.find((c) => c.slug === selectedCollection);
 
   return (
-    <div className="py-12 sm:py-16 bg-[#F5F1E8] min-h-screen">
+    <div className="py-12 sm:py-16 bg-[#EEF1F5] min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Page Header */}
-        <div className="mb-10 pb-8 border-b border-[#DED7C9]">
-          <div className="flex items-center gap-2 text-xs font-semibold text-[#8E857A] mb-2">
-            <Link href="/" className="hover:text-[#12100E]">
+        <div className="mb-10 pb-8 border-b border-[#D3DAE4]">
+          <div className="flex items-center gap-2 text-xs font-semibold text-[#55637A] mb-2">
+            <Link href="/" className="hover:text-[#0E1726]">
               Home
             </Link>
             <span>/</span>
-            <span className="text-[#12100E]">Catalogue</span>
+            <span className="text-[#0E1726]">Catalogue</span>
             {selectedCategory !== 'all' && (
               <>
                 <span>/</span>
@@ -90,12 +90,12 @@ export function ShopCatalog({
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#12100E] mb-3 font-display">
+              <h1 className="font-display uppercase text-3xl sm:text-4xl lg:text-5xl tracking-tight text-[#0E1726] mb-3">
                 {activeCollectionMeta && activeCollectionMeta.slug !== 'all'
                   ? activeCollectionMeta.name
                   : pageTitle}
               </h1>
-              <p className="text-sm sm:text-base text-[#5E574E] max-w-2xl">
+              <p className="text-sm sm:text-base text-[#3A4557] max-w-2xl">
                 {activeCollectionMeta && activeCollectionMeta.slug !== 'all'
                   ? activeCollectionMeta.description
                   : pageDescription}
@@ -104,13 +104,13 @@ export function ShopCatalog({
 
             {/* Quick Search */}
             <div className="relative w-full md:w-72">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#8E857A]" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#55637A]" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search ball model, spec..."
-                className="w-full h-11 pl-10 pr-4 bg-white border border-[#DED7C9] focus:border-[#12100E] rounded-full text-xs font-semibold text-[#12100E] placeholder-[#8E857A] outline-none transition-colors"
+                className="w-full h-11 pl-10 pr-4 bg-white border border-[#D3DAE4] focus:border-[#0E1726] rounded-sm text-xs font-semibold text-[#0E1726] placeholder-[#55637A] outline-none transition-colors"
               />
             </div>
           </div>
@@ -129,10 +129,10 @@ export function ShopCatalog({
                   else if (col.slug === 'mikasa') setSelectedBrand('Mikasa');
                   else setSelectedBrand('all');
                 }}
-                className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all whitespace-nowrap ${
+                className={`px-4 py-2 rounded-sm text-xs font-bold uppercase tracking-wider transition-all whitespace-nowrap ${
                   isActive
-                    ? 'bg-[#12100E] text-[#F5F1E8]'
-                    : 'bg-white hover:bg-[#EFE9DC] text-[#5E574E] border border-[#DED7C9]'
+                    ? 'bg-[#0E1726] text-[#EEF1F5]'
+                    : 'bg-white hover:bg-[#E3E8EF] text-[#3A4557] border border-[#D3DAE4]'
                 }`}
               >
                 {col.name}
@@ -142,7 +142,7 @@ export function ShopCatalog({
         </div>
 
         {/* Categories & Layout Bar */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 py-4 border-b border-[#DED7C9] mb-10">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 py-4 border-b border-[#D3DAE4] mb-10">
           {/* Category Tabs */}
           <div className="flex items-center gap-2 overflow-x-auto no-scrollbar">
             {CATEGORIES.map((cat) => {
@@ -156,10 +156,10 @@ export function ShopCatalog({
                 <button
                   key={cat.id}
                   onClick={() => setSelectedCategory(cat.slug)}
-                  className={`h-10 px-4 rounded-full text-xs font-semibold transition-all whitespace-nowrap ${
+                  className={`h-10 px-4 rounded-sm text-xs font-semibold transition-all whitespace-nowrap ${
                     isActive
-                      ? 'bg-[#12100E] text-[#F5F1E8]'
-                      : 'text-[#3E382F] border border-[#CFC5B4] hover:border-[#12100E]'
+                      ? 'bg-[#0E1726] text-[#EEF1F5]'
+                      : 'text-[#3A4557] border border-[#B9C3D2] hover:border-[#0E1726]'
                   }`}
                 >
                   {cat.name} ({count})
@@ -170,12 +170,12 @@ export function ShopCatalog({
 
           {/* Right Controls: Sort & Grid Layout */}
           <div className="flex items-center justify-between md:justify-end gap-3">
-            <div className="flex items-center gap-2 text-xs font-semibold text-[#12100E]">
-              <ArrowUpDown className="w-3.5 h-3.5 text-[#8E857A]" />
+            <div className="flex items-center gap-2 text-xs font-semibold text-[#0E1726]">
+              <ArrowUpDown className="w-3.5 h-3.5 text-[#55637A]" />
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as any)}
-                className="bg-white border border-[#DED7C9] rounded-full px-3.5 py-2 text-xs text-[#12100E] outline-none font-medium cursor-pointer"
+                className="bg-white border border-[#D3DAE4] rounded-sm px-3.5 py-2 text-xs text-[#0E1726] outline-none font-medium cursor-pointer"
               >
                 <option value="featured">Sort: Featured</option>
                 <option value="price-asc">Price: Low to High</option>
@@ -185,11 +185,11 @@ export function ShopCatalog({
             </div>
 
             {/* Desktop Grid Columns */}
-            <div className="hidden lg:flex items-center bg-white border border-[#DED7C9] rounded-full p-1">
+            <div className="hidden lg:flex items-center bg-white border border-[#D3DAE4] rounded-sm p-1">
               <button
                 onClick={() => setGridCols(2)}
-                className={`p-1.5 rounded-full ${
-                  gridCols === 2 ? 'bg-[#EFE9DC] text-[#12100E]' : 'text-[#9C9284]'
+                className={`p-1.5 rounded-sm ${
+                  gridCols === 2 ? 'bg-[#E3E8EF] text-[#0E1726]' : 'text-[#55637A]'
                 }`}
                 title="2 Columns"
               >
@@ -197,8 +197,8 @@ export function ShopCatalog({
               </button>
               <button
                 onClick={() => setGridCols(3)}
-                className={`p-1.5 rounded-full ${
-                  gridCols === 3 ? 'bg-[#EFE9DC] text-[#12100E]' : 'text-[#9C9284]'
+                className={`p-1.5 rounded-sm ${
+                  gridCols === 3 ? 'bg-[#E3E8EF] text-[#0E1726]' : 'text-[#55637A]'
                 }`}
                 title="3 Columns"
               >
@@ -206,8 +206,8 @@ export function ShopCatalog({
               </button>
               <button
                 onClick={() => setGridCols(4)}
-                className={`p-1.5 rounded-full ${
-                  gridCols === 4 ? 'bg-[#EFE9DC] text-[#12100E]' : 'text-[#9C9284]'
+                className={`p-1.5 rounded-sm ${
+                  gridCols === 4 ? 'bg-[#E3E8EF] text-[#0E1726]' : 'text-[#55637A]'
                 }`}
                 title="4 Columns"
               >
@@ -245,9 +245,9 @@ export function ShopCatalog({
             </AnimatePresence>
           </motion.div>
         ) : (
-          <div className="py-20 text-center bg-white rounded border border-[#E4DED1] p-12">
-            <h3 className="text-xl font-bold text-[#12100E] mb-2">No balls found</h3>
-            <p className="text-xs sm:text-sm text-[#8E857A] max-w-sm mx-auto mb-6">
+          <div className="py-20 text-center bg-white rounded-sm border border-[#D3DAE4] p-12">
+            <h3 className="text-xl font-bold text-[#0E1726] mb-2">No balls found</h3>
+            <p className="text-xs sm:text-sm text-[#55637A] max-w-sm mx-auto mb-6">
               There are no products matching this specific filter and search query.
             </p>
             <button
@@ -257,7 +257,7 @@ export function ShopCatalog({
                 setSelectedBrand('all');
                 setSearchQuery('');
               }}
-              className="px-6 py-3 bg-[#12100E] text-white text-xs font-bold uppercase tracking-wider rounded-full"
+              className="px-6 py-3 bg-[#0E1726] text-white text-xs font-bold uppercase tracking-wider rounded-sm"
             >
               Reset Filters
             </button>

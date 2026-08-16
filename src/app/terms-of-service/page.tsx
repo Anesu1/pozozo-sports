@@ -2,7 +2,7 @@ import React from 'react';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Terms of Service – ECOM®',
+  title: 'Terms of Service – Pozozo Sports',
   description: 'Review terms governing orders, accounts, promotions, and website use.',
 };
 

@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;600;700&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="module" src="ball3d.js"></script>
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;background:#EEF1F5;font-family:Karla,system-ui,sans-serif;color:#0E1726;-webkit-font-smoothing:antialiased}
+  a{color:#1E3A5F;text-decoration:none}
+  a:hover{color:#0E1726}
+  ::selection{background:#F2C230;color:#0E1726}
+  input,button,textarea{font-family:inherit}
+  ball-3d{min-width:0;min-height:0}
+  [data-rail]{scrollbar-width:none;-ms-overflow-style:none}
+  [data-rail]::-webkit-scrollbar{display:none}
+  @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @media (max-width:1040px){
+    [data-c="two"]{grid-template-columns:1fr !important;gap:40px !important}
+    [data-c="three"]{grid-template-columns:1fr !important;gap:32px !important}
+    [data-c="four"]{grid-template-columns:1fr 1fr !important}
+    [data-r="nav"]{display:none !important}
+    [data-r="arrows"]{display:none !important}
+  }
+  @media (max-width:760px){
+    [data-r="pad"]{padding-left:18px !important;padding-right:18px !important}
+    [data-c="four"]{grid-template-columns:1fr !important}
+    [data-h="tag"],[data-h="walong"]{display:none !important}
+    [data-h="washort"]{display:inline !important}
+    [data-hero]{padding:44px 24px !important}
+  }
+</style>
+</helmet>
+
+<div style="background:#EEF1F5;overflow-x:hidden">
+
+  <div style="background:#F2C230;color:#0E1726;overflow:hidden;height:38px;display:flex;align-items:center">
+    <div style="display:flex;gap:44px;white-space:nowrap;animation:slide 26s linear infinite;padding-right:44px;font-size:11.5px;font-weight:700;letter-spacing:.22em">
+      <span>ENQUIRE, DON'T CHECKOUT</span><span>·</span><span>GENUINE MOLTEN &amp; MIKASA</span><span>·</span><span>SAME-DAY QUOTES ON WHATSAPP</span><span>·</span><span>BULK PRICING FOR SCHOOLS</span><span>·</span>
+      <span>ENQUIRE, DON'T CHECKOUT</span><span>·</span><span>GENUINE MOLTEN &amp; MIKASA</span><span>·</span><span>SAME-DAY QUOTES ON WHATSAPP</span><span>·</span><span>BULK PRICING FOR SCHOOLS</span><span>·</span>
+    </div>
+  </div>
+
+  <header style="position:sticky;top:0;z-index:60;background:#EEF1F5;border-bottom:1px solid #D3DAE4">
+    <div data-r="pad" style="max-width:1400px;margin:0 auto;padding:0 32px;height:72px;display:flex;align-items:center;gap:32px">
+      <a href="#/" style="display:flex;align-items:center;gap:11px;color:#0E1726">
+        <svg viewBox="0 0 100 100" width="28" height="28" aria-hidden="true" style="display:block;flex-shrink:0"><path fill="#0E1726" fill-rule="evenodd" d="M50,4 A46,46 0 1,0 50,96 A46,46 0 1,0 50,4 M24,28 H76 L36,60 H76 V72 H24 L64,40 H24 Z"></path></svg>
+        <span style="font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:24px;letter-spacing:.005em;line-height:1">Pozozo</span>
+        <span data-h="tag" style="font-size:10px;font-weight:700;letter-spacing:.26em;color:#55637A;align-self:flex-end;padding-bottom:3px">SPORTS</span>
+      </a>
+      <nav data-r="nav" style="display:flex;gap:24px;font-size:12px;font-weight:700;letter-spacing:.14em;white-space:nowrap;flex-shrink:0">
+        <a href="#/catalogue" style="color:{{ navShop }}">SHOP</a>
+        <a href="#/sports" style="color:{{ navSports }}">SPORTS</a>
+        <a href="#/brands" style="color:{{ navBrands }}">BRANDS</a>
+        <a href="#/bulk" style="color:{{ navBulk }}">BULK</a>
+        <a href="#/guides" style="color:{{ navGuides }}">GUIDES</a>
+        <a href="#/about" style="color:{{ navAbout }}">ABOUT</a>
+      </nav>
+      <div style="flex:1"></div>
+      <button onClick="{{ openList }}" style="display:flex;align-items:center;gap:9px;background:none;border:1px solid #B9C3D2;color:#0E1726;height:40px;padding:0 14px;border-radius:2px;font-size:12.5px;font-weight:600;cursor:pointer;white-space:nowrap;flex-shrink:0" style-hover="border-color:#0E1726">
+        Enquiry
+        <span style="min-width:21px;height:21px;display:grid;place-items:center;background:{{ badgeBg }};color:{{ badgeFg }};border-radius:2px;font-size:11px;font-weight:700;padding:0 6px">{{ count }}</span>
+      </button>
+      <a href="{{ waGeneral }}" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:9px;background:#0E1726;color:#fff;height:40px;padding:0 20px;border-radius:2px;font-size:12.5px;font-weight:700;white-space:nowrap;flex-shrink:0" style-hover="background:#F2C230;color:#0E1726">
+        <span style="width:7px;height:7px;border-radius:2px;background:#7BE38B"></span>
+        <span data-h="walong">WhatsApp us</span>
+        <span data-h="washort" style="display:none">Chat</span>
+      </a>
+    </div>
+  </header>
+
+  <sc-if value="{{ crumb }}" hint-placeholder-val="{{ false }}">
+    <div data-r="pad" style="max-width:1400px;margin:0 auto;padding:18px 32px 0;font-size:12.5px;color:#55637A">
+      <a href="#/" style="color:#55637A">Home</a> <span style="padding:0 6px">/</span> <span style="color:#0E1726;font-weight:600">{{ crumb }}</span>
+    </div>
+  </sc-if>
+
+  <!-- ══ HOME ══ -->
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+    <div>
+      <section data-r="pad" style="max-width:1400px;margin:0 auto;padding:0 32px">
+        <div data-hero="1" data-c="two" style="background:#0E1726;color:#EEF1F5;border-radius:2px;margin-top:20px;padding:84px 64px;display:grid;grid-template-columns:1.02fr .98fr;gap:48px;align-items:center">
+          <div>
+            <div style="font-size:11px;font-weight:700;letter-spacing:.24em;color:#8494AC;margin-bottom:26px">MOLTEN &amp; MIKASA · ZAMBIA</div>
+            <h1 style="font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(48px,6vw,84px);line-height:.9;letter-spacing:-.005em;margin:0 0 24px">Balls built<br>for the<br><span style="color:#F2C230">whistle</span></h1>
+            <p style="font-size:18px;line-height:1.55;color:#A7B4C7;max-width:42ch;margin:0 0 34px;text-wrap:pretty">Match and training balls for schools, clubs and shops. Pick what you need, send the list on WhatsApp, and get price and stock back the same day.</p>
+            <div style="display:flex;gap:12px;flex-wrap:wrap">
+              <a href="#/catalogue" style="display:flex;align-items:center;height:54px;padding:0 30px;background:#F2C230;color:#0E1726;font-size:14.5px;font-weight:700;border-radius:2px" style-hover="background:#fff;color:#0E1726">Shop the range</a>
+              <a href="{{ waGeneral }}" target="_blank" rel="noopener" style="display:flex;align-items:center;height:54px;padding:0 30px;border:1px solid #2C3A50;color:#EEF1F5;font-size:14.5px;font-weight:600;border-radius:2px" style-hover="border-color:#EEF1F5;color:#fff">Ask a question</a>
+            </div>
+          </div>
+          <div style="height:400px;display:grid;place-items:center">
+            <ball-3d src="balls/bg5000-a.webp" alt="Molten BG5000 FIBA official game ball" style="width:100%;height:100%"></ball-3d>
+          </div>
+        </div>
+      </section>
+
+      <section data-r="pad" style="max-width:1400px;margin:0 auto;padding:78px 32px 0">
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:28px;margin-bottom:28px;flex-wrap:wrap">
+          <h2 style="font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(32px,3.6vw,48px);line-height:.98;letter-spacing:0;margin:0">New in stock</h2>
+          <div data-r="arrows" style="display:flex;gap:10px">
+            <button onClick="{{ railPrev }}" aria-label="Previous" style="width:46px;height:46px;border-radius:2px;border:1px solid #B9C3D2;background:none;font-size:17px;cursor:pointer;color:#0E1726" style-hover="background:#0E1726;color:#EEF1F5">←</button>
+            <button onClick="{{ railNext }}" aria-label="Next" style="width:46px;height:46px;border-radius:2px;border:1px solid #B9C3D2;background:none;font-size:17px;cursor:pointer;color:#0E1726" style-hover="background:#0E1726;color:#EEF1F5">→</button>
+          </div>
+        </div>
+        <div data-rail="1" ref="{{ railRef }}" style="display:flex;gap:18px;overflow-x:auto;scroll-behavior:smooth;padding-bottom:8px">
+          <sc-for list="{{ fresh }}" as="p" hint-placeholder-count="5">
+            <article style="flex:0 0 282px;background:#fff;border:1px solid #D3DAE4;border-radius:2px;overflow:hidden;display:flex;flex-direction:column" style-hover="border-color:#0E1726">
+              <div onClick="{{ p.view }}" style="height:250px;display:grid;place-items:center;padding:26px;position:relative;overflow:hidden;cursor:pointer">
+                <ball-3d src="{{ p.img }}" alt="{{ p.name }}" flat="{{ p.flat }}" style="width:100%;height:100%"></ball-3d>
+                <span style="position:absolute;top:14px;left:14px;background:#F2C230;color:#0E1726;font-size:9.5px;font-weight:700;letter-spacing:.16em;padding:5px 9px;border-radius:2px">NEW</span>
+              </div>
+              <div style="padding:16px 18px 18px;border-top:1px solid #D3DAE4;display:flex;flex-direction:column;gap:7px;flex:1">
+                <div style="font-size:10px;font-weight:700;letter-spacing:.18em;color:#55637A">{{ p.brand }}</div>
+                <h3 style="font-family:Antonio,sans-serif;font-weight:600;text-transform:uppercase;font-size:20px;line-height:1.05;margin:0">{{ p.name }}</h3>
+                <div style="font-size:12.5px;color:#55637A">{{ p.spec }}</div>
+                <div style="flex:1"></div>
+                <button onClick="{{ p.add }}" style="margin-top:12px;height:42px;border-radius:2px;border:1px solid {{ p.addBorder }};background:{{ p.addBg }};color:{{ p.addFg }};font-size:13px;font-weight:700;cursor:pointer">{{ p.addLabel }}</button>
+              </div>
+            </article>
+          </sc-for>
+        </div>
+      </section>
+
+      <div style="background:#0E1726;color:#EEF1F5;overflow:hidden;height:74px;display:flex;align-items:center;margin-top:78px">
+        <div style="display:flex;gap:52px;white-space:nowrap;animation:slide 34s linear infinite;padding-right:52px;font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:28px">
+          <span>MADE FOR MATCH DAY</span><span style="color:#F2C230">◆</span><span>PRICED FOR THE CLUB</span><span style="color:#F2C230">◆</span>
+          <span>MADE FOR MATCH DAY</span><span style="color:#F2C230">◆</span><span>PRICED FOR THE CLUB</span><span style="color:#F2C230">◆</span>
+          <span>MADE FOR MATCH DAY</span><span style="color:#F2C230">◆</span><span>PRICED FOR THE CLUB</span><span style="color:#F2C230">◆</span>
+        </div>
+      </div>
+
+      <section data-r="pad" style="max-width:1400px;margin:0 auto;padding:78px 32px 0">
+        <h2 style="font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(32px,3.6vw,48px);line-height:.98;margin:0 0 28px">Shop by sport</h2>
+        <div data-c="three" style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px">
+          <sc-for list="{{ sports }}" as="s" hint-placeholder-count="3">
+            <a href="{{ s.href }}" style="background:{{ s.bg }};border-radius:2px;padding:34px;min-height:400px;display:flex;flex-direction:column;position:relative;overflow:hidden;color:{{ s.fg }}">
+              <div style="font-size:11px;font-weight:700;letter-spacing:.22em;color:{{ s.dim }};margin-bottom:12px">{{ s.kicker }}</div>
+              <h3 style="font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:29px;line-height:1;margin:0 0 16px;color:{{ s.fg }};max-width:14ch">{{ s.title }}</h3>
+              <span style="align-self:flex-start;height:42px;padding:0 22px;border-radius:2px;border:1px solid {{ s.line }};display:flex;align-items:center;font-size:13px;font-weight:700">{{ s.cta }}</span>
+              <div style="flex:1;min-height:0;max-height:240px;margin-top:18px;display:grid;place-items:center">
+                <ball-3d src="{{ s.img }}" alt="{{ s.title }}" style="width:100%;height:100%"></ball-3d>
+              </div>
+            </a>
+          </sc-for>
+        </div>
+      </section>
+
+      <section data-r="pad" style="max-width:1400px;margin:0 auto;padding:78px 32px 0">
+        <div data-c="two" style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+          <a href="#/brand/molten" style="background:#fff;border:1px solid #D3DAE4;border-radius:2px;padding:36px;display:flex;flex-direction:column;gap:12px;color:#0E1726" style-hover="border-color:#0E1726;color:#0E1726">
+            <div style="font-size:11px;font-weight:700;letter-spacing:.22em;color:#55637A">AUTHORISED STOCK</div>
+            <h3 style="font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:34px;line-height:1;margin:0">Molten</h3>
+            <p style="font-size:15.5px;line-height:1.6;color:#3A4557;margin:0">FIBA's ball of choice. Game balls, 3x3, rubber trainers and school netballs.</p>
+            <span style="font-size:13px;font-weight:700;color:#1E3A5F;margin-top:4px">See the Molten range →</span>
+          </a>
+          <a href="#/brand/mikasa" style="background:#fff;border:1px solid #D3DAE4;border-radius:2px;padding:36px;display:flex;flex-direction:column;gap:12px;color:#0E1726" style-hover="border-color:#0E1726;color:#0E1726">
+            <div style="font-size:11px;font-weight:700;letter-spacing:.22em;color:#55637A">AUTHORISED STOCK</div>
+            <h3 style="font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:34px;line-height:1;margin:0">Mikasa</h3>
+            <p style="font-size:15.5px;line-height:1.6;color:#3A4557;margin:0">FIFA Quality Pro footballs, league netballs, street basketballs and gauges.</p>
+            <span style="font-size:13px;font-weight:700;color:#1E3A5F;margin-top:4px">See the Mikasa range →</span>
+          </a>
+        </div>
+      </section>
+
+      <section data-r="pad" style="max-width:1400px;margin:0 auto;padding:78px 32px 0">
+        <h2 style="font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(32px,3.6vw,48px);line-height:.98;margin:0 0 28px">Order with confidence</h2>
+        <div data-c="four" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#D3DAE4;border:1px solid #D3DAE4;border-radius:2px;overflow:hidden">
+          <div style="background:#EEF1F5;padding:32px 28px">
+            <h3 style="font-size:18px;font-weight:700;margin:0 0 10px">Genuine stock only</h3>
+            <p style="font-size:14.5px;line-height:1.6;color:#3A4557;margin:0">Molten and Mikasa through proper channels. No lookalikes, no grey imports.</p>
+          </div>
+          <div style="background:#EEF1F5;padding:32px 28px">
+            <h3 style="font-size:18px;font-weight:700;margin:0 0 10px">Nationwide delivery</h3>
+            <p style="font-size:14.5px;line-height:1.6;color:#3A4557;margin:0">To your school, club or shop, or collect from us. Cost confirmed in the quote.</p>
+          </div>
+          <div style="background:#EEF1F5;padding:32px 28px">
+            <h3 style="font-size:18px;font-weight:700;margin:0 0 10px">Pay how you like</h3>
+            <p style="font-size:14.5px;line-height:1.6;color:#3A4557;margin:0">On collection, on delivery, or by invoice for institutions. Nothing is charged here.</p>
+          </div>
+          <div style="background:#EEF1F5;padding:32px 28px">
+            <h3 style="font-size:18px;font-weight:700;margin:0 0 10px">A person, not a bot</h3>
+            <p style="font-size:14.5px;line-height:1.6;color:#3A4557;margin:0">Answered by someone who knows the stock. Mon–Sat, 08:00–18:00.</p>
+          </div>
+        </div>
+      </section>
+
+      <section data-r="pad" style="max-width:1400px;margin:0 auto;padding:78px 32px 0">
+        <div style="background:#0E1726;color:#EEF1F5;border-radius:2px;padding:56px 48px">
+          <div data-c="two" style="display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center">
+            <div>
+              <div style="font-size:11px;font-weight:700;letter-spacing:.22em;color:#8494AC;margin-bottom:14px">BULK &amp; SCHOOLS</div>
+              <h2 style="font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(30px,3.4vw,44px);line-height:.98;margin:0 0 18px">Kitting out a whole season?</h2>
+              <p style="font-size:16.5px;line-height:1.6;color:#A7B4C7;margin:0 0 26px;max-width:46ch">Ten balls or more gets bulk pricing, and we hold stock while your order is approved.</p>
+              <a href="#/bulk" style="display:inline-flex;align-items:center;height:52px;padding:0 28px;background:#F2C230;color:#0E1726;font-size:14.5px;font-weight:700;border-radius:2px" style-hover="background:#fff;color:#0E1726">Send a bulk enquiry</a>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:14px">
+              <div style="border-top:1px solid #2C3A50;padding-top:14px;font-size:15px;color:#A7B4C7">Quotations and invoices on request</div>
+              <div style="border-top:1px solid #2C3A50;padding-top:14px;font-size:15px;color:#A7B4C7">Mixed orders across sports are normal</div>
+              <div style="border-top:1px solid #2C3A50;padding-top:14px;font-size:15px;color:#A7B4C7">Pumps, needles and gauges quoted alongside</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section data-r="pad" style="max-width:1400px;margin:0 auto;padding:78px 32px 0">
+        <h2 style="font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(32px,3.6vw,48px);line-height:.98;margin:0 0 28px">What clubs say</h2>
+        <div data-c="three" style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px">
+          <div style="background:#fff;border:1px solid #D3DAE4;border-radius:2px;padding:30px">
+            <p style="font-size:17px;line-height:1.55;margin:0 0 22px;text-wrap:pretty">"Sent a list of twenty netballs on a Tuesday morning and had a quote before lunch. Delivered that week."</p>
+            <div style="font-size:13px;font-weight:700">Mwansa K.</div>
+            <div style="font-size:12.5px;color:#55637A;margin-top:3px">Sports mistress, secondary school</div>
+          </div>
+          <div style="background:#0E1726;color:#EEF1F5;border-radius:2px;padding:30px">
+            <p style="font-size:17px;line-height:1.55;margin:0 0 22px;text-wrap:pretty">"The BG5000s are the real thing. Our league finally has match balls that last a season."</p>
+            <div style="font-size:13px;font-weight:700">Chanda B.</div>
+            <div style="font-size:12.5px;color:#8494AC;margin-top:3px">Basketball club chairman</div>
+          </div>
+          <div style="background:#fff;border:1px solid #D3DAE4;border-radius:2px;padding:30px">
+            <p style="font-size:17px;line-height:1.55;margin:0 0 22px;text-wrap:pretty">"I order for my shop on WhatsApp and get an invoice the same day. No portal, no card, no fuss."</p>
+            <div style="font-size:13px;font-weight:700">Joseph M.</div>
+            <div style="font-size:12.5px;color:#55637A;margin-top:3px">Retailer</div>
+          </div>
+        </div>
+      </section>
+
+      <section data-r="pad" style="max-width:1400px;margin:0 auto;padding:78px 32px 0">
+        <h2 style="font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(32px,3.6vw,48px);line-height:.98;margin:0 0 28px">Before you buy</h2>
+        <div data-c="three" style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px">
+          <a href="#/size-guide" style="background:#fff;border:1px solid #D3DAE4;border-radius:2px;padding:32px;color:#0E1726;display:flex;flex-direction:column;gap:10px" style-hover="border-color:#0E1726;color:#0E1726">
+            <h3 style="font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:24px;margin:0">Ball size guide</h3>
+            <p style="font-size:15px;line-height:1.6;color:#3A4557;margin:0">Which size for which age group, in every sport we stock.</p>
+            <span style="font-size:13px;font-weight:700;color:#1E3A5F;margin-top:4px">Read the guide →</span>
+          </a>
+          <a href="#/care" style="background:#fff;border:1px solid #D3DAE4;border-radius:2px;padding:32px;color:#0E1726;display:flex;flex-direction:column;gap:10px" style-hover="border-color:#0E1726;color:#0E1726">
+            <h3 style="font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:24px;margin:0">Care &amp; inflation</h3>
+            <p style="font-size:15px;line-height:1.6;color:#3A4557;margin:0">Get a season more out of every ball. Pressure, needles, storage.</p>
+            <span style="font-size:13px;font-weight:700;color:#1E3A5F;margin-top:4px">Read the guide →</span>
+          </a>
+          <a href="#/faq" style="background:#fff;border:1px solid #D3DAE4;border-radius:2px;padding:32px;color:#0E1726;display:flex;flex-direction:column;gap:10px" style-hover="border-color:#0E1726;color:#0E1726">
+            <h3 style="font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:24px;margin:0">Questions</h3>
+            <p style="font-size:15px;line-height:1.6;color:#3A4557;margin:0">Delivery, payment terms, invoices, warranty and counterfeits.</p>
+            <span style="font-size:13px;font-weight:700;color:#1E3A5F;margin-top:4px">Read the FAQ →</span>
+          </a>
+        </div>
+      </section>
+    </div>
+  </sc-if>
+
+  <!-- ══ CATALOGUE + filtered sport/brand grids ══ -->
+  <sc-if value="{{ showsGrid }}" hint-placeholder-val="{{ false }}">
+    <section data-r="pad" style="max-width:1400px;margin:0 auto;padding:40px 32px 0">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:28px;flex-wrap:wrap;margin-bottom:20px">
+        <div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:.22em;color:#55637A;margin-bottom:12px">{{ gridKicker }}</div>
+          <h1 style="font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(34px,4.2vw,58px);line-height:.95;margin:0">{{ gridTitle }}</h1>
+        </div>
+        <p style="font-size:15px;line-height:1.6;color:#3A4557;max-width:38ch;margin:0">{{ gridBlurb }}</p>
+      </div>
+      <div style="display:flex;gap:9px;flex-wrap:wrap;align-items:center;padding-bottom:22px;border-bottom:1px solid #D3DAE4;margin-bottom:26px">
+        <sc-for list="{{ cats }}" as="c" hint-placeholder-count="5">
+          <button onClick="{{ c.pick }}" style="height:40px;padding:0 20px;border-radius:2px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid {{ c.border }};background:{{ c.bg }};color:{{ c.fg }}">{{ c.label }}</button>
+        </sc-for>
+        <div style="flex:1"></div>
+        <input value="{{ query }}" onInput="{{ onQuery }}" placeholder="Search BG5000, netball, size 5…" style="height:40px;width:260px;padding:0 16px;border:1px solid #D3DAE4;background:#fff;border-radius:2px;font-size:13px;outline:none">
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:18px">
+        <sc-for list="{{ shown }}" as="p" hint-placeholder-count="8">
+          <article style="background:#fff;border:1px solid #D3DAE4;border-radius:2px;display:flex;flex-direction:column;overflow:hidden" style-hover="border-color:#0E1726">
+            <div onClick="{{ p.view }}" style="height:244px;display:grid;place-items:center;padding:26px;position:relative;overflow:hidden;cursor:pointer">
+              <ball-3d src="{{ p.img }}" alt="{{ p.name }}" flat="{{ p.flat }}" style="width:100%;height:100%"></ball-3d>
+              <sc-if value="{{ p.tag }}" hint-placeholder-val="{{ false }}">
+                <span style="position:absolute;top:14px;left:14px;background:#0E1726;color:#EEF1F5;font-size:9.5px;font-weight:700;letter-spacing:.16em;padding:5px 9px;border-radius:2px">{{ p.tag }}</span>
+              </sc-if>
+            </div>
+            <div style="padding:16px 18px 18px;display:flex;flex-direction:column;gap:7px;flex:1;border-top:1px solid #D3DAE4">
+              <div style="font-size:10px;font-weight:700;letter-spacing:.18em;color:#55637A">{{ p.brand }}</div>
+              <h3 style="font-family:Antonio,sans-serif;font-weight:600;text-transform:uppercase;font-size:20px;line-height:1.05;margin:0">{{ p.name }}</h3>
+              <div style="font-size:12.5px;color:#55637A;line-height:1.45">{{ p.spec }}</div>
+              <div style="flex:1"></div>
+              <div style="display:flex;gap:8px;margin-top:12px">
+                <button onClick="{{ p.add }}" style="flex:1;height:42px;border-radius:2px;border:1px solid {{ p.addBorder }};background:{{ p.addBg }};color:{{ p.addFg }};font-size:13px;font-weight:700;cursor:pointer">{{ p.addLabel }}</button>
+                <button onClick="{{ p.view }}" title="Quick view" style="width:42px;height:42px;border:1px solid #D3DAE4;border-radius:2px;background:none;color:#0E1726;font-size:15px;cursor:pointer" style-hover="background:#0E1726;color:#fff">⤢</button>
+              </div>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+      <sc-if value="{{ hasMore }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;justify-content:center;padding:40px 0 0">
+          <button onClick="{{ showAll }}" style="height:52px;padding:0 34px;border:1px solid #0E1726;background:transparent;color:#0E1726;font-size:14px;font-weight:700;border-radius:2px;cursor:pointer" style-hover="background:#0E1726;color:#EEF1F5">{{ moreLabel }}</button>
+        </div>
+      </sc-if>
+      <sc-if value="{{ empty }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:64px 0;text-align:center;color:#3A4557;font-size:15.5px">Nothing matches that. <a href="{{ waGeneral }}" target="_blank" rel="noopener">Ask us on WhatsApp</a> — we source to order.</div>
+      </sc-if>
+    </section>
+  </sc-if>
+
+  <!-- ══ SPORTS INDEX ══ -->
+  <sc-if value="{{ isSports }}" hint-placeholder-val="{{ false }}">
+    <section data-r="pad" style="max-width:1400px;margin:0 auto;padding:40px 32px 0">
+      <h1 style="font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(34px,4.2vw,58px);line-height:.95;margin:0 0 14px">Shop by sport</h1>
+      <p style="font-size:17px;line-height:1.6;color:#3A4557;max-width:52ch;margin:0 0 32px">Each sport has its own sizes, approvals and surfaces. Start where you play.</p>
+      <div data-c="three" style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px">
+        <sc-for list="{{ sports }}" as="s" hint-placeholder-count="3">
+          <a href="{{ s.href }}" style="background:{{ s.bg }};border-radius:2px;padding:34px;min-height:420px;display:flex;flex-direction:column;color:{{ s.fg }};overflow:hidden">
+            <div style="font-size:11px;font-weight:700;letter-spacing:.22em;color:{{ s.dim }};margin-bottom:12px">{{ s.kicker }}</div>
+            <h2 style="font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:29px;line-height:1;margin:0 0 12px;color:{{ s.fg }};max-width:14ch">{{ s.title }}</h2>
+            <p style="font-size:15px;line-height:1.6;color:{{ s.dim }};margin:0 0 18px">{{ s.blurb }}</p>
+            <span style="align-self:flex-start;height:42px;padding:0 22px;border-radius:2px;border:1px solid {{ s.line }};display:flex;align-items:center;font-size:13px;font-weight:700">{{ s.cta }}</span>
+            <div style="flex:1;min-height:0;max-height:220px;margin-top:18px;display:grid;place-items:center">
+              <ball-3d src="{{ s.img }}" alt="{{ s.title }}" style="width:100%;height:100%"></ball-3d>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- ══ BRANDS INDEX ══ -->
+  <sc-if value="{{ isBrands }}" hint-placeholder-val="{{ false }}">
+    <section data-r="pad" style="max-width:1400px;margin:0 auto;padding:40px 32px 0">
+      <h1 style="font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(34px,4.2vw,58px);line-height:.95;margin:0 0 14px">Two brands, no others</h1>
+      <p style="font-size:17px;line-height:1.6;color:#3A4557;max-width:56ch;margin:0 0 32px">We stock Molten and Mikasa because between them they cover every court and pitch we supply, and because both are easy to authenticate. If a ball claims to be either and the price looks too good, it isn't one.</p>
+      <div data-c="two" style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+        <a href="#/brand/molten" style="background:#0E1726;color:#EEF1F5;border-radius:2px;padding:40px;display:flex;flex-direction:column;min-height:360px">
+          <h2 style="font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:44px;line-height:1;margin:0 0 14px;color:#F2C230">Molten</h2>
+          <p style="font-size:16px;line-height:1.6;color:#A7B4C7;margin:0 0 20px;max-width:38ch">FIBA's ball of choice, and the 3x3 game ball. Game leather at the top, rubber trainers underneath, netballs alongside.</p>
+          <span style="font-size:13.5px;font-weight:700;color:#F2C230">See the Molten range →</span>
+          <div style="flex:1;min-height:0;max-height:200px;margin-top:20px;display:grid;place-items:center">
+            <ball-3d src="balls/bg5000-a.webp" alt="Molten BG5000" style="width:100%;height:100%"></ball-3d>
+          </div>
+        </a>
+        <a href="#/brand/mikasa" style="background:#1E3A5F;color:#fff;border-radius:2px;padding:40px;display:flex;flex-direction:column;min-height:360px">
+          <h2 style="font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:44px;line-height:1;margin:0 0 14px;color:#F2C230">Mikasa</h2>
+          <p style="font-size:16px;line-height:1.6;color:#C3D0E0;margin:0 0 20px;max-width:38ch">FIFA Quality Pro footballs, the netballs most leagues play with, street basketballs and the gauge that keeps them all honest.</p>
+          <span style="font-size:13.5px;font-weight:700;color:#F2C230">See the Mikasa range →</span>
+          <div style="flex:1;min-height:0;max-height:200px;margin-top:20px;display:grid;place-items:center">
+            <ball-3d src="balls/ft550b.webp" alt="Mikasa FT550B" style="width:100%;height:100%"></ball-3d>
+          </div>
+        </a>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- ══ GUIDES INDEX ══ -->
+  <sc-if value="{{ isGuides }}" hint-placeholder-val="{{ false }}">
+    <section data-r="pad" style="max-width:1400px;margin:0 auto;padding:40px 32px 0">
+      <h1 style="font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(34px,4.2vw,58px);line-height:.95;margin:0 0 14px">Guides</h1>
+      <p style="font-size:17px;line-height:1.6;color:#3A4557;max-width:52ch;margin:0 0 32px">Everything worth knowing before you send a list, and after the balls arrive.</p>
+      <div data-c="four" style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px">
+        <a href="#/size-guide" style="background:#fff;border:1px solid #D3DAE4;border-radius:2px;padding:30px;color:#0E1726;display:flex;flex-direction:column;gap:10px;min-height:210px" style-hover="border-color:#0E1726;color:#0E1726">
+          <h2 style="font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:23px;margin:0">Ball sizes</h2>
+          <p style="font-size:14.5px;line-height:1.6;color:#3A4557;margin:0">Which size suits which age group, sport by sport.</p>
+          <div style="flex:1"></div>
+          <span style="font-size:13px;font-weight:700;color:#1E3A5F">Read →</span>
+        </a>
+        <a href="#/care" style="background:#fff;border:1px solid #D3DAE4;border-radius:2px;padding:30px;color:#0E1726;display:flex;flex-direction:column;gap:10px;min-height:210px" style-hover="border-color:#0E1726;color:#0E1726">
+          <h2 style="font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:23px;margin:0">Care &amp; inflation</h2>
+          <p style="font-size:14.5px;line-height:1.6;color:#3A4557;margin:0">Pressure, needles, storage — a season more from every ball.</p>
+          <div style="flex:1"></div>
+          <span style="font-size:13px;font-weight:700;color:#1E3A5F">Read →</span>
+        </a>
+        <a href="#/faq" style="background:#fff;border:1px solid #D3DAE4;border-radius:2px;padding:30px;color:#0E1726;display:flex;flex-direction:column;gap:10px;min-height:210px" style-hover="border-color:#0E1726;color:#0E1726">
+          <h2 style="font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:23px;margin:0">FAQ</h2>
+          <p style="font-size:14.5px;line-height:1.6;color:#3A4557;margin:0">Delivery, payment, invoices, warranty, counterfeits.</p>
+          <div style="flex:1"></div>
+          <span style="font-size:13px;font-weight:700;color:#1E3A5F">Read →</span>
+        </a>
+        <a href="#/price-list" style="background:#0E1726;border-radius:2px;padding:30px;color:#EEF1F5;display:flex;flex-direction:column;gap:10px;min-height:210px">
+          <h2 style="font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:23px;margin:0;color:#F2C230">Price list</h2>
+          <p style="font-size:14.5px;line-height:1.6;color:#A7B4C7;margin:0">The full stock list for procurement, ready to print or attach.</p>
+          <div style="flex:1"></div>
+          <span style="font-size:13px;font-weight:700;color:#F2C230">Open →</span>
+        </a>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- ══ SIZE GUIDE ══ -->
+  <sc-if value="{{ isSize }}" hint-placeholder-val="{{ false }}">
+    <section data-r="pad" style="max-width:1000px;margin:0 auto;padding:40px 32px 0">
+      <h1 style="font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(34px,4.2vw,58px);line-height:.95;margin:0 0 14px">What size ball?</h1>
+      <p style="font-size:17.5px;line-height:1.6;color:#3A4557;margin:0 0 40px;max-width:56ch;text-wrap:pretty">The short answer for most school and club buyers. If your league publishes its own rule, follow that — and if you tell us the age group when you enquire, we'll check it for you.</p>
+
+      <sc-for list="{{ sizeTables }}" as="t" hint-placeholder-count="3">
+        <div style="margin-bottom:44px">
+          <h2 style="font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:28px;margin:0 0 6px">{{ t.sport }}</h2>
+          <p style="font-size:15px;line-height:1.6;color:#3A4557;margin:0 0 18px;max-width:60ch">{{ t.note }}</p>
+          <div style="border:1px solid #D3DAE4;border-radius:2px;overflow:hidden;background:#fff">
+            <div style="display:grid;grid-template-columns:1fr 1.1fr 1.4fr;background:#0E1726;color:#EEF1F5;font-size:11px;font-weight:700;letter-spacing:.14em">
+              <div style="padding:13px 18px">SIZE</div><div style="padding:13px 18px">AGE GROUP</div><div style="padding:13px 18px">TYPICAL USE</div>
+            </div>
+            <sc-for list="{{ t.rows }}" as="r" hint-placeholder-count="3">
+              <div style="display:grid;grid-template-columns:1fr 1.1fr 1.4fr;border-top:1px solid #D3DAE4;font-size:15px">
+                <div style="padding:14px 18px;font-weight:700">{{ r.size }}</div>
+                <div style="padding:14px 18px;color:#3A4557">{{ r.age }}</div>
+                <div style="padding:14px 18px;color:#3A4557">{{ r.use }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+
+      <div style="background:#F2C230;color:#0E1726;border-radius:2px;padding:34px;display:flex;gap:24px;align-items:center;flex-wrap:wrap">
+        <div style="flex:1;min-width:260px">
+          <h3 style="font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:26px;margin:0 0 8px">Still not sure?</h3>
+          <p style="font-size:15.5px;line-height:1.55;margin:0;color:#2A3342">Tell us the age group and the league. We'll tell you the size and what it costs.</p>
+        </div>
+        <a href="{{ waGeneral }}" target="_blank" rel="noopener" style="height:50px;padding:0 26px;background:#0E1726;color:#fff;display:flex;align-items:center;font-size:14px;font-weight:700;border-radius:2px" style-hover="background:#fff;color:#0E1726">Ask on WhatsApp</a>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- ══ CARE ══ -->
+  <sc-if value="{{ isCare }}" hint-placeholder-val="{{ false }}">
+    <section data-r="pad" style="max-width:1000px;margin:0 auto;padding:40px 32px 0">
+      <h1 style="font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(34px,4.2vw,58px);line-height:.95;margin:0 0 14px">Care &amp; inflation</h1>
+      <p style="font-size:17.5px;line-height:1.6;color:#3A4557;margin:0 0 40px;max-width:56ch;text-wrap:pretty">Most balls that "wear out" in a term were simply run at the wrong pressure. Five habits that get you a season more.</p>
+      <div style="display:flex;flex-direction:column;gap:18px;margin-bottom:44px">
+        <sc-for list="{{ careTips }}" as="c" hint-placeholder-count="5">
+          <div style="background:#fff;border:1px solid #D3DAE4;border-radius:2px;padding:28px 30px;display:flex;gap:22px;align-items:flex-start">
+            <span style="font-family:Antonio,sans-serif;font-weight:700;font-size:22px;color:#1E3A5F;min-width:34px">{{ c.n }}</span>
+            <div>
+              <h2 style="font-size:19px;font-weight:700;margin:0 0 8px">{{ c.title }}</h2>
+              <p style="font-size:15.5px;line-height:1.6;color:#3A4557;margin:0">{{ c.body }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="background:#0E1726;color:#EEF1F5;border-radius:2px;padding:40px" data-c="two">
+        <div data-c="two" style="display:grid;grid-template-columns:1.2fr .8fr;gap:36px;align-items:center">
+          <div>
+            <div style="font-size:11px;font-weight:700;letter-spacing:.22em;color:#8494AC;margin-bottom:12px">THE ONE TOOL WORTH BUYING</div>
+            <h2 style="font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:34px;line-height:1;margin:0 0 14px">Mikasa AG500 gauge</h2>
+            <p style="font-size:16px;line-height:1.6;color:#A7B4C7;margin:0 0 22px;max-width:40ch">One digital gauge in the kit bag keeps a whole set of balls at match pressure. Cheaper than replacing two balls a season.</p>
+            <button onClick="{{ addGauge }}" style="height:50px;padding:0 26px;background:#F2C230;color:#0E1726;font-size:14px;font-weight:700;border-radius:2px;border:0;cursor:pointer">Add the gauge to my enquiry</button>
+          </div>
+          <div style="height:180px;display:grid;place-items:center">
+            <ball-3d flat="" src="balls/ag500.webp" alt="Mikasa AG500 digital pressure gauge" style="width:100%;height:100%"></ball-3d>
+          </div>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- ══ FAQ ══ -->
+  <sc-if value="{{ isFaq }}" hint-placeholder-val="{{ false }}">
+    <section data-r="pad" style="max-width:920px;margin:0 auto;padding:40px 32px 0">
+      <h1 style="font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(34px,4.2vw,58px);line-height:.95;margin:0 0 14px">Questions</h1>
+      <p style="font-size:17.5px;line-height:1.6;color:#3A4557;margin:0 0 36px;max-width:52ch">If yours isn't here, message us — we answer the awkward ones too.</p>
+      <div style="border:1px solid #D3DAE4;border-radius:2px;background:#fff;overflow:hidden">
+        <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="6">
+          <div style="border-bottom:1px solid #D3DAE4">
+            <button onClick="{{ f.toggle }}" style="width:100%;text-align:left;background:none;border:0;padding:22px 26px;display:flex;gap:20px;align-items:center;cursor:pointer">
+              <span style="flex:1;font-size:17px;font-weight:700;color:#0E1726">{{ f.q }}</span>
+              <span style="font-size:20px;color:#1E3A5F;font-weight:700">{{ f.sign }}</span>
+            </button>
+            <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
+              <div style="padding:0 26px 24px;font-size:16px;line-height:1.65;color:#3A4557;max-width:62ch">{{ f.a }}</div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- ══ PRICE LIST ══ -->
+  <sc-if value="{{ isPrices }}" hint-placeholder-val="{{ false }}">
+    <section data-r="pad" style="max-width:1100px;margin:0 auto;padding:40px 32px 0">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:12px">
+        <h1 style="font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(34px,4.2vw,58px);line-height:.95;margin:0">Stock list</h1>
+        <a href="{{ listAllWa }}" target="_blank" rel="noopener" style="height:48px;padding:0 24px;background:#0E1726;color:#fff;display:flex;align-items:center;font-size:14px;font-weight:700;border-radius:2px" style-hover="background:#F2C230;color:#0E1726">Request a priced copy</a>
+      </div>
+      <p style="font-size:16.5px;line-height:1.6;color:#3A4557;margin:0 0 32px;max-width:60ch">Everything we carry, by sport. Prices move with the exchange rate and with quantity, so we quote rather than publish — ask for a priced copy and we'll send one you can take to procurement.</p>
+      <div style="border:1px solid #D3DAE4;border-radius:2px;overflow:hidden;background:#fff">
+        <div style="display:grid;grid-template-columns:1fr 2fr 1.6fr;background:#0E1726;color:#EEF1F5;font-size:11px;font-weight:700;letter-spacing:.14em">
+          <div style="padding:13px 18px">BRAND</div><div style="padding:13px 18px">MODEL</div><div style="padding:13px 18px">SPECIFICATION</div>
+        </div>
+        <sc-for list="{{ allRows }}" as="r" hint-placeholder-count="10">
+          <div style="display:grid;grid-template-columns:1fr 2fr 1.6fr;border-top:1px solid #D3DAE4;font-size:14.5px">
+            <div style="padding:12px 18px;color:#55637A">{{ r.brand }}</div>
+            <div style="padding:12px 18px;font-weight:600">{{ r.name }}</div>
+            <div style="padding:12px 18px;color:#3A4557">{{ r.spec }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- ══ BULK ══ -->
+  <sc-if value="{{ isBulk }}" hint-placeholder-val="{{ false }}">
+    <section data-r="pad" style="max-width:1400px;margin:0 auto;padding:40px 32px 0">
+      <div data-c="two" style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start">
+        <div>
+          <h1 style="font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(34px,4.2vw,56px);line-height:.95;margin:0 0 18px">Bulk &amp; schools</h1>
+          <p style="font-size:17.5px;line-height:1.6;color:#3A4557;margin:0 0 30px;max-width:46ch;text-wrap:pretty">Tell us the sport, the sizes and how many. We'll come back with bulk pricing and hold stock while your order is approved.</p>
+          <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:34px">
+            <sc-for list="{{ bands }}" as="b" hint-placeholder-count="3">
+              <div style="background:#fff;border:1px solid #D3DAE4;border-radius:2px;padding:20px 24px;display:flex;gap:20px;align-items:center">
+                <span style="font-family:Antonio,sans-serif;font-weight:700;font-size:26px;color:#1E3A5F;min-width:78px">{{ b.qty }}</span>
+                <span style="font-size:15.5px;color:#3A4557;line-height:1.5">{{ b.what }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <h2 style="font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:26px;margin:0 0 14px">How it works for institutions</h2>
+          <ol style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:10px;font-size:15.5px;line-height:1.6;color:#3A4557">
+            <li>Send the list. A quotation comes back with unit and total pricing, valid for 14 days.</li>
+            <li>Take it for approval. We hold the stock against your quote number.</li>
+            <li>On approval we invoice, deliver, and include the delivery note for your file.</li>
+          </ol>
+        </div>
+        <div style="background:#fff;border:1px solid #D3DAE4;border-radius:2px;padding:32px">
+          <h2 style="font-size:19px;font-weight:700;margin:0 0 20px">Send a bulk enquiry</h2>
+          <div style="display:flex;flex-direction:column;gap:15px">
+            <label style="display:flex;flex-direction:column;gap:7px;font-size:11.5px;font-weight:700;color:#55637A;letter-spacing:.1em">
+              NAME / ORGANISATION
+              <input value="{{ bulk.who }}" onInput="{{ onBulkWho }}" placeholder="e.g. Kabulonga Girls Secondary" style="height:46px;padding:0 15px;border:1px solid #D3DAE4;border-radius:2px;font-size:14.5px;outline:none;font-weight:400">
+            </label>
+            <label style="display:flex;flex-direction:column;gap:7px;font-size:11.5px;font-weight:700;color:#55637A;letter-spacing:.1em">
+              WHAT DO YOU NEED?
+              <textarea value="{{ bulk.what }}" onInput="{{ onBulkWhat }}" rows="4" placeholder="e.g. 24 size 5 netballs, 10 size 7 basketballs, 2 pumps" style="padding:13px 15px;border:1px solid #D3DAE4;border-radius:2px;font-size:14.5px;outline:none;resize:vertical;font-weight:400;line-height:1.5"></textarea>
+            </label>
+            <label style="display:flex;flex-direction:column;gap:7px;font-size:11.5px;font-weight:700;color:#55637A;letter-spacing:.1em">
+              DELIVERING TO
+              <input value="{{ bulk.where }}" onInput="{{ onBulkWhere }}" placeholder="Town or city" style="height:46px;padding:0 15px;border:1px solid #D3DAE4;border-radius:2px;font-size:14.5px;outline:none;font-weight:400">
+            </label>
+            <div style="display:flex;gap:10px;margin-top:4px">
+              <a href="{{ bulkWa }}" target="_blank" rel="noopener" style="flex:1;height:50px;display:grid;place-items:center;background:#F2C230;color:#0E1726;font-size:14px;font-weight:700;border-radius:2px" style-hover="background:#0E1726;color:#fff">Send on WhatsApp</a>
+              <a href="{{ bulkMail }}" style="flex:1;height:50px;display:grid;place-items:center;border:1px solid #0E1726;color:#0E1726;font-size:14px;font-weight:700;border-radius:2px" style-hover="background:#0E1726;color:#fff">Send by email</a>
+            </div>
+            <p style="font-size:12px;color:#55637A;margin:0;line-height:1.5">Nothing sends until you tap — the buttons open WhatsApp or your mail app with the message written.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- ══ ABOUT ══ -->
+  <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
+    <section data-r="pad" style="max-width:1400px;margin:0 auto;padding:40px 32px 0">
+      <div data-c="two" style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-bottom:70px">
+        <div>
+          <h1 style="font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(34px,4.2vw,56px);line-height:.95;margin:0 0 20px">We only sell balls we'd play with</h1>
+          <p style="font-size:17px;line-height:1.65;color:#3A4557;margin:0 0 16px;text-wrap:pretty">Pozozo Sports supplies schools, clubs, academies and retailers with genuine Molten and Mikasa match and training balls — from rubber trainers that survive a hard court to FIBA and FIFA approved game balls.</p>
+          <p style="font-size:17px;line-height:1.65;color:#3A4557;margin:0 0 26px;text-wrap:pretty">We keep the buying simple on purpose. Send a message, get a straight answer on price and stock, and deal with a person the whole way through.</p>
+          <a href="#/who-we-supply" style="display:inline-flex;align-items:center;height:50px;padding:0 26px;border:1px solid #0E1726;color:#0E1726;font-size:14px;font-weight:700;border-radius:2px" style-hover="background:#0E1726;color:#fff">See who we supply</a>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div style="background:#fff;border:1px solid #D3DAE4;border-radius:2px;height:240px;display:grid;place-items:center;padding:28px">
+            <ball-3d src="balls/b33t5000-b.webp" alt="Molten 3x3 official ball" style="width:100%;height:100%"></ball-3d>
+          </div>
+          <div style="background:#fff;border:1px solid #D3DAE4;border-radius:2px;height:240px;margin-top:32px;display:grid;place-items:center;padding:28px">
+            <ball-3d src="balls/fx5.webp" alt="Mikasa FX5 netball" style="width:100%;height:100%"></ball-3d>
+          </div>
+        </div>
+      </div>
+      <div data-c="three" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#D3DAE4;border:1px solid #D3DAE4;border-radius:2px;overflow:hidden">
+        <div style="background:#EEF1F5;padding:34px 30px">
+          <h2 style="font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:24px;margin:0 0 10px">Real stock, not catalogues</h2>
+          <p style="font-size:15px;line-height:1.6;color:#3A4557;margin:0">If we list it, we can get it. If it's in the country, we say so — and if it isn't, we tell you how long.</p>
+        </div>
+        <div style="background:#EEF1F5;padding:34px 30px">
+          <h2 style="font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:24px;margin:0 0 10px">Priced for the season</h2>
+          <p style="font-size:15px;line-height:1.6;color:#3A4557;margin:0">Schools buy once a year on a fixed budget. Our bulk pricing is built around that, not around single sales.</p>
+        </div>
+        <div style="background:#EEF1F5;padding:34px 30px">
+          <h2 style="font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:24px;margin:0 0 10px">Answerable</h2>
+          <p style="font-size:15px;line-height:1.6;color:#3A4557;margin:0">One number, one inbox, one person who remembers your last order. That's the whole customer service policy.</p>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- ══ WHO WE SUPPLY ══ -->
+  <sc-if value="{{ isSupply }}" hint-placeholder-val="{{ false }}">
+    <section data-r="pad" style="max-width:1100px;margin:0 auto;padding:40px 32px 0">
+      <h1 style="font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(34px,4.2vw,58px);line-height:.95;margin:0 0 14px">Who we supply</h1>
+      <p style="font-size:17.5px;line-height:1.6;color:#3A4557;margin:0 0 36px;max-width:56ch">Schools, clubs, academies, leagues and the shops that resell to them. Here's the shape of it.</p>
+      <div data-c="four" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#D3DAE4;border:1px solid #D3DAE4;border-radius:2px;overflow:hidden;margin-bottom:44px">
+        <sc-for list="{{ supplyStats }}" as="s" hint-placeholder-count="4">
+          <div style="background:#EEF1F5;padding:32px 26px">
+            <div style="font-family:Antonio,sans-serif;font-weight:700;font-size:38px;line-height:1;color:#0E1726">{{ s.n }}</div>
+            <div style="font-size:14.5px;color:#3A4557;margin-top:8px;line-height:1.5">{{ s.what }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="background:#0E1726;color:#EEF1F5;border-radius:2px;padding:44px;margin-bottom:44px">
+        <p style="font-size:22px;line-height:1.5;margin:0 0 20px;max-width:44ch;text-wrap:pretty">"They kitted out our whole netball programme in one order, and the second season they remembered exactly what we'd bought."</p>
+        <div style="font-size:14px;font-weight:700">Head of sport, secondary school</div>
+        <div style="font-size:13px;color:#8494AC;margin-top:4px">Lusaka</div>
+      </div>
+      <div style="background:#fff;border:1px dashed #B9C3D2;border-radius:2px;padding:34px;display:flex;gap:24px;align-items:center;flex-wrap:wrap">
+        <div style="flex:1;min-width:280px">
+          <h2 style="font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:24px;margin:0 0 8px">Your name could sit here</h2>
+          <p style="font-size:15.5px;line-height:1.55;color:#3A4557;margin:0">We list customers only with written permission. If you'd like your school or club named, tell us.</p>
+        </div>
+        <a href="{{ waGeneral }}" target="_blank" rel="noopener" style="height:50px;padding:0 26px;background:#0E1726;color:#fff;display:flex;align-items:center;font-size:14px;font-weight:700;border-radius:2px" style-hover="background:#F2C230;color:#0E1726">Get in touch</a>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- ══ CONTACT ══ -->
+  <sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
+    <section data-r="pad" style="max-width:1100px;margin:0 auto;padding:40px 32px 0">
+      <h1 style="font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(34px,4.2vw,58px);line-height:.95;margin:0 0 14px">Talk to us</h1>
+      <p style="font-size:17.5px;line-height:1.6;color:#3A4557;margin:0 0 36px;max-width:52ch">WhatsApp is fastest. Email if you need it in writing for procurement.</p>
+      <div data-c="two" style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px">
+        <a href="{{ waGeneral }}" target="_blank" rel="noopener" style="background:#0E1726;color:#EEF1F5;border-radius:2px;padding:36px;display:flex;flex-direction:column;gap:10px;min-height:180px">
+          <span style="font-size:11px;font-weight:700;letter-spacing:.22em;color:#8494AC">WHATSAPP</span>
+          <span style="font-family:Antonio,sans-serif;font-weight:700;font-size:34px;line-height:1;color:#F2C230">{{ phoneDisplay }}</span>
+          <span style="font-size:15px;color:#A7B4C7;margin-top:auto">Usually answered within the hour, Mon–Sat</span>
+        </a>
+        <a href="{{ mailSimple }}" style="background:#fff;border:1px solid #D3DAE4;border-radius:2px;padding:36px;display:flex;flex-direction:column;gap:10px;min-height:180px;color:#0E1726" style-hover="border-color:#0E1726;color:#0E1726">
+          <span style="font-size:11px;font-weight:700;letter-spacing:.22em;color:#55637A">EMAIL</span>
+          <span style="font-family:Antonio,sans-serif;font-weight:700;font-size:28px;line-height:1.1;word-break:break-all">{{ email }}</span>
+          <span style="font-size:15px;color:#3A4557;margin-top:auto">Quotations, invoices and purchase orders</span>
+        </a>
+      </div>
+      <div data-c="three" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#D3DAE4;border:1px solid #D3DAE4;border-radius:2px;overflow:hidden;margin-bottom:44px">
+        <div style="background:#EEF1F5;padding:30px 26px">
+          <h2 style="font-size:17px;font-weight:700;margin:0 0 8px">Hours</h2>
+          <p style="font-size:15px;line-height:1.6;color:#3A4557;margin:0">Monday to Saturday, 08:00–18:00. Closed Sundays and public holidays.</p>
+        </div>
+        <div style="background:#EEF1F5;padding:30px 26px">
+          <h2 style="font-size:17px;font-weight:700;margin:0 0 8px">Collection</h2>
+          <p style="font-size:15px;line-height:1.6;color:#3A4557;margin:0">Collect in person once your order is confirmed. Message ahead so it's packed and waiting.</p>
+        </div>
+        <div style="background:#EEF1F5;padding:30px 26px">
+          <h2 style="font-size:17px;font-weight:700;margin:0 0 8px">Delivery</h2>
+          <p style="font-size:15px;line-height:1.6;color:#3A4557;margin:0">Nationwide by courier or bus. Cost depends on weight and destination, confirmed in the quote.</p>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- ══ CTA + FOOTER (all pages) ══ -->
+  <section data-r="pad" style="max-width:1400px;margin:0 auto;padding:78px 32px 0">
+    <div style="background:#F2C230;color:#0E1726;border-radius:2px;padding:64px 48px;text-align:center">
+      <h2 style="font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(32px,4vw,52px);line-height:.98;margin:0 0 16px">Ready when you are</h2>
+      <p style="font-size:17.5px;line-height:1.55;margin:0 auto 30px;max-width:48ch;color:#2A3342">Send your list, ask about stock, or just check a price. We answer Monday to Saturday, 08:00–18:00.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a href="{{ waGeneral }}" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;height:56px;padding:0 30px;background:#0E1726;color:#fff;font-size:15px;font-weight:700;border-radius:2px" style-hover="background:#fff;color:#0E1726">
+          <span style="width:8px;height:8px;border-radius:2px;background:#25D366"></span>WhatsApp {{ phoneDisplay }}
+        </a>
+        <a href="{{ mailSimple }}" style="display:flex;align-items:center;height:56px;padding:0 30px;border:1px solid rgba(14,23,38,.4);color:#0E1726;font-size:15px;font-weight:600;border-radius:2px" style-hover="background:#0E1726;color:#fff">{{ email }}</a>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background:#0E1726;color:#EEF1F5;margin-top:78px">
+    <div data-r="pad" data-c="four" style="max-width:1400px;margin:0 auto;padding:66px 32px 36px;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:44px">
+      <div>
+        <div style="display:flex;align-items:center;gap:11px;margin-bottom:16px">
+          <svg viewBox="0 0 100 100" width="28" height="28" aria-hidden="true" style="display:block;flex-shrink:0"><path fill="#EEF1F5" fill-rule="evenodd" d="M50,4 A46,46 0 1,0 50,96 A46,46 0 1,0 50,4 M24,28 H76 L36,60 H76 V72 H24 L64,40 H24 Z"></path></svg>
+          <span style="font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:24px;line-height:1">Pozozo</span>
+          <span style="font-size:10px;font-weight:700;letter-spacing:.26em;color:#8494AC;align-self:flex-end;padding-bottom:3px">SPORTS</span>
+        </div>
+        <p style="font-size:14.5px;line-height:1.6;color:#A7B4C7;margin:0;max-width:34ch">Molten and Mikasa balls for basketball, football and netball. Enquire, don't checkout.</p>
+      </div>
+      <div>
+        <div style="font-size:10.5px;font-weight:700;letter-spacing:.2em;color:#8494AC;margin-bottom:16px">SHOP</div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:14.5px">
+          <a href="#/catalogue" style="color:#EEF1F5" style-hover="color:#F2C230">Everything</a>
+          <a href="#/sport/basketball" style="color:#EEF1F5" style-hover="color:#F2C230">Basketball</a>
+          <a href="#/sport/football" style="color:#EEF1F5" style-hover="color:#F2C230">Football</a>
+          <a href="#/sport/netball" style="color:#EEF1F5" style-hover="color:#F2C230">Netball</a>
+          <a href="#/brand/molten" style="color:#EEF1F5" style-hover="color:#F2C230">Molten</a>
+          <a href="#/brand/mikasa" style="color:#EEF1F5" style-hover="color:#F2C230">Mikasa</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:10.5px;font-weight:700;letter-spacing:.2em;color:#8494AC;margin-bottom:16px">LEARN</div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:14.5px">
+          <a href="#/size-guide" style="color:#EEF1F5" style-hover="color:#F2C230">Ball size guide</a>
+          <a href="#/care" style="color:#EEF1F5" style-hover="color:#F2C230">Care &amp; inflation</a>
+          <a href="#/faq" style="color:#EEF1F5" style-hover="color:#F2C230">FAQ</a>
+          <a href="#/price-list" style="color:#EEF1F5" style-hover="color:#F2C230">Stock list</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:10.5px;font-weight:700;letter-spacing:.2em;color:#8494AC;margin-bottom:16px">COMPANY</div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:14.5px">
+          <a href="#/about" style="color:#EEF1F5" style-hover="color:#F2C230">About</a>
+          <a href="#/who-we-supply" style="color:#EEF1F5" style-hover="color:#F2C230">Who we supply</a>
+          <a href="#/bulk" style="color:#EEF1F5" style-hover="color:#F2C230">Bulk &amp; schools</a>
+          <a href="#/contact" style="color:#EEF1F5" style-hover="color:#F2C230">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div data-r="pad" style="max-width:1400px;margin:0 auto;padding:20px 32px 90px;border-top:1px solid #2C3A50;font-size:12px;color:#A7B4C7;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap">
+      <span>© 2026 Pozozo Sports</span>
+      <span>Prices quoted on enquiry · No online payment</span>
+    </div>
+  </footer>
+
+  <!-- ══ QUICK VIEW ══ -->
+  <div style="{{ qvWrapStyle }}">
+    <div onClick="{{ closeQv }}" style="position:absolute;inset:0"></div>
+    <div style="position:relative;background:#EEF1F5;width:min(880px,100%);max-height:88vh;overflow-y:auto;border-radius:2px;box-shadow:0 30px 80px rgba(14,23,38,.45)">
+      <button onClick="{{ closeQv }}" style="position:absolute;top:16px;right:16px;width:38px;height:38px;border:1px solid #B9C3D2;background:#EEF1F5;color:#0E1726;font-size:18px;cursor:pointer;border-radius:2px;z-index:2" style-hover="background:#0E1726;color:#fff">×</button>
+      <div data-c="two" style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+        <div style="background:#fff;min-height:340px;display:grid;place-items:center;padding:36px;border-right:1px solid #D3DAE4">
+          <ball-3d src="{{ qv.img }}" alt="{{ qv.name }}" flat="{{ qv.flat }}" style="width:100%;height:100%;min-height:280px"></ball-3d>
+        </div>
+        <div style="padding:40px 36px">
+          <div style="font-size:10.5px;font-weight:700;letter-spacing:.2em;color:#55637A;margin-bottom:10px">{{ qv.brand }}</div>
+          <h2 style="font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:34px;line-height:1;margin:0 0 12px">{{ qv.name }}</h2>
+          <p style="font-size:16px;line-height:1.6;color:#3A4557;margin:0 0 24px">{{ qv.blurb }}</p>
+          <div style="border-top:1px solid #D3DAE4;margin-bottom:24px">
+            <sc-for list="{{ qv.rows }}" as="r" hint-placeholder-count="3">
+              <div style="display:flex;gap:20px;padding:12px 0;border-bottom:1px solid #D3DAE4;font-size:14.5px">
+                <span style="min-width:104px;color:#55637A;font-weight:600">{{ r.k }}</span>
+                <span style="color:#0E1726">{{ r.v }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <div style="display:flex;gap:10px;margin-bottom:14px">
+            <button onClick="{{ qv.add }}" style="flex:1;height:50px;border-radius:2px;border:0;background:#0E1726;color:#fff;font-size:14px;font-weight:700;cursor:pointer">{{ qv.addLabel }}</button>
+            <a href="{{ qv.wa }}" target="_blank" rel="noopener" style="flex:1;height:50px;display:grid;place-items:center;background:#F2C230;color:#0E1726;font-size:14px;font-weight:700;border-radius:2px" style-hover="background:#0E1726;color:#fff">Ask about this</a>
+          </div>
+          <p style="font-size:12.5px;color:#55637A;margin:0;line-height:1.5">Price on enquiry — it moves with quantity and the exchange rate, so we quote rather than publish.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ENQUIRY DRAWER ══ -->
+  <div style="{{ drawerStyle }}">
+    <div style="width:min(440px,100vw);background:#EEF1F5;height:100%;display:flex;flex-direction:column;box-shadow:-20px 0 60px rgba(14,23,38,.35)">
+      <div style="padding:22px 26px;border-bottom:1px solid #D3DAE4;display:flex;align-items:center;gap:16px;background:#0E1726;color:#EEF1F5">
+        <div>
+          <div style="font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;font-size:19px">Your enquiry</div>
+          <div style="font-size:12.5px;color:#8494AC;margin-top:4px">{{ count }} item(s) · no payment taken</div>
+        </div>
+        <div style="flex:1"></div>
+        <button onClick="{{ closeList }}" style="width:36px;height:36px;border:1px solid #2C3A50;background:none;color:#EEF1F5;font-size:17px;cursor:pointer;border-radius:2px" style-hover="border-color:#EEF1F5">×</button>
+      </div>
+      <div style="flex:1;overflow-y:auto;padding:18px 26px">
+        <sc-if value="{{ empty2 }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:54px 0;text-align:center;color:#3A4557;font-size:15px;line-height:1.6">Nothing here yet.<br>Add balls from the catalogue and send them all in one message.</div>
+        </sc-if>
+        <sc-for list="{{ lines }}" as="l" hint-placeholder-count="0">
+          <div style="display:flex;gap:14px;padding:15px 0;border-bottom:1px solid #D3DAE4;align-items:center">
+            <div style="width:62px;height:62px;background:#fff;border:1px solid #D3DAE4;border-radius:2px;display:flex;align-items:center;justify-content:center;padding:7px;flex-shrink:0">
+              <ball-3d flat="" src="{{ l.img }}" alt="{{ l.name }}" style="width:100%;height:100%"></ball-3d>
+            </div>
+            <div style="flex:1;min-width:0">
+              <div style="font-size:14.5px;font-weight:700;line-height:1.3">{{ l.name }}</div>
+              <div style="font-size:12.5px;color:#55637A;margin-top:3px">{{ l.brand }}</div>
+            </div>
+            <div style="display:flex;align-items:center;border:1px solid #D3DAE4;background:#fff;border-radius:2px">
+              <button onClick="{{ l.dec }}" style="width:32px;height:34px;border:0;background:none;font-size:16px;cursor:pointer;color:#0E1726">–</button>
+              <span style="min-width:24px;text-align:center;font-size:14px;font-weight:700">{{ l.qty }}</span>
+              <button onClick="{{ l.inc }}" style="width:32px;height:34px;border:0;background:none;font-size:16px;cursor:pointer;color:#0E1726">+</button>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="padding:18px 26px 24px;border-top:1px solid #D3DAE4;background:#fff;display:flex;flex-direction:column;gap:11px">
+        <label style="display:flex;flex-direction:column;gap:7px;font-size:11.5px;font-weight:700;color:#55637A;letter-spacing:.1em">
+          A NOTE FOR US (OPTIONAL)
+          <input value="{{ note }}" onInput="{{ onNote }}" placeholder="Delivery town, deadline, school name…" style="height:44px;padding:0 15px;border:1px solid #D3DAE4;border-radius:2px;font-size:14px;outline:none;font-weight:400">
+        </label>
+        <a href="{{ listWa }}" target="_blank" rel="noopener" style="height:52px;display:grid;place-items:center;background:#F2C230;color:#0E1726;font-size:14.5px;font-weight:700;border-radius:2px" style-hover="background:#0E1726;color:#fff">Send list on WhatsApp</a>
+        <a href="{{ listMail }}" style="height:48px;display:grid;place-items:center;border:1px solid #0E1726;color:#0E1726;font-size:14px;font-weight:700;border-radius:2px" style-hover="background:#0E1726;color:#fff">Send list by email</a>
+      </div>
+    </div>
+  </div>
+
+  <div style="{{ barStyle }}">
+    <button onClick="{{ openList }}" style="display:flex;align-items:center;gap:14px;background:#0E1726;color:#EEF1F5;border:0;height:58px;padding:0 12px 0 24px;border-radius:2px;cursor:pointer;box-shadow:0 14px 34px rgba(14,23,38,.28)">
+      <span style="font-size:14px;font-weight:700">{{ count }} in your enquiry</span>
+      <span style="background:#F2C230;color:#0E1726;height:40px;display:grid;place-items:center;padding:0 18px;font-size:13px;font-weight:700;border-radius:2px">Review &amp; send</span>
+    </button>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;whatsapp&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;260977000000&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contact&quot;},&quot;email&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;sales@pozozosports.com&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contact&quot;}}">
+const P = [
+  ["bg5000","Molten","BG5000 Official Game Ball","Size 7 leather · FIBA approved","balls/bg5000-a.webp","basketball","FLAGSHIP"],
+  ["bg4550","Molten","BG4550 Indoor/Outdoor","Size 7 composite · FIBA approved","balls/bg4550.webp","basketball",""],
+  ["b7d3500","Molten","D3500 Outdoor","Size 7 rubber · hard-court durable","balls/b7d3500.webp","basketball",""],
+  ["gg7x","Molten","GG7X Composite","Size 7 · club and school training","balls/gg7x.webp","basketball",""],
+  ["bg3850","Molten","BG3850 Match","Size 7 composite · indoor match","balls/gg7x-3850.webp","basketball",""],
+  ["bc7r-red","Molten","BC7R Rubber — Red / Black","Size 7 rubber · outdoor","balls/bc7r-red.webp","basketball",""],
+  ["bc7r-blue","Molten","BC7R Rubber — Blue / Yellow","Size 7 rubber · outdoor","balls/bc7r-blue.webp","basketball",""],
+  ["bc7r-rwb","Molten","BC7R Rubber — Red / White / Blue","Size 7 rubber · outdoor","balls/bc7r-rwb.webp","basketball",""],
+  ["b33t5000","Molten","B33T5000 Libertria 3x3","Official size 6 · FIBA 3x3","balls/b33t5000-b.webp","basketball","3x3"],
+  ["b33t5000b","Molten","B33T5000 3x3 Game Ball","Size 6 composite · FIBA 3x3","balls/b33t5000-a.webp","basketball",""],
+  ["b33t2000","Molten","B33T2000 3x3 Training","Size 6 rubber · 3x3 practice","balls/b33t2000-b.webp","basketball",""],
+  ["b33t2000b","Molten","B33T2000 3x3 Outdoor","Size 6 rubber · 3x3 practice","balls/b33t2000-a.webp","basketball",""],
+  ["cf700","Mikasa","CF700 Leather","Size 7 leather · indoor match","balls/u04.webp","basketball",""],
+  ["cf600","Mikasa","CF600 Leather","Size 6 leather · women's match","balls/u05.webp","basketball",""],
+  ["street7","Mikasa","Street 7","Size 7 rubber · navy / red","balls/u06.webp","basketball",""],
+  ["street6","Mikasa","Street 6","Size 6 rubber · yellow / blue","balls/u07.webp","basketball",""],
+  ["street5","Mikasa","Street 5","Size 5 rubber · junior","balls/u08.webp","basketball",""],
+  ["mik-off","Mikasa","Official Rubber Basketball","Size 7 rubber · school training","balls/u02.webp","basketball",""],
+  ["train-bb","Mikasa","Practice Basketball","Size 7 rubber · budget training","balls/u03.webp","basketball",""],
+  ["ft550b","Mikasa","FT550B Alumndo","Size 5 · FIFA Quality Pro","balls/ft550b.webp","football","FIFA PRO"],
+  ["ft550-blue","Mikasa","FT550 Alumndo — Blue","Size 5 thermal bonded","balls/u17.webp","football","NEW"],
+  ["ft550-orange","Mikasa","FT550 Alumndo — Orange","Size 5 thermal bonded","balls/u18.webp","football","NEW"],
+  ["f5a5000-y","Molten","F5A5000 Vantaggio — Yellow","Size 5 · FIFA Quality Pro","balls/f5a5000-yellow.webp","football",""],
+  ["f5a5000-o","Molten","F5A5000 Vantaggio — Orange","Size 5 · winter high-visibility","balls/f5a5000-orange.webp","football",""],
+  ["f3n1000-r","Molten","F3N1000 — Red","Size 3 · junior training","balls/f3n1000-red.webp","football",""],
+  ["f3n1000-y","Molten","F3N1000 — Yellow","Size 3 · junior training","balls/f3n1000-yellow.webp","football",""],
+  ["f3n1000-w","Molten","F3N1000 — White / Blue","Size 3 · junior training","balls/f3n1000-white.webp","football",""],
+  ["skickoff-b","Mikasa","Super Kick Off — Black","Size 5 · FIFA Basic","balls/u11.webp","football",""],
+  ["skickoff-bl","Mikasa","Super Kick Off — Blue","Size 5 · FIFA Basic","balls/u12.webp","football",""],
+  ["kickoff-r","Mikasa","Kick Off — Red","Size 5 hand-stitched","balls/u13.webp","football",""],
+  ["kickoff-b","Mikasa","Kick Off — Blue","Size 5 hand-stitched","balls/u14.webp","football",""],
+  ["kickoff-p","Mikasa","Kick Off — Pink / Black","Size 5 hand-stitched","balls/u15.webp","football",""],
+  ["kickoff-g","Mikasa","Kick Off — Green","Size 5 hand-stitched","balls/u16.webp","football",""],
+  ["mik-match-n","Mikasa","Match Ball — Navy / Red","Size 5 thermal bonded","balls/u24.webp","football",""],
+  ["mik-match-w","Mikasa","Match Ball — White / Navy","Size 5 thermal bonded","balls/u25.webp","football",""],
+  ["mik-tr-g","Mikasa","Trainer — White / Green","Size 5 machine-stitched","balls/u26.webp","football",""],
+  ["mik-tr-r","Mikasa","Trainer — White / Red","Size 4 machine-stitched","balls/u27.webp","football",""],
+  ["mik-tr-gb","Mikasa","Trainer — Green / Black","Size 5 machine-stitched","balls/u28.webp","football",""],
+  ["mik-tr-rb","Mikasa","Trainer — Red / Black","Size 5 machine-stitched","balls/u29.webp","football",""],
+  ["mik-fb-a","Mikasa","Club Football — White / Yellow","Size 5 training","balls/u09.webp","football",""],
+  ["mik-fb-b","Mikasa","Club Football — White / Blue","Size 5 training","balls/u10.webp","football",""],
+  ["fx5","Mikasa","FX5 Netball","Size 5 · match","balls/fx5.webp","netball",""],
+  ["netball-3550","Mikasa","Netball 3550-P","Size 5 rubber · pink / white","balls/u01.webp","netball",""],
+  ["turbo-navy","Mikasa","Turbo SS-T — Navy","Size 5 · league play","balls/u19.webp","netball","NEW"],
+  ["turbo-red","Mikasa","Turbo SS-T — Red","Size 5 · league play","balls/u20.webp","netball",""],
+  ["turbo-yel","Mikasa","Turbo SS-T — Yellow / Blue","Size 5 · league play","balls/u21.webp","netball",""],
+  ["turbo-blk","Mikasa","Turbo SS-T — Yellow / Black","Size 5 · league play","balls/u22.webp","netball",""],
+  ["turbo-4","Mikasa","Turbo SS-T — Size 4","Junior netball","balls/u23.webp","netball",""],
+  ["n5y3500","Molten","N5Y3500 Netball","Size 5 · school and club","balls/n5y3500.webp","netball",""],
+  ["molten-pink","Molten","Netball — Pink","Size 5 rubber · training","balls/molten-pink.webp","netball",""],
+  ["ag500","Mikasa","AG500 Digital Pressure Gauge","Keeps every ball at match pressure","balls/ag500.webp","accessories",""]
+];
+
+const CATS = [["all","Everything"],["basketball","Basketball"],["football","Football"],["netball","Netball"],["accessories","Accessories"]];
+
+const SPORTS = {
+  basketball: { kicker:"FOR THE COURT", title:"Match and street basketballs", blurb:"Game leather for the league, composite for the school hall, rubber for the outdoor court.",
+    img:"balls/bg5000-a.webp", bg:"#0E1726", fg:"#EEF1F5", dim:"#8494AC", line:"#2C3A50", cta:"Shop basketball",
+    lede:"Three surfaces, three balls. Leather is for indoor match play and will not survive a tarmac court; composite handles both; rubber is what a school buys twenty of." },
+  football: { kicker:"FOR THE PITCH", title:"Footballs from junior to FIFA Pro", blurb:"Thermal-bonded match balls, hand-stitched trainers and junior sizes for the academy.",
+    img:"balls/ft550b.webp", bg:"#DCE3EC", fg:"#0E1726", dim:"#3A4557", line:"#B9C3D2", cta:"Shop football",
+    lede:"Thermal-bonded balls keep their shape and take less water — worth it for match day. Machine-stitched trainers are the sensible buy in bulk." },
+  netball: { kicker:"FOR THE RING", title:"Netballs for school and league", blurb:"Size 5 for seniors, size 4 for juniors, in the colourways leagues actually ask for.",
+    img:"balls/u19.webp", bg:"#1E3A5F", fg:"#fff", dim:"#C3D0E0", line:"rgba(255,255,255,.55)", cta:"Shop netball",
+    lede:"Netball is the order we fill most. Size 5 covers senior school and club; size 4 is for the younger age groups." }
+};
+
+const BRANDS = {
+  molten: { title:"Molten", lede:"FIBA's ball of choice, and the ball of the 3x3 game. Molten's range runs from BG5000 game leather down to rubber trainers built for outdoor courts, with netballs alongside.", accent:"#F2C230" },
+  mikasa: { title:"Mikasa", lede:"FIFA Quality Pro footballs, the netballs most leagues play with, street basketballs, and the pressure gauge that keeps all of them honest.", accent:"#F2C230" }
+};
+
+const SIZES = [
+  { sport:"Basketball", note:"Sizes are the official ones; check whether your league plays size 6 for women's competition.",
+    rows:[{size:"Size 7",age:"Men, 15 and over",use:"Senior men's match and training"},
+          {size:"Size 6",age:"Women 12+, boys 12–14",use:"Women's competition, junior boys"},
+          {size:"Size 5",age:"Ages 9–11",use:"Primary and mini-basketball"},
+          {size:"Size 3",age:"Under 8",use:"Mini hoops, skills work"}] },
+  { sport:"Football", note:"Size 5 is the adult ball; anything below is about weight and control, not just circumference.",
+    rows:[{size:"Size 5",age:"13 and over",use:"Match and training, all senior play"},
+          {size:"Size 4",age:"Ages 8–12",use:"Junior matches and academy sessions"},
+          {size:"Size 3",age:"Ages 5–8",use:"First-touch coaching"}] },
+  { sport:"Netball", note:"Most Zambian school and club netball is played with size 5.",
+    rows:[{size:"Size 5",age:"14 and over",use:"Senior school, club and league"},
+          {size:"Size 4",age:"Ages 9–13",use:"Junior school netball"},
+          {size:"Size 3",age:"Under 9",use:"Introductory and skills sessions"}] }
+];
+
+const CARE = [
+  { n:"01", title:"Inflate to the pressure printed on the ball", body:"Every ball carries its own recommended range near the valve. Guessing by feel is how balls get over-inflated, and an over-inflated ball splits at the seam long before it wears out." },
+  { n:"02", title:"Wet the needle before it goes in", body:"A dry needle tears the valve. Water or a drop of valve oil is enough, and the ball keeps its air for months instead of weeks." },
+  { n:"03", title:"Check pressure weekly, not seasonally", body:"All balls lose air slowly. A weekly check with a gauge takes a minute across a whole kit bag and is the single biggest thing you can do for ball life." },
+  { n:"04", title:"Keep leather off tarmac", body:"Indoor leather on an outdoor court is finished in a term. Use rubber or composite outdoors and save the leather for the hall." },
+  { n:"05", title:"Store part-deflated, out of the sun", body:"For long breaks let a little air out and keep them somewhere cool and dark. Heat and full pressure together stretch the panels." }
+];
+
+const FAQS = [
+  { q:"Can I pay on the website?", a:"No, and that's deliberate. You send an enquiry, we quote, and you pay on collection, on delivery, or by invoice if you're an institution. Nothing is charged here and we never ask for card details." },
+  { q:"Why aren't prices shown?", a:"Ball prices move with the exchange rate and with quantity. Publishing a number we can't hold helps nobody, so we quote instead — usually within the hour during working hours." },
+  { q:"How do I know the stock is genuine?", a:"We buy through proper channels and can show you where a ball came from. If you have a ball you're unsure about, send us a photo of the valve area and the printing and we'll tell you straight." },
+  { q:"Do you invoice schools and institutions?", a:"Yes. We issue a formal quotation for approval, hold the stock against it, then invoice and deliver with a delivery note for your file." },
+  { q:"What counts as bulk?", a:"Ten balls or more, and they don't have to be the same ball. Mixed orders across sports are normal — one quote covers the lot." },
+  { q:"Do you deliver outside the city?", a:"Yes, nationwide by courier or bus depending on size and destination. The cost is confirmed in your quote before you commit." },
+  { q:"What if a ball is faulty?", a:"Manufacturing faults are covered — tell us within a reasonable time, send a photo, and we'll replace it. Wear from playing on the wrong surface isn't a fault, which is why the care guide exists." }
+];
+
+const BANDS = [
+  { qty:"1–9", what:"Standard pricing, quoted per ball." },
+  { qty:"10–49", what:"Bulk pricing. This is where most schools and clubs land." },
+  { qty:"50+", what:"Programme pricing, with delivery usually included. Talk to us before you budget." }
+];
+
+const SUPPLY = [
+  { n:"Schools", what:"Primary and secondary, kitting out a season in one order" },
+  { n:"Clubs", what:"Basketball, football and netball clubs and academies" },
+  { n:"Leagues", what:"Match balls to a consistent spec across a competition" },
+  { n:"Retailers", what:"Shops buying wholesale to resell" }
+];
+
+class Component extends DCLogic {
+  state = { route:"/", cat:"all", q:"", items:{}, open:false, note:"", who:"", what:"", where:"", limit:18, qv:null, faq:0 };
+
+  componentDidMount() {
+    this._hash = () => {
+      const r = (location.hash || "#/").replace(/^#/, "") || "/";
+      this.setState({ route: r, limit: 18, qv: null });
+      window.scrollTo(0, 0);
+    };
+    this._hash();
+    addEventListener("hashchange", this._hash);
+  }
+  componentWillUnmount() { removeEventListener("hashchange", this._hash); }
+
+  get phone() { return this.props.whatsapp ?? "260977000000"; }
+  get email() { return this.props.email ?? "sales@pozozosports.com"; }
+  wa(t) { return "https://wa.me/" + this.phone.replace(/[^0-9]/g, "") + "?text=" + encodeURIComponent(t); }
+  mail(s, b) { return "mailto:" + this.email + "?subject=" + encodeURIComponent(s) + "&body=" + encodeURIComponent(b); }
+
+  bump(id, d) {
+    this.setState(s => {
+      const items = { ...s.items };
+      const n = (items[id] || 0) + d;
+      if (n <= 0) delete items[id]; else items[id] = n;
+      return { items, open: d > 0 ? true : s.open };
+    });
+  }
+
+  listText() {
+    const lines = Object.keys(this.state.items).map(id => {
+      const p = P.find(x => x[0] === id);
+      return "• " + this.state.items[id] + " × " + p[1] + " " + p[2] + " (" + p[3] + ")";
+    });
+    let t = "Hello Pozozo Sports, I'd like a quote for:\n\n" + lines.join("\n");
+    if (this.state.note.trim()) t += "\n\nNote: " + this.state.note.trim();
+    return t + "\n\nPlease confirm price, stock and delivery. Thank you.";
+  }
+
+  bulkText() {
+    const s = this.state;
+    return "Hello Pozozo Sports, bulk enquiry.\n\nFrom: " + (s.who || "—") +
+      "\nNeeded: " + (s.what || "—") + "\nDelivery to: " + (s.where || "—") +
+      "\n\nPlease send a quote with bulk pricing.";
+  }
+
+  card(p) {
+    const inList = !!this.state.items[p[0]];
+    return {
+      img: p[4], name: p[2], brand: p[1], spec: p[3], tag: p[6] || false,
+      flat: p[5] === "accessories" ? "" : null,
+      add: () => this.bump(p[0], 1),
+      view: () => this.setState({ qv: p[0] }),
+      addLabel: inList ? "Added · " + this.state.items[p[0]] : "Add to enquiry",
+      addBg: inList ? "#0E1726" : "#EEF1F5",
+      addFg: inList ? "#EEF1F5" : "#0E1726",
+      addBorder: inList ? "#0E1726" : "#D3DAE4",
+      wa: this.wa("Hello Pozozo Sports, is the " + p[1] + " " + p[2] + " (" + p[3] + ") in stock, and what is the price?")
+    };
+  }
+
+  renderVals() {
+    const s = this.state;
+    const seg = s.route.split("/").filter(Boolean);
+    const page = seg[0] || "home";
+    const param = seg[1] || "";
+
+    const isHome = page === "home";
+    const isCat = page === "catalogue";
+    const isSport = page === "sport" && !!SPORTS[param];
+    const isBrand = page === "brand" && !!BRANDS[param];
+    const sport = isSport ? SPORTS[param] : null;
+    const brand = isBrand ? BRANDS[param] : null;
+
+    // grid scope follows the route
+    const scoped = isSport ? P.filter(p => p[5] === param)
+      : isBrand ? P.filter(p => p[1].toLowerCase() === param)
+      : P;
+    const q = s.q.trim().toLowerCase();
+    const matched = scoped.filter(p => ((isSport || isBrand) || s.cat === "all" || p[5] === s.cat) &&
+      (!q || (p[1] + " " + p[2] + " " + p[3] + " " + p[5]).toLowerCase().includes(q)));
+    const shown = matched.slice(0, s.limit);
+    const count = Object.values(s.items).reduce((a, b) => a + b, 0);
+
+    const qvP = s.qv ? P.find(x => x[0] === s.qv) : null;
+    const navOn = "#0E1726", navOff = "#3A4557";
+
+    const crumbMap = { catalogue:"Catalogue", sports:"Sports", brands:"Brands", bulk:"Bulk & schools",
+      guides:"Guides", "size-guide":"Ball size guide", care:"Care & inflation", faq:"FAQ",
+      "price-list":"Stock list", about:"About", "who-we-supply":"Who we supply", contact:"Contact" };
+
+    return {
+      crumb: isSport ? sport.title : isBrand ? brand.title : (crumbMap[page] || false),
+      isHome, isSports: page === "sports", isBrands: page === "brands", isGuides: page === "guides",
+      isSize: page === "size-guide", isCare: page === "care", isFaq: page === "faq",
+      isPrices: page === "price-list", isBulk: page === "bulk", isAbout: page === "about",
+      isSupply: page === "who-we-supply", isContact: page === "contact",
+      showsGrid: isCat || isSport || isBrand,
+      gridKicker: isSport ? sport.kicker : isBrand ? "AUTHORISED STOCK" : "THE CATALOGUE",
+      gridTitle: isSport ? sport.title : isBrand ? brand.title : "Everything we stock",
+      gridBlurb: isSport ? sport.lede : isBrand ? brand.lede : "Tap Add on anything you want quoted. Your list stays with you until you send it.",
+      navShop: isCat ? navOn : navOff,
+      navSports: (page === "sports" || isSport) ? navOn : navOff,
+      navBrands: (page === "brands" || isBrand) ? navOn : navOff,
+      navBulk: page === "bulk" ? navOn : navOff,
+      navGuides: ["guides","size-guide","care","faq","price-list"].includes(page) ? navOn : navOff,
+      navAbout: ["about","who-we-supply","contact"].includes(page) ? navOn : navOff,
+
+      phoneDisplay: "+" + this.phone.replace(/[^0-9]/g, "").replace(/^(\d{3})(\d{3})(\d{3})(\d+)$/, "$1 $2 $3 $4"),
+      email: this.email,
+      waGeneral: this.wa("Hello Pozozo Sports, I have a question about your balls."),
+      mailSimple: this.mail("Enquiry — Pozozo Sports", "Hello Pozozo Sports,"),
+      listAllWa: this.wa("Hello Pozozo Sports, please send me your priced stock list."),
+      count,
+      badgeBg: count ? "#F2C230" : "#D3DAE4",
+      badgeFg: count ? "#0E1726" : "#3A4557",
+      query: s.q,
+      onQuery: e => this.setState({ q: e.target.value }),
+      cats: (isSport || isBrand) ? [] : CATS.map(([id, label]) => ({
+        label, pick: () => this.setState({ cat: id, limit: 18 }),
+        bg: s.cat === id ? "#0E1726" : "transparent",
+        fg: s.cat === id ? "#EEF1F5" : "#3A4557",
+        border: s.cat === id ? "#0E1726" : "#B9C3D2"
+      })),
+      sports: Object.keys(SPORTS).map(k => Object.assign({ href: "#/sport/" + k }, SPORTS[k])),
+      fresh: P.filter(p => p[6]).concat(P.filter(p => !p[6]).slice(0, 4)).slice(0, 8).map(p => this.card(p)),
+      railRef: el => { this._rail = el; },
+      railPrev: () => { if (this._rail) this._rail.scrollBy({ left: -600, behavior: "smooth" }); },
+      railNext: () => { if (this._rail) this._rail.scrollBy({ left: 600, behavior: "smooth" }); },
+      shown: shown.map(p => this.card(p)),
+      empty: matched.length === 0,
+      hasMore: matched.length > shown.length,
+      moreLabel: "Show all " + matched.length + " balls",
+      showAll: () => this.setState({ limit: 999 }),
+
+      sizeTables: SIZES,
+      careTips: CARE,
+      addGauge: () => this.bump("ag500", 1),
+      faqs: FAQS.map((f, i) => ({
+        q: f.q, a: f.a, open: s.faq === i, sign: s.faq === i ? "–" : "+",
+        toggle: () => this.setState({ faq: s.faq === i ? -1 : i })
+      })),
+      bands: BANDS,
+      supplyStats: SUPPLY,
+      allRows: P.map(p => ({ brand: p[1], name: p[2], spec: p[3] })),
+
+      qv: qvP ? Object.assign(this.card(qvP), {
+        blurb: (SPORTS[qvP[5]] ? SPORTS[qvP[5]].lede : "A pressure gauge that pays for itself in balls you don't replace."),
+        rows: [
+          { k: "Brand", v: qvP[1] },
+          { k: "Specification", v: qvP[3] },
+          { k: "Category", v: qvP[5].charAt(0).toUpperCase() + qvP[5].slice(1) },
+          { k: "Price", v: "On enquiry" }
+        ]
+      }) : { img: "", name: "", brand: "", blurb: "", rows: [], addLabel: "", wa: "#", flat: null, add: () => {} },
+      qvWrapStyle: "position:fixed;inset:0;z-index:95;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(14,23,38,.55);" +
+        (qvP ? "opacity:1;pointer-events:auto;" : "opacity:0;pointer-events:none;") + "transition:opacity .16s ease",
+      closeQv: () => this.setState({ qv: null }),
+
+      empty2: count === 0,
+      lines: Object.keys(s.items).map(id => {
+        const p = P.find(x => x[0] === id);
+        return { img: p[4], name: p[2], brand: p[1], qty: s.items[id], inc: () => this.bump(id, 1), dec: () => this.bump(id, -1) };
+      }),
+      note: s.note,
+      onNote: e => this.setState({ note: e.target.value }),
+      listWa: this.wa(this.listText()),
+      listMail: this.mail("Ball enquiry — Pozozo Sports", this.listText()),
+      openList: () => this.setState({ open: true }),
+      closeList: () => this.setState({ open: false }),
+      drawerStyle: "position:fixed;inset:0;z-index:90;display:flex;justify-content:flex-end;background:rgba(14,23,38,.45);" +
+        (s.open ? "opacity:1;pointer-events:auto;" : "opacity:0;pointer-events:none;") + "transition:opacity .18s ease",
+      barStyle: "position:fixed;right:24px;bottom:24px;z-index:70;" +
+        (count && !s.open && !qvP ? "opacity:1;pointer-events:auto;transform:translateY(0);" : "opacity:0;pointer-events:none;transform:translateY(14px);") +
+        "transition:opacity .2s ease,transform .2s ease",
+      bulk: { who: s.who, what: s.what, where: s.where },
+      onBulkWho: e => this.setState({ who: e.target.value }),
+      onBulkWhat: e => this.setState({ what: e.target.value }),
+      onBulkWhere: e => this.setState({ where: e.target.value }),
+      bulkWa: this.wa(this.bulkText()),
+      bulkMail: this.mail("Bulk enquiry — Pozozo Sports", this.bulkText())
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -19,13 +19,13 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: PageProps): Metadata {
   const product = PRODUCTS.find((p) => p.slug === params.slug);
   if (!product) {
-    return { title: 'Product – ECOM®' };
+    return { title: 'Product – Pozozo Sports' };
   }
   return {
-    title: `${product.name} – ECOM® Modern Apparel`,
+    title: `${product.name} – Pozozo Sports`,
     description: product.description,
     openGraph: {
-      title: `${product.name} – ECOM®`,
+      title: `${product.name} – Pozozo Sports`,
       description: product.summary,
       images: [product.images[0]],
     },
