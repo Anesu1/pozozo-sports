@@ -3,7 +3,7 @@ export const STORE_CONFIG = {
   tagline: 'AUTHORISED MOLTEN & MIKASA STOCK',
   phone: '263777351222',
   displayPhone: '+263 77 735 1222',
-  email: 'phillipnheera@gmail.com',
+  email: 'pozozotrading@sp2clogistics.com',
   operatingHours: 'Monday – Saturday: 08:00 – 18:00',
   currencySymbol: 'K', // Zambian Kwacha / USD / flexible
   currencyCode: 'ZMW',
