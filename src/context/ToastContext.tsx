@@ -52,7 +52,7 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
               initial={{ opacity: 0, y: 20, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.2 } }}
-              className="pointer-events-auto flex items-center justify-between gap-3 p-4 rounded-xl bg-[#1A1A1A] text-white shadow-2xl border border-white/10 backdrop-blur-md"
+              className="pointer-events-auto flex items-center justify-between gap-3 p-4 rounded-xl bg-[#13251C] text-white shadow-2xl border border-white/10 backdrop-blur-md"
             >
               <div className="flex items-center gap-3">
                 {toast.type === 'success' && <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />}

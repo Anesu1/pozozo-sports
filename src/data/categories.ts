@@ -12,9 +12,9 @@ export const CATEGORIES: CategoryMeta[] = [
     id: 'all',
     slug: 'all',
     name: 'All Balls',
-    count: 51,
+    count: 69,
     image: '/balls/bg5000-a.webp',
-    description: 'Complete stock of genuine Molten and Mikasa match and training balls.',
+    description: 'Complete stock of genuine Molten, Mikasa and Fox40 match, training and officiating equipment.',
   },
   {
     id: 'basketball',
@@ -41,11 +41,19 @@ export const CATEGORIES: CategoryMeta[] = [
     description: 'Official league-grade match netballs, durable training rubber, and junior size 4 balls.',
   },
   {
+    id: 'volleyball',
+    slug: 'volleyball',
+    name: 'Volleyball',
+    count: 9,
+    image: '/volleyballs/mikasa-v333w-volleyball-a.webp',
+    description: 'FIVB approved indoor match and training balls, plus outdoor beach volleyballs, from Mikasa.',
+  },
+  {
     id: 'accessories',
     slug: 'accessories',
     name: 'Accessories',
-    count: 1,
+    count: 10,
     image: '/balls/ag500.webp',
-    description: 'Digital pressure gauges, pressure release needles, pumps, and match equipment accessories.',
+    description: 'Digital pressure gauges, pumps, and Fox40 officiating whistles for referees and coaches.',
   },
 ];

@@ -9,6 +9,7 @@ import { QuickViewModal } from '@/components/QuickViewModal';
 import { Footer } from '@/components/Footer';
 import { LoadingScreen } from '@/components/LoadingScreen';
 import { JsonLd } from '@/components/JsonLd';
+import { STORE_CONFIG } from '@/data/sportsConfig';
 
 const antonio = Antonio({
   subsets: ['latin'],
@@ -28,13 +29,13 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
-  themeColor: '#0E1726',
+  themeColor: '#13251C',
 };
 
 const SITE_URL = 'https://pozozosports.com';
 const SITE_TITLE = 'Pozozo Sports – Authorised Molten & Mikasa Stock';
 const SITE_DESCRIPTION =
-  'Match balls, ordered by message. Genuine FIBA and FIFA certified Molten and Mikasa basketballs, footballs, netballs, and accessories, with same-day WhatsApp quotes and bulk pricing for schools and clubs.';
+  'Match balls, ordered by message. Genuine FIBA, FIFA and FIVB certified Molten and Mikasa basketballs, footballs, netballs and volleyballs, plus Fox40 officiating whistles, with same-day WhatsApp quotes and bulk pricing for schools and clubs.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -46,9 +47,12 @@ export const metadata: Metadata = {
   keywords: [
     'Molten basketball Zambia',
     'Mikasa football Zambia',
+    'Mikasa volleyball Zambia',
     'FIBA approved basketball',
     'FIFA Quality Pro football',
+    'FIVB approved volleyball',
     'netball supplier Zambia',
+    'Fox40 whistle Zambia',
     'school sports equipment Zambia',
     'bulk sports balls supplier',
     'Pozozo Sports',
@@ -89,10 +93,11 @@ const organizationJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'SportingGoodsStore',
   name: 'Pozozo Sports',
+  alternateName: 'Pozozo Trading',
   description: SITE_DESCRIPTION,
   url: SITE_URL,
-  telephone: '+260977000000',
-  email: 'sales@pozozosports.com',
+  telephone: STORE_CONFIG.displayPhone,
+  email: STORE_CONFIG.email,
   areaServed: 'ZM',
   address: {
     '@type': 'PostalAddress',
@@ -103,6 +108,7 @@ const organizationJsonLd = {
   brand: [
     { '@type': 'Brand', name: 'Molten' },
     { '@type': 'Brand', name: 'Mikasa' },
+    { '@type': 'Brand', name: 'Fox40' },
   ],
 };
 
@@ -113,7 +119,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`scroll-smooth ${antonio.variable} ${karla.variable}`}>
-      <body className="min-h-screen flex flex-col bg-[#EEF1F5] text-[#0E1726] antialiased font-sans">
+      <body className="min-h-screen flex flex-col bg-[#F3F5F0] text-[#13251C] antialiased font-sans">
         <JsonLd data={organizationJsonLd} />
         <LoadingScreen />
         <Providers>

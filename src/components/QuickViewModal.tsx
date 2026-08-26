@@ -44,7 +44,7 @@ export function QuickViewModal() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={closeQuickView}
-            className="fixed inset-0 bg-[#0E1726]/55 backdrop-blur-sm"
+            className="fixed inset-0 bg-[#13251C]/55 backdrop-blur-sm"
           />
           <div className="min-h-screen px-3 sm:px-4 flex items-center justify-center py-10">
             <motion.div
@@ -52,17 +52,17 @@ export function QuickViewModal() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.96, y: 10 }}
               transition={{ duration: 0.2, ease: 'easeOut' }}
-              className="relative w-full max-w-3xl bg-[#EEF1F5] rounded-sm overflow-hidden grid grid-cols-1 sm:grid-cols-2 z-10 shadow-[0_30px_80px_rgba(14,23,38,.45)]"
+              className="relative w-full max-w-3xl bg-[#F3F5F0] rounded-sm overflow-hidden grid grid-cols-1 sm:grid-cols-2 z-10 shadow-[0_30px_80px_rgba(14,23,38,.45)]"
             >
               <button
                 onClick={closeQuickView}
                 aria-label="Close"
-                className="absolute top-4 right-4 z-20 w-9 h-9 rounded-sm border border-[#B9C3D2] bg-[#EEF1F5] hover:bg-[#0E1726] hover:text-white hover:border-[#0E1726] text-[#0E1726] flex items-center justify-center transition-colors"
+                className="absolute top-4 right-4 z-20 w-9 h-9 rounded-sm border border-[#BCC4B4] bg-[#F3F5F0] hover:bg-[#13251C] hover:text-white hover:border-[#13251C] text-[#13251C] flex items-center justify-center transition-colors"
               >
                 <X className="w-4 h-4" />
               </button>
 
-              <div className="relative min-h-[280px] sm:min-h-[340px] bg-white flex items-center justify-center p-9 border-b sm:border-b-0 sm:border-r border-[#D3DAE4]">
+              <div className="relative min-h-[280px] sm:min-h-[340px] bg-white flex items-center justify-center p-9 border-b sm:border-b-0 sm:border-r border-[#D8DED2]">
                 <Ball3D
                   src={product.images[0]}
                   alt={product.name}
@@ -72,36 +72,36 @@ export function QuickViewModal() {
               </div>
 
               <div className="p-8 sm:p-9 flex flex-col">
-                <div className="text-[10.5px] font-bold uppercase tracking-[0.2em] text-[#55637A] mb-2.5">
+                <div className="text-[10.5px] font-bold uppercase tracking-[0.2em] text-[#5B6B54] mb-2.5">
                   {product.brand}
                 </div>
                 <h2 className="font-display uppercase text-[28px] sm:text-[34px] leading-none tracking-tight mb-3">
                   {product.name}
                 </h2>
-                <p className="text-[15px] leading-relaxed text-[#3A4557] mb-5">{product.summary}</p>
+                <p className="text-[15px] leading-relaxed text-[#3C4536] mb-5">{product.summary}</p>
 
-                <div className="border-t border-[#D3DAE4] mb-5">
+                <div className="border-t border-[#D8DED2] mb-5">
                   {rows.map((r) => (
-                    <div key={r.k} className="flex gap-5 py-3 border-b border-[#D3DAE4] text-[14.5px]">
-                      <span className="min-w-[104px] text-[#55637A] font-semibold">{r.k}</span>
-                      <span className="text-[#0E1726] font-medium">{r.v}</span>
+                    <div key={r.k} className="flex gap-5 py-3 border-b border-[#D8DED2] text-[14.5px]">
+                      <span className="min-w-[104px] text-[#5B6B54] font-semibold">{r.k}</span>
+                      <span className="text-[#13251C] font-medium">{r.v}</span>
                     </div>
                   ))}
                 </div>
 
                 <div className="flex items-center gap-2 mb-3.5">
-                  <div className="flex items-center border border-[#D3DAE4] bg-white rounded-sm">
+                  <div className="flex items-center border border-[#D8DED2] bg-white rounded-sm">
                     <button
                       onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                      className="w-9 h-10 flex items-center justify-center text-[#0E1726]"
+                      className="w-9 h-10 flex items-center justify-center text-[#13251C]"
                       aria-label="Decrease quantity"
                     >
                       <Minus className="w-3.5 h-3.5" />
                     </button>
-                    <span className="min-w-[26px] text-center text-sm font-bold text-[#0E1726]">{quantity}</span>
+                    <span className="min-w-[26px] text-center text-sm font-bold text-[#13251C]">{quantity}</span>
                     <button
                       onClick={() => setQuantity((q) => q + 1)}
-                      className="w-9 h-10 flex items-center justify-center text-[#0E1726]"
+                      className="w-9 h-10 flex items-center justify-center text-[#13251C]"
                       aria-label="Increase quantity"
                     >
                       <Plus className="w-3.5 h-3.5" />
@@ -113,7 +113,7 @@ export function QuickViewModal() {
                       addToCart(product, product.colors[0]?.name, product.sizes[0], quantity);
                       closeQuickView();
                     }}
-                    className="flex-1 min-w-0 h-10 rounded-sm bg-[#0E1726] hover:bg-black text-white text-[13px] font-bold flex items-center justify-center gap-1.5 transition-colors"
+                    className="flex-1 min-w-0 h-10 rounded-sm bg-[#13251C] hover:bg-black text-white text-[13px] font-bold flex items-center justify-center gap-1.5 transition-colors"
                   >
                     {cartItem ? <Check className="w-3.5 h-3.5" /> : <ClipboardList className="w-3.5 h-3.5" />}
                     <span className="truncate">{cartItem ? `Added · ${cartItem.quantity}` : 'Add to enquiry'}</span>
@@ -123,7 +123,7 @@ export function QuickViewModal() {
                     href={waUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 shrink-0 grid place-items-center rounded-sm bg-[#F2C230] hover:bg-[#0E1726] hover:text-white text-[#0E1726] transition-colors"
+                    className="w-10 h-10 shrink-0 grid place-items-center rounded-sm bg-[#F2900E] hover:bg-[#13251C] hover:text-white text-[#13251C] transition-colors"
                     title="Ask about this on WhatsApp"
                     aria-label="Ask about this on WhatsApp"
                   >
@@ -131,14 +131,14 @@ export function QuickViewModal() {
                   </a>
                 </div>
 
-                <p className="text-xs text-[#55637A] leading-relaxed mb-4">
+                <p className="text-xs text-[#5B6B54] leading-relaxed mb-4">
                   Price on enquiry — it moves with quantity and the exchange rate, so we quote rather than publish.
                 </p>
 
                 <Link
                   href={`/product/${product.slug}`}
                   onClick={closeQuickView}
-                  className="text-[13px] font-bold text-[#0E1726] hover:underline mt-auto"
+                  className="text-[13px] font-bold text-[#13251C] hover:underline mt-auto"
                 >
                   View full details →
                 </Link>

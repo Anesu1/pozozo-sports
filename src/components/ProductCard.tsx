@@ -29,7 +29,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
   const waUrl = getWhatsAppUrl(singleWaText);
 
   return (
-    <div className="group relative flex flex-col bg-white rounded-sm border border-[#D3DAE4] hover:border-[#0E1726] overflow-hidden transition-colors duration-300 w-full">
+    <div className="group relative flex flex-col bg-white rounded-sm border border-[#D8DED2] hover:border-[#13251C] overflow-hidden transition-colors duration-300 w-full">
       {/* 3D Ball Stage */}
       <div className="relative aspect-square w-full overflow-hidden flex items-center justify-center p-5 sm:p-6">
         <button
@@ -50,7 +50,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
         {/* Top Badges */}
         <div className="absolute top-2.5 left-2.5 sm:top-3.5 sm:left-3.5 flex flex-col gap-1 z-10 pointer-events-none">
           {product.tag && (
-            <span className="bg-[#F2C230] text-[#0E1726] text-[9px] sm:text-[9.5px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-sm shadow-xs">
+            <span className="bg-[#F2900E] text-[#13251C] text-[9px] sm:text-[9.5px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-sm shadow-xs">
               {product.tag}
             </span>
           )}
@@ -65,12 +65,12 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
           }}
           className={`absolute top-2.5 right-2.5 sm:top-3.5 sm:right-3.5 z-10 p-1.5 sm:p-2 rounded-sm backdrop-blur-md transition-all ${
             inWishlist
-              ? 'bg-white text-[#0E1726] border border-[#F2C230] shadow-md scale-110'
-              : 'bg-white/80 hover:bg-white text-[#0E1726] shadow-xs'
+              ? 'bg-white text-[#13251C] border border-[#F2900E] shadow-md scale-110'
+              : 'bg-white/80 hover:bg-white text-[#13251C] shadow-xs'
           }`}
           aria-label="Save to list"
         >
-          <Heart className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${inWishlist ? 'fill-[#F2C230] stroke-[#0E1726]' : ''}`} />
+          <Heart className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${inWishlist ? 'fill-[#F2900E] stroke-[#13251C]' : ''}`} />
         </button>
 
         {/* Quick View */}
@@ -80,7 +80,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
             e.stopPropagation();
             openQuickView(product);
           }}
-          className="absolute bottom-2.5 right-2.5 sm:bottom-3.5 sm:right-3.5 z-10 p-1.5 sm:p-2 rounded-sm bg-white/80 hover:bg-[#0E1726] hover:text-white text-[#0E1726] shadow-xs opacity-0 group-hover:opacity-100 transition-all"
+          className="absolute bottom-2.5 right-2.5 sm:bottom-3.5 sm:right-3.5 z-10 p-1.5 sm:p-2 rounded-sm bg-white/80 hover:bg-[#13251C] hover:text-white text-[#13251C] shadow-xs opacity-0 group-hover:opacity-100 transition-all"
           title="Quick view"
           aria-label="Quick view"
         >
@@ -89,26 +89,26 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
       </div>
 
       {/* Product Content Details */}
-      <div className="px-4 pb-4 sm:px-[18px] sm:pb-[18px] pt-4 flex-1 flex flex-col gap-1.5 border-t border-[#D3DAE4]">
-        <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#55637A]">
+      <div className="px-4 pb-4 sm:px-[18px] sm:pb-[18px] pt-4 flex-1 flex flex-col gap-1.5 border-t border-[#D8DED2]">
+        <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#5B6B54]">
           {product.brand}
         </div>
 
         <Link
           href={`/product/${product.slug}`}
-          className="block font-display uppercase text-[15px] sm:text-[18px] text-[#0E1726] leading-tight line-clamp-1 transition-colors"
+          className="block font-display uppercase text-[15px] sm:text-[18px] text-[#13251C] leading-tight line-clamp-1 transition-colors"
         >
           {product.name}
         </Link>
 
-        <p className="text-[11.5px] sm:text-[12.5px] text-[#55637A] line-clamp-2 leading-relaxed">
+        <p className="text-[11.5px] sm:text-[12.5px] text-[#5B6B54] line-clamp-2 leading-relaxed">
           {product.spec}
         </p>
 
         <div className="flex-1" />
 
         <div className="flex items-baseline justify-between gap-1 mt-2 mb-1">
-          <span className="text-xs sm:text-sm font-extrabold text-[#0E1726]">{format(product.price)}</span>
+          <span className="text-xs sm:text-sm font-extrabold text-[#13251C]">{format(product.price)}</span>
           <span className="text-[9px] sm:text-[10px] font-bold text-[#1E7A4E]">In Stock</span>
         </div>
 
@@ -118,8 +118,8 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
             onClick={() => addToCart(product, product.colors[0]?.name, product.sizes[0], 1)}
             className={`flex-1 min-w-0 h-[42px] rounded-sm text-[12.5px] sm:text-[13px] font-bold transition-colors flex items-center justify-center gap-1.5 ${
               inCart
-                ? 'bg-[#0E1726] text-white border border-[#0E1726]'
-                : 'bg-[#EEF1F5] hover:bg-[#0E1726] hover:text-white text-[#0E1726] border border-[#D3DAE4]'
+                ? 'bg-[#13251C] text-white border border-[#13251C]'
+                : 'bg-[#F3F5F0] hover:bg-[#13251C] hover:text-white text-[#13251C] border border-[#D8DED2]'
             }`}
           >
             {inCart ? (
@@ -137,7 +137,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
             href={waUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-[42px] h-[42px] shrink-0 grid place-items-center border border-[#D3DAE4] hover:bg-[#0E1726] hover:text-white hover:border-[#0E1726] text-[#0E1726] rounded-sm transition-colors"
+            className="w-[42px] h-[42px] shrink-0 grid place-items-center border border-[#D8DED2] hover:bg-[#13251C] hover:text-white hover:border-[#13251C] text-[#13251C] rounded-sm transition-colors"
             title="Ask about this on WhatsApp"
             aria-label="WhatsApp enquiry"
           >

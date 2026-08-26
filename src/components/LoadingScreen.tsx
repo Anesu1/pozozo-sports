@@ -1,30 +1,15 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-// Manually measured length of MARK_PATH's combined subpaths (circle + seam) —
-// used as the SSR-safe fallback until the client measures the real value.
-const FALLBACK_DASH = 600;
 const MIN_DISPLAY_MS = 1700;
 const EXIT_MS = 600;
-
-const MARK_PATH =
-  'M50,4 A46,46 0 1,0 50,96 A46,46 0 1,0 50,4 M24,28 H76 L36,60 H76 V72 H24 L64,40 H24 Z';
+const RING_RADIUS = 46;
+const RING_CIRCUMFERENCE = 2 * Math.PI * RING_RADIUS;
 
 export function LoadingScreen() {
-  const [dash, setDash] = useState(FALLBACK_DASH);
   const [exiting, setExiting] = useState(false);
   const [mounted, setMounted] = useState(true);
-  const strokeRef = useRef<SVGPathElement>(null);
-
-  // Measure the real path length once on the client so the draw animation
-  // lines up exactly with the mark instead of guessing a dash length.
-  useEffect(() => {
-    if (strokeRef.current) {
-      const len = strokeRef.current.getTotalLength();
-      if (len > 0) setDash(len);
-    }
-  }, []);
 
   useEffect(() => {
     const start = Date.now();
@@ -68,19 +53,20 @@ export function LoadingScreen() {
       <div className="pz-loader__glow" aria-hidden="true" />
       <div className="pz-loader__mark" aria-hidden="true">
         <svg viewBox="0 0 100 100" width="120" height="120">
-          <path className="pz-loader__fill" d={MARK_PATH} fillRule="evenodd" fill="#EEF1F5" />
-          <path
-            ref={strokeRef}
-            className="pz-loader__stroke"
-            d={MARK_PATH}
+          <circle
+            className="pz-loader__ring"
+            cx="50"
+            cy="50"
+            r={RING_RADIUS}
             fill="none"
-            stroke="#EEF1F5"
+            stroke="#F2900E"
             strokeWidth={2.4}
             strokeLinecap="round"
-            strokeLinejoin="round"
-            style={{ strokeDasharray: dash, '--pz-dash': dash } as React.CSSProperties}
+            style={{ strokeDasharray: RING_CIRCUMFERENCE, '--pz-dash': RING_CIRCUMFERENCE } as React.CSSProperties}
           />
         </svg>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/logo-mark.png" alt="" className="pz-loader__logo" />
       </div>
     </div>
   );

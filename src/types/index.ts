@@ -1,5 +1,5 @@
-export type SportCategory = 'basketball' | 'football' | 'netball' | 'accessories' | 'all';
-export type BallBrand = 'Molten' | 'Mikasa';
+export type SportCategory = 'basketball' | 'football' | 'netball' | 'volleyball' | 'accessories' | 'all';
+export type BallBrand = 'Molten' | 'Mikasa' | 'Fox40';
 
 export interface Product {
   id: string;

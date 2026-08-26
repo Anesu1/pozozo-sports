@@ -6,7 +6,7 @@ export interface SizeGuideRow {
 
 export interface SizeGuideEntry {
   sport: string;
-  sportSlug?: 'basketball' | 'football' | 'netball';
+  sportSlug?: 'basketball' | 'football' | 'netball' | 'volleyball';
   note: string;
   rows: SizeGuideRow[];
 }
@@ -41,6 +41,15 @@ export const SIZES: SizeGuideEntry[] = [
       { size: 'Size 5', age: '14 and over', use: 'Senior school, club and league' },
       { size: 'Size 4', age: 'Ages 9–13', use: 'Junior school netball' },
       { size: 'Size 3', age: 'Under 9', use: 'Introductory and skills sessions' },
+    ],
+  },
+  {
+    sport: 'Volleyball',
+    sportSlug: 'volleyball',
+    note: "Volleyball doesn't scale down by size the way basketball and football do — it's size 5 from senior school upward, indoors and on the beach.",
+    rows: [
+      { size: 'Size 5', age: '11 and over', use: 'Senior school, club, league and beach play' },
+      { size: 'Mini / foam trainer', age: 'Under 11', use: 'First-touch and skills coaching' },
     ],
   },
 ];

@@ -72,38 +72,38 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.96, y: -10 }}
               transition={{ duration: 0.2, ease: 'easeOut' }}
-              className="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl overflow-hidden text-left border border-[#E8E4DF] z-10"
+              className="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl overflow-hidden text-left border border-[#E7EAE1] z-10"
             >
               {/* Search Header Input */}
-              <div className="p-3.5 sm:p-5 border-b border-[#E8E4DF] flex items-center gap-2.5 sm:gap-3 bg-[#F6F4F1]/50">
-                <Search className="w-5 h-5 text-[#757575] shrink-0" />
+              <div className="p-3.5 sm:p-5 border-b border-[#E7EAE1] flex items-center gap-2.5 sm:gap-3 bg-[#F0F2EC]/50">
+                <Search className="w-5 h-5 text-[#5B6B54] shrink-0" />
                 <input
                   ref={inputRef}
                   type="text"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   placeholder="Search ball model, brand, or size..."
-                  className="flex-1 bg-transparent text-sm sm:text-base font-medium text-[#12100E] placeholder-[#9E9E9E] outline-none"
+                  className="flex-1 bg-transparent text-sm sm:text-base font-medium text-[#13251C] placeholder-[#8B9782] outline-none"
                 />
                 {query && (
                   <button
                     onClick={() => setQuery('')}
-                    className="p-1 text-[#757575] hover:text-[#12100E] hover:bg-black/5 rounded-full"
+                    className="p-1 text-[#5B6B54] hover:text-[#13251C] hover:bg-black/5 rounded-full"
                   >
                     <X className="w-4 h-4" />
                   </button>
                 )}
                 <button
                   onClick={onClose}
-                  className="px-2 py-1 text-xs font-semibold text-[#757575] hover:text-[#12100E] bg-white border border-[#E8E4DF] rounded-md shadow-xs"
+                  className="px-2 py-1 text-xs font-semibold text-[#5B6B54] hover:text-[#13251C] bg-white border border-[#E7EAE1] rounded-md shadow-xs"
                 >
                   ESC
                 </button>
               </div>
 
               {/* Popular Searches */}
-              <div className="px-4 sm:px-5 py-2.5 sm:py-3 bg-[#F6F4F1] border-b border-[#E8E4DF] flex items-center gap-2 overflow-x-auto no-scrollbar">
-                <div className="flex items-center gap-1.5 text-xs text-[#757575] font-semibold shrink-0">
+              <div className="px-4 sm:px-5 py-2.5 sm:py-3 bg-[#F0F2EC] border-b border-[#E7EAE1] flex items-center gap-2 overflow-x-auto no-scrollbar">
+                <div className="flex items-center gap-1.5 text-xs text-[#5B6B54] font-semibold shrink-0">
                   <TrendingUp className="w-3.5 h-3.5" />
                   <span>Popular:</span>
                 </div>
@@ -112,7 +112,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                     <button
                       key={term}
                       onClick={() => setQuery(term)}
-                      className="px-2.5 py-1 text-xs bg-white hover:bg-[#12100E] hover:text-white text-[#12100E] border border-[#E8E4DF] rounded-full transition-all shrink-0"
+                      className="px-2.5 py-1 text-xs bg-white hover:bg-[#13251C] hover:text-white text-[#13251C] border border-[#E7EAE1] rounded-full transition-all shrink-0"
                     >
                       {term}
                     </button>
@@ -124,7 +124,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
               <div className="max-h-[60vh] overflow-y-auto p-4 sm:p-5">
                 {query.trim() === '' ? (
                   <div>
-                    <p className="text-xs font-bold uppercase tracking-wider text-[#8E857A] mb-3">
+                    <p className="text-xs font-bold uppercase tracking-wider text-[#5B6B54] mb-3">
                       Featured Stock
                     </p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -133,9 +133,9 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                           key={p.id}
                           href={`/product/${p.slug}`}
                           onClick={onClose}
-                          className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#F6F4F1] transition-colors border border-transparent hover:border-[#E8E4DF]"
+                          className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#F0F2EC] transition-colors border border-transparent hover:border-[#E7EAE1]"
                         >
-                          <div className="relative w-12 h-12 bg-[#F6F4F1] rounded-lg overflow-hidden shrink-0 border border-[#E8E4DF]">
+                          <div className="relative w-12 h-12 bg-[#F0F2EC] rounded-lg overflow-hidden shrink-0 border border-[#E7EAE1]">
                             <Image
                               src={p.images[0]}
                               alt={p.name}
@@ -144,12 +144,12 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                             />
                           </div>
                           <div className="flex-1 min-w-0">
-                            <h4 className="text-xs font-bold text-[#12100E] truncate">
+                            <h4 className="text-xs font-bold text-[#13251C] truncate">
                               {p.brand} {p.name}
                             </h4>
-                            <p className="text-[11px] text-[#757575] truncate">{p.spec}</p>
+                            <p className="text-[11px] text-[#5B6B54] truncate">{p.spec}</p>
                           </div>
-                          <span className="text-xs font-extrabold text-[#12100E] shrink-0">
+                          <span className="text-xs font-extrabold text-[#13251C] shrink-0">
                             {format(p.price)}
                           </span>
                         </Link>
@@ -158,7 +158,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                   </div>
                 ) : filteredProducts.length > 0 ? (
                   <div className="space-y-2">
-                    <p className="text-xs font-bold uppercase tracking-wider text-[#8E857A] mb-2">
+                    <p className="text-xs font-bold uppercase tracking-wider text-[#5B6B54] mb-2">
                       Matching Balls ({filteredProducts.length})
                     </p>
                     {filteredProducts.map((p) => (
@@ -166,9 +166,9 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                         key={p.id}
                         href={`/product/${p.slug}`}
                         onClick={onClose}
-                        className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#F6F4F1] transition-colors border border-transparent hover:border-[#E8E4DF]"
+                        className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#F0F2EC] transition-colors border border-transparent hover:border-[#E7EAE1]"
                       >
-                        <div className="relative w-12 h-12 bg-[#F6F4F1] rounded-lg overflow-hidden shrink-0 border border-[#E8E4DF]">
+                        <div className="relative w-12 h-12 bg-[#F0F2EC] rounded-lg overflow-hidden shrink-0 border border-[#E7EAE1]">
                           <Image
                             src={p.images[0]}
                             alt={p.name}
@@ -177,13 +177,13 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                           />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h4 className="text-xs sm:text-sm font-bold text-[#12100E] truncate">
+                          <h4 className="text-xs sm:text-sm font-bold text-[#13251C] truncate">
                             {p.brand} {p.name}
                           </h4>
-                          <p className="text-[11px] text-[#757575] truncate">{p.spec}</p>
+                          <p className="text-[11px] text-[#5B6B54] truncate">{p.spec}</p>
                         </div>
                         <div className="text-right shrink-0">
-                          <span className="text-xs font-extrabold text-[#12100E] block">
+                          <span className="text-xs font-extrabold text-[#13251C] block">
                             {format(p.price)}
                           </span>
                           <span className="text-[10px] text-emerald-600 font-bold">In Stock</span>
@@ -193,8 +193,8 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                   </div>
                 ) : (
                   <div className="py-12 text-center space-y-2">
-                    <p className="text-sm font-bold text-[#12100E]">No balls found</p>
-                    <p className="text-xs text-[#757575]">
+                    <p className="text-sm font-bold text-[#13251C]">No balls found</p>
+                    <p className="text-xs text-[#5B6B54]">
                       We couldn&apos;t find any model matching &quot;{query}&quot;. Try &quot;Molten&quot;, &quot;Mikasa&quot;, or &quot;FT550B&quot;.
                     </p>
                   </div>

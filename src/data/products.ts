@@ -2512,5 +2512,879 @@ export const PRODUCTS: Product[] = [
       "certification": "Standard Authorized Stock",
       "sizeSpecification": "Digital pressure gauge with pressure release valve"
     }
+  },
+  {
+    "id": "fox40-classic-whistle",
+    "name": "Classic Whistle",
+    "brand": "Fox40",
+    "slug": "fox40-classic-whistle",
+    "price": 140,
+    "originalPrice": 170,
+    "spec": "Pealess design · 115 dB · NATO, SAR, lifeguard and coast guard issue",
+    "tag": "OFFICIATING",
+    "rating": 4.8,
+    "reviewsCount": 19,
+    "category": "accessories",
+    "categoryLabel": "Accessories",
+    "collections": [
+      "fox40",
+      "accessories",
+      "officiating",
+      "all"
+    ],
+    "isNew": true,
+    "summary": "Fox40 Classic Whistle — pealess design, 115 dB, the original Fox40 pattern issued to NATO forces, search and rescue teams, lifeguards and coast guards. Genuine authorized stock from Pozozo Sports.",
+    "description": "The Fox40 Classic is the original pealess whistle, built without the cork ball that jams or swells with damp. It carries a SOLAS rating and is standard issue for NATO forces, search and rescue teams, lifeguards, and coast guards, and puts out 115 dB from a single breath. A keyring loop is molded into the body for a lanyard or a kit bag clip.",
+    "images": [
+      "/accessories/fox40-classic-whistle-a.webp",
+      "/accessories/fox40-classic-whistle-b.webp"
+    ],
+    "colors": [
+      {
+        "name": "Fox40 Green",
+        "hex": "#8DC63F"
+      }
+    ],
+    "sizes": [
+      "Standard"
+    ],
+    "details": [
+      "Pealess design — no moving ball to jam, swell, or freeze",
+      "115 dB rated output",
+      "SOLAS-compliant, issued to NATO forces, search & rescue, lifeguards and coast guards",
+      "Molded keyring loop for a lanyard or clip",
+      "Available for single-unit or bulk team order on WhatsApp"
+    ],
+    "features": {
+      "material": "ABS pealess body",
+      "intendedSurface": "Court, pitch, and touchline officiating",
+      "certification": "SOLAS-compliant",
+      "sizeSpecification": "115 dB"
+    }
+  },
+  {
+    "id": "fox40-classic-cmg-whistle",
+    "name": "Classic CMG Whistle with Neck Lanyard",
+    "brand": "Fox40",
+    "slug": "fox40-classic-cmg-whistle",
+    "price": 190,
+    "originalPrice": 230,
+    "spec": "Cushioned mouth grip · 115 dB · used in NBA, NFL, FIBA, FIFA, NCAA",
+    "tag": "OFFICIATING",
+    "rating": 4.9,
+    "reviewsCount": 27,
+    "category": "accessories",
+    "categoryLabel": "Accessories",
+    "collections": [
+      "fox40",
+      "accessories",
+      "officiating",
+      "best-sellers",
+      "all"
+    ],
+    "isBestSeller": true,
+    "summary": "Fox40 Classic CMG Whistle with Neck Lanyard — cushioned mouth grip, 115 dB, the whistle used across the NBA, NFL, FIBA, FIFA and NCAA. Genuine authorized stock from Pozozo Sports.",
+    "description": "The Classic CMG adds a cushioned mouth grip to the standard Fox40 pealess body, so a full match of short blasts doesn't wear on the lips. It's the whistle you'll hear across the NBA, NFL, FIBA, FIFA and NCAA, rated at 115 dB, and ships with a neck lanyard so it sits ready between whistles instead of in a pocket.",
+    "images": [
+      "/accessories/fox40-classic-cmg-whistle-neck-lanyard-a.webp",
+      "/accessories/fox40-classic-cmg-whistle-neck-lanyard-b.webp"
+    ],
+    "colors": [
+      {
+        "name": "Referee Red",
+        "hex": "#C8102E"
+      }
+    ],
+    "sizes": [
+      "Standard"
+    ],
+    "details": [
+      "Cushioned mouth grip (CMG) for full-match comfort",
+      "115 dB rated output",
+      "Used by officials in the NBA, NFL, FIBA, FIFA and NCAA",
+      "Includes neck lanyard",
+      "Available for single-unit or bulk team order on WhatsApp"
+    ],
+    "features": {
+      "material": "ABS pealess body with cushioned grip",
+      "intendedSurface": "Court, pitch, and touchline officiating",
+      "certification": "NBA / NFL / FIBA / FIFA / NCAA in-game use",
+      "sizeSpecification": "115 dB"
+    }
+  },
+  {
+    "id": "fox40-classic-cmg-fingergrip-whistle",
+    "name": "Classic CMG Fingergrip Whistle",
+    "brand": "Fox40",
+    "slug": "fox40-classic-cmg-fingergrip-whistle",
+    "price": 185,
+    "originalPrice": 220,
+    "spec": "Cushioned mouth grip · finger strap · 115 dB",
+    "tag": "OFFICIATING",
+    "rating": 4.8,
+    "reviewsCount": 15,
+    "category": "accessories",
+    "categoryLabel": "Accessories",
+    "collections": [
+      "fox40",
+      "accessories",
+      "officiating",
+      "all"
+    ],
+    "summary": "Fox40 Classic CMG Fingergrip Whistle — cushioned mouth grip, 115 dB, with a finger strap in place of a neck lanyard. Genuine authorized stock from Pozozo Sports.",
+    "description": "Same cushioned-grip body and 115 dB output as the Classic CMG, but strapped to the hand rather than worn around the neck. The finger strap keeps the whistle between the fingers during play so it never has to be found, dropped, or swung on a cord — a preference for officials who run the line rather than stand at the centre circle.",
+    "images": [
+      "/accessories/fox40-classic-cmg-fingergrip-whistle-a.webp",
+      "/accessories/fox40-classic-cmg-fingergrip-whistle-b.webp"
+    ],
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#1A1A1A"
+      }
+    ],
+    "sizes": [
+      "Standard"
+    ],
+    "details": [
+      "Cushioned mouth grip (CMG)",
+      "115 dB rated output",
+      "Finger strap instead of a neck lanyard",
+      "Used in NBA, NFL, FIBA, FIFA and NCAA officiating",
+      "Available for single-unit or bulk team order on WhatsApp"
+    ],
+    "features": {
+      "material": "ABS pealess body with cushioned grip",
+      "intendedSurface": "Court, pitch, and touchline officiating",
+      "certification": "NBA / NFL / FIBA / FIFA / NCAA in-game use",
+      "sizeSpecification": "115 dB"
+    }
+  },
+  {
+    "id": "fox40-cmg-whistle-wrist-lanyard",
+    "name": "Classic CMG Whistle with Wrist Lanyard",
+    "brand": "Fox40",
+    "slug": "fox40-cmg-whistle-wrist-lanyard",
+    "price": 185,
+    "originalPrice": 220,
+    "spec": "Cushioned mouth grip · wrist lanyard · 115 dB",
+    "tag": "OFFICIATING",
+    "rating": 4.7,
+    "reviewsCount": 11,
+    "category": "accessories",
+    "categoryLabel": "Accessories",
+    "collections": [
+      "fox40",
+      "accessories",
+      "officiating",
+      "all"
+    ],
+    "summary": "Fox40 Classic CMG Whistle with Wrist Lanyard — cushioned mouth grip, 115 dB, on a wrist lanyard instead of a neck cord. Genuine authorized stock from Pozozo Sports.",
+    "description": "The same 115 dB cushioned-grip whistle as the rest of the Classic CMG line, fitted with a wrist lanyard rather than a neck cord. It's a straightforward option for officials who find a whistle strapped to the wrist faster to reach mid-play than one hanging on the chest.",
+    "images": [
+      "/accessories/fox40-cmg-whistle-wrist-lanyard-a.webp",
+      "/accessories/fox40-cmg-whistle-wrist-lanyard-b.webp"
+    ],
+    "colors": [
+      {
+        "name": "Charcoal Marble",
+        "hex": "#3A3A3A"
+      }
+    ],
+    "sizes": [
+      "Standard"
+    ],
+    "details": [
+      "Cushioned mouth grip (CMG)",
+      "115 dB rated output",
+      "Wrist lanyard included",
+      "Used in NBA, NFL, FIBA, FIFA and NCAA officiating",
+      "Available for single-unit or bulk team order on WhatsApp"
+    ],
+    "features": {
+      "material": "ABS pealess body with cushioned grip",
+      "intendedSurface": "Court, pitch, and touchline officiating",
+      "certification": "NBA / NFL / FIBA / FIFA / NCAA in-game use",
+      "sizeSpecification": "115 dB"
+    }
+  },
+  {
+    "id": "fox40-mini-whistle",
+    "name": "Mini Whistle",
+    "brand": "Fox40",
+    "slug": "fox40-mini-whistle",
+    "price": 95,
+    "originalPrice": 115,
+    "spec": "Smaller mouthpiece · 109 dB",
+    "tag": "OFFICIATING",
+    "rating": 4.6,
+    "reviewsCount": 13,
+    "category": "accessories",
+    "categoryLabel": "Accessories",
+    "collections": [
+      "fox40",
+      "accessories",
+      "officiating",
+      "all"
+    ],
+    "summary": "Fox40 Mini Whistle — a smaller mouthpiece at 109 dB, sized down from the Classic without losing its pealess design. Genuine authorized stock from Pozozo Sports.",
+    "description": "The Mini trims the mouthpiece down from the Classic's full size while keeping the same pealess construction, and still reaches 109 dB. It suits younger officials, junior league coaches, and anyone who finds the standard Fox40 body too large to hold through a full match.",
+    "images": [
+      "/accessories/fox40-mini-whistle-a.webp",
+      "/accessories/fox40-mini-whistle-b.webp"
+    ],
+    "colors": [
+      {
+        "name": "Safety Yellow",
+        "hex": "#D4E815"
+      }
+    ],
+    "sizes": [
+      "Standard"
+    ],
+    "details": [
+      "Smaller mouthpiece than the Fox40 Classic",
+      "109 dB rated output",
+      "Pealess design",
+      "Includes lanyard",
+      "Available for single-unit or bulk team order on WhatsApp"
+    ],
+    "features": {
+      "material": "ABS pealess body",
+      "intendedSurface": "Court, pitch, and touchline officiating",
+      "certification": "Standard Authorized Stock",
+      "sizeSpecification": "109 dB"
+    }
+  },
+  {
+    "id": "fox40-mini-electronic-whistle",
+    "name": "Mini Electronic Whistle",
+    "brand": "Fox40",
+    "slug": "fox40-mini-electronic-whistle",
+    "price": 260,
+    "originalPrice": 310,
+    "spec": "Button-operated · LED light · 110 dB · batteries included",
+    "tag": "NEW",
+    "rating": 4.7,
+    "reviewsCount": 8,
+    "category": "accessories",
+    "categoryLabel": "Accessories",
+    "collections": [
+      "fox40",
+      "accessories",
+      "officiating",
+      "new-arrivals",
+      "all"
+    ],
+    "isNew": true,
+    "summary": "Fox40 Mini Electronic Whistle — a button-operated whistle with an LED light, 110 dB, batteries included. Genuine authorized stock from Pozozo Sports.",
+    "description": "No mouthpiece, no shared contact point — the Mini Electronic is operated by a button and outputs 110 dB through a built-in speaker, with an LED light for low-light finishes or halls with patchy sight lines. Batteries are included, and the slim body clips onto a lanyard or sits in a pocket between uses.",
+    "images": [
+      "/accessories/fox40-mini-electronic-whistle-a.webp"
+    ],
+    "colors": [
+      {
+        "name": "Graphite",
+        "hex": "#2B2B2B"
+      }
+    ],
+    "sizes": [
+      "Standard"
+    ],
+    "details": [
+      "Button-operated — no mouth contact required",
+      "Built-in LED light",
+      "110 dB rated output",
+      "Batteries included",
+      "Available for single-unit or bulk team order on WhatsApp"
+    ],
+    "features": {
+      "material": "ABS body with electronic sounder and LED",
+      "intendedSurface": "Indoor halls and low-light officiating",
+      "certification": "Standard Authorized Stock",
+      "sizeSpecification": "110 dB"
+    }
+  },
+  {
+    "id": "fox40-pearl-whistle",
+    "name": "Pearl Whistle",
+    "brand": "Fox40",
+    "slug": "fox40-pearl-whistle",
+    "price": 165,
+    "originalPrice": 195,
+    "spec": "Two-chamber design · lower tone · 90 dB",
+    "tag": "OFFICIATING",
+    "rating": 4.7,
+    "reviewsCount": 9,
+    "category": "accessories",
+    "categoryLabel": "Accessories",
+    "collections": [
+      "fox40",
+      "accessories",
+      "officiating",
+      "all"
+    ],
+    "summary": "Fox40 Pearl Whistle — a two-chamber design tuned to a lower, more distinctive tone at 90 dB. Genuine authorized stock from Pozozo Sports.",
+    "description": "Most Fox40 whistles are built to be the loudest thing on the pitch; the Pearl is built to be told apart from them. Its two-chamber body drops the pitch and softens the output to 90 dB, so it reads as a different sound rather than a louder one when a second or third whistle is already going — useful for table officials and assistant referees working alongside a main whistle.",
+    "images": [
+      "/accessories/fox40-pearl-whistle-a.webp",
+      "/accessories/fox40-pearl-whistle-b.webp"
+    ],
+    "colors": [
+      {
+        "name": "Cobalt Blue",
+        "hex": "#1E4FA0"
+      }
+    ],
+    "sizes": [
+      "Standard"
+    ],
+    "details": [
+      "Two-chamber design for a distinctive lower tone",
+      "90 dB rated output",
+      "Suited to assistant and table officials working alongside a main whistle",
+      "Includes lanyard",
+      "Available for single-unit or bulk team order on WhatsApp"
+    ],
+    "features": {
+      "material": "ABS two-chamber body",
+      "intendedSurface": "Table officiating and assistant refereeing",
+      "certification": "Standard Authorized Stock",
+      "sizeSpecification": "90 dB"
+    }
+  },
+  {
+    "id": "fox40-sonik-blast-cmg-whistle",
+    "name": "Sonik Blast CMG Whistle",
+    "brand": "Fox40",
+    "slug": "fox40-sonik-blast-cmg-whistle",
+    "price": 235,
+    "originalPrice": 280,
+    "spec": "120+ dB · cushioned mouth grip · breakaway neck lanyard",
+    "tag": "LOUDEST",
+    "rating": 4.9,
+    "reviewsCount": 22,
+    "category": "accessories",
+    "categoryLabel": "Accessories",
+    "collections": [
+      "fox40",
+      "accessories",
+      "officiating",
+      "flagship-match",
+      "all"
+    ],
+    "isFeatured": true,
+    "summary": "Fox40 Sonik Blast CMG Whistle — 120+ dB, audible over a mile away, with a cushioned mouth grip and breakaway neck lanyard. Genuine authorized stock from Pozozo Sports.",
+    "description": "Fox40 built the Sonik Blast to be heard over a mile away and rates it at 120+ dB — loud enough for outdoor pitches, packed stadiums, and any match where a standard whistle gets lost in crowd noise. The mouth grip carries over from the Classic CMG line, and the neck lanyard is a breakaway style that releases under sudden pressure rather than pulling against the throat.",
+    "images": [
+      "/accessories/fox40-sonik-blast-cmg-whistle-breakaway-lanyard-a.webp",
+      "/accessories/fox40-sonik-blast-cmg-whistle-breakaway-lanyard-b.webp"
+    ],
+    "colors": [
+      {
+        "name": "White",
+        "hex": "#F2F2F2"
+      }
+    ],
+    "sizes": [
+      "Standard"
+    ],
+    "details": [
+      "120+ dB rated output — audible over a mile away",
+      "Cushioned mouth grip (CMG)",
+      "Breakaway neck lanyard",
+      "Built for outdoor pitches and high-noise venues",
+      "Available for single-unit or bulk team order on WhatsApp"
+    ],
+    "features": {
+      "material": "ABS pealess body with cushioned grip",
+      "intendedSurface": "Outdoor pitches and high-capacity venues",
+      "certification": "Standard Authorized Stock",
+      "sizeSpecification": "120+ dB"
+    }
+  },
+  {
+    "id": "fox40-sonik-blast-whistle-pump-bundle",
+    "name": "Sonik Blast CMG Whistle + Ball Pump Bundle",
+    "brand": "Fox40",
+    "slug": "fox40-sonik-blast-whistle-pump-bundle",
+    "price": 340,
+    "originalPrice": 410,
+    "spec": "120+ dB whistle with dual-action ball pump and 3 pump pins",
+    "tag": "BUNDLE",
+    "rating": 4.9,
+    "reviewsCount": 17,
+    "category": "accessories",
+    "categoryLabel": "Accessories",
+    "collections": [
+      "fox40",
+      "accessories",
+      "officiating",
+      "new-arrivals",
+      "all"
+    ],
+    "isNew": true,
+    "isFeatured": true,
+    "summary": "Fox40 Sonik Blast CMG Whistle + Ball Pump Bundle — the 120+ dB Sonik Blast whistle packaged with a dual-action ball pump and three pump pins. Genuine authorized stock from Pozozo Sports.",
+    "description": "One package covers two things every kit bag runs short of: a whistle loud enough to be heard over a full pitch, and a pump for the balls that go soft between matches. The bundle pairs the 120+ dB Sonik Blast CMG whistle with a dual-action pump and three spare pump pins, so a flat ball and a missing whistle stop being two separate problems on match day.",
+    "images": [
+      "/accessories/fox40-sonik-blast-cmg-whistle-pump-a.webp"
+    ],
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#1A1A1A"
+      }
+    ],
+    "sizes": [
+      "Standard"
+    ],
+    "details": [
+      "Includes Fox40 Sonik Blast CMG whistle (120+ dB)",
+      "Dual-action ball pump",
+      "3 spare ball pump pins",
+      "One bundle covers two common kit-bag gaps",
+      "Available for single-unit or bulk team order on WhatsApp"
+    ],
+    "features": {
+      "material": "ABS whistle body with dual-action pump",
+      "intendedSurface": "Match-day kit bag essentials",
+      "certification": "Standard Authorized Stock",
+      "sizeSpecification": "120+ dB whistle + dual-action pump"
+    }
+  },
+  {
+    "id": "mikasa-v333w",
+    "name": "V333W Volleyball",
+    "brand": "Mikasa",
+    "slug": "mikasa-v333w",
+    "price": 1850,
+    "originalPrice": 2100,
+    "spec": "Size 5 composite · FIVB approved match ball",
+    "tag": "FLAGSHIP",
+    "rating": 4.9,
+    "reviewsCount": 34,
+    "category": "volleyball",
+    "categoryLabel": "Volleyball",
+    "collections": [
+      "mikasa",
+      "volleyball",
+      "flagship-match",
+      "best-sellers",
+      "all"
+    ],
+    "isBestSeller": true,
+    "isFeatured": true,
+    "summary": "Mikasa V333W Volleyball — Size 5 composite, FIVB approved match ball. Genuine authorized stock from Pozozo Sports.",
+    "description": "The V333W carries Mikasa's current match-ball panel pattern into league play, in composite leather built to hold its shape under repeated serves and blocks. It's sized and approved to FIVB specification, which is what a league asks for when it wants every home and away game played on the same ball.",
+    "images": [
+      "/volleyballs/mikasa-v333w-volleyball-a.webp",
+      "/volleyballs/mikasa-v333w-volleyball-b.webp"
+    ],
+    "colors": [
+      {
+        "name": "Yellow / Blue",
+        "hex": "#F4C430"
+      }
+    ],
+    "sizes": [
+      "Size 5"
+    ],
+    "details": [
+      "Genuine 100% authorized Mikasa stock with manufacturer markings",
+      "FIVB approved match specification",
+      "Composite leather panel construction",
+      "Ideal for: indoor league and tournament play",
+      "Available for immediate single unit or bulk institutional delivery on WhatsApp"
+    ],
+    "features": {
+      "material": "Composite leather",
+      "intendedSurface": "Indoor hardwood courts",
+      "certification": "FIVB Approved",
+      "sizeSpecification": "Size 5 composite"
+    }
+  },
+  {
+    "id": "mikasa-v330w",
+    "name": "V330W Volleyball",
+    "brand": "Mikasa",
+    "slug": "mikasa-v330w",
+    "price": 1550,
+    "originalPrice": 1800,
+    "spec": "Size 5 composite · FIVB official match specification",
+    "tag": "MATCH BALL",
+    "rating": 4.8,
+    "reviewsCount": 21,
+    "category": "volleyball",
+    "categoryLabel": "Volleyball",
+    "collections": [
+      "mikasa",
+      "volleyball",
+      "flagship-match",
+      "all"
+    ],
+    "isFeatured": true,
+    "summary": "Mikasa V330W Volleyball — Size 5 composite, FIVB official match specification. Genuine authorized stock from Pozozo Sports.",
+    "description": "The V330W shares the same swirl panel layout Mikasa uses across its official line, finished smooth rather than dimpled. It meets FIVB's official specification, making it a like-for-like match ball for clubs stepping up from training-grade stock.",
+    "images": [
+      "/volleyballs/mikasa-v330w-volleyball-a.webp",
+      "/volleyballs/mikasa-v330w-volleyball-b.webp"
+    ],
+    "colors": [
+      {
+        "name": "Yellow / Blue",
+        "hex": "#F4C430"
+      }
+    ],
+    "sizes": [
+      "Size 5"
+    ],
+    "details": [
+      "Genuine 100% authorized Mikasa stock with manufacturer markings",
+      "FIVB official match specification",
+      "Composite leather panel construction",
+      "Ideal for: indoor league and club match play",
+      "Available for immediate single unit or bulk institutional delivery on WhatsApp"
+    ],
+    "features": {
+      "material": "Composite leather",
+      "intendedSurface": "Indoor hardwood courts",
+      "certification": "FIVB Official",
+      "sizeSpecification": "Size 5 composite"
+    }
+  },
+  {
+    "id": "mikasa-v300w",
+    "name": "V300W Volleyball",
+    "brand": "Mikasa",
+    "slug": "mikasa-v300w",
+    "price": 1350,
+    "originalPrice": 1550,
+    "spec": "Size 5 composite · dimpled grip surface · FIVB approved",
+    "tag": "MATCH BALL",
+    "rating": 4.7,
+    "reviewsCount": 16,
+    "category": "volleyball",
+    "categoryLabel": "Volleyball",
+    "collections": [
+      "mikasa",
+      "volleyball",
+      "all"
+    ],
+    "summary": "Mikasa V300W Volleyball — Size 5 composite with a dimpled grip surface, FIVB approved. Genuine authorized stock from Pozozo Sports.",
+    "description": "The V300W adds a dimpled surface texture to Mikasa's swirl pattern, giving fingers more contact on serves and sets. It carries FIVB approval and sits below the V330W and V333W on finish rather than on flight consistency.",
+    "images": [
+      "/volleyballs/mikasa-v300w-volleyball-a.webp",
+      "/volleyballs/mikasa-v300w-volleyball-b.webp"
+    ],
+    "colors": [
+      {
+        "name": "Yellow / Blue",
+        "hex": "#F4C430"
+      }
+    ],
+    "sizes": [
+      "Size 5"
+    ],
+    "details": [
+      "Genuine 100% authorized Mikasa stock with manufacturer markings",
+      "FIVB approved specification",
+      "Dimpled composite surface for grip",
+      "Ideal for: club match play and serious training",
+      "Available for immediate single unit or bulk institutional delivery on WhatsApp"
+    ],
+    "features": {
+      "material": "Dimpled composite leather",
+      "intendedSurface": "Indoor hardwood courts",
+      "certification": "FIVB Approved",
+      "sizeSpecification": "Size 5 composite"
+    }
+  },
+  {
+    "id": "mikasa-v200w",
+    "name": "V200W Volleyball",
+    "brand": "Mikasa",
+    "slug": "mikasa-v200w",
+    "price": 950,
+    "originalPrice": 1150,
+    "spec": "Size 5 composite · FIVB official pattern · club training",
+    "tag": "TRAINING",
+    "rating": 4.7,
+    "reviewsCount": 24,
+    "category": "volleyball",
+    "categoryLabel": "Volleyball",
+    "collections": [
+      "mikasa",
+      "volleyball",
+      "best-sellers",
+      "all"
+    ],
+    "isBestSeller": true,
+    "summary": "Mikasa V200W Volleyball — Size 5 composite, FIVB official panel pattern, built for club training. Genuine authorized stock from Pozozo Sports.",
+    "description": "The V200W is Mikasa's entry point into the same swirl-panel family as the V300 and V330 lines, built for the volume of touches a training session puts through a ball rather than for match-day rotation. It's the ball to buy in numbers for a squad that needs six or eight on the court at once.",
+    "images": [
+      "/volleyballs/mikasa-v200w-volleyball-a.webp",
+      "/volleyballs/mikasa-v200w-volleyball-b.webp"
+    ],
+    "colors": [
+      {
+        "name": "Yellow / Blue",
+        "hex": "#F4C430"
+      }
+    ],
+    "sizes": [
+      "Size 5"
+    ],
+    "details": [
+      "Genuine 100% authorized Mikasa stock with manufacturer markings",
+      "FIVB official panel pattern",
+      "Composite leather construction",
+      "Ideal for: club and school training sessions",
+      "Available for immediate single unit or bulk institutional delivery on WhatsApp"
+    ],
+    "features": {
+      "material": "Composite leather",
+      "intendedSurface": "Indoor hardwood courts",
+      "certification": "FIVB Official",
+      "sizeSpecification": "Size 5 composite"
+    }
+  },
+  {
+    "id": "mikasa-mv210",
+    "name": "MV210 Volleyball",
+    "brand": "Mikasa",
+    "slug": "mikasa-mv210",
+    "price": 780,
+    "originalPrice": 920,
+    "spec": "Size 5 composite · FIVB official ball · regular performance training",
+    "tag": "TRAINING",
+    "rating": 4.6,
+    "reviewsCount": 12,
+    "category": "volleyball",
+    "categoryLabel": "Volleyball",
+    "collections": [
+      "mikasa",
+      "volleyball",
+      "all"
+    ],
+    "summary": "Mikasa MV210 Volleyball — Size 5 composite, FIVB official ball, built for regular training performance. Genuine authorized stock from Pozozo Sports.",
+    "description": "Mikasa markets the MV210 as a \"regular performance\" ball — an honest way of saying it's built for everyday training rather than league finals. It still carries the FIVB official ball marking and the panel construction to survive a full season of club sessions.",
+    "images": [
+      "/volleyballs/mikasa-mv210-volleyball-a.webp"
+    ],
+    "colors": [
+      {
+        "name": "Yellow / Blue",
+        "hex": "#F4C430"
+      }
+    ],
+    "sizes": [
+      "Size 5"
+    ],
+    "details": [
+      "Genuine 100% authorized Mikasa stock with manufacturer markings",
+      "FIVB official ball marking",
+      "Composite leather construction",
+      "Ideal for: everyday club and school training",
+      "Available for immediate single unit or bulk institutional delivery on WhatsApp"
+    ],
+    "features": {
+      "material": "Composite leather",
+      "intendedSurface": "Indoor hardwood courts",
+      "certification": "FIVB Official",
+      "sizeSpecification": "Size 5 composite"
+    }
+  },
+  {
+    "id": "mikasa-isv100",
+    "name": "ISV100 Volleyball",
+    "brand": "Mikasa",
+    "slug": "mikasa-isv100",
+    "price": 560,
+    "originalPrice": 680,
+    "spec": "Size 5 · SoftSphere pillow cover · no-sting construction",
+    "tag": "SCHOOL PICK",
+    "rating": 4.8,
+    "reviewsCount": 20,
+    "category": "volleyball",
+    "categoryLabel": "Volleyball",
+    "collections": [
+      "mikasa",
+      "volleyball",
+      "best-sellers",
+      "all"
+    ],
+    "isBestSeller": true,
+    "summary": "Mikasa ISV100 Volleyball — Size 5, SoftSphere pillow cover, no-sting construction. Genuine authorized stock from Pozozo Sports.",
+    "description": "The ISV100 is built around Mikasa's SoftSphere pillow cover, which takes the sting out of forearm passes and serves — the part of learning volleyball that puts most beginners off it. It's the ball to point schools toward for PE classes and first-time players, rather than club training.",
+    "images": [
+      "/volleyballs/mikasa-isv100-volleyball-a.webp"
+    ],
+    "colors": [
+      {
+        "name": "White / Blue / Yellow",
+        "hex": "#2255A4"
+      }
+    ],
+    "sizes": [
+      "Size 5"
+    ],
+    "details": [
+      "Genuine 100% authorized Mikasa stock with manufacturer markings",
+      "SoftSphere no-sting pillow cover",
+      "FIVB official ball marking",
+      "Ideal for: PE classes and first-time players",
+      "Available for immediate single unit or bulk institutional delivery on WhatsApp"
+    ],
+    "features": {
+      "material": "SoftSphere pillow cover",
+      "intendedSurface": "Indoor hardwood courts and school halls",
+      "certification": "FIVB Official",
+      "sizeSpecification": "Size 5"
+    }
+  },
+  {
+    "id": "mikasa-beach-classic-volleyball",
+    "name": "Beach Classic Volleyball",
+    "brand": "Mikasa",
+    "slug": "mikasa-beach-classic-volleyball",
+    "price": 680,
+    "originalPrice": 800,
+    "spec": "Size 5 · FIVB official supplier pattern · outdoor beach cover",
+    "tag": "BEACH",
+    "rating": 4.7,
+    "reviewsCount": 14,
+    "category": "volleyball",
+    "categoryLabel": "Volleyball",
+    "collections": [
+      "mikasa",
+      "volleyball",
+      "all"
+    ],
+    "summary": "Mikasa Beach Classic Volleyball — Size 5, FIVB official supplier pattern, built for outdoor beach play. Genuine authorized stock from Pozozo Sports.",
+    "description": "The Beach Classic is Mikasa's recreational beach ball, printed in its own colourway rather than the plain match pattern, and built from an outdoor cover material that stands up to sand and sun rather than an indoor hardwood finish. It's a beach and social-league pick, not a FIVB match ball.",
+    "images": [
+      "/volleyballs/mikasa-beach-classic-volleyball-a.webp",
+      "/volleyballs/mikasa-beach-classic-volleyball-b.webp"
+    ],
+    "colors": [
+      {
+        "name": "Blue / Orange / Yellow",
+        "hex": "#2E9BD6"
+      }
+    ],
+    "sizes": [
+      "Size 5"
+    ],
+    "details": [
+      "Genuine 100% authorized Mikasa stock with manufacturer markings",
+      "FIVB official supplier pattern",
+      "Outdoor beach cover material",
+      "Ideal for: beach courts and social league play",
+      "Available for immediate single unit or bulk institutional delivery on WhatsApp"
+    ],
+    "features": {
+      "material": "Outdoor synthetic beach cover",
+      "intendedSurface": "Sand and outdoor beach courts",
+      "certification": "FIVB Official Supplier",
+      "sizeSpecification": "Size 5"
+    }
+  },
+  {
+    "id": "mikasa-bv550c-beach-pro",
+    "name": "BV550C Beach Pro Volleyball",
+    "brand": "Mikasa",
+    "slug": "mikasa-bv550c-beach-pro",
+    "price": 1650,
+    "originalPrice": 1900,
+    "spec": "Size 5 · FIVB official game ball · beach",
+    "tag": "OFFICIAL MATCH BALL",
+    "rating": 4.9,
+    "reviewsCount": 18,
+    "category": "volleyball",
+    "categoryLabel": "Volleyball",
+    "collections": [
+      "mikasa",
+      "volleyball",
+      "flagship-match",
+      "all"
+    ],
+    "isFeatured": true,
+    "summary": "Mikasa BV550C Beach Pro Volleyball — Size 5, FIVB official game ball for beach volleyball. Genuine authorized stock from Pozozo Sports.",
+    "description": "The BV550C is Mikasa's FIVB official beach game ball — the one used at sanctioned beach tournaments rather than the recreational Beach Classic or Good Vibes lines. It's built for the outdoor durability beach play needs while holding the same flight consistency as an indoor match ball.",
+    "images": [
+      "/volleyballs/mikasa-bv550c-beach-pro-volleyball-a.webp",
+      "/volleyballs/mikasa-bv550c-beach-pro-volleyball-b.webp"
+    ],
+    "colors": [
+      {
+        "name": "White / Blue / Red",
+        "hex": "#1E4FA0"
+      }
+    ],
+    "sizes": [
+      "Size 5"
+    ],
+    "details": [
+      "Genuine 100% authorized Mikasa stock with manufacturer markings",
+      "FIVB official game ball for beach volleyball",
+      "Outdoor beach cover material",
+      "Ideal for: sanctioned beach tournaments and league play",
+      "Available for immediate single unit or bulk institutional delivery on WhatsApp"
+    ],
+    "features": {
+      "material": "Outdoor synthetic beach cover",
+      "intendedSurface": "Sand and outdoor beach courts",
+      "certification": "FIVB Official Game Ball",
+      "sizeSpecification": "Size 5"
+    }
+  },
+  {
+    "id": "mikasa-good-vibes-beach-volleyball",
+    "name": "Good Vibes Beach Volleyball",
+    "brand": "Mikasa",
+    "slug": "mikasa-good-vibes-beach-volleyball",
+    "price": 620,
+    "originalPrice": 750,
+    "spec": "Size 5 · printed beach cover · recreational",
+    "tag": "NEW",
+    "rating": 4.8,
+    "reviewsCount": 7,
+    "category": "volleyball",
+    "categoryLabel": "Volleyball",
+    "collections": [
+      "mikasa",
+      "volleyball",
+      "new-arrivals",
+      "all"
+    ],
+    "isNew": true,
+    "summary": "Mikasa Good Vibes Beach Volleyball — Size 5, printed recreational beach cover. Genuine authorized stock from Pozozo Sports.",
+    "description": "Good Vibes is Mikasa's lifestyle beach ball — the same recreational build as the Beach Classic, printed in a different pattern aimed at players who care how their kit bag looks.",
+    "images": [
+      "/volleyballs/mikasa-good-vibes-beach-volleyball-a.webp"
+    ],
+    "colors": [
+      {
+        "name": "Blue / Yellow Print",
+        "hex": "#2E9BD6"
+      }
+    ],
+    "sizes": [
+      "Size 5"
+    ],
+    "details": [
+      "Genuine 100% authorized Mikasa stock with manufacturer markings",
+      "Printed recreational beach cover",
+      "Outdoor beach cover material",
+      "Ideal for: beach courts and social league play",
+      "Available for immediate single unit or bulk institutional delivery on WhatsApp"
+    ],
+    "features": {
+      "material": "Outdoor synthetic beach cover",
+      "intendedSurface": "Sand and outdoor beach courts",
+      "certification": "FIVB Official Supplier",
+      "sizeSpecification": "Size 5"
+    }
   }
 ];

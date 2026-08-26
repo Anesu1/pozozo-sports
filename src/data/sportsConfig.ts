@@ -1,9 +1,9 @@
 export const STORE_CONFIG = {
   name: 'POZOZO SPORTS',
   tagline: 'AUTHORISED MOLTEN & MIKASA STOCK',
-  phone: '260977000000',
-  displayPhone: '+260 977 000 000',
-  email: 'sales@pozozosports.com',
+  phone: '263777351222',
+  displayPhone: '+263 77 735 1222',
+  email: 'phillipnheera@gmail.com',
   operatingHours: 'Monday – Saturday: 08:00 – 18:00',
   currencySymbol: 'K', // Zambian Kwacha / USD / flexible
   currencyCode: 'ZMW',

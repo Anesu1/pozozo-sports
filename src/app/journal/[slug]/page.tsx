@@ -66,14 +66,14 @@ export default function JournalDetailPage({ params }: PageProps) {
   };
 
   return (
-    <article className="py-12 sm:py-20 bg-[#EEF1F5] min-h-screen">
+    <article className="py-12 sm:py-20 bg-[#F3F5F0] min-h-screen">
       <JsonLd data={articleJsonLd} />
       <JsonLd data={breadcrumbJsonLd} />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Back Link */}
         <Link
           href="/journal"
-          className="inline-flex items-center gap-2 text-xs font-bold text-[#55637A] hover:text-[#0E1726] mb-8 group"
+          className="inline-flex items-center gap-2 text-xs font-bold text-[#5B6B54] hover:text-[#13251C] mb-8 group"
         >
           <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
           <span>Back to all guides</span>
@@ -82,10 +82,10 @@ export default function JournalDetailPage({ params }: PageProps) {
         {/* Article Meta */}
         <div className="space-y-4 mb-8">
           <div className="flex items-center gap-3">
-            <span className="bg-[#0E1726] text-white text-[11px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-sm">
+            <span className="bg-[#13251C] text-white text-[11px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-sm">
               {journal.category}
             </span>
-            <div className="flex items-center gap-4 text-xs text-[#55637A]">
+            <div className="flex items-center gap-4 text-xs text-[#5B6B54]">
               <span className="flex items-center gap-1">
                 <Calendar className="w-3.5 h-3.5" />
                 {journal.date}
@@ -97,32 +97,32 @@ export default function JournalDetailPage({ params }: PageProps) {
             </div>
           </div>
 
-          <h1 className="font-display uppercase text-3xl sm:text-5xl text-[#0E1726] tracking-tight leading-tight">
+          <h1 className="font-display uppercase text-3xl sm:text-5xl text-[#13251C] tracking-tight leading-tight">
             {journal.title}
           </h1>
 
-          <p className="text-base sm:text-xl text-[#55637A] leading-relaxed">
+          <p className="text-base sm:text-xl text-[#5B6B54] leading-relaxed">
             {journal.excerpt}
           </p>
 
           {/* Author Badge */}
-          <div className="pt-4 border-t border-[#D3DAE4] flex items-center justify-between">
+          <div className="pt-4 border-t border-[#D8DED2] flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-sm bg-[#0E1726] text-white text-xs font-bold flex items-center justify-center">
+              <div className="w-10 h-10 rounded-sm bg-[#13251C] text-white text-xs font-bold flex items-center justify-center">
                 {journal.author.name.charAt(0)}
               </div>
               <div>
-                <h4 className="font-display uppercase text-xs sm:text-sm text-[#0E1726]">
+                <h4 className="font-display uppercase text-xs sm:text-sm text-[#13251C]">
                   {journal.author.name}
                 </h4>
-                <p className="text-[11px] text-[#55637A]">{journal.author.role}</p>
+                <p className="text-[11px] text-[#5B6B54]">{journal.author.role}</p>
               </div>
             </div>
           </div>
         </div>
 
         {/* Hero Cover Image */}
-        <div className="relative aspect-[16/9] w-full rounded-sm overflow-hidden mb-12 border border-[#D3DAE4] shadow-lg">
+        <div className="relative aspect-[16/9] w-full rounded-sm overflow-hidden mb-12 border border-[#D8DED2] shadow-lg">
           <Image
             src={journal.coverImage}
             alt={journal.title}
@@ -133,21 +133,21 @@ export default function JournalDetailPage({ params }: PageProps) {
         </div>
 
         {/* Article Body Content */}
-        <div className="space-y-10 text-base sm:text-lg text-[#0E1726] leading-relaxed">
+        <div className="space-y-10 text-base sm:text-lg text-[#13251C] leading-relaxed">
           {journal.content.map((section, idx) => (
             <div key={idx} className="space-y-4">
               {section.heading && (
-                <h2 className="font-display uppercase text-2xl sm:text-3xl text-[#0E1726] tracking-tight pt-4">
+                <h2 className="font-display uppercase text-2xl sm:text-3xl text-[#13251C] tracking-tight pt-4">
                   {section.heading}
                 </h2>
               )}
               {section.paragraphs.map((p, pIdx) => (
-                <p key={pIdx} className="text-[#3A4557] leading-relaxed">
+                <p key={pIdx} className="text-[#3C4536] leading-relaxed">
                   {p}
                 </p>
               ))}
               {section.bulletPoints && (
-                <ul className="space-y-2 my-4 pl-4 border-l-2 border-[#0E1726] text-sm sm:text-base text-[#0E1726] font-medium">
+                <ul className="space-y-2 my-4 pl-4 border-l-2 border-[#13251C] text-sm sm:text-base text-[#13251C] font-medium">
                   {section.bulletPoints.map((bp, bpIdx) => (
                     <li key={bpIdx} className="leading-relaxed">
                       — {bp}
@@ -160,12 +160,12 @@ export default function JournalDetailPage({ params }: PageProps) {
         </div>
 
         {/* Related Journals Section */}
-        <section className="mt-20 pt-16 border-t border-[#D3DAE4]">
+        <section className="mt-20 pt-16 border-t border-[#D8DED2]">
           <div className="flex items-center justify-between mb-8">
-            <h3 className="font-display uppercase text-2xl text-[#0E1726]">Related Guides</h3>
+            <h3 className="font-display uppercase text-2xl text-[#13251C]">Related Guides</h3>
             <Link
               href="/journal"
-              className="text-xs font-bold uppercase tracking-wider text-[#0E1726] hover:underline"
+              className="text-xs font-bold uppercase tracking-wider text-[#13251C] hover:underline"
             >
               View More
             </Link>
@@ -176,15 +176,15 @@ export default function JournalDetailPage({ params }: PageProps) {
               <Link
                 key={item.id}
                 href={`/journal/${item.slug}`}
-                className="group p-5 bg-white rounded-sm border border-[#D3DAE4] hover:shadow-md transition-all space-y-3"
+                className="group p-5 bg-white rounded-sm border border-[#D8DED2] hover:shadow-md transition-all space-y-3"
               >
-                <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#55637A]">
+                <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#5B6B54]">
                   {item.category}
                 </span>
-                <h4 className="font-display uppercase text-sm text-[#0E1726] group-hover:text-black line-clamp-2">
+                <h4 className="font-display uppercase text-sm text-[#13251C] group-hover:text-black line-clamp-2">
                   {item.title}
                 </h4>
-                <div className="flex items-center gap-1 text-xs font-bold text-[#0E1726] group-hover:underline">
+                <div className="flex items-center gap-1 text-xs font-bold text-[#13251C] group-hover:underline">
                   <span>Read Article</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </div>

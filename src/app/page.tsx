@@ -30,7 +30,7 @@ const CONFIDENCE_FEATURES = [
 const BULK_POINTS = [
   'Quotations and invoices on request',
   'Mixed orders across sports are normal',
-  'Pumps, needles and gauges quoted alongside',
+  'Pumps, needles, gauges and Fox40 whistles quoted alongside',
 ];
 
 const BEFORE_YOU_BUY = [
@@ -97,12 +97,12 @@ export default function HomePage() {
   };
 
   return (
-    <div className="bg-[#EEF1F5] text-[#0E1726]">
+    <div className="bg-[#F3F5F0] text-[#13251C]">
       {/* Hero */}
       <section id="top" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-5">
-        <div className="relative bg-[#0E1726] text-[#EEF1F5] rounded-sm mt-2 px-6 sm:px-10 lg:px-16 py-12 sm:py-16 lg:py-20 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center overflow-hidden">
+        <div className="relative bg-[#13251C] text-[#F3F5F0] rounded-sm mt-2 px-6 sm:px-10 lg:px-16 py-12 sm:py-16 lg:py-20 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center overflow-hidden">
           <div>
-            <div className="text-[11px] font-bold tracking-[0.24em] text-[#8494AC] mb-6">
+            <div className="text-[11px] font-bold tracking-[0.24em] text-[#8B9782] mb-6">
               MOLTEN &amp; MIKASA · ZAMBIA
             </div>
             <h1 className="font-display uppercase text-[42px] xs:text-5xl sm:text-6xl lg:text-[84px] leading-[0.9] tracking-tight mb-6">
@@ -110,16 +110,16 @@ export default function HomePage() {
               <br />
               for the
               <br />
-              <span className="text-[#F2C230]">whistle</span>
+              <span className="text-[#F2900E]">whistle</span>
             </h1>
-            <p className="text-base sm:text-lg leading-relaxed text-[#A7B4C7] max-w-[42ch] mb-8">
+            <p className="text-base sm:text-lg leading-relaxed text-[#B4BEA8] max-w-[42ch] mb-8">
               Match and training balls for schools, clubs and shops. Pick what you need, send the list on
               WhatsApp, and get price and stock back the same day.
             </p>
             <div className="flex flex-wrap gap-3">
               <button
                 onClick={() => goToCatalogue('all')}
-                className="h-[54px] px-7 bg-[#F2C230] hover:bg-white text-[#0E1726] text-sm font-bold rounded-sm transition-colors"
+                className="h-[54px] px-7 bg-[#F2900E] hover:bg-white text-[#13251C] text-sm font-bold rounded-sm transition-colors"
               >
                 Shop the range
               </button>
@@ -127,7 +127,7 @@ export default function HomePage() {
                 href={heroWaUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="h-[54px] px-7 flex items-center border border-[#2C3A50] hover:border-[#EEF1F5] text-[#EEF1F5] text-sm font-semibold rounded-sm transition-colors"
+                className="h-[54px] px-7 flex items-center border border-[#26362A] hover:border-[#F3F5F0] text-[#F3F5F0] text-sm font-semibold rounded-sm transition-colors"
               >
                 Ask a question
               </a>
@@ -140,7 +140,7 @@ export default function HomePage() {
               priority
               className="w-full h-full"
             />
-            <span className="absolute right-0 bottom-0 text-[11px] font-bold tracking-[0.16em] text-[#8494AC]">
+            <span className="absolute right-0 bottom-0 text-[11px] font-bold tracking-[0.16em] text-[#8B9782]">
               MOLTEN BG5000 · FIBA
             </span>
           </div>
@@ -157,14 +157,14 @@ export default function HomePage() {
             <button
               onClick={() => railRef.current?.scrollBy({ left: -600, behavior: 'smooth' })}
               aria-label="Previous"
-              className="w-[46px] h-[46px] rounded-sm border border-[#B9C3D2] hover:bg-[#0E1726] hover:text-[#EEF1F5] hover:border-[#0E1726] flex items-center justify-center text-lg transition-colors"
+              className="w-[46px] h-[46px] rounded-sm border border-[#BCC4B4] hover:bg-[#13251C] hover:text-[#F3F5F0] hover:border-[#13251C] flex items-center justify-center text-lg transition-colors"
             >
               ←
             </button>
             <button
               onClick={() => railRef.current?.scrollBy({ left: 600, behavior: 'smooth' })}
               aria-label="Next"
-              className="w-[46px] h-[46px] rounded-sm border border-[#B9C3D2] hover:bg-[#0E1726] hover:text-[#EEF1F5] hover:border-[#0E1726] flex items-center justify-center text-lg transition-colors"
+              className="w-[46px] h-[46px] rounded-sm border border-[#BCC4B4] hover:bg-[#13251C] hover:text-[#F3F5F0] hover:border-[#13251C] flex items-center justify-center text-lg transition-colors"
             >
               →
             </button>
@@ -180,14 +180,14 @@ export default function HomePage() {
       </section>
 
       {/* Dark marquee band */}
-      <div className="bg-[#0E1726] text-[#EEF1F5] overflow-hidden h-16 sm:h-[74px] flex items-center mt-16 sm:mt-20">
+      <div className="bg-[#13251C] text-[#F3F5F0] overflow-hidden h-16 sm:h-[74px] flex items-center mt-16 sm:mt-20">
         <div className="flex gap-10 sm:gap-[52px] whitespace-nowrap animate-marquee-slow pr-10 sm:pr-[52px] font-display uppercase text-lg sm:text-[26px] tracking-tight">
           {[0, 1, 2].map((i) => (
             <React.Fragment key={i}>
               <span>MADE FOR MATCH DAY</span>
-              <span className="text-[#F2C230]">◆</span>
+              <span className="text-[#F2900E]">◆</span>
               <span>PRICED FOR THE CLUB</span>
-              <span className="text-[#F2C230]">◆</span>
+              <span className="text-[#F2900E]">◆</span>
             </React.Fragment>
           ))}
         </div>
@@ -198,7 +198,7 @@ export default function HomePage() {
         <h2 className="font-display uppercase text-3xl sm:text-4xl lg:text-[46px] leading-none tracking-tight mb-7">
           Shop by sport
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {SPORTS.map((s) => (
             <div
               key={s.slug}
@@ -214,7 +214,7 @@ export default function HomePage() {
               <button
                 onClick={() => goToCatalogue(s.slug)}
                 style={{ borderColor: s.line, color: s.fg }}
-                className="self-start h-[42px] px-5 rounded-sm border text-[13px] font-bold hover:bg-[#F2C230] hover:text-[#0E1726] hover:!border-[#F2C230] transition-colors"
+                className="self-start h-[42px] px-5 rounded-sm border text-[13px] font-bold hover:bg-[#F2900E] hover:text-[#13251C] hover:!border-[#F2900E] transition-colors"
               >
                 {s.cta}
               </button>
@@ -233,12 +233,12 @@ export default function HomePage() {
             <Link
               key={b.slug}
               href={`/brand/${b.slug}`}
-              className="bg-white border border-[#D3DAE4] hover:border-[#0E1726] rounded-sm p-9 flex flex-col gap-3 transition-colors"
+              className="bg-white border border-[#D8DED2] hover:border-[#13251C] rounded-sm p-9 flex flex-col gap-3 transition-colors"
             >
-              <div className="text-[11px] font-bold tracking-[0.22em] text-[#55637A]">AUTHORISED STOCK</div>
+              <div className="text-[11px] font-bold tracking-[0.22em] text-[#5B6B54]">AUTHORISED STOCK</div>
               <h3 className="font-display uppercase text-[34px] leading-none tracking-tight">{b.title}</h3>
-              <p className="text-[15.5px] leading-relaxed text-[#3A4557]">{b.lede}</p>
-              <span className="text-[13px] font-bold text-[#1E3A5F] mt-1">See the {b.title} range →</span>
+              <p className="text-[15.5px] leading-relaxed text-[#3C4536]">{b.lede}</p>
+              <span className="text-[13px] font-bold text-[#1678A0] mt-1">See the {b.title} range →</span>
             </Link>
           ))}
         </div>
@@ -254,12 +254,12 @@ export default function HomePage() {
           <h2 className="font-display uppercase text-3xl sm:text-4xl lg:text-[46px] leading-none tracking-tight">
             The full catalogue
           </h2>
-          <p className="text-sm leading-relaxed text-[#3A4557] max-w-[36ch]">
-            Tap <strong className="text-[#0E1726]">Add</strong> on anything you want quoted. Your list stays
+          <p className="text-sm leading-relaxed text-[#3C4536] max-w-[36ch]">
+            Tap <strong className="text-[#13251C]">Add</strong> on anything you want quoted. Your list stays
             here until you send it.
           </p>
         </div>
-        <div className="flex flex-wrap items-center gap-2.5 pb-5 border-b border-[#D3DAE4] mb-6">
+        <div className="flex flex-wrap items-center gap-2.5 pb-5 border-b border-[#D8DED2] mb-6">
           {CATEGORIES.map((cat) => {
             const isActive = selectedCategory === cat.slug;
             return (
@@ -271,8 +271,8 @@ export default function HomePage() {
                 }}
                 className={`h-10 px-5 rounded-sm text-[13px] font-semibold transition-colors ${
                   isActive
-                    ? 'bg-[#0E1726] text-[#EEF1F5]'
-                    : 'border border-[#B9C3D2] text-[#3A4557] hover:border-[#0E1726]'
+                    ? 'bg-[#13251C] text-[#F3F5F0]'
+                    : 'border border-[#BCC4B4] text-[#3C4536] hover:border-[#13251C]'
                 }`}
               >
                 {cat.name}
@@ -284,7 +284,7 @@ export default function HomePage() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search BG5000, netball, size 5…"
-            className="h-10 w-full sm:w-[260px] px-4 border border-[#D3DAE4] bg-white rounded-sm text-[13px] outline-none focus:border-[#0E1726]"
+            className="h-10 w-full sm:w-[260px] px-4 border border-[#D8DED2] bg-white rounded-sm text-[13px] outline-none focus:border-[#13251C]"
           />
         </div>
 
@@ -295,13 +295,13 @@ export default function HomePage() {
             ))}
           </div>
         ) : (
-          <div className="py-16 text-center text-[#3A4557] text-[15.5px]">
+          <div className="py-16 text-center text-[#3C4536] text-[15.5px]">
             Nothing matches that.{' '}
             <a
               href={heroWaUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#1E3A5F] hover:text-[#0E1726] font-semibold"
+              className="text-[#1678A0] hover:text-[#13251C] font-semibold"
             >
               Ask us on WhatsApp
             </a>{' '}
@@ -313,7 +313,7 @@ export default function HomePage() {
           <div className="flex justify-center pt-10">
             <button
               onClick={() => setDisplayLimit(999)}
-              className="h-[52px] px-9 border border-[#0E1726] text-[#0E1726] hover:bg-[#0E1726] hover:text-[#EEF1F5] text-sm font-bold rounded-sm transition-colors"
+              className="h-[52px] px-9 border border-[#13251C] text-[#13251C] hover:bg-[#13251C] hover:text-[#F3F5F0] text-sm font-bold rounded-sm transition-colors"
             >
               Show all {filteredProducts.length} balls
             </button>
@@ -326,16 +326,16 @@ export default function HomePage() {
         <h2 className="font-display uppercase text-3xl sm:text-4xl lg:text-[46px] leading-none tracking-tight mb-7">
           Order with confidence
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#D3DAE4] border border-[#D3DAE4] rounded-sm overflow-hidden">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#D8DED2] border border-[#D8DED2] rounded-sm overflow-hidden">
           {CONFIDENCE_FEATURES.map((f) => (
-            <div key={f.title} className="bg-[#EEF1F5] p-7">
+            <div key={f.title} className="bg-[#F3F5F0] p-7">
               <h3 className="text-lg font-bold mb-2.5 tracking-tight">{f.title}</h3>
-              <p className="text-sm leading-relaxed text-[#3A4557]">{f.body}</p>
+              <p className="text-sm leading-relaxed text-[#3C4536]">{f.body}</p>
             </div>
           ))}
-          <div className="bg-[#EEF1F5] p-7">
+          <div className="bg-[#F3F5F0] p-7">
             <h3 className="text-lg font-bold mb-2.5 tracking-tight">A person, not a bot</h3>
-            <p className="text-sm leading-relaxed text-[#3A4557]">
+            <p className="text-sm leading-relaxed text-[#3C4536]">
               Every enquiry is answered by someone who knows the stock. {STORE_CONFIG.operatingHours}.
             </p>
           </div>
@@ -344,28 +344,28 @@ export default function HomePage() {
 
       {/* Bulk & schools teaser */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-20">
-        <div className="bg-[#0E1726] text-[#EEF1F5] rounded-sm p-9 sm:p-14">
+        <div className="bg-[#13251C] text-[#F3F5F0] rounded-sm p-9 sm:p-14">
           <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-9 lg:gap-11 items-center">
             <div>
-              <div className="text-[11px] font-bold tracking-[0.22em] text-[#8494AC] mb-3.5">
+              <div className="text-[11px] font-bold tracking-[0.22em] text-[#8B9782] mb-3.5">
                 BULK &amp; SCHOOLS
               </div>
               <h2 className="font-display uppercase text-3xl sm:text-4xl lg:text-[44px] leading-[0.98] tracking-tight mb-4">
                 Kitting out a whole season?
               </h2>
-              <p className="text-base sm:text-[16.5px] leading-relaxed text-[#A7B4C7] max-w-[46ch] mb-6">
+              <p className="text-base sm:text-[16.5px] leading-relaxed text-[#B4BEA8] max-w-[46ch] mb-6">
                 Ten balls or more gets bulk pricing, and we hold stock while your order is approved.
               </p>
               <Link
                 href="/bulk"
-                className="inline-flex items-center h-[52px] px-7 bg-[#F2C230] hover:bg-white text-[#0E1726] text-sm font-bold rounded-sm transition-colors"
+                className="inline-flex items-center h-[52px] px-7 bg-[#F2900E] hover:bg-white text-[#13251C] text-sm font-bold rounded-sm transition-colors"
               >
                 Send a bulk enquiry
               </Link>
             </div>
             <div className="flex flex-col gap-3.5">
               {BULK_POINTS.map((item) => (
-                <div key={item} className="border-t border-[#2C3A50] pt-3.5 text-[15px] text-[#A7B4C7]">
+                <div key={item} className="border-t border-[#26362A] pt-3.5 text-[15px] text-[#B4BEA8]">
                   {item}
                 </div>
               ))}
@@ -384,12 +384,12 @@ export default function HomePage() {
             <div
               key={r.id}
               className={`rounded-sm p-7 border ${
-                i === 1 ? 'bg-[#0E1726] text-[#EEF1F5] border-[#0E1726]' : 'bg-white text-[#0E1726] border-[#D3DAE4]'
+                i === 1 ? 'bg-[#13251C] text-[#F3F5F0] border-[#13251C]' : 'bg-white text-[#13251C] border-[#D8DED2]'
               }`}
             >
               <p className="text-[17px] leading-relaxed mb-5">&quot;{r.text}&quot;</p>
               <div className="text-[13px] font-bold">{r.author}</div>
-              <div className={`text-[12.5px] mt-1 ${i === 1 ? 'text-[#8494AC]' : 'text-[#55637A]'}`}>
+              <div className={`text-[12.5px] mt-1 ${i === 1 ? 'text-[#8B9782]' : 'text-[#5B6B54]'}`}>
                 {r.role}
                 {r.location ? `, ${r.location}` : ''}
               </div>
@@ -408,11 +408,11 @@ export default function HomePage() {
             <Link
               key={g.href}
               href={g.href}
-              className="bg-white border border-[#D3DAE4] hover:border-[#0E1726] rounded-sm p-8 flex flex-col gap-2.5 transition-colors"
+              className="bg-white border border-[#D8DED2] hover:border-[#13251C] rounded-sm p-8 flex flex-col gap-2.5 transition-colors"
             >
               <h3 className="font-display uppercase text-2xl">{g.title}</h3>
-              <p className="text-[15px] leading-relaxed text-[#3A4557]">{g.body}</p>
-              <span className="text-[13px] font-bold text-[#1E3A5F] mt-1">Read →</span>
+              <p className="text-[15px] leading-relaxed text-[#3C4536]">{g.body}</p>
+              <span className="text-[13px] font-bold text-[#1678A0] mt-1">Read →</span>
             </Link>
           ))}
         </div>
@@ -420,11 +420,11 @@ export default function HomePage() {
 
       {/* Contact CTA */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-20 pb-20">
-        <div className="bg-[#F2C230] text-[#0E1726] rounded-sm py-14 sm:py-16 px-8 sm:px-12 text-center">
+        <div className="bg-[#F2900E] text-[#13251C] rounded-sm py-14 sm:py-16 px-8 sm:px-12 text-center">
           <h2 className="font-display uppercase text-3xl sm:text-4xl lg:text-[52px] leading-none tracking-tight mb-4">
             Ready when you are
           </h2>
-          <p className="text-base sm:text-[17.5px] leading-relaxed text-[#2A3342] max-w-[48ch] mx-auto mb-8">
+          <p className="text-base sm:text-[17.5px] leading-relaxed text-[#13251C] max-w-[48ch] mx-auto mb-8">
             Send your list, ask about stock, or just check a price. We answer {STORE_CONFIG.operatingHours}.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
@@ -432,14 +432,14 @@ export default function HomePage() {
               href={heroWaUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="h-14 px-8 flex items-center gap-2.5 bg-[#0E1726] hover:bg-white hover:text-[#0E1726] text-white text-sm font-bold rounded-sm transition-colors"
+              className="h-14 px-8 flex items-center gap-2.5 bg-[#13251C] hover:bg-white hover:text-[#13251C] text-white text-sm font-bold rounded-sm transition-colors"
             >
               <span className="w-2 h-2 rounded-sm bg-[#25D366]" />
               WhatsApp {STORE_CONFIG.displayPhone}
             </a>
             <a
               href={contactMailUrl}
-              className="h-14 px-8 flex items-center border border-[#0E1726]/40 hover:bg-[#0E1726] hover:text-white text-[#0E1726] text-sm font-semibold rounded-sm transition-colors"
+              className="h-14 px-8 flex items-center border border-[#13251C]/40 hover:bg-[#13251C] hover:text-white text-[#13251C] text-sm font-semibold rounded-sm transition-colors"
             >
               {STORE_CONFIG.email}
             </a>
@@ -452,10 +452,10 @@ export default function HomePage() {
         <div className="fixed bottom-5 sm:bottom-6 right-5 sm:right-6 z-40">
           <button
             onClick={openCart}
-            className="flex items-center gap-3.5 bg-[#0E1726] text-[#EEF1F5] h-[58px] pl-6 pr-1.5 rounded-sm shadow-2xl hover:shadow-[0_18px_40px_rgba(14,23,38,0.35)] transition-shadow"
+            className="flex items-center gap-3.5 bg-[#13251C] text-[#F3F5F0] h-[58px] pl-6 pr-1.5 rounded-sm shadow-2xl hover:shadow-[0_18px_40px_rgba(14,23,38,0.35)] transition-shadow"
           >
             <span className="text-sm font-bold">{totalItems} in your enquiry</span>
-            <span className="bg-[#F2C230] text-[#0E1726] h-10 px-[18px] grid place-items-center text-[13px] font-bold rounded-sm">
+            <span className="bg-[#F2900E] text-[#13251C] h-10 px-[18px] grid place-items-center text-[13px] font-bold rounded-sm">
               Review &amp; send
             </span>
           </button>

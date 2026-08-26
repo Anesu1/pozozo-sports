@@ -4,7 +4,7 @@ import { ShopCatalog } from '@/components/ShopCatalog';
 
 export const metadata: Metadata = {
   title: 'Shop All Balls',
-  description: 'Browse the full catalogue of genuine Molten and Mikasa basketballs, footballs, netballs, and accessories, ordered directly by WhatsApp.',
+  description: 'Browse the full catalogue of genuine Molten and Mikasa basketballs, footballs, netballs and volleyballs, plus Fox40 officiating whistles, ordered directly by WhatsApp.',
   alternates: { canonical: '/shop' },
 };
 

@@ -12,25 +12,25 @@ export const metadata: Metadata = {
 
 export default function SportsIndexPage() {
   return (
-    <div className="bg-[#EEF1F5] min-h-screen py-12 sm:py-16">
+    <div className="bg-[#F3F5F0] min-h-screen py-12 sm:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
-        <div className="flex items-center gap-2 text-xs font-semibold text-[#55637A] mb-2">
-          <Link href="/" className="hover:text-[#0E1726]">
+        <div className="flex items-center gap-2 text-xs font-semibold text-[#5B6B54] mb-2">
+          <Link href="/" className="hover:text-[#13251C]">
             Home
           </Link>
           <span>/</span>
-          <span className="text-[#0E1726]">Sports</span>
+          <span className="text-[#13251C]">Sports</span>
         </div>
 
-        <h1 className="font-display uppercase text-4xl sm:text-5xl lg:text-6xl tracking-tight text-[#0E1726] mb-3">
+        <h1 className="font-display uppercase text-4xl sm:text-5xl lg:text-6xl tracking-tight text-[#13251C] mb-3">
           Shop by sport
         </h1>
-        <p className="text-base sm:text-lg text-[#3A4557] max-w-2xl mb-10">
+        <p className="text-base sm:text-lg text-[#3C4536] max-w-2xl mb-10">
           Each sport has its own sizes, approvals and surfaces. Start where you play.
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {SPORTS.map((s) => (
             <Link
               key={s.slug}

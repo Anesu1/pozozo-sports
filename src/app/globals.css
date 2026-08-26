@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --background: #EEF1F5;
-  --foreground: #0E1726;
+  --background: #F3F5F0;
+  --foreground: #13251C;
 }
 
 html {
@@ -20,8 +20,8 @@ body {
 }
 
 ::selection {
-  background-color: #F2C230;
-  color: #0E1726;
+  background-color: #F2900E;
+  color: #13251C;
 }
 
 /* Custom modern scrollbar */
@@ -31,16 +31,16 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #E3E8EF;
+  background: #E7EAE1;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #B9C3D2;
+  background: #BCC4B4;
   border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #8494AC;
+  background: #8B9782;
 }
 
 /* Hide scrollbar for tabs */
@@ -60,7 +60,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #0E1726;
+  background: #13251C;
   transition: opacity 0.6s ease;
 }
 .pz-loader--exit {
@@ -72,17 +72,25 @@ body {
   width: 280px;
   height: 280px;
   border-radius: 9999px;
-  background: radial-gradient(circle, rgba(242, 194, 48, 0.22), transparent 70%);
+  background: radial-gradient(circle, rgba(242, 144, 14, 0.24), transparent 70%);
   animation: pz-glow 3.2s ease-in-out infinite;
 }
 .pz-loader__mark {
   position: relative;
+  width: 120px;
+  height: 120px;
   animation: pz-mark 3.2s ease-in-out infinite;
 }
-.pz-loader__stroke {
+.pz-loader__ring {
   animation: pz-draw 3.2s cubic-bezier(0.6, 0.02, 0.35, 1) infinite;
 }
-.pz-loader__fill {
+.pz-loader__logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
   opacity: 0;
   animation: pz-fill 3.2s ease infinite;
 }
@@ -92,9 +100,9 @@ body {
   45%, 100% { stroke-dashoffset: 0; }
 }
 @keyframes pz-fill {
-  0%, 45% { opacity: 0; }
-  58%, 84% { opacity: 1; }
-  92%, 100% { opacity: 0; }
+  0%, 45% { opacity: 0; transform: translate(-50%, -50%) scale(0.82); }
+  58%, 84% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  92%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(0.82); }
 }
 @keyframes pz-mark {
   0%, 100% { opacity: 0; transform: scale(0.92); }
@@ -107,12 +115,12 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .pz-loader__mark,
-  .pz-loader__stroke,
-  .pz-loader__fill,
+  .pz-loader__ring,
+  .pz-loader__logo,
   .pz-loader__glow {
     animation: none;
   }
   .pz-loader__mark { opacity: 1; transform: none; }
-  .pz-loader__fill { opacity: 1; }
-  .pz-loader__stroke { stroke-dashoffset: 0; }
+  .pz-loader__logo { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  .pz-loader__ring { stroke-dashoffset: 0; }
 }

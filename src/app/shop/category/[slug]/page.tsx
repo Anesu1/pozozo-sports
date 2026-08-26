@@ -24,7 +24,7 @@ export function generateMetadata({ params }: PageProps): Metadata {
   }
   return {
     title: category.name,
-    description: `Genuine Molten and Mikasa ${category.name.toLowerCase()}, ordered directly by WhatsApp message.`,
+    description: category.description,
     alternates: { canonical: `/shop/category/${category.slug}` },
   };
 }
@@ -56,7 +56,7 @@ export default function CategoryPage({ params }: PageProps) {
       <ShopCatalog
         initialCategory={category.slug}
         pageTitle={category.name}
-        pageDescription={`Genuine Molten and Mikasa ${category.name.toLowerCase()}. Ordered directly by WhatsApp message.`}
+        pageDescription={category.description}
       />
     </>
   );
