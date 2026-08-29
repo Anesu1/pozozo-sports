@@ -6,9 +6,9 @@ import { CATEGORIES } from '@/data/categories';
 import { JsonLd } from '@/components/JsonLd';
 
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export function generateStaticParams() {
@@ -17,7 +17,8 @@ export function generateStaticParams() {
   }));
 }
 
-export function generateMetadata({ params }: PageProps): Metadata {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.params;
   const category = CATEGORIES.find((c) => c.slug === params.slug);
   if (!category) {
     return { title: 'Category' };
@@ -29,7 +30,8 @@ export function generateMetadata({ params }: PageProps): Metadata {
   };
 }
 
-export default function CategoryPage({ params }: PageProps) {
+export default async function CategoryPage(props: PageProps) {
+  const params = await props.params;
   const category = CATEGORIES.find((c) => c.slug === params.slug);
 
   if (!category) {

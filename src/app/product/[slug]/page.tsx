@@ -6,9 +6,9 @@ import { ProductDetailClient } from '@/components/ProductDetailClient';
 import { JsonLd } from '@/components/JsonLd';
 
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export function generateStaticParams() {
@@ -17,7 +17,8 @@ export function generateStaticParams() {
   }));
 }
 
-export function generateMetadata({ params }: PageProps): Metadata {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.params;
   const product = PRODUCTS.find((p) => p.slug === params.slug);
   if (!product) {
     return { title: 'Product' };
@@ -34,7 +35,8 @@ export function generateMetadata({ params }: PageProps): Metadata {
   };
 }
 
-export default function ProductPage({ params }: PageProps) {
+export default async function ProductPage(props: PageProps) {
+  const params = await props.params;
   const product = PRODUCTS.find((p) => p.slug === params.slug);
 
   if (!product) {

@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Cookie Policy',
-  description: 'Learn how cookies support your enquiry list, wishlist, currency preferences, and site functionality.',
+  description: 'Learn how cookies support your enquiry list, wishlist, and site functionality.',
   alternates: { canonical: '/cookie-policy' },
 };
 
@@ -25,7 +25,7 @@ export default function CookiePolicyPage() {
           <section className="space-y-3">
             <h2 className="text-base font-bold text-[#13251C]">1. What Cookies Are</h2>
             <p>
-              Cookies and local storage help this site function properly by remembering your active enquiry list, saved wishlist balls, and preferred display currency between visits.
+              Cookies and local storage help this site function properly by remembering your active enquiry list and saved wishlist balls between visits.
             </p>
           </section>
 

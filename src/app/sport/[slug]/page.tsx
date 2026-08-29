@@ -6,9 +6,9 @@ import { SPORTS } from '@/data/sports';
 import { JsonLd } from '@/components/JsonLd';
 
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export function generateStaticParams() {
@@ -17,7 +17,8 @@ export function generateStaticParams() {
   }));
 }
 
-export function generateMetadata({ params }: PageProps): Metadata {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.params;
   const sport = SPORTS.find((s) => s.slug === params.slug);
   if (!sport) {
     return { title: 'Sport' };
@@ -29,7 +30,8 @@ export function generateMetadata({ params }: PageProps): Metadata {
   };
 }
 
-export default function SportPage({ params }: PageProps) {
+export default async function SportPage(props: PageProps) {
+  const params = await props.params;
   const sport = SPORTS.find((s) => s.slug === params.slug);
 
   if (!sport) {

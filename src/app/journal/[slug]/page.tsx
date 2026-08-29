@@ -8,9 +8,9 @@ import { JOURNALS } from '@/data/journals';
 import { JsonLd } from '@/components/JsonLd';
 
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export function generateStaticParams() {
@@ -19,7 +19,8 @@ export function generateStaticParams() {
   }));
 }
 
-export function generateMetadata({ params }: PageProps): Metadata {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.params;
   const journal = JOURNALS.find((j) => j.slug === params.slug);
   if (!journal) {
     return { title: 'Guide' };
@@ -36,7 +37,8 @@ export function generateMetadata({ params }: PageProps): Metadata {
   };
 }
 
-export default function JournalDetailPage({ params }: PageProps) {
+export default async function JournalDetailPage(props: PageProps) {
+  const params = await props.params;
   const journal = JOURNALS.find((j) => j.slug === params.slug);
 
   if (!journal) {

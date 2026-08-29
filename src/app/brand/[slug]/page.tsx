@@ -6,9 +6,9 @@ import { BRANDS } from '@/data/brands';
 import { JsonLd } from '@/components/JsonLd';
 
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export function generateStaticParams() {
@@ -17,7 +17,8 @@ export function generateStaticParams() {
   }));
 }
 
-export function generateMetadata({ params }: PageProps): Metadata {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.params;
   const brand = BRANDS.find((b) => b.slug === params.slug);
   if (!brand) {
     return { title: 'Brand' };
@@ -29,7 +30,8 @@ export function generateMetadata({ params }: PageProps): Metadata {
   };
 }
 
-export default function BrandPage({ params }: PageProps) {
+export default async function BrandPage(props: PageProps) {
+  const params = await props.params;
   const brand = BRANDS.find((b) => b.slug === params.slug);
 
   if (!brand) {
