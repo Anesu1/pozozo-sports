@@ -5,7 +5,6 @@ import { MessageCircle, Check, Heart, Expand } from 'lucide-react';
 import { Product } from '@/types';
 import { useCart } from '@/context/CartContext';
 import { useWishlist } from '@/context/WishlistContext';
-import { useCurrency } from '@/context/CurrencyContext';
 import { useQuickView } from '@/context/QuickViewContext';
 import { getWhatsAppUrl } from '@/data/sportsConfig';
 import { Ball3D } from '@/components/ball3d/Ball3D';
@@ -18,7 +17,6 @@ interface ProductCardProps {
 export function ProductCard({ product, priority = false }: ProductCardProps) {
   const { cart, addToCart } = useCart();
   const { isInWishlist, toggleWishlist } = useWishlist();
-  const { format } = useCurrency();
   const { openQuickView } = useQuickView();
 
   const cartItem = cart.find((item) => item.product.id === product.id);
@@ -107,9 +105,8 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
 
         <div className="flex-1" />
 
-        <div className="flex items-baseline justify-between gap-1 mt-2 mb-1">
-          <span className="text-xs sm:text-sm font-extrabold text-[#13251C]">{format(product.price)}</span>
-          <span className="text-[9px] sm:text-[10px] font-bold text-[#1E7A4E]">In Stock</span>
+        <div className="flex items-center justify-between gap-1 mt-2 mb-1">
+          <span className="text-[9px] sm:text-[10px] font-bold text-[#1E7A4E] bg-[#E4F1E9] px-2 py-0.5 rounded-sm">In Stock</span>
         </div>
 
         <div className="flex items-center gap-2 mt-1">

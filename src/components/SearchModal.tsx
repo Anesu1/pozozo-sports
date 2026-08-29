@@ -6,7 +6,6 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, X, ArrowRight, Sparkles, TrendingUp } from 'lucide-react';
 import { PRODUCTS } from '@/data/products';
-import { useCurrency } from '@/context/CurrencyContext';
 
 interface SearchModalProps {
   isOpen: boolean;
@@ -16,7 +15,6 @@ interface SearchModalProps {
 export function SearchModal({ isOpen, onClose }: SearchModalProps) {
   const [query, setQuery] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
-  const { format } = useCurrency();
 
   useEffect(() => {
     if (isOpen) {
@@ -149,9 +147,6 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                             </h4>
                             <p className="text-[11px] text-[#5B6B54] truncate">{p.spec}</p>
                           </div>
-                          <span className="text-xs font-extrabold text-[#13251C] shrink-0">
-                            {format(p.price)}
-                          </span>
                         </Link>
                       ))}
                     </div>
@@ -182,12 +177,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                           </h4>
                           <p className="text-[11px] text-[#5B6B54] truncate">{p.spec}</p>
                         </div>
-                        <div className="text-right shrink-0">
-                          <span className="text-xs font-extrabold text-[#13251C] block">
-                            {format(p.price)}
-                          </span>
-                          <span className="text-[10px] text-emerald-600 font-bold">In Stock</span>
-                        </div>
+                        <span className="text-[10px] text-emerald-600 font-bold shrink-0">In Stock</span>
                       </Link>
                     ))}
                   </div>

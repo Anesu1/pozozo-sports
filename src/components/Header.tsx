@@ -9,12 +9,10 @@ import {
   Menu,
   X,
   MessageCircle,
-  Globe,
   ChevronRight,
 } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
 import { useWishlist } from '@/context/WishlistContext';
-import { useCurrency } from '@/context/CurrencyContext';
 import { SearchModal } from '@/components/SearchModal';
 import { Logo } from '@/components/Logo';
 import { STORE_CONFIG, getWhatsAppUrl } from '@/data/sportsConfig';
@@ -27,7 +25,6 @@ export function Header() {
 
   const { openCart, totalItems } = useCart();
   const { count: wishlistCount } = useWishlist();
-  const { currency, setCurrency, currencies } = useCurrency();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -111,7 +108,7 @@ export function Header() {
               })}
             </nav>
 
-            {/* Right Controls: Search, Wishlist, Currency, Enquiry & WhatsApp */}
+            {/* Right Controls: Search, Wishlist, Enquiry & WhatsApp */}
             <div className="flex items-center gap-1.5 sm:gap-2">
               {/* Search Modal Trigger */}
               <button
@@ -137,22 +134,6 @@ export function Header() {
                   </span>
                 )}
               </Link>
-
-              {/* Currency Selector (Desktop) */}
-              <div className="hidden 2xl:flex items-center text-xs font-semibold bg-[#E7EAE1] rounded-sm px-3 py-1.5 border border-[#D8DED2] shrink-0">
-                <Globe className="w-3.5 h-3.5 text-[#5B6B54] mr-1.5" />
-                <select
-                  value={currency}
-                  onChange={(e) => setCurrency(e.target.value as any)}
-                  className="bg-transparent text-xs font-bold text-[#13251C] outline-none cursor-pointer"
-                >
-                  {Object.keys(currencies).map((code) => (
-                    <option key={code} value={code}>
-                      {code} ({currencies[code as keyof typeof currencies].symbol})
-                    </option>
-                  ))}
-                </select>
-              </div>
 
               {/* Enquiry List Trigger */}
               <button
@@ -193,21 +174,6 @@ export function Header() {
                 <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#5B6B54]">
                   Navigation
                 </span>
-                {/* Mobile Currency Switcher */}
-                <div className="flex items-center text-xs font-semibold bg-[#E7EAE1] rounded-sm px-2.5 py-1 border border-[#D8DED2]">
-                  <Globe className="w-3 h-3 text-[#5B6B54] mr-1" />
-                  <select
-                    value={currency}
-                    onChange={(e) => setCurrency(e.target.value as any)}
-                    className="bg-transparent text-xs font-bold text-[#13251C] outline-none cursor-pointer"
-                  >
-                    {Object.keys(currencies).map((code) => (
-                      <option key={code} value={code}>
-                        {code} ({currencies[code as keyof typeof currencies].symbol})
-                      </option>
-                    ))}
-                  </select>
-                </div>
               </div>
 
               <nav className="flex flex-col space-y-1">

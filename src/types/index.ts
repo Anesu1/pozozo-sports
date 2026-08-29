@@ -74,12 +74,3 @@ export interface Review {
   productName?: string;
   role?: string;
 }
-
-export type Currency = 'USD' | 'EUR' | 'GBP' | 'CAD' | 'AUD' | 'JPY' | 'ZMW';
-
-export interface CurrencyConfig {
-  code: Currency;
-  symbol: string;
-  rate: number;
-  name: string;
-}

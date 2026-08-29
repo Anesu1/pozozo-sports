@@ -6,14 +6,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, MessageCircle, ClipboardList, Minus, Plus, Check } from 'lucide-react';
 import { useQuickView } from '@/context/QuickViewContext';
 import { useCart } from '@/context/CartContext';
-import { useCurrency } from '@/context/CurrencyContext';
 import { getWhatsAppUrl } from '@/data/sportsConfig';
 import { Ball3D } from '@/components/ball3d/Ball3D';
 
 export function QuickViewModal() {
   const { quickViewProduct, isQuickViewOpen, closeQuickView } = useQuickView();
   const { cart, addToCart } = useCart();
-  const { format } = useCurrency();
   const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
@@ -32,7 +30,6 @@ export function QuickViewModal() {
     { k: 'Brand', v: product.brand },
     { k: 'Specification', v: product.spec },
     { k: 'Category', v: product.categoryLabel },
-    { k: 'Price', v: format(product.price) },
   ];
 
   return (
@@ -132,7 +129,7 @@ export function QuickViewModal() {
                 </div>
 
                 <p className="text-xs text-[#5B6B54] leading-relaxed mb-4">
-                  Price on enquiry — it moves with quantity and the exchange rate, so we quote rather than publish.
+                  Prices are quoted on enquiry, not published — ask on WhatsApp and we confirm same day.
                 </p>
 
                 <Link

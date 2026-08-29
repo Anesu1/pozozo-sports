@@ -60,14 +60,8 @@ export default function ProductPage({ params }: PageProps) {
       ratingValue: product.rating,
       reviewCount: product.reviewsCount,
     } : undefined,
-    offers: {
-      '@type': 'Offer',
-      url: `https://pozozosports.com/product/${product.slug}`,
-      priceCurrency: 'ZMW',
-      price: product.price,
-      availability: 'https://schema.org/InStock',
-      itemCondition: 'https://schema.org/NewCondition',
-    },
+    // No `offers` block: price is quoted on enquiry rather than published, and
+    // Google requires a price for an Offer to be valid structured data.
   };
 
   const breadcrumbJsonLd = {

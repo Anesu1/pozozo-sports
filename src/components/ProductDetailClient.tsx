@@ -18,7 +18,6 @@ import {
 import { Product } from '@/types';
 import { useCart } from '@/context/CartContext';
 import { useWishlist } from '@/context/WishlistContext';
-import { useCurrency } from '@/context/CurrencyContext';
 import { useToast } from '@/context/ToastContext';
 import { ProductCard } from '@/components/ProductCard';
 import { Ball3D } from '@/components/ball3d/Ball3D';
@@ -36,7 +35,6 @@ export function ProductDetailClient({ product, relatedProducts }: ProductDetailC
 
   const { addToCart } = useCart();
   const { isInWishlist, toggleWishlist } = useWishlist();
-  const { format } = useCurrency();
   const { showToast } = useToast();
 
   const inWishlist = isInWishlist(product.id);
@@ -170,15 +168,12 @@ export function ProductDetailClient({ product, relatedProducts }: ProductDetailC
                 {product.spec}
               </p>
 
-              {/* Pricing */}
-              <div className="flex items-baseline gap-2 sm:gap-3 mt-3">
-                <span className="text-xs text-[#5B6B54] font-semibold">Guide Price:</span>
-                <span className="text-xl sm:text-3xl font-extrabold text-[#13251C]">
-                  {format(product.price)}
-                </span>
+              {/* Availability */}
+              <div className="flex items-center gap-2 sm:gap-3 mt-3">
                 <span className="text-[10px] sm:text-xs font-bold text-[#1E7A4E] bg-[#E4F1E9] px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-sm">
                   In Stock
                 </span>
+                <span className="text-xs sm:text-sm text-[#5B6B54]">Price quoted on enquiry</span>
               </div>
             </div>
 

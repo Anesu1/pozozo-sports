@@ -16,17 +16,13 @@ import {
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { useCart } from '@/context/CartContext';
-import { useCurrency } from '@/context/CurrencyContext';
 import { getWhatsAppUrl, getMailtoUrl } from '@/data/sportsConfig';
 
 export function CartDrawer() {
   const { isCartOpen, closeCart, cart, updateQuantity, removeFromCart, clearCart, totalItems } = useCart();
-  const { format } = useCurrency();
 
   const [note, setNote] = useState('');
   const [copied, setCopied] = useState(false);
-
-  const estimatedTotal = cart.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
 
   // Generate WhatsApp formatted text
   const generateListText = () => {
@@ -172,7 +168,7 @@ export function CartDrawer() {
                           <h4 className="text-[14.5px] font-bold text-[#13251C] leading-tight truncate">
                             {item.product.name}
                           </h4>
-                          <div className="flex items-center justify-between mt-2">
+                          <div className="flex items-center mt-2">
                             {/* Quantity Stepper */}
                             <div className="flex items-center border border-[#D8DED2] bg-white rounded-sm">
                               <button
@@ -191,10 +187,6 @@ export function CartDrawer() {
                                 <Plus className="w-3.5 h-3.5" />
                               </button>
                             </div>
-
-                            <span className="text-xs font-extrabold text-[#13251C]">
-                              {format(item.product.price * item.quantity)}
-                            </span>
                           </div>
                         </div>
                       </div>
@@ -219,13 +211,6 @@ export function CartDrawer() {
               {/* Drawer Footer Actions */}
               {cart.length > 0 && (
                 <div className="px-5 sm:px-6 py-5 border-t border-[#D8DED2] bg-white space-y-2.5 shrink-0">
-                  <div className="flex items-baseline justify-between text-xs">
-                    <span className="text-[#3C4536]">Guide Quote Value:</span>
-                    <span className="text-sm sm:text-base font-extrabold text-[#13251C]">
-                      {format(estimatedTotal)}
-                    </span>
-                  </div>
-
                   {/* Primary WhatsApp Order Button */}
                   <button
                     onClick={handleSendWhatsApp}

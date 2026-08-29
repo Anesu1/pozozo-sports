@@ -6,7 +6,7 @@ export interface BallInstance {
   canvas: HTMLCanvasElement;
   ctx: CanvasRenderingContext2D;
   texture: THREE.Texture;
-  yaw: number;
+  phase: number;
   spin: number;
   spinTarget: number;
   lift: number;
@@ -22,6 +22,16 @@ export interface BallInstance {
 // rest still looks caught mid-motion rather than perfectly axis-aligned.
 const BASE_PITCH = 0.16;
 const BASE_ROLL = 0.13;
+
+// The fragment shader's UV lookup (see below) is an orthographic front-projection
+// of the object-space normal, not a true equirectangular sphere wrap — it only
+// reproduces the source photo faithfully within roughly ±60° of face-on. Beyond
+// that it mirrors and warps (verified empirically by forcing yaw across a full
+// sweep). So instead of letting yaw accumulate without limit — which used to
+// carry every ball through that broken range continuously, and started every
+// instance at a random full-circle angle that could land there immediately —
+// yaw now oscillates around dead-ahead, comfortably inside the safe arc.
+const YAW_AMPLITUDE = 0.35;
 
 interface TextureEntry {
   texture: THREE.Texture;
@@ -215,7 +225,7 @@ export function createInstance(canvas: HTMLCanvasElement, texture: THREE.Texture
     canvas,
     ctx,
     texture,
-    yaw: Math.random() * Math.PI * 2,
+    phase: Math.random() * Math.PI * 2,
     spin: 0.16,
     spinTarget: 0.16,
     lift: 0,
@@ -237,11 +247,14 @@ export function createInstance(canvas: HTMLCanvasElement, texture: THREE.Texture
 // calling it standalone just (re)draws the instance's current state.
 export function paintInstance(engine: Engine, instance: BallInstance) {
   if (!engine.ok) return;
-  // Real XYZ rotation: continuous spin around Y (yaw), pointer-driven tilt
-  // added on top of a fixed base pitch/roll so the ball never sits perfectly
-  // square-on. Since the fragment shader samples the OBJECT-space normal,
-  // this rotation is genuinely visible — the print turns with the ball.
-  engine.mesh.rotation.set(BASE_PITCH + instance.offX, instance.yaw + instance.offY, BASE_ROLL);
+  // Real XYZ rotation: yaw oscillates around dead-ahead (see YAW_AMPLITUDE),
+  // with pointer-driven tilt added on top of a fixed base pitch/roll so the
+  // ball never sits perfectly square-on. Since the fragment shader samples
+  // the OBJECT-space normal, this rotation is genuinely visible — the print
+  // turns with the ball — without ever swinging into the UV projection's
+  // mirrored/warped range.
+  const yaw = Math.sin(instance.phase) * YAW_AMPLITUDE;
+  engine.mesh.rotation.set(BASE_PITCH + instance.offX, yaw + instance.offY, BASE_ROLL);
   engine.mesh.scale.setScalar(1 + instance.lift);
   engine.material.uniforms.map.value = instance.texture;
   engine.material.uniforms.uLift.value = instance.lift;
@@ -263,7 +276,7 @@ function tick(engine: Engine, now: number) {
 
   engine.registry.forEach((instance) => {
     if (!instance.visible) return;
-    instance.yaw += step * instance.spin;
+    instance.phase += step * instance.spin;
     instance.offY += (instance.tx - instance.offY) * 0.12;
     instance.offX += (instance.ty - instance.offX) * 0.12;
     // Ease spin/lift toward their targets instead of snapping — a ball
