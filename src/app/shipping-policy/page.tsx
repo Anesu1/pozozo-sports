@@ -5,7 +5,7 @@ import { Truck } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Shipping Policy',
-  description: 'See how bulk and individual ball orders are processed, delivered across Zambia, Zimbabwe and the SADC region, and handled for collection.',
+  description: 'See how bulk and individual ball orders are processed, delivered across Zimbabwe and the SADC region, and handled for collection.',
   alternates: { canonical: '/shipping-policy' },
 };
 
@@ -27,7 +27,7 @@ export default function ShippingPolicyPage() {
           <section className="space-y-3">
             <h2 className="text-base font-bold text-[#13251C]">1. Overview</h2>
             <p>
-              This Shipping Policy explains how ball orders are delivered once your enquiry is confirmed. We deliver genuine Molten, Mikasa and Fox40 stock nationwide within Zambia, across the border into Zimbabwe, and to the wider SADC region on request, and also offer direct collection from our Lusaka distribution point.
+              This Shipping Policy explains how ball orders are delivered once your enquiry is confirmed. We deliver genuine Molten, Mikasa and Fox40 stock nationwide within Zimbabwe, and to the wider SADC region on request, and also offer direct collection from our Harare distribution point.
             </p>
           </section>
 
@@ -41,7 +41,7 @@ export default function ShippingPolicyPage() {
           <section className="space-y-3">
             <h2 className="text-base font-bold text-[#13251C]">3. Shipping Methods &amp; Times</h2>
             <p>
-              Standard nationwide delivery by courier or bus arrives within 2-5 business days depending on destination. Lusaka orders can usually be delivered, or made ready for collection, the same or next business day. Cross-border delivery to Zimbabwe and the rest of the SADC region is available on request, with timing and cost confirmed in your quotation.
+              Standard nationwide delivery by courier or bus arrives within 2-5 business days depending on destination. Harare orders can usually be delivered, or made ready for collection, the same or next business day. Cross-border delivery to the rest of the SADC region is available on request, with timing and cost confirmed in your quotation.
             </p>
           </section>
 

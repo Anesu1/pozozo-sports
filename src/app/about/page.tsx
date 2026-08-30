@@ -7,7 +7,7 @@ import { Ball3D } from '@/components/ball3d/Ball3D';
 
 export const metadata: Metadata = {
   title: 'About Us',
-  description: 'Trading since 2016, Pozozo Sports supplies genuine match balls and officiating gear to schools, clubs and national teams across Zambia, Zimbabwe and the SADC region.',
+  description: 'Trading since 2016, Pozozo Sports supplies genuine match balls and officiating gear to schools, clubs and national teams across Zimbabwe and the SADC region.',
   alternates: { canonical: '/about' },
 };
 
@@ -51,7 +51,7 @@ export default function AboutPage() {
             Ordered by Message.
           </h1>
           <p className="text-base sm:text-lg text-[#3C4536] max-w-2xl mx-auto leading-relaxed">
-            Pozozo Sports supplies genuine, certified Molten and Mikasa sports balls and Fox40 officiating gear to competitive clubs, national leagues, schools, and players across Zambia, Zimbabwe and the SADC region.
+            Pozozo Sports supplies genuine, certified Molten and Mikasa sports balls and Fox40 officiating gear to competitive clubs, national leagues, schools, and players across Zimbabwe and the SADC region.
           </p>
         </div>
       </section>

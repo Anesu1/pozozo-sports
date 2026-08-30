@@ -58,7 +58,7 @@ export function BulkPageClient() {
               <input
                 value={who}
                 onChange={(e) => setWho(e.target.value)}
-                placeholder="e.g. Kabulonga Girls Secondary"
+                placeholder="e.g. Chisipite Girls Secondary"
                 className="h-[46px] w-full px-4 border border-[#D8DED2] rounded-sm text-[14.5px] outline-none focus:border-[#13251C]"
               />
             </label>

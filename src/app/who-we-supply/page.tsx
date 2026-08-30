@@ -38,7 +38,7 @@ export default function WhoWeSupplyPage() {
           they remembered exactly what we&apos;d bought.&quot;
         </p>
         <div className="text-sm font-bold">Head of sport, secondary school</div>
-        <div className="text-[13px] text-[#8B9782] mt-1">Lusaka</div>
+        <div className="text-[13px] text-[#8B9782] mt-1">Harare</div>
       </div>
 
       <div className="bg-white border border-dashed border-[#BCC4B4] rounded-sm p-8 flex gap-6 items-center flex-wrap">

@@ -4,7 +4,7 @@ export const REVIEWS: Review[] = [
   {
     id: 'rev-1',
     author: 'Coach Mwila C.',
-    location: 'Lusaka Basketball League',
+    location: 'Harare Basketball League',
     rating: 5,
     text: 'We ordered 12 Molten BG5000 balls for the national tournament. Genuine leather grip, perfect balance, and delivered on WhatsApp same day.',
     verified: true,
@@ -14,7 +14,7 @@ export const REVIEWS: Review[] = [
   {
     id: 'rev-2',
     author: 'Sr. Mary Banda',
-    location: 'Kabulonga Girls Secondary',
+    location: 'Chisipite Girls Secondary',
     rating: 5,
     text: 'Sent our school netball and football requirements on WhatsApp at 9am, got a formal bulk quote by 11am, and received all 30 balls the next day.',
     verified: true,
@@ -24,7 +24,7 @@ export const REVIEWS: Review[] = [
   {
     id: 'rev-3',
     author: 'Derrick Tembo',
-    location: 'Ndola Youth Football Academy',
+    location: 'Mutare Youth Football Academy',
     rating: 5,
     text: 'The Mikasa FT550B Alumndo is the best match ball on the market. Genuine FIFA Pro quality that holds true in rain or heat.',
     verified: true,
@@ -44,7 +44,7 @@ export const REVIEWS: Review[] = [
   {
     id: 'rev-5',
     author: 'Kelvin Silwamba',
-    location: 'Kitwe Sports Club',
+    location: 'Gweru Sports Club',
     rating: 5,
     text: 'The AG500 Digital Pressure Gauge is a lifesaver for our referees before every kickoff. Accurate down to 0.05 bar.',
     verified: true,

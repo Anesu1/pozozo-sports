@@ -5,9 +5,9 @@ export const STORE_CONFIG = {
   displayPhone: '+263 77 735 1222',
   email: 'pozozotrading@sp2clogistics.com',
   operatingHours: 'Monday – Saturday: 08:00 – 18:00',
-  currencySymbol: 'K', // Zambian Kwacha / USD / flexible
-  currencyCode: 'ZMW',
-  location: 'Lusaka & Regional Distribution (Zambia, Zimbabwe & SADC)',
+  currencySymbol: '$',
+  currencyCode: 'USD',
+  location: 'Harare & Regional Distribution (Zimbabwe & SADC)',
 };
 
 export function getWhatsAppUrl(text: string, phone: string = STORE_CONFIG.phone): string {

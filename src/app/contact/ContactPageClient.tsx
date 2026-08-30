@@ -44,7 +44,7 @@ export function ContactPageClient() {
     },
     {
       q: 'Where do you deliver?',
-      a: 'We deliver nationwide across Lusaka, the Copperbelt, and all provincial centres via secure courier. Collection points are also available.',
+      a: 'We deliver nationwide across Harare, Bulawayo, and all provincial centres via secure courier. Collection points are also available.',
     },
   ];
 
@@ -110,7 +110,7 @@ export function ContactPageClient() {
                   type="text"
                   value={form.organisation}
                   onChange={(e) => setForm({ ...form, organisation: e.target.value })}
-                  placeholder="e.g. Lusaka Youth Academy"
+                  placeholder="e.g. Harare Youth Academy"
                   className="w-full px-4 py-3 bg-white border border-[#D8DED2] rounded-sm text-xs font-semibold text-[#13251C] outline-none focus:border-[#13251C]"
                 />
               </div>

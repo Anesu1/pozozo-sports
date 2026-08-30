@@ -32,7 +32,7 @@ export default function TermsOfServicePage() {
           <section className="space-y-3">
             <h2 className="text-base font-bold text-[#13251C]">2. Products &amp; Pricing</h2>
             <p>
-              We strive to represent ball models, specifications, and stock accurately. Prices are not published on this website and are quoted directly, in Zambian Kwacha (ZMW) unless otherwise agreed — the price and stock we confirm in your quotation is what applies to your order.
+              We strive to represent ball models, specifications, and stock accurately. Prices are not published on this website and are quoted directly, in US Dollars (USD) unless otherwise agreed — the price and stock we confirm in your quotation is what applies to your order.
             </p>
           </section>
 
