@@ -55,6 +55,8 @@ export const metadata: Metadata = {
     'Fox40 whistle Zambia',
     'school sports equipment Zambia',
     'bulk sports balls supplier',
+    'sports balls Zimbabwe',
+    'sports equipment supplier SADC',
     'Pozozo Sports',
   ],
   authors: [{ name: 'Pozozo Sports' }],
@@ -98,7 +100,7 @@ const organizationJsonLd = {
   url: SITE_URL,
   telephone: STORE_CONFIG.displayPhone,
   email: STORE_CONFIG.email,
-  areaServed: 'ZM',
+  areaServed: ['ZM', 'ZW'],
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Lusaka',

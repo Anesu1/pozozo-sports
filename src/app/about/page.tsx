@@ -7,7 +7,7 @@ import { Ball3D } from '@/components/ball3d/Ball3D';
 
 export const metadata: Metadata = {
   title: 'About Us',
-  description: 'Trading since 2016, Pozozo Sports supplies genuine match balls and officiating gear to schools, clubs and national teams across Zambia and the region.',
+  description: 'Trading since 2016, Pozozo Sports supplies genuine match balls and officiating gear to schools, clubs and national teams across Zambia, Zimbabwe and the SADC region.',
   alternates: { canonical: '/about' },
 };
 
@@ -51,7 +51,7 @@ export default function AboutPage() {
             Ordered by Message.
           </h1>
           <p className="text-base sm:text-lg text-[#3C4536] max-w-2xl mx-auto leading-relaxed">
-            Pozozo Sports supplies genuine, certified Molten and Mikasa sports balls and Fox40 officiating gear to competitive clubs, national leagues, schools, and players across Zambia and the region.
+            Pozozo Sports supplies genuine, certified Molten and Mikasa sports balls and Fox40 officiating gear to competitive clubs, national leagues, schools, and players across Zambia, Zimbabwe and the SADC region.
           </p>
         </div>
       </section>
@@ -77,7 +77,7 @@ export default function AboutPage() {
       {/* About Us */}
       <section className="py-20 sm:py-28 bg-[#F3F5F0] border-b border-[#D8DED2]">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-          <span className="text-xs font-bold uppercase tracking-widest text-[#5B6B54] block text-center">
+          <span className="text-xs font-bold uppercase tracking-widest text-[#5B6B54] block">
             ABOUT US
           </span>
           <div className="space-y-5 text-sm sm:text-base text-[#3C4536] leading-relaxed">
@@ -104,7 +104,7 @@ export default function AboutPage() {
               best.
             </p>
           </div>
-          <p className="font-display uppercase text-xl sm:text-2xl text-[#13251C] tracking-tight text-center pt-4">
+          <p className="font-display uppercase text-xl sm:text-2xl text-[#13251C] tracking-tight pt-4">
             Pozozo Sports <span className="text-[#F2900E]">–</span> Equipping Passion. Inspiring Performance.
           </p>
         </div>

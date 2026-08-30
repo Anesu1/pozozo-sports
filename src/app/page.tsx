@@ -103,7 +103,7 @@ export default function HomePage() {
         <div className="relative bg-[#13251C] text-[#F3F5F0] rounded-sm mt-2 px-6 sm:px-10 lg:px-16 py-12 sm:py-16 lg:py-20 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center overflow-hidden">
           <div>
             <div className="text-[11px] font-bold tracking-[0.24em] text-[#8B9782] mb-6">
-              MOLTEN &amp; MIKASA · ZAMBIA
+              MOLTEN &amp; MIKASA · SADC REGION
             </div>
             <h1 className="font-display uppercase text-[42px] xs:text-5xl sm:text-6xl lg:text-[84px] leading-[0.9] tracking-tight mb-6">
               Balls built

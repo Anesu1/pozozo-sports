@@ -36,7 +36,7 @@ export const SIZES: SizeGuideEntry[] = [
   {
     sport: 'Netball',
     sportSlug: 'netball',
-    note: 'Most Zambian school and club netball is played with size 5.',
+    note: 'Most school and club netball in the region is played with size 5.',
     rows: [
       { size: 'Size 5', age: '14 and over', use: 'Senior school, club and league' },
       { size: 'Size 4', age: 'Ages 9–13', use: 'Junior school netball' },
