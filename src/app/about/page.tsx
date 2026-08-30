@@ -7,7 +7,7 @@ import { Ball3D } from '@/components/ball3d/Ball3D';
 
 export const metadata: Metadata = {
   title: 'About Us',
-  description: 'Learn about our commitment to genuine match balls, direct WhatsApp ordering, and nationwide school/club supply.',
+  description: 'Trading since 2016, Pozozo Sports supplies genuine match balls and officiating gear to schools, clubs and national teams across Zambia and the region.',
   alternates: { canonical: '/about' },
 };
 
@@ -28,6 +28,7 @@ const CAPABILITIES = [
 
 export default function AboutPage() {
   const stats = [
+    { value: '2016', label: 'Trading Since' },
     { value: '100%', label: 'Genuine Manufacturer Stock' },
     { value: '69+', label: 'Match & Training Models' },
     { value: '250+', label: 'Schools & Clubs Supplied' },
@@ -58,7 +59,7 @@ export default function AboutPage() {
       {/* Stats Bar */}
       <section className="py-12 bg-[#13251C] text-[#F3F5F0]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8 text-center">
             {stats.map((s, i) => (
               <div key={i} className="space-y-1">
                 <div className="font-display uppercase text-3xl sm:text-4xl text-[#F3F5F0]">
@@ -70,6 +71,42 @@ export default function AboutPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* About Us */}
+      <section className="py-20 sm:py-28 bg-[#F3F5F0] border-b border-[#D8DED2]">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+          <span className="text-xs font-bold uppercase tracking-widest text-[#5B6B54] block text-center">
+            ABOUT US
+          </span>
+          <div className="space-y-5 text-sm sm:text-base text-[#3C4536] leading-relaxed">
+            <p>
+              Pozozo Sports is a sports equipment and apparel retailer that began trading in 2016, with a
+              passion for sport and a commitment to providing quality products to athletes, teams and
+              sporting communities.
+            </p>
+            <p>
+              Over the years, we have grown into a supplier of a wide range of sports equipment, apparel and
+              accessories, catering for almost every major sporting code. Whether you are an individual
+              athlete, school, sports club or national team, Pozozo Sports is committed to providing products
+              that meet your sporting needs.
+            </p>
+            <p>
+              Our vision is to become the store of choice for individuals, schools, clubs and national teams,
+              by consistently offering a comprehensive range of quality sporting products at affordable and
+              competitive prices.
+            </p>
+            <p>
+              We believe that access to quality sports equipment should not be a barrier to participation or
+              excellence. We therefore strive to combine quality, affordability, variety and excellent
+              customer service, ensuring that our customers can find the right products to perform at their
+              best.
+            </p>
+          </div>
+          <p className="font-display uppercase text-xl sm:text-2xl text-[#13251C] tracking-tight text-center pt-4">
+            Pozozo Sports <span className="text-[#F2900E]">–</span> Equipping Passion. Inspiring Performance.
+          </p>
         </div>
       </section>
 
