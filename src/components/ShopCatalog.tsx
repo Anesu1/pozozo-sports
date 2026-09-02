@@ -20,7 +20,7 @@ export function ShopCatalog({
   initialCategory = 'all',
   initialCollection = 'all',
   pageTitle = 'The full catalogue',
-  pageDescription = 'All 69 genuine Molten, Mikasa and Fox40 balls and match-day accessories. Ordered directly by WhatsApp message.',
+  pageDescription = 'All 80 genuine Molten, Mikasa and Fox40 balls and match-day accessories. Ordered directly by WhatsApp message.',
 }: ShopCatalogProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>(initialCategory);
   const [selectedCollection, setSelectedCollection] = useState<string>(initialCollection);

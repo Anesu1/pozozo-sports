@@ -30,7 +30,7 @@ export default function AboutPage() {
   const stats = [
     { value: '2016', label: 'Trading Since' },
     { value: '100%', label: 'Genuine Manufacturer Stock' },
-    { value: '69+', label: 'Match & Training Models' },
+    { value: '80+', label: 'Match & Training Models' },
     { value: '250+', label: 'Schools & Clubs Supplied' },
     { value: 'Same-Day', label: 'WhatsApp Quotes' },
   ];
