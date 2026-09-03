@@ -9,7 +9,12 @@ import { schema } from './src/sanity/schemaTypes';
 import { structure } from './src/sanity/structure';
 import { resolve } from './src/sanity/presentation/resolve';
 
-const previewUrl = process.env.NEXT_PUBLIC_SANITY_STUDIO_PREVIEW_URL || process.env.SANITY_STUDIO_PREVIEW_URL;
+const previewUrl =
+  typeof window !== 'undefined'
+    ? window.location.origin
+    : process.env.NEXT_PUBLIC_SANITY_STUDIO_PREVIEW_URL ||
+      process.env.SANITY_STUDIO_PREVIEW_URL ||
+      'https://sp2clogistics.com';
 
 export default defineConfig({
   basePath: '/studio',
@@ -22,7 +27,7 @@ export default defineConfig({
     presentationTool({
       resolve,
       previewUrl: {
-        ...(previewUrl ? { origin: previewUrl } : {}),
+        origin: previewUrl,
         previewMode: { enable: '/api/draft-mode/enable' },
       },
     }),

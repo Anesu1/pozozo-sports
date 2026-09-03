@@ -4,6 +4,14 @@ import { NextRequest } from 'next/server';
 import { client } from '@/sanity/lib/client';
 import { token } from '@/sanity/env';
 
+function isRedirectError(error: unknown): boolean {
+  if (typeof error !== 'object' || error === null) return false;
+  const err = error as Record<string, unknown>;
+  if (err.message === 'NEXT_REDIRECT') return true;
+  if (typeof err.digest === 'string' && err.digest.startsWith('NEXT_REDIRECT')) return true;
+  return false;
+}
+
 export async function GET(request: NextRequest) {
   if (!token) {
     console.error(
@@ -21,6 +29,9 @@ export async function GET(request: NextRequest) {
     });
     return await handler.GET(request);
   } catch (error: unknown) {
+    if (isRedirectError(error)) {
+      throw error;
+    }
     const message = error instanceof Error ? error.message : String(error);
     console.error('[Draft Mode] Error enabling draft mode:', error);
     return new Response(`Draft Mode Error: ${message}`, {
