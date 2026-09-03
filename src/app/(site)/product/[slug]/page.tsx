@@ -51,6 +51,8 @@ export default async function ProductPage(props: PageProps) {
 
   const { relatedProducts, ...product } = productData;
 
+  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sp2clogistics.com';
+
   const productJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -60,31 +62,49 @@ export default async function ProductPage(props: PageProps) {
     brand: { '@type': 'Brand', name: product.brand },
     sku: product.id,
     category: product.categoryLabel,
-    aggregateRating: product.reviewsCount > 0 ? {
-      '@type': 'AggregateRating',
-      ratingValue: product.rating,
-      reviewCount: product.reviewsCount,
-    } : undefined,
-    // No `offers` block: price is quoted on enquiry rather than published, and
-    // Google requires a price for an Offer to be valid structured data.
+    url: `${SITE_URL}/product/${product.slug}`,
+    ...(product.price
+      ? {
+          offers: {
+            '@type': 'Offer',
+            price: product.price,
+            priceCurrency: 'USD',
+            availability: 'https://schema.org/InStock',
+            url: `${SITE_URL}/product/${product.slug}`,
+            seller: {
+              '@type': 'Organization',
+              name: 'SP2C Logistics / Pozozo Trading',
+            },
+          },
+        }
+      : {}),
+    ...(product.reviewsCount > 0
+      ? {
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: product.rating,
+            reviewCount: product.reviewsCount,
+          },
+        }
+      : {}),
   };
 
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Shop', item: 'https://pozozosports.com/shop' },
+      { '@type': 'ListItem', position: 1, name: 'Shop', item: `${SITE_URL}/shop` },
       {
         '@type': 'ListItem',
         position: 2,
         name: product.categoryLabel,
-        item: `https://pozozosports.com/shop/category/${product.category}`,
+        item: `${SITE_URL}/shop/category/${product.category}`,
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: product.name,
-        item: `https://pozozosports.com/product/${product.slug}`,
+        item: `${SITE_URL}/product/${product.slug}`,
       },
     ],
   };

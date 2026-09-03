@@ -36,35 +36,40 @@ export const viewport: Viewport = {
   themeColor: '#13251C',
 };
 
-const SITE_URL = 'https://pozozosports.com';
-const SITE_TITLE = 'Pozozo Sports – Authorised Molten & Mikasa Stock';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sp2clogistics.com';
+const SITE_TITLE = 'Sports Equipment Supplier Zimbabwe | Pozozo Trading — SP2C Logistics';
 const SITE_DESCRIPTION =
-  'Match balls, ordered by message. Genuine FIBA, FIFA and FIVB certified Molten and Mikasa basketballs, footballs, netballs and volleyballs, plus Fox40 officiating whistles, with same-day WhatsApp quotes and bulk pricing for schools and clubs.';
+  'Official sports equipment supplier in Zimbabwe. Genuine Molten & Mikasa basketballs, footballs, netballs, and volleyballs plus Fox40 gear. Same-day WhatsApp quotes and pro-forma invoices for schools, sports clubs, and institutions across Harare and nationwide.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default: SITE_TITLE,
-    template: '%s – Pozozo Sports',
+    template: '%s | Pozozo Trading — SP2C Logistics',
   },
   description: SITE_DESCRIPTION,
   keywords: [
+    'sports equipment Zimbabwe',
+    'sports equipment supplier Zimbabwe',
+    'sports equipment Harare',
+    'sports shop Harare',
+    'school sports equipment Zimbabwe',
+    'bulk sports equipment Zimbabwe',
     'Molten basketball Zimbabwe',
     'Mikasa football Zimbabwe',
     'Mikasa volleyball Zimbabwe',
+    'netball supplier Zimbabwe',
+    'Fox40 whistle Zimbabwe',
     'FIBA approved basketball',
     'FIFA Quality Pro football',
     'FIVB approved volleyball',
-    'netball supplier Zimbabwe',
-    'Fox40 whistle Zimbabwe',
-    'school sports equipment Zimbabwe',
-    'bulk sports balls supplier',
-    'sports equipment supplier SADC',
+    'Pozozo Trading',
+    'SP2C Logistics',
     'Pozozo Sports',
   ],
-  authors: [{ name: 'Pozozo Sports' }],
-  creator: 'Pozozo Sports',
-  publisher: 'Pozozo Sports',
+  authors: [{ name: 'SP2C Logistics / Pozozo Trading' }],
+  creator: 'SP2C Logistics (Pvt) Ltd',
+  publisher: 'SP2C Logistics (Pvt) Ltd',
   alternates: { canonical: '/' },
   robots: {
     index: true,
@@ -81,9 +86,9 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_ZW',
     url: SITE_URL,
-    siteName: 'Pozozo Sports',
+    siteName: 'Pozozo Trading — SP2C Logistics',
     title: SITE_TITLE,
-    description: 'Pick what your club, school or shop needs, send the list on WhatsApp, and we come back with price, stock and delivery the same day.',
+    description: SITE_DESCRIPTION,
     images: ['/balls/bg5000-a.webp'],
   },
   twitter: {
@@ -109,20 +114,48 @@ export default async function RootLayout({
 
   const organizationJsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SportingGoodsStore',
-    name: 'Pozozo Sports',
-    alternateName: 'Pozozo Trading',
+    '@type': ['SportingGoodsStore', 'Organization'],
+    '@id': `${SITE_URL}/#organization`,
+    name: 'SP2C Logistics',
+    legalName: 'SP2C Logistics (Pvt) Ltd',
+    alternateName: ['Pozozo Trading', 'Pozozo Sports', 'Pozozo Trading Sports Division'],
     description: SITE_DESCRIPTION,
     url: SITE_URL,
+    logo: `${SITE_URL}/logo-mark.png`,
+    image: `${SITE_URL}/balls/bg5000-a.webp`,
     telephone: storeConfig.displayPhone,
     email: storeConfig.email,
-    areaServed: 'ZW',
+    priceRange: '$$',
+    currenciesAccepted: 'USD',
+    areaServed: [
+      {
+        '@type': 'Country',
+        name: 'Zimbabwe',
+      },
+      {
+        '@type': 'AdministrativeArea',
+        name: 'SADC Region',
+      },
+    ],
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Harare',
+      addressRegion: 'Harare Province',
       addressCountry: 'ZW',
     },
-    openingHours: 'Mo-Sa 08:00-18:00',
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: -17.824858,
+      longitude: 31.053028,
+    },
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+        opens: '08:00',
+        closes: '18:00',
+      },
+    ],
     brand: [
       { '@type': 'Brand', name: 'Molten' },
       { '@type': 'Brand', name: 'Mikasa' },

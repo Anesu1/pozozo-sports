@@ -51,12 +51,14 @@ export default async function BrandPage(props: PageProps) {
   const categories = categoriesData as CategoryMeta[];
   const collections = collectionsData as CollectionMeta[];
 
+  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sp2clogistics.com';
+
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Brands', item: 'https://pozozosports.com/brands' },
-      { '@type': 'ListItem', position: 2, name: brand.title, item: `https://pozozosports.com/brand/${brand.slug}` },
+      { '@type': 'ListItem', position: 1, name: 'Brands', item: `${SITE_URL}/brands` },
+      { '@type': 'ListItem', position: 2, name: brand.title, item: `${SITE_URL}/brand/${brand.slug}` },
     ],
   };
 

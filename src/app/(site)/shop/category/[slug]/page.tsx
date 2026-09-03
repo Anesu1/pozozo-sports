@@ -51,16 +51,18 @@ export default async function CategoryPage(props: PageProps) {
   const categories = categoriesData as CategoryMeta[];
   const collections = collectionsData as CollectionMeta[];
 
+  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sp2clogistics.com';
+
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Shop', item: 'https://pozozosports.com/shop' },
+      { '@type': 'ListItem', position: 1, name: 'Shop', item: `${SITE_URL}/shop` },
       {
         '@type': 'ListItem',
         position: 2,
         name: category.name,
-        item: `https://pozozosports.com/shop/category/${category.slug}`,
+        item: `${SITE_URL}/shop/category/${category.slug}`,
       },
     ],
   };

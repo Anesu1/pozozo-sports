@@ -51,12 +51,14 @@ export default async function SportPage(props: PageProps) {
   const categories = categoriesData as CategoryMeta[];
   const collections = collectionsData as CollectionMeta[];
 
+  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sp2clogistics.com';
+
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Sports', item: 'https://pozozosports.com/sports' },
-      { '@type': 'ListItem', position: 2, name: sport.title, item: `https://pozozosports.com/sport/${sport.slug}` },
+      { '@type': 'ListItem', position: 1, name: 'Sports', item: `${SITE_URL}/sports` },
+      { '@type': 'ListItem', position: 2, name: sport.title, item: `${SITE_URL}/sport/${sport.slug}` },
     ],
   };
 

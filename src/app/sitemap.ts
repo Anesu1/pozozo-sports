@@ -2,15 +2,13 @@ import { MetadataRoute } from 'next';
 import { client } from '@/sanity/lib/client';
 import { sitemapSlugsQuery } from '@/sanity/lib/queries';
 
-const SITE_URL = 'https://pozozosports.com';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sp2clogistics.com';
 
 interface SlugEntry {
   slug: string;
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  // Static route, generated at build time — no request context, so plain
-  // client.fetch (not draftMode()-aware sanityFetch) is used here.
   const data = await client.fetch(sitemapSlugsQuery);
   const { products: PRODUCTS, categories: CATEGORIES, sports: SPORTS, brands: BRANDS, journals: JOURNALS } = data as {
     products: SlugEntry[];
@@ -24,6 +22,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const staticRoutes: MetadataRoute.Sitemap = ([
     { url: `${SITE_URL}/`, changeFrequency: 'weekly', priority: 1 },
+    { url: `${SITE_URL}/sports-equipment-zimbabwe`, changeFrequency: 'weekly', priority: 0.95 },
+    { url: `${SITE_URL}/sports-equipment-harare`, changeFrequency: 'weekly', priority: 0.95 },
+    { url: `${SITE_URL}/school-sports-equipment`, changeFrequency: 'weekly', priority: 0.95 },
+    { url: `${SITE_URL}/bulk-sports-equipment`, changeFrequency: 'weekly', priority: 0.9 },
     { url: `${SITE_URL}/shop`, changeFrequency: 'weekly', priority: 0.9 },
     { url: `${SITE_URL}/sports`, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${SITE_URL}/brands`, changeFrequency: 'monthly', priority: 0.8 },

@@ -59,15 +59,17 @@ export default async function JournalDetailPage(props: PageProps) {
     image: [journal.coverImage],
     datePublished: new Date(journal.date).toISOString(),
     author: { '@type': 'Person', name: journal.author.name },
-    publisher: { '@type': 'Organization', name: 'Pozozo Sports' },
+    publisher: { '@type': 'Organization', name: 'SP2C Logistics / Pozozo Trading' },
   };
+
+  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sp2clogistics.com';
 
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Guides & Articles', item: 'https://pozozosports.com/journal' },
-      { '@type': 'ListItem', position: 2, name: journal.title, item: `https://pozozosports.com/journal/${journal.slug}` },
+      { '@type': 'ListItem', position: 1, name: 'Guides & Articles', item: `${SITE_URL}/journal` },
+      { '@type': 'ListItem', position: 2, name: journal.title, item: `${SITE_URL}/journal/${journal.slug}` },
     ],
   };
 
