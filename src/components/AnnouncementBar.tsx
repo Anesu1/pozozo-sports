@@ -2,15 +2,12 @@
 
 import React from 'react';
 
-const MESSAGES = [
-  "ENQUIRE, DON'T CHECKOUT",
-  'GENUINE MOLTEN & MIKASA',
-  'SAME-DAY QUOTES ON WHATSAPP',
-  'BULK PRICING FOR SCHOOLS',
-];
+interface AnnouncementBarProps {
+  messages: string[];
+}
 
-export function AnnouncementBar() {
-  const track = [...MESSAGES, ...MESSAGES];
+export function AnnouncementBar({ messages }: AnnouncementBarProps) {
+  const track = [...messages, ...messages];
 
   return (
     <div className="bg-[#F2900E] text-[#13251C] overflow-hidden h-[38px] flex items-center">

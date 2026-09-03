@@ -1,8 +1,11 @@
 import React from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { BRANDS } from '@/data/brands';
 import { Ball3D } from '@/components/ball3d/Ball3D';
+import { sanityFetch } from '@/sanity/lib/live';
+import { brandsPageQuery, brandsQuery } from '@/sanity/lib/queries';
+import { cleanBrandColors } from '@/sanity/lib/stega-safe';
+import { BrandMeta, SimpleHeroPageContent } from '@/types';
 
 export const metadata: Metadata = {
   title: 'Molten & Mikasa',
@@ -11,7 +14,14 @@ export const metadata: Metadata = {
   alternates: { canonical: '/brands' },
 };
 
-export default function BrandsPage() {
+export default async function BrandsPage() {
+  const [{ data }, { data: contentData }] = await Promise.all([
+    sanityFetch({ query: brandsQuery }),
+    sanityFetch({ query: brandsPageQuery }),
+  ]);
+  const BRANDS = (data as BrandMeta[]).map(cleanBrandColors);
+  const content = contentData as SimpleHeroPageContent;
+
   return (
     <div className="bg-[#F3F5F0] min-h-screen py-12 sm:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -25,12 +35,10 @@ export default function BrandsPage() {
         </div>
 
         <h1 className="font-display uppercase text-4xl sm:text-5xl lg:text-6xl tracking-tight text-[#13251C] mb-3.5">
-          Two brands, no others
+          {content.heading}
         </h1>
         <p className="text-base sm:text-lg text-[#3C4536] max-w-2xl mb-10 leading-relaxed">
-          We stock Molten and Mikasa because between them they cover every court and pitch we
-          supply, and because both are easy to authenticate. If a ball claims to be either and the
-          price looks too good, it isn&apos;t one.
+          {content.description}
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

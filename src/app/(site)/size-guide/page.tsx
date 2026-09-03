@@ -1,6 +1,8 @@
 import { Metadata } from 'next';
-import { SIZES } from '@/data/sizeGuide';
 import { getWhatsAppUrl } from '@/data/sportsConfig';
+import { sanityFetch } from '@/sanity/lib/live';
+import { sizeGuidePageQuery, sizeGuideQuery } from '@/sanity/lib/queries';
+import { SizeGuideEntry, SizeGuidePageContent } from '@/types';
 
 export const metadata: Metadata = {
   title: 'Ball Size Guide',
@@ -8,19 +10,23 @@ export const metadata: Metadata = {
   alternates: { canonical: '/size-guide' },
 };
 
-export default function SizeGuidePage() {
+export default async function SizeGuidePage() {
+  const [{ data }, { data: contentData }] = await Promise.all([
+    sanityFetch({ query: sizeGuideQuery }),
+    sanityFetch({ query: sizeGuidePageQuery }),
+  ]);
+  const SIZES = data as SizeGuideEntry[];
+  const content = contentData as SizeGuidePageContent;
   const waUrl = getWhatsAppUrl('Hello Pozozo Sports, I need help choosing a ball size.');
 
   return (
     <div className="bg-[#F3F5F0] min-h-screen">
       <div className="max-w-[1000px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         <h1 className="font-display uppercase text-4xl sm:text-5xl lg:text-6xl tracking-tight text-[#13251C] mb-3.5">
-          What size ball?
+          {content.heading}
         </h1>
         <p className="text-[17px] sm:text-[17.5px] leading-relaxed text-[#3C4536] max-w-[56ch] mb-10">
-          The short answer for most school and club buyers. If your league publishes its own rule,
-          follow that — and if you tell us the age group when you enquire, we&apos;ll check it for
-          you.
+          {content.description}
         </p>
 
         {SIZES.map((entry) => (
@@ -49,10 +55,8 @@ export default function SizeGuidePage() {
 
         <div className="bg-[#F2900E] text-[#13251C] rounded-sm p-8 flex gap-6 items-center flex-wrap">
           <div className="flex-1 min-w-[220px]">
-            <h2 className="font-display uppercase text-2xl mb-2">Still not sure?</h2>
-            <p className="text-[15.5px] text-[#13251C]">
-              Tell us the age group and the league. We&apos;ll tell you the size and what it costs.
-            </p>
+            <h2 className="font-display uppercase text-2xl mb-2">{content.ctaHeading}</h2>
+            <p className="text-[15.5px] text-[#13251C]">{content.ctaDescription}</p>
           </div>
           <a
             href={waUrl}
@@ -60,7 +64,7 @@ export default function SizeGuidePage() {
             rel="noopener noreferrer"
             className="h-[50px] px-6 bg-[#13251C] text-white flex items-center rounded-sm text-sm font-bold hover:bg-white hover:text-[#13251C] transition-colors"
           >
-            Ask on WhatsApp
+            {content.ctaLabel}
           </a>
         </div>
       </div>

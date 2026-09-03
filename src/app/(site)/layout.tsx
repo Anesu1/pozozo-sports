@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Antonio, Karla } from 'next/font/google';
+import { draftMode } from 'next/headers';
+import { VisualEditing } from 'next-sanity/visual-editing';
 import './globals.css';
 import { Providers } from './providers';
 import { AnnouncementBar } from '@/components/AnnouncementBar';
@@ -9,7 +11,9 @@ import { QuickViewModal } from '@/components/QuickViewModal';
 import { Footer } from '@/components/Footer';
 import { LoadingScreen } from '@/components/LoadingScreen';
 import { JsonLd } from '@/components/JsonLd';
-import { STORE_CONFIG } from '@/data/sportsConfig';
+import { sanityFetch, SanityLive } from '@/sanity/lib/live';
+import { siteSettingsQuery, storeConfigQuery } from '@/sanity/lib/queries';
+import { SiteSettings, StoreConfig } from '@/types';
 
 const antonio = Antonio({
   subsets: ['latin'],
@@ -90,47 +94,69 @@ export const metadata: Metadata = {
   },
 };
 
-const organizationJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'SportingGoodsStore',
-  name: 'Pozozo Sports',
-  alternateName: 'Pozozo Trading',
-  description: SITE_DESCRIPTION,
-  url: SITE_URL,
-  telephone: STORE_CONFIG.displayPhone,
-  email: STORE_CONFIG.email,
-  areaServed: 'ZW',
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Harare',
-    addressCountry: 'ZW',
-  },
-  openingHours: 'Mo-Sa 08:00-18:00',
-  brand: [
-    { '@type': 'Brand', name: 'Molten' },
-    { '@type': 'Brand', name: 'Mikasa' },
-    { '@type': 'Brand', name: 'Fox40' },
-  ],
-};
-
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const isDraftMode = (await draftMode()).isEnabled;
+  const [{ data: storeConfigData }, { data: siteSettingsData }] = await Promise.all([
+    sanityFetch({ query: storeConfigQuery }),
+    sanityFetch({ query: siteSettingsQuery }),
+  ]);
+  const storeConfig = storeConfigData as StoreConfig;
+  const siteSettings = siteSettingsData as SiteSettings;
+
+  const organizationJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'SportingGoodsStore',
+    name: 'Pozozo Sports',
+    alternateName: 'Pozozo Trading',
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+    telephone: storeConfig.displayPhone,
+    email: storeConfig.email,
+    areaServed: 'ZW',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Harare',
+      addressCountry: 'ZW',
+    },
+    openingHours: 'Mo-Sa 08:00-18:00',
+    brand: [
+      { '@type': 'Brand', name: 'Molten' },
+      { '@type': 'Brand', name: 'Mikasa' },
+      { '@type': 'Brand', name: 'Fox40' },
+    ],
+  };
+
   return (
     <html lang="en" className={`scroll-smooth ${antonio.variable} ${karla.variable}`}>
       <body className="min-h-screen flex flex-col bg-[#F3F5F0] text-[#13251C] antialiased font-sans">
         <JsonLd data={organizationJsonLd} />
         <LoadingScreen />
         <Providers>
-          <AnnouncementBar />
-          <HeaderWrapper />
+          <AnnouncementBar messages={siteSettings.announcementMessages} />
+          <HeaderWrapper
+            storeConfig={storeConfig}
+            logoLine1={siteSettings.logoLine1}
+            logoLine2={siteSettings.logoLine2}
+            navLinks={siteSettings.navLinks}
+          />
           <main className="flex-1">{children}</main>
           <CartDrawer />
           <QuickViewModal />
-          <Footer />
+          <Footer
+            logoLine1={siteSettings.logoLine1}
+            logoLine2={siteSettings.logoLine2}
+            tagline={siteSettings.footerTagline}
+            columns={siteSettings.footerColumns}
+            copyright={siteSettings.footerCopyright}
+            legalLinks={siteSettings.footerLegalLinks}
+          />
         </Providers>
+        <SanityLive includeDrafts={isDraftMode} />
+        {isDraftMode && <VisualEditing />}
       </body>
     </html>
   );

@@ -1,7 +1,9 @@
 import { Metadata } from 'next';
-import { FAQS } from '@/data/faqs';
 import { FaqPageClient } from './FaqPageClient';
 import { JsonLd } from '@/components/JsonLd';
+import { sanityFetch } from '@/sanity/lib/live';
+import { faqPageQuery, faqsQuery } from '@/sanity/lib/queries';
+import { FaqEntry, SimpleHeroPageContent } from '@/types';
 
 export const metadata: Metadata = {
   title: 'Frequently Asked Questions',
@@ -9,24 +11,31 @@ export const metadata: Metadata = {
   alternates: { canonical: '/faq' },
 };
 
-const faqJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: FAQS.map((faq) => ({
-    '@type': 'Question',
-    name: faq.q,
-    acceptedAnswer: {
-      '@type': 'Answer',
-      text: faq.a,
-    },
-  })),
-};
+export default async function FaqPage() {
+  const [{ data }, { data: contentData }] = await Promise.all([
+    sanityFetch({ query: faqsQuery }),
+    sanityFetch({ query: faqPageQuery }),
+  ]);
+  const FAQS = data as FaqEntry[];
+  const content = contentData as SimpleHeroPageContent;
 
-export default function FaqPage() {
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: FAQS.map((faq) => ({
+      '@type': 'Question',
+      name: faq.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.a,
+      },
+    })),
+  };
+
   return (
     <>
       <JsonLd data={faqJsonLd} />
-      <FaqPageClient />
+      <FaqPageClient faqs={FAQS} heading={content.heading} description={content.description} />
     </>
   );
 }

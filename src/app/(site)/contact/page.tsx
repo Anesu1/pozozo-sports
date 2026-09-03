@@ -1,5 +1,8 @@
 import { Metadata } from 'next';
 import { ContactPageClient } from './ContactPageClient';
+import { sanityFetch } from '@/sanity/lib/live';
+import { contactPageQuery, storeConfigQuery } from '@/sanity/lib/queries';
+import { ContactPageContent, StoreConfig } from '@/types';
 
 export const metadata: Metadata = {
   title: 'Contact Us',
@@ -7,6 +10,15 @@ export const metadata: Metadata = {
   alternates: { canonical: '/contact' },
 };
 
-export default function ContactPage() {
-  return <ContactPageClient />;
+export default async function ContactPage() {
+  const [{ data: storeConfigData }, { data: contentData }] = await Promise.all([
+    sanityFetch({ query: storeConfigQuery }),
+    sanityFetch({ query: contactPageQuery }),
+  ]);
+  return (
+    <ContactPageClient
+      storeConfig={storeConfigData as StoreConfig}
+      content={contentData as ContactPageContent}
+    />
+  );
 }

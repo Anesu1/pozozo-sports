@@ -2,8 +2,11 @@ import React from 'react';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { ShopCatalog } from '@/components/ShopCatalog';
-import { BRANDS } from '@/data/brands';
 import { JsonLd } from '@/components/JsonLd';
+import { sanityFetch } from '@/sanity/lib/live';
+import { client } from '@/sanity/lib/client';
+import { brandBySlugQuery, brandSlugsQuery, categoriesQuery, collectionsQuery, productsQuery } from '@/sanity/lib/queries';
+import { BrandMeta, CategoryMeta, CollectionMeta, Product } from '@/types';
 
 interface PageProps {
   params: Promise<{
@@ -11,15 +14,15 @@ interface PageProps {
   }>;
 }
 
-export function generateStaticParams() {
-  return BRANDS.map((b) => ({
-    slug: b.slug,
-  }));
+export async function generateStaticParams() {
+  const data = await client.fetch(brandSlugsQuery);
+  return data as { slug: string }[];
 }
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const params = await props.params;
-  const brand = BRANDS.find((b) => b.slug === params.slug);
+  const { data } = await sanityFetch({ query: brandBySlugQuery, params: { slug: params.slug } });
+  const brand = data as BrandMeta | null;
   if (!brand) {
     return { title: 'Brand' };
   }
@@ -32,11 +35,21 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 
 export default async function BrandPage(props: PageProps) {
   const params = await props.params;
-  const brand = BRANDS.find((b) => b.slug === params.slug);
+  const { data } = await sanityFetch({ query: brandBySlugQuery, params: { slug: params.slug } });
+  const brand = data as BrandMeta | null;
 
   if (!brand) {
     notFound();
   }
+
+  const [{ data: productsData }, { data: categoriesData }, { data: collectionsData }] = await Promise.all([
+    sanityFetch({ query: productsQuery }),
+    sanityFetch({ query: categoriesQuery }),
+    sanityFetch({ query: collectionsQuery }),
+  ]);
+  const products = productsData as Product[];
+  const categories = categoriesData as CategoryMeta[];
+  const collections = collectionsData as CollectionMeta[];
 
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
@@ -51,6 +64,9 @@ export default async function BrandPage(props: PageProps) {
     <>
       <JsonLd data={breadcrumbJsonLd} />
       <ShopCatalog
+        products={products}
+        categories={categories}
+        collections={collections}
         initialCollection={brand.slug}
         pageTitle={brand.title}
         pageDescription={brand.lede}

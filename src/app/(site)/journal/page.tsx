@@ -3,7 +3,9 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, BookOpen, Clock } from 'lucide-react';
-import { JOURNALS } from '@/data/journals';
+import { sanityFetch } from '@/sanity/lib/live';
+import { journalIndexPageQuery, journalPostsQuery } from '@/sanity/lib/queries';
+import { JournalIndexPageContent, JournalPost } from '@/types';
 
 export const metadata: Metadata = {
   title: 'Ball Guides & Articles',
@@ -11,7 +13,13 @@ export const metadata: Metadata = {
   alternates: { canonical: '/journal' },
 };
 
-export default function JournalIndexPage() {
+export default async function JournalIndexPage() {
+  const [{ data: journalsData }, { data: contentData }] = await Promise.all([
+    sanityFetch({ query: journalPostsQuery }),
+    sanityFetch({ query: journalIndexPageQuery }),
+  ]);
+  const JOURNALS = journalsData as JournalPost[];
+  const content = contentData as JournalIndexPageContent;
   const featured = JOURNALS[0];
   const rest = JOURNALS.slice(1);
 
@@ -22,14 +30,12 @@ export default function JournalIndexPage() {
         <div className="text-center max-w-2xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-sm bg-[#E7EAE1] border border-[#D8DED2] text-xs font-bold text-[#13251C] uppercase tracking-wider mb-4">
             <BookOpen className="w-3.5 h-3.5" />
-            <span>Ball Guides &amp; Articles</span>
+            <span>{content.badge}</span>
           </div>
           <h1 className="font-display uppercase text-4xl sm:text-5xl lg:text-6xl tracking-tight text-[#13251C] mb-4">
-            Guides &amp; Articles
+            {content.heading}
           </h1>
-          <p className="text-sm sm:text-base text-[#5B6B54]">
-            Practical guides on choosing, sizing and caring for match and training balls.
-          </p>
+          <p className="text-sm sm:text-base text-[#5B6B54]">{content.description}</p>
         </div>
 
         {/* Featured Story */}

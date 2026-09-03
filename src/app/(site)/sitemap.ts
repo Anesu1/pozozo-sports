@@ -1,13 +1,25 @@
 import { MetadataRoute } from 'next';
-import { PRODUCTS } from '@/data/products';
-import { CATEGORIES } from '@/data/categories';
-import { SPORTS } from '@/data/sports';
-import { BRANDS } from '@/data/brands';
-import { JOURNALS } from '@/data/journals';
+import { client } from '@/sanity/lib/client';
+import { sitemapSlugsQuery } from '@/sanity/lib/queries';
 
 const SITE_URL = 'https://pozozosports.com';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+interface SlugEntry {
+  slug: string;
+}
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  // Static route, generated at build time — no request context, so plain
+  // client.fetch (not draftMode()-aware sanityFetch) is used here.
+  const data = await client.fetch(sitemapSlugsQuery);
+  const { products: PRODUCTS, categories: CATEGORIES, sports: SPORTS, brands: BRANDS, journals: JOURNALS } = data as {
+    products: SlugEntry[];
+    categories: SlugEntry[];
+    sports: SlugEntry[];
+    brands: SlugEntry[];
+    journals: SlugEntry[];
+  };
+
   const now = new Date();
 
   const staticRoutes: MetadataRoute.Sitemap = ([

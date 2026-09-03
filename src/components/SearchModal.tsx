@@ -5,7 +5,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, X, ArrowRight, Sparkles, TrendingUp } from 'lucide-react';
-import { PRODUCTS } from '@/data/products';
+import { client } from '@/sanity/lib/client';
+import { productsQuery } from '@/sanity/lib/queries';
+import { Product } from '@/types';
 
 interface SearchModalProps {
   isOpen: boolean;
@@ -14,14 +16,19 @@ interface SearchModalProps {
 
 export function SearchModal({ isOpen, onClose }: SearchModalProps) {
   const [query, setQuery] = useState('');
+  const [PRODUCTS, setProducts] = useState<Product[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (isOpen) {
       setTimeout(() => inputRef.current?.focus(), 50);
+      if (PRODUCTS.length === 0) {
+        client.fetch<Product[]>(productsQuery).then(setProducts).catch(() => {});
+      }
     } else {
       setQuery('');
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
   useEffect(() => {

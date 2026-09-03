@@ -1,20 +1,24 @@
 'use client';
 
 import { useState } from 'react';
-import { FAQS } from '@/data/faqs';
+import { FaqEntry } from '@/types';
 
-export function FaqPageClient() {
+interface FaqPageClientProps {
+  faqs: FaqEntry[];
+  heading: string;
+  description: string;
+}
+
+export function FaqPageClient({ faqs: FAQS, heading, description }: FaqPageClientProps) {
   const [openIndex, setOpenIndex] = useState<number>(-1);
 
   return (
     <div className="bg-[#F3F5F0] min-h-screen">
       <div className="max-w-[920px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         <h1 className="font-display uppercase text-4xl sm:text-5xl lg:text-6xl tracking-tight text-[#13251C] mb-3.5">
-          Questions
+          {heading}
         </h1>
-        <p className="text-[17px] sm:text-[17.5px] text-[#3C4536] mb-9">
-          If yours isn&apos;t here, message us — we answer the awkward ones too.
-        </p>
+        <p className="text-[17px] sm:text-[17.5px] text-[#3C4536] mb-9">{description}</p>
 
         <div className="border border-[#D8DED2] rounded-sm bg-white overflow-hidden">
           {FAQS.map((faq, i) => {

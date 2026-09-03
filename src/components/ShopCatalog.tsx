@@ -4,12 +4,13 @@ import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Grid2X2, Grid3X3, LayoutGrid, Search, ArrowUpDown } from 'lucide-react';
-import { PRODUCTS } from '@/data/products';
-import { CATEGORIES } from '@/data/categories';
-import { COLLECTIONS } from '@/data/collections';
 import { ProductCard } from '@/components/ProductCard';
+import { CategoryMeta, CollectionMeta, Product } from '@/types';
 
 interface ShopCatalogProps {
+  products: Product[];
+  categories: CategoryMeta[];
+  collections: CollectionMeta[];
   initialCategory?: string;
   initialCollection?: string;
   pageTitle?: string;
@@ -17,6 +18,9 @@ interface ShopCatalogProps {
 }
 
 export function ShopCatalog({
+  products: PRODUCTS,
+  categories: CATEGORIES,
+  collections: COLLECTIONS,
   initialCategory = 'all',
   initialCollection = 'all',
   pageTitle = 'The full catalogue',

@@ -2,11 +2,17 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Mail, MessageCircle, MapPin, Phone, Send, CheckCircle2, ChevronDown, Clock } from 'lucide-react';
+import { Mail, MessageCircle, MapPin, Clock, ChevronDown } from 'lucide-react';
 import { useToast } from '@/context/ToastContext';
-import { STORE_CONFIG, getWhatsAppUrl, getMailtoUrl } from '@/data/sportsConfig';
+import { getWhatsAppUrl, getMailtoUrl } from '@/data/sportsConfig';
+import { ContactPageContent, StoreConfig } from '@/types';
 
-export function ContactPageClient() {
+interface ContactPageClientProps {
+  storeConfig: StoreConfig;
+  content: ContactPageContent;
+}
+
+export function ContactPageClient({ storeConfig: STORE_CONFIG, content }: ContactPageClientProps) {
   const [form, setForm] = useState({ name: '', phoneOrEmail: '', organisation: '', message: '' });
   const { showToast } = useToast();
 
@@ -29,25 +35,6 @@ export function ContactPageClient() {
     window.location.href = getMailtoUrl(subject, body);
   };
 
-  const faqs = [
-    {
-      q: 'How do I place an order?',
-      a: 'Browse our catalogue, click "Add to List" or tap the WhatsApp button next to any ball. Send us your list and we reply with price, confirmed stock, and delivery time on the same day.',
-    },
-    {
-      q: 'Are your balls genuine?',
-      a: 'Yes, 100%. We only stock genuine Molten and Mikasa balls with original manufacturer holograms, serial batch stamps, and official FIBA / FIFA certification stamps.',
-    },
-    {
-      q: 'Do you offer bulk discounts for schools and clubs?',
-      a: 'Yes. We offer special tiered pricing and official pro-forma invoices for schools, sports clubs, academies, and NGOs ordering 10 or more balls.',
-    },
-    {
-      q: 'Where do you deliver?',
-      a: 'We deliver nationwide across Harare, Bulawayo, and all provincial centres via secure courier. Collection points are also available.',
-    },
-  ];
-
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   const directWaUrl = getWhatsAppUrl('Hello Pozozo Sports, I have an enquiry.');
@@ -58,45 +45,43 @@ export function ContactPageClient() {
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className="text-xs font-bold uppercase tracking-widest text-[#5B6B54] mb-2 block">
-            GET IN TOUCH
+            {content.badge}
           </span>
           <h1 className="text-4xl sm:text-5xl font-display uppercase text-[#13251C] tracking-tight mb-4">
-            Message Our Sales Desk
+            {content.heading}
           </h1>
-          <p className="text-sm sm:text-base text-[#3C4536]">
-            Have a question about ball models, school pro-formas, or delivery schedules? Send a message on WhatsApp for the fastest reply.
-          </p>
+          <p className="text-sm sm:text-base text-[#3C4536]">{content.description}</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
           {/* Contact Inquiry Form */}
           <div className="lg:col-span-7 bg-white p-8 sm:p-12 rounded-sm border border-[#D8DED2]">
-            <h2 className="text-2xl font-display uppercase text-[#13251C] mb-6">Send an Inquiry</h2>
+            <h2 className="text-2xl font-display uppercase text-[#13251C] mb-6">{content.formHeading}</h2>
 
             <form onSubmit={handleWhatsAppSend} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
                   <label className="text-[11px] font-bold uppercase tracking-wider text-[#5B6B54]">
-                    Your Name *
+                    {content.nameLabel}
                   </label>
                   <input
                     type="text"
                     required
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    placeholder="e.g. Coach Mwila"
+                    placeholder={content.namePlaceholder}
                     className="w-full px-4 py-3 bg-white border border-[#D8DED2] rounded-sm text-xs font-semibold text-[#13251C] outline-none focus:border-[#13251C]"
                   />
                 </div>
                 <div className="space-y-1.5">
                   <label className="text-[11px] font-bold uppercase tracking-wider text-[#5B6B54]">
-                    Phone or Email
+                    {content.contactLabel}
                   </label>
                   <input
                     type="text"
                     value={form.phoneOrEmail}
                     onChange={(e) => setForm({ ...form, phoneOrEmail: e.target.value })}
-                    placeholder="e.g. 0977 123 456"
+                    placeholder={content.contactPlaceholder}
                     className="w-full px-4 py-3 bg-white border border-[#D8DED2] rounded-sm text-xs font-semibold text-[#13251C] outline-none focus:border-[#13251C]"
                   />
                 </div>
@@ -104,27 +89,27 @@ export function ContactPageClient() {
 
               <div className="space-y-1.5">
                 <label className="text-[11px] font-bold uppercase tracking-wider text-[#5B6B54]">
-                  School / Club / Organization
+                  {content.organisationLabel}
                 </label>
                 <input
                   type="text"
                   value={form.organisation}
                   onChange={(e) => setForm({ ...form, organisation: e.target.value })}
-                  placeholder="e.g. Harare Youth Academy"
+                  placeholder={content.organisationPlaceholder}
                   className="w-full px-4 py-3 bg-white border border-[#D8DED2] rounded-sm text-xs font-semibold text-[#13251C] outline-none focus:border-[#13251C]"
                 />
               </div>
 
               <div className="space-y-1.5">
                 <label className="text-[11px] font-bold uppercase tracking-wider text-[#5B6B54]">
-                  Equipment Inquiry / Questions *
+                  {content.messageLabel}
                 </label>
                 <textarea
                   required
                   rows={4}
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  placeholder="What balls are you interested in, and do you need delivery?"
+                  placeholder={content.messagePlaceholder}
                   className="w-full p-3 bg-white border border-[#D8DED2] rounded-sm text-xs font-semibold text-[#13251C] outline-none focus:border-[#13251C] resize-none"
                 />
               </div>
@@ -135,7 +120,7 @@ export function ContactPageClient() {
                   className="py-4 bg-[#F2900E] hover:bg-[#13251C] active:scale-[0.99] text-[#13251C] hover:text-white text-xs font-bold uppercase tracking-wider rounded-sm transition-all shadow-md flex items-center justify-center gap-2"
                 >
                   <MessageCircle className="w-4 h-4 fill-current" />
-                  <span>Send via WhatsApp</span>
+                  <span>{content.whatsappButtonLabel}</span>
                 </button>
                 <button
                   type="button"
@@ -143,7 +128,7 @@ export function ContactPageClient() {
                   className="py-4 bg-white hover:bg-[#13251C] border border-[#13251C] text-[#13251C] hover:text-white text-xs font-bold uppercase tracking-wider rounded-sm transition-colors flex items-center justify-center gap-2"
                 >
                   <Mail className="w-4 h-4" />
-                  <span>Send via Email</span>
+                  <span>{content.emailButtonLabel}</span>
                 </button>
               </div>
             </form>
@@ -152,26 +137,26 @@ export function ContactPageClient() {
           {/* Contact Details & FAQs */}
           <div className="lg:col-span-5 space-y-8">
             <div className="p-8 bg-white rounded-sm border border-[#D8DED2] space-y-6">
-              <h3 className="text-xl font-display uppercase text-[#13251C]">Direct Contacts</h3>
+              <h3 className="text-xl font-display uppercase text-[#13251C]">{content.directContactsHeading}</h3>
               <div className="space-y-4 text-xs">
                 <div className="flex items-start gap-3">
                   <MessageCircle className="w-5 h-5 text-[#1678A0] shrink-0 mt-0.5" />
                   <div>
-                    <strong className="text-[#13251C] block text-sm">WhatsApp Sales Desk</strong>
+                    <strong className="text-[#13251C] block text-sm">{content.whatsappLabel}</strong>
                     <a
                       href={directWaUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-[#5B6B54] hover:text-[#13251C] hover:underline font-semibold"
                     >
-                      {STORE_CONFIG.displayPhone} (Fastest response)
+                      {STORE_CONFIG.displayPhone} {content.whatsappNote}
                     </a>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <Mail className="w-5 h-5 text-[#13251C] shrink-0 mt-0.5" />
                   <div>
-                    <strong className="text-[#13251C] block text-sm">Email Inquiries &amp; Pro-Formas</strong>
+                    <strong className="text-[#13251C] block text-sm">{content.emailLabel}</strong>
                     <a href={`mailto:${STORE_CONFIG.email}`} className="text-[#5B6B54] hover:text-[#13251C] hover:underline font-semibold">
                       {STORE_CONFIG.email}
                     </a>
@@ -180,14 +165,14 @@ export function ContactPageClient() {
                 <div className="flex items-start gap-3">
                   <Clock className="w-5 h-5 text-[#13251C] shrink-0 mt-0.5" />
                   <div>
-                    <strong className="text-[#13251C] block text-sm">Working Hours</strong>
+                    <strong className="text-[#13251C] block text-sm">{content.hoursLabel}</strong>
                     <span className="text-[#5B6B54]">{STORE_CONFIG.operatingHours}</span>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 text-[#13251C] shrink-0 mt-0.5" />
                   <div>
-                    <strong className="text-[#13251C] block text-sm">Distribution Centre</strong>
+                    <strong className="text-[#13251C] block text-sm">{content.locationLabel}</strong>
                     <span className="text-[#5B6B54]">{STORE_CONFIG.location}</span>
                   </div>
                 </div>
@@ -196,8 +181,8 @@ export function ContactPageClient() {
 
             {/* FAQs */}
             <div className="space-y-3">
-              <h3 className="text-lg font-display uppercase text-[#13251C]">Frequently Asked Questions</h3>
-              {faqs.map((faq, i) => (
+              <h3 className="text-lg font-display uppercase text-[#13251C]">{content.faqsHeading}</h3>
+              {content.faqs.map((faq, i) => (
                 <div key={i} className="border border-[#D8DED2] rounded-sm overflow-hidden bg-white">
                   <button
                     onClick={() => setOpenFaq(openFaq === i ? null : i)}
@@ -218,7 +203,7 @@ export function ContactPageClient() {
                 </div>
               ))}
               <Link href="/faq" className="text-xs font-bold text-[#1678A0] hover:text-[#13251C] hover:underline">
-                See all FAQs →
+                {content.seeAllFaqsLabel}
               </Link>
             </div>
           </div>

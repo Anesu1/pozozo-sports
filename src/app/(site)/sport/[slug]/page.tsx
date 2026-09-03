@@ -2,8 +2,11 @@ import React from 'react';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { ShopCatalog } from '@/components/ShopCatalog';
-import { SPORTS } from '@/data/sports';
 import { JsonLd } from '@/components/JsonLd';
+import { sanityFetch } from '@/sanity/lib/live';
+import { client } from '@/sanity/lib/client';
+import { categoriesQuery, collectionsQuery, productsQuery, sportBySlugQuery, sportSlugsQuery } from '@/sanity/lib/queries';
+import { CategoryMeta, CollectionMeta, Product, SportMeta } from '@/types';
 
 interface PageProps {
   params: Promise<{
@@ -11,15 +14,15 @@ interface PageProps {
   }>;
 }
 
-export function generateStaticParams() {
-  return SPORTS.map((s) => ({
-    slug: s.slug,
-  }));
+export async function generateStaticParams() {
+  const data = await client.fetch(sportSlugsQuery);
+  return data as { slug: string }[];
 }
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const params = await props.params;
-  const sport = SPORTS.find((s) => s.slug === params.slug);
+  const { data } = await sanityFetch({ query: sportBySlugQuery, params: { slug: params.slug } });
+  const sport = data as SportMeta | null;
   if (!sport) {
     return { title: 'Sport' };
   }
@@ -32,11 +35,21 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 
 export default async function SportPage(props: PageProps) {
   const params = await props.params;
-  const sport = SPORTS.find((s) => s.slug === params.slug);
+  const { data } = await sanityFetch({ query: sportBySlugQuery, params: { slug: params.slug } });
+  const sport = data as SportMeta | null;
 
   if (!sport) {
     notFound();
   }
+
+  const [{ data: productsData }, { data: categoriesData }, { data: collectionsData }] = await Promise.all([
+    sanityFetch({ query: productsQuery }),
+    sanityFetch({ query: categoriesQuery }),
+    sanityFetch({ query: collectionsQuery }),
+  ]);
+  const products = productsData as Product[];
+  const categories = categoriesData as CategoryMeta[];
+  const collections = collectionsData as CollectionMeta[];
 
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
@@ -51,6 +64,9 @@ export default async function SportPage(props: PageProps) {
     <>
       <JsonLd data={breadcrumbJsonLd} />
       <ShopCatalog
+        products={products}
+        categories={categories}
+        collections={collections}
         initialCategory={sport.slug}
         pageTitle={sport.title}
         pageDescription={sport.blurb}

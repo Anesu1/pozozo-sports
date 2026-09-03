@@ -1,6 +1,8 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { JOURNALS } from '@/data/journals';
+import { sanityFetch } from '@/sanity/lib/live';
+import { guidesPageQuery, journalPostsQuery } from '@/sanity/lib/queries';
+import { GuidesPageContent, JournalPost } from '@/types';
 
 export const metadata: Metadata = {
   title: 'Guides & Articles',
@@ -8,31 +10,14 @@ export const metadata: Metadata = {
   alternates: { canonical: '/guides' },
 };
 
-const GUIDE_TILES = [
-  {
-    href: '/size-guide',
-    title: 'Ball sizes',
-    body: 'Which size suits which age group, sport by sport.',
-  },
-  {
-    href: '/care',
-    title: 'Care & inflation',
-    body: 'Pressure, needles, storage — a season more from every ball.',
-  },
-  {
-    href: '/faq',
-    title: 'FAQ',
-    body: 'Delivery, payment, invoices, warranty, counterfeits.',
-  },
-  {
-    href: '/price-list',
-    title: 'Price list',
-    body: 'The full stock list for procurement, ready to print or attach.',
-    inverted: true,
-  },
-];
+export default async function GuidesPage() {
+  const [{ data: journalsData }, { data: contentData }] = await Promise.all([
+    sanityFetch({ query: journalPostsQuery }),
+    sanityFetch({ query: guidesPageQuery }),
+  ]);
+  const JOURNALS = journalsData as JournalPost[];
+  const content = contentData as GuidesPageContent;
 
-export default function GuidesPage() {
   return (
     <div className="bg-[#F3F5F0] min-h-screen py-12 sm:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -45,14 +30,14 @@ export default function GuidesPage() {
         </div>
 
         <h1 className="font-display uppercase text-4xl sm:text-5xl lg:text-6xl tracking-tight text-[#13251C] mb-3.5">
-          Guides
+          {content.heading}
         </h1>
         <p className="text-[17px] sm:text-[17.5px] leading-relaxed text-[#3C4536] max-w-[56ch] mb-10">
-          Everything worth knowing before you send a list, and after the balls arrive.
+          {content.description}
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {GUIDE_TILES.map((tile) => (
+          {content.tiles.map((tile) => (
             <Link
               key={tile.href}
               href={tile.href}
@@ -80,7 +65,7 @@ export default function GuidesPage() {
           ))}
         </div>
 
-        <h2 className="font-display uppercase text-2xl sm:text-3xl mt-16 mb-6">Further reading</h2>
+        <h2 className="font-display uppercase text-2xl sm:text-3xl mt-16 mb-6">{content.furtherReadingHeading}</h2>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {JOURNALS.map((j) => (
             <Link

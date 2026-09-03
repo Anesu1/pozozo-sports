@@ -1,5 +1,8 @@
 import { Metadata } from 'next';
 import { BulkPageClient } from './BulkPageClient';
+import { sanityFetch } from '@/sanity/lib/live';
+import { bulkPageQuery, pricingBandsQuery } from '@/sanity/lib/queries';
+import { BulkPageContent, PricingBand } from '@/types';
 
 export const metadata: Metadata = {
   title: 'Bulk & Schools Pricing',
@@ -7,6 +10,10 @@ export const metadata: Metadata = {
   alternates: { canonical: '/bulk' },
 };
 
-export default function BulkPage() {
-  return <BulkPageClient />;
+export default async function BulkPage() {
+  const [{ data: bandsData }, { data: contentData }] = await Promise.all([
+    sanityFetch({ query: pricingBandsQuery }),
+    sanityFetch({ query: bulkPageQuery }),
+  ]);
+  return <BulkPageClient bands={bandsData as PricingBand[]} content={contentData as BulkPageContent} />;
 }

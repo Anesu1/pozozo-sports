@@ -4,8 +4,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, Clock, Calendar, Share2, ArrowRight } from 'lucide-react';
-import { JOURNALS } from '@/data/journals';
 import { JsonLd } from '@/components/JsonLd';
+import { sanityFetch } from '@/sanity/lib/live';
+import { client } from '@/sanity/lib/client';
+import { journalPostBySlugQuery, journalSlugsQuery } from '@/sanity/lib/queries';
+import { JournalPost } from '@/types';
 
 interface PageProps {
   params: Promise<{
@@ -13,15 +16,15 @@ interface PageProps {
   }>;
 }
 
-export function generateStaticParams() {
-  return JOURNALS.map((j) => ({
-    slug: j.slug,
-  }));
+export async function generateStaticParams() {
+  const data = await client.fetch(journalSlugsQuery);
+  return data as { slug: string }[];
 }
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const params = await props.params;
-  const journal = JOURNALS.find((j) => j.slug === params.slug);
+  const { data } = await sanityFetch({ query: journalPostBySlugQuery, params: { slug: params.slug } });
+  const journal = data as (JournalPost & { related: JournalPost[] }) | null;
   if (!journal) {
     return { title: 'Guide' };
   }
@@ -39,13 +42,14 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 
 export default async function JournalDetailPage(props: PageProps) {
   const params = await props.params;
-  const journal = JOURNALS.find((j) => j.slug === params.slug);
+  const { data } = await sanityFetch({ query: journalPostBySlugQuery, params: { slug: params.slug } });
+  const journalData = data as (JournalPost & { related: JournalPost[] }) | null;
 
-  if (!journal) {
+  if (!journalData) {
     notFound();
   }
 
-  const related = JOURNALS.filter((j) => j.id !== journal.id).slice(0, 3);
+  const { related, ...journal } = journalData;
 
   const articleJsonLd = {
     '@context': 'https://schema.org',

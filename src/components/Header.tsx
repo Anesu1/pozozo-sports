@@ -15,9 +15,17 @@ import { useCart } from '@/context/CartContext';
 import { useWishlist } from '@/context/WishlistContext';
 import { SearchModal } from '@/components/SearchModal';
 import { Logo } from '@/components/Logo';
-import { STORE_CONFIG, getWhatsAppUrl } from '@/data/sportsConfig';
+import { getWhatsAppUrl } from '@/data/sportsConfig';
+import { NavLink, StoreConfig } from '@/types';
 
-export function Header() {
+interface HeaderProps {
+  storeConfig: StoreConfig;
+  logoLine1: string;
+  logoLine2: string;
+  navLinks: NavLink[];
+}
+
+export function Header({ storeConfig: STORE_CONFIG, logoLine1, logoLine2, navLinks }: HeaderProps) {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -46,15 +54,6 @@ export function Header() {
     };
   }, [mobileMenuOpen]);
 
-  const navLinks = [
-    { label: 'Shop', href: '/shop' },
-    { label: 'Sports', href: '/sports' },
-    { label: 'Brands', href: '/brands' },
-    { label: 'Bulk', href: '/bulk' },
-    { label: 'Guides', href: '/guides' },
-    { label: 'About', href: '/about' },
-  ];
-
   const waUrl = getWhatsAppUrl('Hello Pozozo Sports, I would like to make an enquiry.');
 
   return (
@@ -79,10 +78,10 @@ export function Header() {
               <Link href="/" className="flex items-center gap-2.5 text-[#13251C] group">
                 <Logo size={26} />
                 <span className="font-display uppercase text-base xs:text-lg sm:text-xl leading-none whitespace-nowrap">
-                  Pozozo Trading
+                  {logoLine1}
                 </span>
                 <span className="hidden xs:inline text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.22em] text-[#5B6B54] whitespace-nowrap self-end pb-0.5">
-                  SPORTS DIVISION
+                  {logoLine2}
                 </span>
               </Link>
             </div>

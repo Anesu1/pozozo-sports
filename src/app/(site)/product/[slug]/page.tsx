@@ -1,9 +1,12 @@
 import React from 'react';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { PRODUCTS } from '@/data/products';
 import { ProductDetailClient } from '@/components/ProductDetailClient';
 import { JsonLd } from '@/components/JsonLd';
+import { sanityFetch } from '@/sanity/lib/live';
+import { client } from '@/sanity/lib/client';
+import { productBySlugQuery, productSlugsQuery } from '@/sanity/lib/queries';
+import { Product } from '@/types';
 
 interface PageProps {
   params: Promise<{
@@ -11,15 +14,17 @@ interface PageProps {
   }>;
 }
 
-export function generateStaticParams() {
-  return PRODUCTS.map((p) => ({
-    slug: p.slug,
-  }));
+export async function generateStaticParams() {
+  // Build time only — no request context, so draftMode()-aware sanityFetch
+  // can't be used here. Static params only ever need published slugs anyway.
+  const data = await client.fetch(productSlugsQuery);
+  return data as { slug: string }[];
 }
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const params = await props.params;
-  const product = PRODUCTS.find((p) => p.slug === params.slug);
+  const { data } = await sanityFetch({ query: productBySlugQuery, params: { slug: params.slug } });
+  const product = data as (Product & { relatedProducts: Product[] }) | null;
   if (!product) {
     return { title: 'Product' };
   }
@@ -37,16 +42,14 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 
 export default async function ProductPage(props: PageProps) {
   const params = await props.params;
-  const product = PRODUCTS.find((p) => p.slug === params.slug);
+  const { data } = await sanityFetch({ query: productBySlugQuery, params: { slug: params.slug } });
+  const productData = data as (Product & { relatedProducts: Product[] }) | null;
 
-  if (!product) {
+  if (!productData) {
     notFound();
   }
 
-  // Related products from same category or collection
-  const relatedProducts = PRODUCTS.filter(
-    (p) => p.id !== product.id && (p.category === product.category || p.collections.some((c) => product.collections.includes(c)))
-  ).slice(0, 4);
+  const { relatedProducts, ...product } = productData;
 
   const productJsonLd = {
     '@context': 'https://schema.org',
