@@ -1,7 +1,11 @@
 [build.environment]
   # 1. NEXT_PUBLIC_ variables are public client-side variables by design.
   # Omit them from secret scanning so Netlify doesn't flag them as false-positive leaks.
-  SECRETS_SCAN_OMIT_KEYS = "NEXT_PUBLIC_SANITY_DATASET,NEXT_PUBLIC_SANITY_PROJECT_ID,NEXT_PUBLIC_SANITY_API_VERSION,NEXT_PUBLIC_SANITY_STUDIO_PREVIEW_URL,NEXT_PUBLIC_SANITY_BROWSER_TOKEN"
+  # EDIT_SANITY_TOKEN is a server-only write token (used by defineLive's
+  # serverToken and the draft-mode API route) — it never reaches client
+  # bundles, only Next.js's server/function output, which Netlify's scanner
+  # flags anyway since it can't tell server-only code from client code.
+  SECRETS_SCAN_OMIT_KEYS = "NEXT_PUBLIC_SANITY_DATASET,NEXT_PUBLIC_SANITY_PROJECT_ID,NEXT_PUBLIC_SANITY_API_VERSION,NEXT_PUBLIC_SANITY_STUDIO_PREVIEW_URL,NEXT_PUBLIC_SANITY_BROWSER_TOKEN,EDIT_SANITY_TOKEN"
 
   # 2. Omit Next.js Turbopack internal build cache from secret scanning.
   # The cache contains compiled server functions and is never served to users.
