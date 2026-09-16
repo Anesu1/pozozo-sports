@@ -1,3 +1,5 @@
+import { initOpenNextCloudflareForDev } from '@opennextjs/cloudflare';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   outputFileTracingRoot: import.meta.dirname,
@@ -31,3 +33,8 @@ const nextConfig = {
 };
 
 export default nextConfig;
+
+// Gives `next dev` access to local Cloudflare bindings (none currently used
+// beyond plain env vars, but this is required by @opennextjs/cloudflare
+// regardless) — only initializes the dev platform, never runs in production.
+initOpenNextCloudflareForDev();
