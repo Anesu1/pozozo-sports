@@ -4,6 +4,7 @@
   "main": ".open-next/worker.js",
   "compatibility_date": "2026-09-16",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "keep_vars": true,
   "vars": {
     "NEXT_PUBLIC_SANITY_PROJECT_ID": "oxq5wt1p",
     "NEXT_PUBLIC_SANITY_DATASET": "production",
