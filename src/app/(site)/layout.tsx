@@ -165,7 +165,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en" className={`scroll-smooth ${antonio.variable} ${karla.variable}`}>
-      <body className="min-h-screen flex flex-col bg-[#F3F5F0] text-[#13251C] antialiased font-sans opacity-10">
+      <body className="min-h-screen flex flex-col bg-[#F3F5F0] text-[#13251C] antialiased font-sans">
         <JsonLd data={organizationJsonLd} />
         <LoadingScreen />
         <Providers>
